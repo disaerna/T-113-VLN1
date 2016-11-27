@@ -1,0 +1,7 @@
+*.obj
+build-Verklegt-Desktop_Qt_5_7_0_MSVC2015_64bit-Debug/debug/Verklegt.exe
+*.ilk
+build-Verklegt-Desktop_Qt_5_7_0_MSVC2015_64bit-Debug/Makefile
+*.Debug
+build-Verklegt-Desktop_Qt_5_7_0_MSVC2015_64bit-Debug/debug/Verklegt.pdb
+*.Release
