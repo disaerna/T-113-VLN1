@@ -13,7 +13,8 @@ public:
     Persons();
     Persons(int n, int g, int db, int dd);
     friend bool operator <(Persons& lhs, Persons& rhs);
-
+    friend istream& operator >>(istream& is, Persons rhs);
+    friend ostream& operator <<(ostream& os, Persons rhs);
     void readInfo(vector<Persons> info, Persons rhs);
     void writeInfo(vector<Persons> info, Persons rhs);
 

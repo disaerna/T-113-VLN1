@@ -25,6 +25,18 @@ bool operator <(Persons lhs, Persons rhs)
     else
         return false;
 }
+istream& operator >>(istream& is, Persons rhs)
+{
+    is >> rhs;
+
+    return is;
+}
+ostream& operator <<(ostream& os, Persons rhs)
+{
+    os << rhs;
+
+    return os;
+}
 
 void readInfo(vector<Persons>& info, int number)
 {
@@ -39,4 +51,8 @@ void readInfo(vector<Persons>& info, int number)
     }
 
     info.push_back(ps);
+}
+void writeInfo(vector<Persons> info, Persons rhs)
+{
+
 }
