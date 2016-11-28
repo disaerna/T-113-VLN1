@@ -7,6 +7,7 @@ class MyClass
     public:
         MyClass();
         ~MyClass();
+        MyClass(int n, int s, int db, int dd);
 
     private:
         string name; // nafn
