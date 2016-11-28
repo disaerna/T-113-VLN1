@@ -4,7 +4,7 @@
 
 // test
 // dísa test
-
+// sandra test
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
