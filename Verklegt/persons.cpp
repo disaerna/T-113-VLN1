@@ -48,11 +48,20 @@ void readInfo(vector<Persons>& info, int number)
         cin >> ps._gender;
         cin >> ps._dob;
         cin >> ps._dod;
+
+        info.push_back(ps);
+    }
+}
+void writeInfo(vector<Persons> info)
+{
+    ofstream file;
+    file.open("data.txt");
+
+    for(int i=0; i<info.size(); i++)
+    {
+        file << info[i];
     }
 
-    info.push_back(ps);
+    file.close();
 }
-void writeInfo(vector<Persons> info, Persons rhs)
-{
 
-}
