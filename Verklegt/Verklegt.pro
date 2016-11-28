@@ -10,7 +10,13 @@ CONFIG -= app_bundle
 TEMPLATE = app
 
 SOURCES += main.cpp \
-    persons.cpp
+    persons.cpp \
+    presentation.cpp \
+    domain.cpp \
+    data.cpp
 
 HEADERS += \
-    persons.h
+    persons.h \
+    presentation.h \
+    domain.h \
+    data.h
