@@ -1,16 +1,16 @@
 #include <QCoreApplication>
 #include <iostream>
 #include <fstream>
-<<<<<<< HEAD
+#include <string>
+//<<<<<<< HEAD
 #include "persons.h"
-=======
+//=======
 #include <MyClass.h>
-
 
 using namespace std;
 
-class
->>>>>>> origin/master
+//class
+//>>>>>>> origin/master
 
 // test
 // dísa test

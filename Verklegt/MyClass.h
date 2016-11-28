@@ -8,8 +8,9 @@ class MyClass
 {
     public:
         MyClass();
-        ~MyClass();
+
         MyClass(int n, int s, int db, int dd);
+        friend bool operator <(MyClass& lhs, MyClass& rhs);
 
     private:
         string name; // nafn
