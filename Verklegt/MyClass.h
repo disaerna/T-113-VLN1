@@ -1,6 +1,8 @@
 #ifndef MYCLASS_H
 #define MYCLASS_H
 
+using namespace std;
+
 
 class MyClass
 {

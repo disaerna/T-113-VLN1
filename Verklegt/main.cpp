@@ -3,6 +3,9 @@
 #include <fstream>
 #include <MyClass.h>
 
+
+using namespace std;
+
 class
 
 // test
