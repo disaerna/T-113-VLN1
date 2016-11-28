@@ -25,3 +25,18 @@ bool operator <(Persons lhs, Persons rhs)
     else
         return false;
 }
+
+void readInfo(vector<Persons>& info, int number)
+{
+    Persons ps;
+
+    for(int i = 0; i < number; i++)
+    {
+        cin >> ps._name;
+        cin >> ps._gender;
+        cin >> ps._dob;
+        cin >> ps._dod;
+    }
+
+    info.push_back(ps);
+}

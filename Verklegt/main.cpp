@@ -5,7 +5,6 @@
 //<<<<<<< HEAD
 #include "persons.h"
 //=======
-#include <MyClass.h>
 
 using namespace std;
 
