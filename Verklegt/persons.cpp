@@ -72,7 +72,7 @@ void readData(vector<Persons>& myVector) { // inputting into vector
     Persons p;
     ifstream dataFile;
     dataFile.open("data.txt");
-    while(dataFile >> p.n && dataFile >> p.g && dataFile >> p.db && dataFile >> p.dd) {
+    while(dataFile >> p._name && dataFile >> p._gender && dataFile >> p._dob && dataFile >> p._dod) {
         myVector.push_back(p);
     }
 }
