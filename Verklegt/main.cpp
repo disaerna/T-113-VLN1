@@ -1,6 +1,7 @@
 #include <QCoreApplication>
 #include <iostream>
 #include <fstream>
+#include "persons.h"
 
 // test
 // dísa test
