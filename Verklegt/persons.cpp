@@ -53,7 +53,7 @@ void readInfo(vector<Persons>& info, int number)
     info.push_back(ps);
 }
 
-void readData(vector<Persons>& myVector) { // outputting into data.txt
+void readData(vector<Persons>& myVector) { // inputting into vector
     Persons p;
     ifstream dataFile;
     dataFile.open("data.txt");
@@ -61,4 +61,6 @@ void readData(vector<Persons>& myVector) { // outputting into data.txt
         myVector.push_back(p);
     }
 }
+
+void
 
