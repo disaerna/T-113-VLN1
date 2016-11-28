@@ -52,7 +52,13 @@ void readInfo(vector<Persons>& info, int number)
 
     info.push_back(ps);
 }
-void writeInfo(vector<Persons> info, Persons rhs)
-{
 
+void readData(vector<Persons>& myVector) { // outputting into data.txt
+    Persons p;
+    ifstream dataFile;
+    dataFile.open("data.txt");
+    while(dataFile >> p.n && dataFile >> p.g && dataFile >> p.db && dataFile >> p.dd) {
+        myVector.push_back(p);
+    }
 }
+
