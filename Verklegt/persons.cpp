@@ -52,6 +52,7 @@ void readInfo(vector<Persons>& info, int number)
         info.push_back(ps);
     }
 }
+<<<<<<< HEAD
 void writeInfo(vector<Persons> info)
 {
     ofstream file;
@@ -65,3 +66,17 @@ void writeInfo(vector<Persons> info)
     file.close();
 }
 
+=======
+
+void readData(vector<Persons>& myVector) { // inputting into vector
+    Persons p;
+    ifstream dataFile;
+    dataFile.open("data.txt");
+    while(dataFile >> p.n && dataFile >> p.g && dataFile >> p.db && dataFile >> p.dd) {
+        myVector.push_back(p);
+    }
+}
+
+void
+
+>>>>>>> origin/master
