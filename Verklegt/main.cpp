@@ -1,6 +1,9 @@
 #include <QCoreApplication>
 #include <iostream>
 #include <fstream>
+#include <MyClass.h>
+
+class
 
 // test
 // dísa test
