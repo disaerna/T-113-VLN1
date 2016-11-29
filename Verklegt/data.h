@@ -24,7 +24,6 @@ using namespace std;
 class Data
 {
 public:
-<<<<<<< Updated upstream
 /*        struct Database {
 =======
 //<<<<<<< Updated upstream
@@ -49,7 +48,6 @@ public:
     //void readData(ifstream& data);
 
 private:
-<<<<<<< Updated upstream
 
     //vector<Persons> _dataInfo;
     //vector<Database> _vec;
@@ -77,7 +75,7 @@ private:
 
 
 private:
-    vector<Database> _vec;
+    //vector<Database> _vec;
 
 
 //>>>>>>> Stashed changes
