@@ -1,6 +1,6 @@
 #ifndef DOMAIN_H
 #define DOMAIN_H
-include "data.h"
+#include "data.h"
 
 /* Dependar á DATA klasann
     Sorterar
