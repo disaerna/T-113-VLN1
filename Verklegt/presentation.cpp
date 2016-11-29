@@ -118,7 +118,12 @@ void Presentation::program() {
         // fall inní domain ! leitar
     }
     else if(input == "quit" || input == "Quit" || input == "QUIT") {
+
             // hætta í forriti
+
+
+
+
     }
     else {
             // villutékk

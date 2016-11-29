@@ -27,8 +27,8 @@ vector<Persons> Data::readPersonsFromFile()
      string line;
      string name;
      string gender;
-     int dob;
-     int dod;
+     int dob = 0;
+     int dod = 0;
      vector<Persons> personsFromFile;
 
      ifstream myfile ("data.txt");
