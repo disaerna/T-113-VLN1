@@ -32,13 +32,14 @@ void Data::addPersonsToFile(Persons person)
 }
 
 void Data::setVector(vector<Database> vec) {
+
     _vec = vec;
 }
 
 vector<Database> Data::getVector(vector<Database> vec) {
+
     return _vec;
 }
-
 
 void Data::readData(vector<Database> vec) {
     Database db;

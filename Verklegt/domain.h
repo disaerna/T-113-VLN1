@@ -1,8 +1,7 @@
-
-
 #ifndef DOMAIN_H
 #define DOMAIN_H
 #include "data.h"
+#include "persons.h"
 
 /* Dependar á DATA klasann
     Sorterar
