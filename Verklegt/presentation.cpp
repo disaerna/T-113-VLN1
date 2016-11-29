@@ -119,7 +119,7 @@ void Presentation::program() {
     }
     else if(input == "quit" || input == "Quit" || input == "QUIT") {
 
-       return 0;
+       return;
     }
     else {
             // villutékk
