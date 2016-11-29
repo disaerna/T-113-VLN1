@@ -18,6 +18,10 @@ class Presentation
 {
 public:
     Presentation();
+
+private:
+
+
 };
 
 #endif // PRESENTATION_H

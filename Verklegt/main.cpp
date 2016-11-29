@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include "persons.h"
+#include "presentation.h"
 
 using namespace std;
 

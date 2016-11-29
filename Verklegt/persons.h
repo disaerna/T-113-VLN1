@@ -17,30 +17,24 @@ class Persons
 public:
 
     Persons();
-    Persons(int n, int g, int db, int dd);
 
-    // föll til að fá gildi
+    // föll til að fá og setja gildi
     string getName() const;
     string getGender() const;
-    int getDOB() const;
-    int getDOD() const;
+    int getYearOfBirth() const;
+    int getYearOfDeath() const;
+    void setName(string n);
+    void setGender(string g);
+    void setYearOfBirth(int yob);
+    void setYearOfDeath(int yod);
 
-    // commentað út
-    //vector<Persons> getVector();
-    //friend bool operator <(Persons& lhs, Persons& rhs);
-    //friend istream& operator >>(istream& is, Persons rhs);
-    //friend ostream& operator <<(ostream& os, Persons rhs);
-    //void readInfo(vector<Persons> info, Persons rhs);
-    //void readData(vector<Persons>& myVector);
-    //void writeInfo(vector<Persons> info, Persons rhs);
 
 private:
 
     string _name;
     string _gender;
-    int _dob; // date of birth
-    int _dod; // date of death
-    vector<Persons> _info;
+    int _yob; // date of birth
+    int _yod; // date of death
 
 };
 
