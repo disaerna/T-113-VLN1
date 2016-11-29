@@ -18,6 +18,7 @@ class Presentation
 {
 public:
     Presentation();
+    void run();
 };
 
 #endif // PRESENTATION_H
