@@ -16,6 +16,7 @@ Persons::Persons(int n, int g, int db, int dd)
      _dod = dd;
 }
 
+// get föll
 string Persons::getName() const {
     return _name;
 }
@@ -31,6 +32,7 @@ int Persons::getDOB() const {
 int Persons::getDOD() const {
     return _dod;
 }
+
 
 /*
 

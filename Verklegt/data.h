@@ -1,6 +1,12 @@
 #ifndef DATA_H
 #define DATA_H
 
+#include<string>
+#include<iostream>
+#include<vector>
+#include<fstream>
+using namespace std;
+
 /*    "Persistence" layer
     Les úr skrá
     Les í skrá
@@ -12,10 +18,17 @@
 
 using namespace std;
 
-class data
+class Data
 {
 public:
-    data();
+    Data();
+    ~Data();
+    //void readData(ifstream& data);
+
+private:
+
+
+
 };
 
 #endif // DATA_H
