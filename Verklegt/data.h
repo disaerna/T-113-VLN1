@@ -9,7 +9,6 @@
 
 #include "persons.h"
 
-using namespace std;
 
 /*  "Persistence" layer
     Les úr skrá

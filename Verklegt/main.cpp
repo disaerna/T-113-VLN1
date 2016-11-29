@@ -8,17 +8,16 @@
 #include "data.h"
 #include "domain.h"
 
-#include <QCoreApplication>
 
 using namespace std;
 
 int main(int argc, char *argv[])
 {
 
-    Presentation pres;
-    pres.program();
 
-    QCoreApplication a(argc, argv);
+    //Presentation pres;
+    //pres.program();
 
-    return a.exec();
+
+    return 0;
 }
