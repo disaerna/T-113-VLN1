@@ -8,7 +8,7 @@ Persons::Persons()
 
 }
 
- Persons(int n, int g, int db, int dd)
+Persons(int n, int g, int db, int dd)
  {
      _name = n;
      _gender = g;
