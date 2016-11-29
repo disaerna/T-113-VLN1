@@ -19,16 +19,16 @@ class Presentation
 {
 public:
     Presentation();
-<<<<<<< HEAD
+//<<<<<<< HEAD
     void run();
-=======
+//=======
     void program();
 
 private:
     Domain _domain;
 
 
->>>>>>> origin/master
+//>>>>>>> origin/master
 };
 
 #endif // PRESENTATION_H

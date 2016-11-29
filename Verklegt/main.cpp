@@ -1,24 +1,25 @@
 #include <iostream>
-<<<<<<< HEAD
-=======
+//<<<<<<< HEAD
+//=======
 #include <fstream>
 #include <string>
 #include <vector>
 #include "persons.h"
->>>>>>> origin/master
+//>>>>>>> origin/master
 #include "presentation.h"
+
+#include <QCoreApplication>
 
 using namespace std;
 
-int main()
+int main(int argc, char *argv[])
 {
-<<<<<<< HEAD
-    Presentation ui;
+//<<<<<<< HEAD
+   // Presentation ui;
 
-    ui.run();
 
-    return 0;
-=======
+   // return 0;
+//=======
 
 
    // Presentation pres;
@@ -30,5 +31,5 @@ int main()
     QCoreApplication a(argc, argv);
 
     return a.exec();
->>>>>>> origin/master
+//>>>>>>> origin/master
 }
