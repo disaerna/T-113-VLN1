@@ -32,6 +32,7 @@ public:
     Domain();
 
     void addPersons(Persons person);
+    vector<Persons> getPersons();
 
 private:
     Data _data;

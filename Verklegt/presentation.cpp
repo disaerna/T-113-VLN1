@@ -40,19 +40,18 @@ void Presentation::program() {
         cin >> number;
         for(int i=0; i<number; i++){
 
-        cout << "Enter name: ";
-        cin >> name1;
-        cout << "Enter gender: ";
-        cin >> gender1;
-        cout << "Enter year of birth: ";
-        cin >> yearOfBirth1;
-        cout << "If deceased enter year of death, else enter 0: ";
-        cin >> yearOfDeath1;
+            cout << "Enter name: ";
+            cin >> name1;
+            cout << "Enter gender: ";
+            cin >> gender1;
+            cout << "Enter year of birth: ";
+            cin >> yearOfBirth1;
+            cout << "If deceased enter year of death, else enter 0: ";
+            cin >> yearOfDeath1;
 
-        newPerson.setPersons(name1, gender1, yearOfBirth1, yearOfDeath1);
+            newPerson.setPersons(name1, gender1, yearOfBirth1, yearOfDeath1);
 
-        Domain dn;
-        dn.addPersons(newPerson);
+            _domain.addPersons(newPerson);
 
         }
 
@@ -82,31 +81,33 @@ void Presentation::program() {
         int viewInput = 0;
         cin >> viewInput;
 
-        if(input == "1") {
-            // default
+        if(viewInput == 1) {
+            vector<Persons> getPerson;
+            getPerson = _domain.getPersons();
+            displayVector(getPerson);
         }
-        else if(input == "2") {
+        else if(viewInput == 2) {
             // sort name descending
         }
-        else if(input == "3") {
+        else if(viewInput == 3) {
             // sort name ascending
         }
-        else if(input == "4") {
+        else if(viewInput == 4) {
             // sort gender descending
         }
-        else if(input == "5") {
+        else if(viewInput == 5) {
             // sort gender ascending
         }
-        else if(input == "6") {
+        else if(viewInput == 6) {
             // sort birth year desc.
         }
-        else if(input == "7") {
+        else if(viewInput == 7) {
             // sort birth year asc.
         }
-        else if(input == "8") {
+        else if(viewInput == 8) {
             // sort death desc.
         }
-        else if(input == "9") {
+        else if(viewInput == 9) {
             // sort death asc.
         }
         else {
@@ -128,5 +129,18 @@ void Presentation::program() {
     else {
             // villutékk
         cout << "Please enter a valid command!" << endl;
+    }
+}
+
+void Presentation::displayVector(vector<Persons> p)
+{
+    // raða betur upp í töflu, ef t.d langt nafn
+    //cout << "Fer inni displayVector" << endl;
+    cout << endl;
+    cout << "Name" << "\t" << "Gender" << "\t" << "Year of birth" << "\t" << "Year of death" << "\t" << endl;
+    cout << "----------------------------------------------" << endl;
+    for(int i=0; i<p.size(); i++)
+    {
+        cout << p[i].getName() << "\t" << p[i].getGender() << "\t" << p[i].getYearOfBirth() << "\t" << "\t" << p[i].getYearOfDeath()<< endl;
     }
 }

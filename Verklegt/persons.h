@@ -22,7 +22,6 @@ class Persons
 public:
 
     Persons();
-
     // föll til að fá og setja gildi
     string getName() const;
     string getGender() const;

@@ -14,7 +14,11 @@ Domain::Domain()
 
 void Domain::addPersons(Persons person)
 {
-    Data data;
-    data.addPersonsToFile(person);
 
+    _data.addPersonsToFile(person);
 }
+vector<Persons> Domain::getPersons()
+{
+    return _data.readPersonsFromFile();
+}
+

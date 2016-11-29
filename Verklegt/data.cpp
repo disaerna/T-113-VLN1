@@ -6,6 +6,7 @@
 #include <vector>
 #include <fstream>
 #include <iterator>
+#include <sstream>
 
 using namespace std;
 
@@ -32,7 +33,21 @@ vector<Persons> Data::readPersonsFromFile()
      vector<Persons> personsFromFile;
 
      ifstream myfile ("data.txt");
-     if (myfile.is_open())
+
+     while (getline(myfile, line))
+        {
+            istringstream ss(line);
+
+            ss >> name >> gender >> dob >> dod;
+
+            Persons p;
+            p.setPersons(name,gender,dob,dod);
+            personsFromFile.push_back(p);
+        }
+
+     myfile.close();
+
+     /*if (myfile.is_open())
      {
        while (getline(myfile, line))
        {
@@ -63,9 +78,7 @@ vector<Persons> Data::readPersonsFromFile()
      }
     else
     cout << "Unable to open file";
-    myfile.close();
-
-
+    */
 
     return personsFromFile;
 
@@ -74,16 +87,8 @@ void Data::addPersonsToFile(Persons person)
 {
     ofstream file;
     file.open("data.txt", fstream::in | fstream::app); // Passar að yfirkrifa ekki í textafile.
+    file << person.getName() << " " << person.getGender() << " " << person.getYearOfBirth() << " " << person.getYearOfDeath() << endl;
 
-    file << person.getName() << " " << endl;
-    file << person.getGender() << " " << endl;
-    file << person.getYearOfBirth() << " " << endl;
-    file << person.getYearOfDeath() << " " << endl;
-    //file << endl;
-
-    // notum | til að seperate-a nafn|gender|yob|yod
-    // notum || til að seperate-a persónur
-    // person1 || person 2
 
     file.close();
 }
