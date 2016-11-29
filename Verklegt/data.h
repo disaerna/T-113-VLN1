@@ -24,7 +24,16 @@ using namespace std;
 class Data
 {
 public:
+<<<<<<< Updated upstream
 /*        struct Database {
+=======
+//<<<<<<< Updated upstream
+        struct Database {
+//=======
+    struct Database
+    {
+//>>>>>>> Stashed changes
+>>>>>>> Stashed changes
         string name;
         string gender;
         int dob;
@@ -40,10 +49,20 @@ public:
     //void readData(ifstream& data);
 
 private:
+<<<<<<< Updated upstream
 
     //vector<Persons> _dataInfo;
     //vector<Database> _vec;
     /*
+=======
+    vector<Persons> _dataInfo;
+//<<<<<<< Updated upstream
+    vector<Database> _vec;
+//=======
+
+    ~Data();
+//>>>>>>> Stashed changes
+>>>>>>> Stashed changes
     void setVector(vector<Database> vec);
     void getVector(vector<Database> vec);
     void readData(vector<Database> vec);
@@ -51,6 +70,17 @@ private:
     //void readData(ifstream& data);
     */
 
+//<<<<<<< Updated upstream
+//=======
+
+//>>>>>>> origin/master
+
+
+private:
+    vector<Database> _vec;
+
+
+//>>>>>>> Stashed changes
 };
 
 #endif // DATA_H
