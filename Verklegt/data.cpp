@@ -1,6 +1,10 @@
 #include "data.h"
 
-data::data()
+Data::Data()
 {
+
+}
+
+Data::~Data() {
 
 }
