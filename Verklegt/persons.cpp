@@ -22,7 +22,7 @@ int Persons::getYearOfBirth() const
 }
 int Persons::getYearOfDeath() const
 {
-    return _yod
+    return _yod;
 }
 void Persons::setPersons(string n, string g, int yob, int yod)
 {
