@@ -19,6 +19,7 @@ class Presentation
 {
 public:
     Presentation();
+    void program();
 
 private:
     Domain _domain;

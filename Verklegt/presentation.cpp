@@ -55,6 +55,7 @@ void Presentation::program() {
     }
     else if(input == "view" || input == "View" || input == "VIEW") {
         cout << "How would you like view the database? " << endl;
+
         cout << "1. Name: A-Z" << endl;
         cout << "2. Name: Z-A" << endl;
         cout << "3. Gender: F-M" << endl;
@@ -62,26 +63,46 @@ void Presentation::program() {
         cout << "5. Birth Year: Desc." << endl;
         cout << "6. Birth Year: Asc." << endl;
 
+
+        cout << "1. Default" << endl;
+        cout << "2. Name: A-Z" << endl;
+        cout << "3. Name: Z-A" << endl;
+        cout << "4. Gender: F-M" << endl;
+        cout << "5. Gender: M-F" << endl;
+        cout << "6. Birth Year: Desc." << endl;
+        cout << "7. Birth Year: Asc." << endl;
+        cout << "8. Death Year: Desc." << endl;
+        cout << "9. Death Year: Asc." << endl;
+
         int viewInput = 0;
         cin >> viewInput;
         // allt föll inní domain ! sortera
         if(input == "1") {
-            // sort name descending
+            // default
         }
         else if(input == "2") {
-            // sort name ascending
+            // sort name descending
         }
         else if(input == "3") {
-            // sort gender descending
+            // sort name ascending
         }
         else if(input == "4") {
-            // sort gender ascending
+            // sort gender descending
         }
         else if(input == "5") {
-            // sort birth year desc.
+            // sort gender ascending
         }
         else if(input == "6") {
+            // sort birth year desc.
+        }
+        else if(input == "7") {
             // sort birth year asc.
+        }
+        else if(input == "8") {
+            // sort death desc.
+        }
+        else if(input == "9") {
+            // sort death asc.
         }
         else {
             cout << "Please enter a valid number!" << endl; // villutékk
