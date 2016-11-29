@@ -35,6 +35,8 @@ void Presentation::program() {
         cout << "4. Gender: M-F" << endl;
         cout << "5. Birth Year: Desc." << endl;
         cout << "6. Birth Year: Asc." << endl;
+        cout << "7. Death Year: Desc." << endl;
+        cout << "8. Death Year: Asc." << endl;
         int viewInput = 0;
         cin >> viewInput;
 
@@ -55,6 +57,12 @@ void Presentation::program() {
         }
         else if(input == "6") {
             // sort birth year asc.
+        }
+        else if(input == "7") {
+            // sort death desc.
+        }
+        else if(input == "8") {
+            // sort death asc.
         }
         else {
             cout << "Please enter a valid number!" << endl; // villutékk
