@@ -24,20 +24,10 @@ int Persons::getYearOfDeath() const
 {
     return _yod
 }
-void Persons::setName(string n)
+void Persons::setPersons(string n, string g, int yob, int yod)
 {
     _name = n;
-}
-void Persons::setGender(string g)
-{
     _gender = g;
-}
-void Persons::setYearOfBirth(int yob)
-{
     _yob = yob;
-}
-void Persons::setYearOfDeath(int yod)
-{
     _yod = yod;
 }
-
