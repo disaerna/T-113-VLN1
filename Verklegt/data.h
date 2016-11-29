@@ -24,22 +24,23 @@ using namespace std;
 class Data
 {
 public:
-        struct Database {
+/*        struct Database {
         string name;
         string gender;
         int dob;
         int dod;
         };
-
+*/
 
     Data();
-
+/*
     void addPersonsToFile(Persons person);
     vector<Persons> people(Persons person);
 
     //void readData(ifstream& data);
-
+*/
 private:
+    /*
     vector<Persons> _dataInfo;
     vector<Database> _vec;
     void setVector(vector<Database> vec);
@@ -47,7 +48,7 @@ private:
     void readData(vector<Database> vec);
     void saveData(vector<Database> vec);
     //void readData(ifstream& data);
-
+    */
 
 };
 

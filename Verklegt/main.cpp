@@ -13,7 +13,10 @@ int main(int argc, char *argv[])
 
 
    // Presentation pres;
-   // pres.program();
+    Presentation pres;
+    pres.program();
+
+
 
     QCoreApplication a(argc, argv);
 

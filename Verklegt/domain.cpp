@@ -8,6 +8,6 @@ Domain::Domain()
 
 void Domain::addPersons(Persons person)
 {
-    _data.addPersonsToFile(person);
+    //_data.addPersonsToFile(person);
 
 }

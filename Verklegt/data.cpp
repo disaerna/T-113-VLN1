@@ -9,7 +9,7 @@ Data::Data()
 {
 
 }
-
+/*
 vector<Persons> Data::persons(Persons person)
 {
     _dataInfo.push_back(person);
@@ -61,3 +61,4 @@ void Data::saveData(vector<Database> vec) {
         outData << vec[i].dod << endl;
     }
 }
+*/
