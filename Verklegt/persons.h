@@ -23,10 +23,7 @@ public:
     string getGender() const;
     int getYearOfBirth() const;
     int getYearOfDeath() const;
-    void setName(string n);
-    void setGender(string g);
-    void setYearOfBirth(int yob);
-    void setYearOfDeath(int yod);
+    void setPersons();
 
 
 private:

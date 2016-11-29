@@ -1,4 +1,5 @@
 #include "data.h"
+#include "persons.h"
 
 Data::Data()
 {
@@ -7,6 +8,14 @@ Data::Data()
 
 Data::~Data() {
 
+}
+
+void Data::setVector(vector<Database> vec) {
+    _vec = vec;
+}
+
+vector<Database> Data::getVector(vector<Database> vec) {
+    return _vec;
 }
 
 

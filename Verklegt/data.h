@@ -1,11 +1,13 @@
 #ifndef DATA_H
 #define DATA_H
 
+
 #include<string>
 #include<iostream>
 #include<vector>
 #include<fstream>
 #include <iterator>
+
 using namespace std;
 
 /*    "Persistence" layer
@@ -32,6 +34,8 @@ public:
 
     Data();
     ~Data();
+    void setVector(vector<Database> vec);
+    void getVector(vector<Database> vec);
     void readData(vector<Database> vec);
     void saveData(vector<Database> vec);
     //void readData(ifstream& data);
@@ -41,7 +45,7 @@ public:
 
 
 private:
-
+    vector<Database> _vec;
 
 
 };
