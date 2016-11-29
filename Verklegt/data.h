@@ -24,12 +24,25 @@ using namespace std;
 class Data
 {
 public:
+<<<<<<< HEAD
         /*struct Database {
+=======
+/*        struct Database {
+=======
+//<<<<<<< Updated upstream
+        struct Database {
+//=======
+    struct Database
+    {
+//>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> origin/master
         string name;
         string gender;
         int dob;
         int dod;
         };
+<<<<<<< HEAD
         */
 
     Data();
@@ -37,12 +50,35 @@ public:
     void addPersonsToFile(Persons person);
     void readPersonsFromFile(Persons person);
     vector<Persons> people(Persons person);
+=======
+*/
+
+    Data();
+    //vector<Persons> Persons(Persons person);
+    //void addPersonsToFile(Persons person);
+    //vector<Persons> people(Persons person);
+>>>>>>> origin/master
 
 private:
 
+<<<<<<< HEAD
     vector<Persons> _dataInfo;
 
     /*vector<Database> _vec;
+=======
+    //vector<Persons> _dataInfo;
+    //vector<Database> _vec;
+    /*
+=======
+    vector<Persons> _dataInfo;
+//<<<<<<< Updated upstream
+    vector<Database> _vec;
+//=======
+
+    ~Data();
+//>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> origin/master
     void setVector(vector<Database> vec);
     void getVector(vector<Database> vec);
     void readData(vector<Database> vec);
@@ -50,8 +86,19 @@ private:
     */
 
     //void readData(ifstream& data);
+    */
+
+//<<<<<<< Updated upstream
+//=======
+
+//>>>>>>> origin/master
 
 
+private:
+    //vector<Database> _vec;
+
+
+//>>>>>>> Stashed changes
 };
 
 #endif // DATA_H

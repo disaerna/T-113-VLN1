@@ -19,6 +19,7 @@ class Presentation
 {
 public:
     Presentation();
+    void run();
     void program();
 
 private:
