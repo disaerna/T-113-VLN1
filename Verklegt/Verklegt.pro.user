@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.1.0, 2016-11-28T12:15:52. -->
+<!-- Written by QtCreator 4.1.0, 2016-11-29T01:43:54. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -292,7 +292,7 @@
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.ProFile">Verklegt.pro</value>
     <value type="bool" key="Qt4ProjectManager.Qt4RunConfiguration.UseDyldImageSuffix">false</value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory.default">C:/Users/Kalli/Documents/GitHub/T-113-VLN1/Verklegt</value>
+    <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory.default">C:/Users/Kalli/Documents/GitHub/T-113-VLN1/build-Verklegt-Desktop_Qt_5_7_0_MinGW_32bit-Debug</value>
     <value type="uint" key="RunConfiguration.QmlDebugServerPort">3768</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>

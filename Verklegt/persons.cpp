@@ -8,13 +8,31 @@ Persons::Persons()
 
 }
 
- Persons(int n, int g, int db, int dd)
- {
+Persons::Persons(int n, int g, int db, int dd)
+{
      _name = n;
      _gender = g;
      _dob = db;
      _dod = dd;
- }
+}
+
+string Persons::getName() const {
+    return _name;
+}
+
+string Persons::getGender() const {
+    return _gender;
+}
+
+int Persons::getDOB() const {
+    return _dob;
+}
+
+int Persons::getDOD() const {
+    return _dod;
+}
+
+/*
 
 bool operator <(Persons lhs, Persons rhs)
 {
@@ -37,7 +55,6 @@ ostream& operator <<(ostream& os, Persons rhs)
 
     return os;
 }
-
 void readInfo(vector<Persons>& info, int number)
 {
     Persons ps;
@@ -64,19 +81,4 @@ void writeInfo(vector<Persons> info)
     }
 
     file.close();
-}
-
-=======
-
-void readData(vector<Persons>& myVector) { // inputting into vector
-    Persons p;
-    ifstream dataFile;
-    dataFile.open("data.txt");
-    while(dataFile >> p._name && dataFile >> p._gender && dataFile >> p._dob && dataFile >> p._dod) {
-        myVector.push_back(p);
-    }
-}
-
-void
-
->>>>>>> origin/master
+}*/

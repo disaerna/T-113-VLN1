@@ -13,10 +13,20 @@ SOURCES += main.cpp \
     persons.cpp \
     presentation.cpp \
     domain.cpp \
-    data.cpp
+    data.cpp \
+    Data/data.cpp \
+    Domain/domain.cpp \
+    Persons/persons.cpp \
+    Presentation/presentation.cpp \
+    MyClass.cpp
 
 HEADERS += \
     persons.h \
     presentation.h \
     domain.h \
-    data.h
+    data.h \
+    Data/data.h \
+    Domain/domain.h \
+    Persons/persons.h \
+    Presentation/presentation.h \
+    MyClass.h

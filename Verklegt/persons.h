@@ -2,8 +2,14 @@
 #define PERSONS_H
 #include <iostream>
 #include <string>
+#include <vector>
 
 using namespace std;
+
+/* Tekur við breytum frá notenda
+ * Sendir þær yfir í domain
+ *
+*/
 
 class Persons
 {
@@ -12,11 +18,21 @@ public:
 
     Persons();
     Persons(int n, int g, int db, int dd);
-    friend bool operator <(Persons& lhs, Persons& rhs);
-    friend istream& operator >>(istream& is, Persons rhs);
-    friend ostream& operator <<(ostream& os, Persons rhs);
-    void readInfo(vector<Persons> info, Persons rhs);
-    void writeInfo(vector<Persons> info, Persons rhs);
+
+    // föll til að fá gildi
+    string getName() const;
+    string getGender() const;
+    int getDOB() const;
+    int getDOD() const;
+
+    // commentað út
+    //vector<Persons> getVector();
+    //friend bool operator <(Persons& lhs, Persons& rhs);
+    //friend istream& operator >>(istream& is, Persons rhs);
+    //friend ostream& operator <<(ostream& os, Persons rhs);
+    //void readInfo(vector<Persons> info, Persons rhs);
+    //void readData(vector<Persons>& myVector);
+    //void writeInfo(vector<Persons> info, Persons rhs);
 
 private:
 
