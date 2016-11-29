@@ -26,6 +26,11 @@ void Presentation::program() {
         int yearOfBirth1;
         int yearOfDeath1;
         Persons newPerson;
+        int number = 0;
+
+        cout << "How many persons would you like to input: " << endl;
+        cin >> number;
+        for(int i=0; i<number; i++){
 
         cout << "Enter name: ";
         cin >> name1;
@@ -40,6 +45,9 @@ void Presentation::program() {
 
         // fara í nýjan klasa sem sér um að adda & deleta
         // kalla í fall sem addar
+        }
+
+
     }
     else if(input == "delete" || input == "Delete" || input == "DELETE") {
         // delete person from the database

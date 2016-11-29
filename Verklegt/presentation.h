@@ -1,6 +1,7 @@
 #ifndef PRESENTATION_H
 #define PRESENTATION_H
 #include "domain.h"
+#include "persons.h"
 
 using namespace std;
 
@@ -20,6 +21,7 @@ public:
     Presentation();
 
 private:
+    Domain _domain;
 
 
 };

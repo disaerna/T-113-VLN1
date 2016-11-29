@@ -1,10 +1,12 @@
 #ifndef DATA_H
 #define DATA_H
 
-#include<string>
-#include<iostream>
-#include<vector>
-#include<fstream>
+#include <string>
+#include <iostream>
+#include <vector>
+#include <fstream>
+#include "persons.h"
+
 using namespace std;
 
 /*    "Persistence" layer
