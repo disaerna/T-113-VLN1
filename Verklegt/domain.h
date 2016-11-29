@@ -1,6 +1,7 @@
 #ifndef DOMAIN_H
 #define DOMAIN_H
 #include "data.h"
+#include "persons.h"
 
 /* Dependar á DATA klasann
     Sorterar
@@ -22,6 +23,11 @@ class Domain
 {
 public:
     Domain();
+
+    void addPersons(Persons person);
+
+private:
+    Data _data;
 };
 
 #endif // DOMAIN_H
