@@ -1,5 +1,12 @@
 #ifndef DOMAIN_H
 #define DOMAIN_H
+
+#include <string>
+#include <iostream>
+#include <vector>
+#include <fstream>
+#include <iterator>
+
 #include "data.h"
 #include "persons.h"
 

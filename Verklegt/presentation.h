@@ -1,5 +1,12 @@
 #ifndef PRESENTATION_H
 #define PRESENTATION_H
+
+#include <string>
+#include <iostream>
+#include <vector>
+#include <fstream>
+#include <iterator>
+
 #include "domain.h"
 #include "persons.h"
 

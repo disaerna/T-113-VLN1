@@ -1,8 +1,11 @@
 #ifndef PERSONS_H
 #define PERSONS_H
-#include <iostream>
+
 #include <string>
+#include <iostream>
 #include <vector>
+#include <fstream>
+#include <iterator>
 
 using namespace std;
 

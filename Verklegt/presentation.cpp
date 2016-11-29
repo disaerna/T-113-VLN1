@@ -2,6 +2,9 @@
 #include "persons.h"
 #include <string>
 #include <iostream>
+#include <vector>
+#include <fstream>
+#include <iterator>
 
 using namespace  std;
 
@@ -15,7 +18,7 @@ void Presentation::program() {
 
     cout << "Please enter one of the following commands: " << endl;
     cout << "add - Add a new person to the database" << endl;
-    cout << "delete - Delete a person from the database" << endl;
+    cout << "delete - Delete a person from the database" << endl; // TODO - EXTRA
     cout << "view - View the database" << endl;
     cout << "search - Search the database" << endl;
     cout << "quit - Quit the program" << endl;
@@ -73,9 +76,12 @@ void Presentation::program() {
         cout << "8. Death Year: Desc." << endl;
         cout << "9. Death Year: Asc." << endl;
 
+        // allt föll inní domain ! sortera
+        // öll föll hér inní þurfa að nota readPersonsFromFile fallið í data !
+
         int viewInput = 0;
         cin >> viewInput;
-        // allt föll inní domain ! sortera
+
         if(input == "1") {
             // default
         }
@@ -113,7 +119,7 @@ void Presentation::program() {
     }
     else if(input == "quit" || input == "Quit" || input == "QUIT") {
 
-       return;
+       return 0;
     }
     else {
             // villutékk
