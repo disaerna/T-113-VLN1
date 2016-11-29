@@ -33,16 +33,17 @@ public:
 */
 
     Data();
-/*
-    void addPersonsToFile(Persons person);
-    vector<Persons> people(Persons person);
+    //vector<Persons> Persons(Persons person);
+    //void addPersonsToFile(Persons person);
+    //vector<Persons> people(Persons person);
 
     //void readData(ifstream& data);
-*/
+
 private:
+
+    //vector<Persons> _dataInfo;
+    //vector<Database> _vec;
     /*
-    vector<Persons> _dataInfo;
-    vector<Database> _vec;
     void setVector(vector<Database> vec);
     void getVector(vector<Database> vec);
     void readData(vector<Database> vec);

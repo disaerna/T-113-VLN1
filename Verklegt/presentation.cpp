@@ -48,7 +48,8 @@ void Presentation::program() {
 
         newPerson.setPersons(name1, gender1, yearOfBirth1, yearOfDeath1);
 
-        _domain.addPersons(newPerson);
+        Domain dn;
+        dn.addPersons(newPerson);
 
         }
 
