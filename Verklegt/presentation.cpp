@@ -59,15 +59,8 @@ void Presentation::program() {
         // fara inní nýja klasann sem sér um að deleta & adda
     }
     else if(input == "view" || input == "View" || input == "VIEW") {
+
         cout << "How would you like view the database? " << endl;
-
-        cout << "1. Name: A-Z" << endl;
-        cout << "2. Name: Z-A" << endl;
-        cout << "3. Gender: F-M" << endl;
-        cout << "4. Gender: M-F" << endl;
-        cout << "5. Birth Year: Desc." << endl;
-        cout << "6. Birth Year: Asc." << endl;
-
 
         cout << "1. Default" << endl;
         cout << "2. Name: A-Z" << endl;

@@ -1,9 +1,10 @@
 #include "data.h"
 #include "persons.h"
 #include <fstream>
-#include <iostream>
 
 using namespace std;
+
+// split fyrir string
 
 Data::Data()
 {
@@ -12,26 +13,43 @@ Data::Data()
 
 vector<Persons> Data::persons(Persons person)
 {
-    _dataInfo.push_back(person);
+    //_dataInfo.push_back(person);
 
     return _dataInfo;
 }
 
+void Data::readPersonsFromFile(Persons person)
+{
+    string name;
+    int number;
+    ifstream file;
+    file.open("data.txt");
+    while(!file.eof)
+    {
+        getline(file, word);
+        _dataInfo.push_back(word);
+    }
+    file.close();
+
+}
 void Data::addPersonsToFile(Persons person)
 {
     ofstream file;
     file.open("data.txt", fstream::in | fstream::app); // Passar að yfirkrifa ekki í textafile.
 
-    file << "Name: " << person.getName() << endl;
-    file << "Gender: " << person.getGender() << endl;
-    file << "Year of birth: " << person.getYearOfBirth() << endl;
-    file << "Year of death if deceased: " << person.getYearOfDeath() << endl;
+    file << person.getName() << " ";
+    file << person.getGender() << " ";
+    file << person.getYearOfBirth() << " ";
+    file << person.getYearOfDeath() << " ";
+    file << endl;
+    // notum | til að seperate-a nafn|gender|yob|yod
+    // notum || til að seperate-a persónur
+    // person1 || person 2
 
     file.close();
-
 }
 
-void Data::setVector(vector<Database> vec) {
+/*void Data::setVector(vector<Database> vec) {
 
     _vec = vec;
 }
@@ -61,3 +79,4 @@ void Data::saveData(vector<Database> vec) {
         outData << vec[i].dod << endl;
     }
 }
+*/
