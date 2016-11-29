@@ -24,12 +24,13 @@ class Data
 {
 public:
     Data();
-    ~Data();
+    void addPersonsToFile(Persons person);
+    vector<Persons> people(Persons person);
+
     //void readData(ifstream& data);
 
 private:
-
-
+    vector<Persons> _dataInfo;
 
 };
 

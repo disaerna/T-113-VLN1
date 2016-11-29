@@ -1,5 +1,10 @@
 #include "presentation.h"
 #include "persons.h"
+#include <string>
+#include <iostream>
+
+using namespace  std;
+
 
 Presentation::Presentation()
 {
@@ -43,8 +48,8 @@ void Presentation::program() {
 
         newPerson.setPersons(name1, gender1, yearOfBirth1, yearOfDeath1);
 
-        // fara í nýjan klasa sem sér um að adda & deleta
-        // kalla í fall sem addar
+        _domain.addPersons(newPerson);
+
         }
 
 

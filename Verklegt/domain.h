@@ -24,6 +24,11 @@ class Domain
 {
 public:
     Domain();
+
+    void addPersons(Persons person);
+
+private:
+    Data _data;
 };
 
 #endif // DOMAIN_H
