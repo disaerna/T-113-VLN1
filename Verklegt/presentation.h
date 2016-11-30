@@ -33,8 +33,7 @@ public:
     void program();
     void displayVector(vector<Persons> p);
 
-    /*
-     * Search Föll
+    //Search Föll
     int displaySearch();
     string displaySearchName();
     string displaySearchGender();
@@ -42,7 +41,7 @@ public:
     int displaySearchDeathYear();
     void displaySearchResults(vector<Persons> p, vector<int> results);
     void nothingFound();
-    */
+
 
 private:
     Domain _domain;

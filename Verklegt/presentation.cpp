@@ -6,6 +6,7 @@
 #include <fstream>
 #include <iterator>
 #include <algorithm>
+#include <iomanip>
 
 using namespace std;
 
@@ -97,7 +98,7 @@ void Presentation::program()
         displayVector(_domain.SortPersons(getPerson, viewInput));
    }
 
-    /*
+
 
     //search option
     else if(input == 4) {
@@ -127,7 +128,7 @@ void Presentation::program()
             cin >> nameInput;
             _domain.searchName(personVector, nameInput);
             results = _domain.getResults();
-            Presentation::displaySearchResults(personVector, results);
+            displaySearchResults(personVector, results);
             _domain.cleanVector(results);
         }
         else if(userChoice == 2) {
@@ -175,42 +176,47 @@ void Presentation::program()
         }
 
     }
-    */
 
-    /*
-    else if(input == 5)
+
+    /*else if(input == 5)
     {
             // hætta í forriti
-    }
+    }*/
     else
     {
             // villutékk
         cout << "Please enter a valid command!" << endl;
     }
-    */
-
-
 }
 
 void Presentation::displayVector(vector<Persons> p)
 {
     // raða betur upp í töflu, ef t.d langt nafn
     //cout << "Fer inni displayVector" << endl;
+    int maxNameSize = 0;
+    for(int i=0; i<p.size(); i++)
+    {
+        if(p[i].getName().length() > maxNameSize )
+        {
+            maxNameSize = p[i].getName().length();
+        }
+    }
+    cout << "MaxNameSize: " << maxNameSize << endl;
+
     cout << endl;
-    cout << "Nr. Name" << "\t" << "Gender" << "\t" << "Year of birth" << "\t" << "Year of death" << "\t" << endl;
-    cout << "----------------------------------------------" << endl;
+    cout << "Nr. " << "Name" << setw(maxNameSize+3) << "Gender" << "\t" << "Born" << "\t" << "Died" << endl;
+    for(int i=0; i<25+maxNameSize; i++)
+    {
+        cout << "-";
+    }
+    cout << endl;
     for(size_t i=0; i< p.size(); i++)
     {
-        cout << (i+1) << ".  " <<p[i].getName() << "\t" << p[i].getGender() << "\t" << p[i].getYearOfBirth() << "\t" << "\t" << p[i].getYearOfDeath()<< endl;
+        cout << (i+1) << ".  " << setw(maxNameSize) << left << p[i].getName() << "\t" << p[i].getGender() << "\t" << p[i].getYearOfBirth() << "\t" << p[i].getYearOfDeath()<< endl;
+
     }
-
-
 }
 
-
-
-/*
- *
 // prints out only information about the indexes that match the search
 void Presentation::displaySearchResults(vector<Persons> p, vector<int> results) {
     for(size_t i = 0; i < results.size(); i++) {
@@ -223,7 +229,3 @@ void Presentation::displaySearchResults(vector<Persons> p, vector<int> results) 
     }
     cout << endl;
 }
-
-*/
-
-

@@ -40,7 +40,6 @@ struct PersonsDODSortingAsc {
     bool operator() (Persons i, Persons j) { return (i.getYearOfDeath() > j.getYearOfDeath() ); }
 };
 
-
 Domain::Domain()
 {
 
@@ -55,16 +54,13 @@ void Domain::deletePersonFromFile(int numberOfPerson)
 {
     vector<Persons> getPersonFromFile;
     getPersonFromFile = _data.readPersonsFromFile();
-    //for(unsigned int i = 0; i < getPersonFromFile.size(); i++)
-    //{
+
     cout << getPersonFromFile.size() << endl;
     getPersonFromFile.erase(getPersonFromFile.begin()+numberOfPerson - 1);
     cout << "Order erased!" << endl;
     cout << getPersonFromFile.size() << endl;
-    //}
 
     _data.addPersonsAfterDelete(getPersonFromFile);
-
 }
 
 vector<Persons> Domain::getPersons()
@@ -79,77 +75,69 @@ vector<Persons> Domain:: SortPersons(vector<Persons> getPerson, int viewInput)
     {
 
     case 1:
-
-        return getPerson;
-
+        // viewar default
         break;
+
     case 2:
         // sort name descending
         // hæsta fyrst
         // byrja að overwrite operator ><
         PersonsNameSortingDesc des;
         std::sort(getPerson.begin(), getPerson.end(), des);
+        break;
 
-        return getPerson;
-    break;
     case 3:
         // sort name ascending
         // lægsta fyrst
-     PersonsNameSortingAsc asc;
-     std::sort(getPerson.begin(), getPerson.end(), asc);
-     return getPerson;
+        PersonsNameSortingAsc asc;
+        std::sort(getPerson.begin(), getPerson.end(), asc);
+        break;
 
-     break;
      case 4:
         // sort gender descending
         PersonsGenderSortingDesc Gend;
         std::sort(getPerson.begin(), getPerson.end(), Gend);
-        return getPerson;
-    break;
+        break;
+
     case 5:
         // sort gender ascending
         PersonsGenderSortingAsc GendAs;
         std::sort(getPerson.begin(), getPerson.end(), GendAs);
-        return getPerson;
-    break;
+        break;
 
     case 6:
         // sort birth year desc
         PersonsDOBSortingDesc Dob;
         std::sort(getPerson.begin(), getPerson.end(), Dob);
-        return getPerson;
-    break;
+        break;
 
     case 7:
         // sort birth year asc.
         PersonsDOBSortingAsc DobAs;
         std::sort(getPerson.begin(), getPerson.end(), DobAs);
-        return getPerson;
-    break;
+        break;
 
     case 8:
         // sort death desc.
         PersonsDODSortingDesc Dod;
         std::sort(getPerson.begin(), getPerson.end(), Dod);
-        return getPerson;
+        break;
+
     case 9:
         // sort death asc.
         PersonsDODSortingAsc DodAs;
         std::sort(getPerson.begin(), getPerson.end(), DodAs);
-        return getPerson;
-    break;
+        break;
 
     default:
         cout << "Please enter a valid number!" << endl; // villutékk
-
     }
 
-
+    return getPerson;
 }
 
 
-/*
- * **** Search Function
+
 
 // give private _results vector a value
 void Domain::setResults(vector<int> results) {
@@ -169,29 +157,31 @@ void Domain::cleanVector(vector<int> results) {
 
 
 // function for searching through the name column of the vector
-void Domain::searchName(vector<Persons> vec, string input) {
+void Domain::searchName(vector<Persons> vec, string input)
+{
     vector<int> results;
     for(size_t i = 0; i < vec.size(); i++) {
         if(vec[i].getName() == input) { // if a name matches, then the index number will be pushed back
             results.push_back(i);
         }
      }
-    Domain::setResults(results); // give the results vector the values
+    setResults(results); // give the results vector the values
 }
 
-
-
-void Domain::searchGender(vector<Persons> vec, string input) {
+void Domain::searchGender(vector<Persons> vec, string input)
+{
     vector<int> results;
     for(size_t i = 0; i < vec.size(); i++) {
         if(vec[i].getGender() == input) {
             results.push_back(i);
         }
     }
+
     Domain::setResults(results);
 }
 
-void Domain::searchBirthYear(vector<Persons> vec, string byInput) {
+void Domain::searchBirthYear(vector<Persons> vec, string byInput)
+{
     vector<int> results;
     for(size_t i = 0; i < vec.size(); i++) {
         if(vec[i].getYearOfBirth() == byInput) {
@@ -201,9 +191,8 @@ void Domain::searchBirthYear(vector<Persons> vec, string byInput) {
     Domain::setResults(results);
 }
 
-
-
-void Domain::searchDeathYear(vector<Persons> vec, string dyInput) {
+void Domain::searchDeathYear(vector<Persons> vec, string dyInput)
+{
     vector<int> results;
     for(size_t i = 0; i < vec.size(); i++) {
         if(vec[i].getYearOfDeath() == dyInput) {
@@ -213,4 +202,3 @@ void Domain::searchDeathYear(vector<Persons> vec, string dyInput) {
     Domain::setResults(results);
 }
 
-*/

@@ -87,6 +87,7 @@ void Data::addPersonsToFile(Persons person)
 {
     ofstream file;
     file.open("data.txt", fstream::in | fstream::app); // Passar að yfirskrifa ekki í textafile.
+
     file << person.getName() << endl;
     file << person.getGender() << endl;
     file << person.getYearOfBirth() << endl;
@@ -98,7 +99,7 @@ void Data::addPersonsToFile(Persons person)
 void Data::addPersonsAfterDelete(vector<Persons> afterDeletePersons)
 {
     ofstream file;
-    file.open("data.txt", fstream::in | fstream::trunc);
+    file.open("data.txt", fstream::out | fstream::trunc);
 
     for(int i=0; i<afterDeletePersons.size(); i++)
     {
@@ -107,7 +108,7 @@ void Data::addPersonsAfterDelete(vector<Persons> afterDeletePersons)
         file << afterDeletePersons[i].getYearOfBirth() << endl;
         file << afterDeletePersons[i].getYearOfDeath() << endl;
         file << "<3" << endl;
-
-        file.close();
     }
+
+    file.close();
 }

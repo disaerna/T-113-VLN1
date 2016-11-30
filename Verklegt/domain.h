@@ -37,7 +37,7 @@ public:
     vector<Persons> getPersons();
     vector<Persons> SortPersons(vector<Persons> getPerson, int viewInput);
 
-    /* functions for search function
+    // functions for search function
     void searchName(vector<Persons> vec, string input);
     void searchGender(vector<Persons> vec, string input);
     void searchBirthYear(vector<Persons> vec, string byInput);
@@ -46,17 +46,13 @@ public:
     vector<int> getResults();
     void cleanVector(vector<int> results);
 
-    */
-
-
 private:
 
     Data _data;
 
-    /*
-     * *** vector for results // search function
+
     vector<int> _results;
-    */
+
 
 };
 
