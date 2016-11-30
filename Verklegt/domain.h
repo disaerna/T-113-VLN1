@@ -34,10 +34,12 @@ public:
 
     void addPersons(Persons person);
     vector<Persons> getPersons();
+    vector<Persons> SortPersons(vector<Persons> getPerson);
 
 private:
 
     Data _data;
+
 };
 
 #endif // DOMAIN_H

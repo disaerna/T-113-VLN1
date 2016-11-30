@@ -37,5 +37,5 @@ void Persons::setPersons(string n, string g, string yob, string yod)
     _name = n;
     _gender = g;
     _yob = yob;
-    _yod = yod;
+    _yod= yod;
 }

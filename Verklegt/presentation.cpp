@@ -7,6 +7,7 @@
 #include <iterator>
 #include <algorithm>
 
+
 using namespace  std;
 
 
@@ -15,8 +16,16 @@ Presentation::Presentation()
 
 }
 
+<<<<<<< Updated upstream
 void Presentation::program()
 {
+=======
+void displayVector(vector<Persons> p);
+
+void Presentation::program()
+{
+
+>>>>>>> Stashed changes
 
     cout << "Please enter one of the following commands: " << endl;
     cout << "add - Add a new person to the database" << endl;
@@ -29,42 +38,67 @@ void Presentation::program()
 
     cin >> input;
 
+<<<<<<< Updated upstream
     if(input == "add" || input == "Add" || input == "ADD")
     {
         string name1;
         string gender1;
         string yearOfBirth1;
         string yearOfDeath1;
+=======
+    if(input == "add" || input == "Add" || input == "ADD") {
+
+        string name;
+        string gender;
+        int DOB;
+        int DOD;
+>>>>>>> Stashed changes
         Persons newPerson;
         int number = 0;
 
         cout << "How many persons would you like to input: " << endl;
         cin >> number;
+<<<<<<< Updated upstream
+=======
+        for(int i=0; i<number; i++)
+        {
+>>>>>>> Stashed changes
 
         for(int i=0; i<number; i++)
         {
             cout << "Enter name: ";
-            cin >> name1;
+            cin >> name;
             cout << "Enter gender: ";
-            cin >> gender1;
+            cin >> gender;
             cout << "Enter year of birth: ";
-            cin >> yearOfBirth1;
+            cin >> DOB;
             cout << "If deceased enter year of death, else enter 0: ";
-            cin >> yearOfDeath1;
+            cin >> DOD;
 
-            newPerson.setPersons(name1, gender1, yearOfBirth1, yearOfDeath1);
+            newPerson.setPersons(name, gender, DOB, DOD);
 
             _domain.addPersons(newPerson);
         }
     }
+<<<<<<< Updated upstream
     else if(input == "delete" || input == "Delete" || input == "DELETE")
     {
+=======
+
+
+    /*else if(input == "delete" || input == "Delete" || input == "DELETE")
+    {
+
+>>>>>>> Stashed changes
         // delete person from the database
         // fara inní nýja klasann sem sér um að deleta & adda
     }
-    else if(input == "view" || input == "View" || input == "VIEW") {
 
+    */
+    else if(input == "view" || input == "View" || input == "VIEW")
+    {
         cout << "How would you like view the database? " << endl;
+    }
 
         cout << "1. Default" << endl;
         cout << "2. Name: A-Z" << endl;
@@ -82,52 +116,31 @@ void Presentation::program()
         int viewInput = 0;
         cin >> viewInput;
 
-        if(viewInput == 1) {
-            vector<Persons> getPerson;
-            getPerson = _domain.getPersons();
-            displayVector(getPerson);
-        }
-        else if(viewInput == 2) {
-            // sort name descending
-        }
-        else if(viewInput == 3) {
-            // sort name ascending
-        }
-        else if(viewInput == 4) {
-            // sort gender descending
-        }
-        else if(viewInput == 5) {
-            // sort gender ascending
-        }
-        else if(viewInput == 6) {
-            // sort birth year desc.
-        }
-        else if(viewInput == 7) {
-            // sort birth year asc.
-        }
-        else if(viewInput == 8) {
-            // sort death desc.
-        }
-        else if(viewInput == 9) {
-            // sort death asc.
-        }
-        else {
-            cout << "Please enter a valid number!" << endl; // villutékk
-        }
-    }
-    else if(input == "search" || input == "Search" || input == "SEARCH") {
+        vector<Persons> getPerson;
+        getPerson = _domain.getPersons();
+
+        _domain.SortPersons(getPerson);
+
+
+
+   /* else if(input == "search" || input == "Search" || input == "SEARCH")
+    {
         // search the database
         // fall inní domain ! leitar
     }
-    else if(input == "quit" || input == "Quit" || input == "QUIT") {
+    else if(input == "quit" || input == "Quit" || input == "QUIT")
+    {
 
             // hætta í forriti
 
     }
-    else {
+    else
+    {
             // villutékk
         cout << "Please enter a valid command!" << endl;
+
     }
+*/
 }
 
 void Presentation::displayVector(vector<Persons> p)
@@ -137,9 +150,13 @@ void Presentation::displayVector(vector<Persons> p)
     cout << endl;
     cout << "Nr. Name" << "\t" << "Gender" << "\t" << "Year of birth" << "\t" << "Year of death" << "\t" << endl;
     cout << "----------------------------------------------" << endl;
-    for(int i=0; i<p.size(); i++)
+    for(int i=0; i< p.size(); i++)
     {
 
         cout << (i+1) << ".  " <<p[i].getName() << "\t" << p[i].getGender() << "\t" << p[i].getYearOfBirth() << "\t" << "\t" << p[i].getYearOfDeath()<< endl;
     }
 }
+
+
+
+
