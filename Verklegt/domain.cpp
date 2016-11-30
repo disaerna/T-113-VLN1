@@ -147,110 +147,70 @@ vector<Persons> Domain:: SortPersons(vector<Persons> getPerson, int viewInput)
 
 }
 
-/*
 
-void Domain::searchName(vector<Persons>& vec, vector<int> results, int naInput) {
-    for(size_t i = 0; i < vec.size(); i++) {
-            if(vec[i].getGender() == naInput) {
-                results.push_back(i);
-            }
-        }
+/*
+ * **** Search Function
+
+// give private _results vector a value
+void Domain::setResults(vector<int> results) {
+    _results = results;
 }
 
-void Domain::searchGender(vector<Persons>& vec, vector<int>& results, int geInput) {
+// get the values from results vector
+vector<int> Domain::getResults() {
+    return _results;
+}
+
+// clean the vector.. return indexes in results to 0
+void Domain::cleanVector(vector<int> results) {
+    results.clear();
+    _results = results;
+}
+
+
+// function for searching through the name column of the vector
+void Domain::searchName(vector<Persons> vec, string input) {
+    vector<int> results;
     for(size_t i = 0; i < vec.size(); i++) {
-        if(vec[i].getGender() == geInput) {
+        if(vec[i].getName() == input) { // if a name matches, then the index number will be pushed back
+            results.push_back(i);
+        }
+     }
+    Domain::setResults(results); // give the results vector the values
+}
+
+
+
+void Domain::searchGender(vector<Persons> vec, string input) {
+    vector<int> results;
+    for(size_t i = 0; i < vec.size(); i++) {
+        if(vec[i].getGender() == input) {
             results.push_back(i);
         }
     }
+    Domain::setResults(results);
 }
 
-void Domain::searchBirthYear(vector<Persons>& vec, vector<int>& results, int byInput) {
+void Domain::searchBirthYear(vector<Persons> vec, string byInput) {
+    vector<int> results;
     for(size_t i = 0; i < vec.size(); i++) {
         if(vec[i].getYearOfBirth() == byInput) {
             results.push_back(i);
         }
     }
+    Domain::setResults(results);
 }
 
-void Domain::searchDeathYear(vector<Persons>& vec, vector<int>& results, int dyInput) {
+
+
+void Domain::searchDeathYear(vector<Persons> vec, string dyInput) {
+    vector<int> results;
     for(size_t i = 0; i < vec.size(); i++) {
         if(vec[i].getYearOfDeath() == dyInput) {
             results.push_back(i);
         }
     }
+    Domain::setResults(results);
 }
 
-
-
-
-// á eftir að cutta niður og setja í önnur föll
-void searchDB() {
-    // asking user to choose how he will search
-    Presentation::displaySearch();
-
-    // if user chooses 1/Search by name
-    if(userChoice == 1) {
-        Presentation::displaySearchName;
-        Domain::searchName;
-        sizeOfResults = results.size();
-        // if sizeOfResults = 0, then nothing is found
-        // for loop to check output
-        if(sizeOfResults != 0) {
-            Presentation::displaySearchResults;
-        }
-        else {
-            Presentation::nothingFound();
-        }
-    }
-
-
-    // if user chooses 2/Search by gender
-    else if(userChoice == 2) {
-        Presentation::displaySearchGender;
-        Domain::searchGender;
-        sizeOfResults = results.size();
-        if(sizeOfResults != 0) {
-            Presentation::displaySearchResults;
-        }
-        else {
-            Presentation::nothingFound();
-        }
-    }
-
-
-
-    // if user chooses 3/search by birth year
-    if(userChoice == 3) {
-        Presentation::displaySearchBirthYear;
-        Domain::searchBirthYear;
-        sizeOfResults = results.size();
-        if(sizeOfResults != 0) {
-            Presentation::displaySearchResults;
-        }
-        else {
-            Presentation::nothingFound();
-        }
-
-    }
-
-    // if user chooses 4/search by death year
-    if(userChoice == 4) {
-        Presentation::displaySearchDeathYear;
-        Domain::searchDeathYear;
-        sizeOfResults = results.size();
-        if(sizeOfResults != 0) {
-            Presentation::displaySearchResults;
-        }
-        else {
-            Presentation::nothingFound();
-        }
-    }
-
-    // if user chooses 5/return to main menu
-    if(userChoice == 5) {
-        Presentation::displaySearch();
-    }
-}
 */
-

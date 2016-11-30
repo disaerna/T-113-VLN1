@@ -94,12 +94,89 @@ void Presentation::program()
         getPerson = _domain.getPersons();
 
         displayVector(_domain.SortPersons(getPerson, viewInput));
+   }
 
-   /* else if(input == 4)
-    {
+    /*
+
+    //search option
+    else if(input == 4) {
         // search the database
         // fall inní domain ! leitar
+
+        int userChoice = 0;
+        cout << "Please enter one of the following commands: " << endl;
+        cout << "1. Search by name" << endl;
+        cout << "2. Search by gender" << endl;
+        cout << "3. Search by year of birth" << endl;
+        cout << "4. Search by year of death" << endl;
+        cout << "5. Return to main menu" << endl;
+        cin >> userChoice;
+
+        //  if the user chooses to search by name
+        //  we need to link the Person vector to the vector
+        //  we use the searchName function in the Domain class
+        //  our vector results gets the indexes searchName gave us
+        //  we display the results
+        //  we clean the vector so that the user can search again
+        if(userChoice == 1) {
+            vector<Persons> personVector;
+            vector<int> results;
+            string nameInput = " ";
+            cout << "Enter a name to search: ";
+            cin >> nameInput;
+            _domain.searchName(personVector, nameInput);
+            results = _domain.getResults();
+            Presentation::displaySearchResults(personVector, results);
+            _domain.cleanVector(results);
+        }
+        else if(userChoice == 2) {
+            vector<Persons> personVector;
+            vector<int> results;
+            string genderInput = " ";
+            cout << "Enter 'male' for male results" << endl;
+            cout << "Enter 'female' for female results" << endl;
+            cin >> genderInput;
+            _domain.searchName(personVector, genderInput);
+            results = _domain.getResults();
+            Presentation::displaySearchResults(personVector, results);
+            _domain.cleanVector(results);
+        }
+
+
+        else if(userChoice == 3) {
+            vector<Persons> personVector;
+            vector<int> results;
+            string birthYear = " ";
+            cout << "Enter birth year";
+            cin >> birthYear;
+
+            _domain.searchBirthYear(personVector, birthYear);
+            results = _domain.getResults();
+            Presentation::displaySearchResults(personVector, results);
+            _domain.cleanVector(results);
+
+
+        }
+        else if(userChoice == 4) {
+            vector<Persons> personVector;
+            vector<int> results;
+            string deathYear = " ";
+            cout << "Enter death year";
+            cin >> deathYear;
+
+            _domain.searchDeathYear(personVector, deathYear);
+            results = _domain.getResults();
+            Presentation::displaySearchResults(personVector, results);
+            _domain.cleanVector(results);
+
+
+
+        }
+
     }
+    */
+
+    /*
     else if(input == 5)
     {
             // hætta í forriti
@@ -109,9 +186,9 @@ void Presentation::program()
             // villutékk
         cout << "Please enter a valid command!" << endl;
     }
-*/
+    */
 
-    }
+
 }
 
 void Presentation::displayVector(vector<Persons> p)
@@ -125,70 +202,27 @@ void Presentation::displayVector(vector<Persons> p)
     {
         cout << (i+1) << ".  " <<p[i].getName() << "\t" << p[i].getGender() << "\t" << p[i].getYearOfBirth() << "\t" << "\t" << p[i].getYearOfDeath()<< endl;
     }
+
+
 }
 
 
 
-//
-
-int Presentation::displaySearch() {
-    int userChoice = 0;
-    cout << "Please enter one of the following commands: " << endl;
-    cout << "1. Search by name" << endl;
-    cout << "2. Search by gender" << endl;
-    cout << "3. Search by year of birth" << endl;
-    cout << "4. Search by year of death" << endl;
-    cout << "5. Return to main menu" << endl;
-    cin >> userChoice;
-    return userChoice;
-}
-
-string Presentation::displaySearchName() {
-    string nameInput = " ";
-    cout << "Enter a name to search: ";
-    cin >> nameInput;
-    return nameInput;
-}
-
-string Presentation::displaySearchGender() {
-    string genderInput = " ";
-    cout << "Enter 'male' for male results" << endl;
-    cout << "Enter 'female' for female results" << endl;
-    cin >> genderInput;
-    return genderInput;
-}
-
-int Presentation::displaySearchBirthYear() {
-    int birthYear = 0;
-    cout << "Enter birth year";
-    cin >> birthYear;
-    return birthYear;
-}
-
-int Presentation::displaySearchDeathYear() {
-    int deathYear = 0;
-    cout << "Enter death year";
-    cin >> deathYear;
-    return deathYear;
-}
-
-void Presentation::displaySearchResults(vector<Persons>& vec, vector<int>& results) {
+/*
+ *
+// prints out only information about the indexes that match the search
+void Presentation::displaySearchResults(vector<Persons> p, vector<int> results) {
     for(size_t i = 0; i < results.size(); i++) {
-        cout << vec[i].getName() << " ";
-        cout << vec[i].getGender() << " ";
-        cout << vec[i].getYearOfBirth() << " ";
-        cout << vec[i].getYearOfDeath() << endl;
+        int number = 0;
+        number = results[i];
+        cout << p[number].getName() << " ";
+        cout << p[number].getGender() << " ";
+        cout << p[number].getYearOfBirth() << " ";
+        cout << p[number].getYearOfDeath() << endl;
     }
     cout << endl;
-    results.clear(); // clear the results vector
 }
 
-void Presentation::nothingFound() {
-    cout << "Nothing found!" << endl;
-}
-
-//
-
-
+*/
 
 
