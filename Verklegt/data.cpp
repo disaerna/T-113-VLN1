@@ -10,19 +10,13 @@
 
 using namespace std;
 
-// split fyrir string?
-
 Data::Data()
 {
 
 }
 
-
-
 vector<Persons> Data::readPersonsFromFile()
 {
-    // VIKTORÍA KLÁRAR FILESTREAM
-
 
      int i = 1;
      string line;
@@ -86,9 +80,7 @@ vector<Persons> Data::readPersonsFromFile()
 void Data::addPersonsToFile(Persons person)
 {
     ofstream file;
-    file.open("data.txt", fstream::in | fstream::app); // Passar að yfirkrifa ekki í textafile.
-    file << person.getName() << " " << person.getGender() << " " << person.getYearOfBirth() << " " << person.getYearOfDeath() << endl;
-
-
+    file.open("data.txt", fstream::in | fstream::app); // Passar að yfirskrifa ekki í textafile.
+    file << person.getName() << "*" << person.getGender() << "*" << person.getYearOfBirth() << "*" << person.getYearOfDeath() << "*" << endl;
     file.close();
 }

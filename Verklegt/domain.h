@@ -13,7 +13,6 @@
 /* Dependar á DATA klasann
     Sorterar
     Leitar
-    Búa til fall sem skila vector<persons>
 
     Tekur við upplýsingum frá persons
     Búa til fall sem sorterar
@@ -28,13 +27,16 @@ using namespace std;
 
 class Domain
 {
+
 public:
+
     Domain();
 
     void addPersons(Persons person);
     vector<Persons> getPersons();
 
 private:
+
     Data _data;
 };
 

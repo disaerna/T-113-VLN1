@@ -5,6 +5,7 @@
 #include <vector>
 #include <fstream>
 #include <iterator>
+#include <algorithm>
 
 using namespace  std;
 
@@ -14,7 +15,8 @@ Presentation::Presentation()
 
 }
 
-void Presentation::program() {
+void Presentation::program()
+{
 
     cout << "Please enter one of the following commands: " << endl;
     cout << "add - Add a new person to the database" << endl;
@@ -24,11 +26,11 @@ void Presentation::program() {
     cout << "quit - Quit the program" << endl;
 
     string input = " ";
+
     cin >> input;
 
-
-    if(input == "add" || input == "Add" || input == "ADD") {
-
+    if(input == "add" || input == "Add" || input == "ADD")
+    {
         string name1;
         string gender1;
         int yearOfBirth1;
@@ -38,8 +40,9 @@ void Presentation::program() {
 
         cout << "How many persons would you like to input: " << endl;
         cin >> number;
-        for(int i=0; i<number; i++){
 
+        for(int i=0; i<number; i++)
+        {
             cout << "Enter name: ";
             cin >> name1;
             cout << "Enter gender: ";
@@ -52,12 +55,10 @@ void Presentation::program() {
             newPerson.setPersons(name1, gender1, yearOfBirth1, yearOfDeath1);
 
             _domain.addPersons(newPerson);
-
         }
-
-
     }
-    else if(input == "delete" || input == "Delete" || input == "DELETE") {
+    else if(input == "delete" || input == "Delete" || input == "DELETE")
+    {
         // delete person from the database
         // fara inní nýja klasann sem sér um að deleta & adda
     }
@@ -122,9 +123,6 @@ void Presentation::program() {
 
             // hætta í forriti
 
-
-
-
     }
     else {
             // villutékk
@@ -137,10 +135,11 @@ void Presentation::displayVector(vector<Persons> p)
     // raða betur upp í töflu, ef t.d langt nafn
     //cout << "Fer inni displayVector" << endl;
     cout << endl;
-    cout << "Name" << "\t" << "Gender" << "\t" << "Year of birth" << "\t" << "Year of death" << "\t" << endl;
+    cout << "Nr. Name" << "\t" << "Gender" << "\t" << "Year of birth" << "\t" << "Year of death" << "\t" << endl;
     cout << "----------------------------------------------" << endl;
     for(int i=0; i<p.size(); i++)
     {
-        cout << p[i].getName() << "\t" << p[i].getGender() << "\t" << p[i].getYearOfBirth() << "\t" << "\t" << p[i].getYearOfDeath()<< endl;
+
+        cout << (i+1) << ".  " <<p[i].getName() << "\t" << p[i].getGender() << "\t" << p[i].getYearOfBirth() << "\t" << "\t" << p[i].getYearOfDeath()<< endl;
     }
 }

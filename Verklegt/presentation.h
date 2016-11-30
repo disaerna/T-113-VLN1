@@ -24,8 +24,11 @@ using namespace std;
 
 class Presentation
 {
+
 public:
+
     Presentation();
+
     void run();
     void program();
     void displayVector(vector<Persons> p);
