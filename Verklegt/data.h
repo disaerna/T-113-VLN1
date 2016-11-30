@@ -30,6 +30,7 @@ public:
 
     void addPersonsToFile(Persons person);
     vector<Persons> readPersonsFromFile();
+    void addPersonsAfterDelete(vector<Persons> afterDeletePersons);
 
 private:
 

@@ -63,8 +63,7 @@ void Presentation::program()
 
     /*else if(input == 2)
     {
-        // delete person from the database
-        // fara inní nýja klasann sem sér um að deleta & adda
+
     }
 
     */
@@ -91,6 +90,7 @@ void Presentation::program()
         getPerson = _domain.getPersons();
 
         displayVector(_domain.SortPersons(getPerson, viewInput));
+
    /* else if(input == 4)
     {
         // search the database

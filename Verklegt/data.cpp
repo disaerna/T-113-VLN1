@@ -95,3 +95,18 @@ void Data::addPersonsToFile(Persons person)
 
     file.close();
 }
+void Data::addPersonsAfterDelete(vector<Persons> afterDeletePersons)
+{
+    for(int i=0; i<afterDeletePersons.size(); i++)
+    {
+        ofstream file;
+        file.open("data.txt", fstream::in | fstream::trunc);
+        file << afterDeletePersons[i].getName() << endl;
+        file << afterDeletePersons[i].getGender() << endl;
+        file << afterDeletePersons[i].getYearOfBirth() << endl;
+        file << afterDeletePersons[i].getYearOfDeath() << endl;
+        file << "<3" << endl;
+
+        file.close();
+    }
+}

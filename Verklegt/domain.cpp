@@ -51,6 +51,20 @@ void Domain::addPersons(Persons person)
     _data.addPersonsToFile(person);
 }
 
+void Domain::deletePersonFromFile(Persons person, int numberOfPerson)
+{
+    vector<Persons> getPersonFromFile;
+    getPersonFromFile = _data.readPersonsFromFile();
+    for(unsigned int i = 0; i < getPersonFromFile.size(); i++)
+    {
+        getPersonFromFile.erase(getPersonFromFile.begin() + numberOfPerson-1);
+        cout << "Order erased!" << endl;
+    }
+
+    _data.addPersonsAfterDelete(getPersonFromFile);
+
+}
+
 vector<Persons> Domain::getPersons()
 {
     return _data.readPersonsFromFile();
