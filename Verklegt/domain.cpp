@@ -213,7 +213,11 @@ vector<Persons> Domain:: SortPersons(vector<Persons> getPerson, int viewInput)
             cout << vec[i].getYearOfDeath() << endl;
         }
         cout << endl;
-        results.clear();
+        results.clear(); // clear the results vector
+    }
+
+    void Presentation::nothingFound() {
+        cout << "Nothing found! << endl;
     }
 
 
@@ -225,18 +229,15 @@ void searchDB() {
     // if user chooses 1/Search by name
     if(userChoice == 1) {
         Presentation::displaySearchName;
-
         Domain::searchName;
-
         sizeOfResults = results.size();
-
         // if sizeOfResults = 0, then nothing is found
         // for loop to check output
         if(sizeOfResults != 0) {
             Presentation::displaySearchResults;
         }
         else {
-            cout << "Error" << endl; // error message
+            Presentation::nothingFound();
         }
     }
 
@@ -244,18 +245,14 @@ void searchDB() {
     // if user chooses 2/Search by gender
     else if(userChoice == 2) {
         Presentation::displaySearchGender;
-
         Domain::searchGender;
-
         sizeOfResults = results.size();
-
         if(sizeOfResults != 0) {
             Presentation::displaySearchResults;
         }
         else {
-            cout << "Error" << endl; // error message
+            Presentation::nothingFound();
         }
-
     }
 
 
@@ -263,16 +260,13 @@ void searchDB() {
     // if user chooses 3/search by birth year
     if(userChoice == 3) {
         Presentation::displaySearchBirthYear;
-
         Domain::searchBirthYear;
-
         sizeOfResults = results.size();
-
         if(sizeOfResults != 0) {
             Presentation::displaySearchResults;
         }
         else {
-            cout << "Error" << endl; // error message
+            Presentation::nothingFound();
         }
 
     }
@@ -280,25 +274,20 @@ void searchDB() {
     // if user chooses 4/search by death year
     if(userChoice == 4) {
         Presentation::displaySearchDeathYear;
-
         Domain::searchDeathYear;
-
         sizeOfResults = results.size();
-
         if(sizeOfResults != 0) {
             Presentation::displaySearchResults;
         }
         else {
-            cout << "Error" << endl; // error message
+            Presentation::nothingFound();
         }
-
     }
 
     // if user chooses 5/return to main menu
     if(userChoice == 5) {
-        // return to previous screen
+        Presentation::displaySearch();
     }
-
 }
 */
 
