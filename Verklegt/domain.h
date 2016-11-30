@@ -34,11 +34,9 @@ public:
 
     void addPersons(Persons person);
     vector<Persons> getPersons();
-<<<<<<< HEAD
-    vector<Persons> SortPersons(vector<Persons> getPerson);
-=======
+    vector<Persons> SortPersons(vector<Persons> getPerson, int viewInput);
+
     //void searchDB(vector<Persons> vec);
->>>>>>> origin/master
 
 private:
 

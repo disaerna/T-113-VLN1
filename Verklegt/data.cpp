@@ -18,11 +18,11 @@ Data::Data()
 vector<Persons> Data::readPersonsFromFile()
 {
 
-<<<<<<< Updated upstream
+
      int i = 1;
-=======
+
      //int i = 1;
->>>>>>> Stashed changes
+
      string line;
      string name;
      string gender;

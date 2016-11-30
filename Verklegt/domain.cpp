@@ -56,14 +56,16 @@ vector<Persons> Domain::getPersons()
     return _data.readPersonsFromFile();
 }
 
-<<<<<<< HEAD
 vector<Persons> Domain:: SortPersons(vector<Persons> getPerson, int viewInput)
 {
+
     switch(viewInput) // fallegra að hafa switch case i þessu dæmi
     {
 
     case '1':
-        displayVector(getPerson);
+
+        return getPerson;
+
         break;
     case '2':
         // sort name descending
@@ -97,7 +99,7 @@ vector<Persons> Domain:: SortPersons(vector<Persons> getPerson, int viewInput)
 
     case '7' :
         // sort birth year asc.
-        PersonsDOBSortingAsc DobAs
+        PersonsDOBSortingAsc DobAs;
         std::sort(getPerson.begin(), getPerson.end(), DobAs);
     break;
 
@@ -119,7 +121,6 @@ vector<Persons> Domain:: SortPersons(vector<Persons> getPerson, int viewInput)
 
 }
 
-=======
 /*
 // á eftir að cutta niður og setja í önnur föll
 void searchDB(vector<Persons> vec) {
@@ -295,4 +296,4 @@ void searchDB(vector<Persons> vec) {
 
 }
 */
->>>>>>> origin/master
+

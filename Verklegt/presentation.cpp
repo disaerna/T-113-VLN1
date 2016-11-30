@@ -7,95 +7,68 @@
 #include <iterator>
 #include <algorithm>
 
-
-using namespace  std;
-
+using namespace std;
 
 Presentation::Presentation()
 {
 
 }
 
-<<<<<<< Updated upstream
-void Presentation::program()
-{
-=======
+
 void displayVector(vector<Persons> p);
 
 void Presentation::program()
 {
 
->>>>>>> Stashed changes
-
     cout << "Please enter one of the following commands: " << endl;
-    cout << "add - Add a new person to the database" << endl;
-    cout << "delete - Delete a person from the database" << endl; // TODO - EXTRA
-    cout << "view - View the database" << endl;
-    cout << "search - Search the database" << endl;
-    cout << "quit - Quit the program" << endl;
+    cout << "1 - Add a new person to the database" << endl;
+    cout << "2 - Delete a person from the database" << endl; // TODO - EXTRA
+    cout << "3 - View the database" << endl;
+    cout << "4 - Search the database" << endl;
+    cout << "5 - Quit the program" << endl;
 
-    string input = " ";
+    int input = 0;
 
     cin >> input;
 
-<<<<<<< Updated upstream
-    if(input == "add" || input == "Add" || input == "ADD")
-    {
+    if(input == 1) {
+
+
+        Persons newPerson;
+        int number = 0;
         string name1;
         string gender1;
         string yearOfBirth1;
         string yearOfDeath1;
-=======
-    if(input == "add" || input == "Add" || input == "ADD") {
-
-        string name;
-        string gender;
-        int DOB;
-        int DOD;
->>>>>>> Stashed changes
-        Persons newPerson;
-        int number = 0;
 
         cout << "How many persons would you like to input: " << endl;
         cin >> number;
-<<<<<<< Updated upstream
-=======
-        for(int i=0; i<number; i++)
-        {
->>>>>>> Stashed changes
 
         for(int i=0; i<number; i++)
         {
             cout << "Enter name: ";
-            cin >> name;
+            cin >> name1;
             cout << "Enter gender: ";
-            cin >> gender;
+            cin >> gender1;
             cout << "Enter year of birth: ";
-            cin >> DOB;
+            cin >> yearOfBirth1;
             cout << "If deceased enter year of death, else enter 0: ";
-            cin >> DOD;
+            cin >> yearOfDeath1;
 
-            newPerson.setPersons(name, gender, DOB, DOD);
+            newPerson.setPersons(name1, gender1, yearOfBirth1, yearOfDeath1);
 
             _domain.addPersons(newPerson);
         }
     }
-<<<<<<< Updated upstream
-    else if(input == "delete" || input == "Delete" || input == "DELETE")
+
+    /*else if(input == 2)
     {
-=======
-
-
-    /*else if(input == "delete" || input == "Delete" || input == "DELETE")
-    {
-
->>>>>>> Stashed changes
         // delete person from the database
         // fara inní nýja klasann sem sér um að deleta & adda
     }
 
     */
-    else if(input == "view" || input == "View" || input == "VIEW")
+    else if(input == 3)
     {
         cout << "How would you like view the database? " << endl;
     }
@@ -119,28 +92,24 @@ void Presentation::program()
         vector<Persons> getPerson;
         getPerson = _domain.getPersons();
 
-        _domain.SortPersons(getPerson);
+        _domain.SortPersons(getPerson, viewInput);
 
-
-
-   /* else if(input == "search" || input == "Search" || input == "SEARCH")
+   /* else if(input == 4)
     {
         // search the database
         // fall inní domain ! leitar
     }
-    else if(input == "quit" || input == "Quit" || input == "QUIT")
+    else if(input == 5)
     {
-
             // hætta í forriti
-
     }
     else
     {
             // villutékk
         cout << "Please enter a valid command!" << endl;
-
     }
 */
+
 }
 
 void Presentation::displayVector(vector<Persons> p)
