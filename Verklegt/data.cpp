@@ -18,10 +18,7 @@ Data::Data()
 vector<Persons> Data::readPersonsFromFile()
 {
 
-
      int i = 1;
-
-     //int i = 1;
 
      string line;
      string name;
@@ -29,22 +26,10 @@ vector<Persons> Data::readPersonsFromFile()
      string dob;
      string dod;
      string delimeter;
+
      vector<Persons> personsFromFile;
 
      ifstream myfile ("data.txt");
-
-    /* while (getline(myfile, line))
-        {
-            stringstream ss(line);
-
-            ss >> name >> gender >> dob >> dod;
-
-            Persons p;
-            p.setPersons(name,gender,dob,dod);
-            personsFromFile.push_back(p);
-        }*/
-
-
 
      if (myfile.is_open())
      {
@@ -88,9 +73,12 @@ vector<Persons> Data::readPersonsFromFile()
              }
          }
        }
-     }
+    }
     else
-    cout << "Unable to open file";
+    {
+         cout << "Unable to open file";
+    }
+
     myfile.close();
     return personsFromFile;
 

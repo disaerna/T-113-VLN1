@@ -71,8 +71,6 @@ void Presentation::program()
     else if(input == 3)
     {
         cout << "How would you like view the database? " << endl;
-    }
-
         cout << "1. Default" << endl;
         cout << "2. Name: A-Z" << endl;
         cout << "3. Name: Z-A" << endl;
@@ -92,8 +90,7 @@ void Presentation::program()
         vector<Persons> getPerson;
         getPerson = _domain.getPersons();
 
-        _domain.SortPersons(getPerson, viewInput);
-
+        displayVector(_domain.SortPersons(getPerson, viewInput));
    /* else if(input == 4)
     {
         // search the database
@@ -110,6 +107,7 @@ void Presentation::program()
     }
 */
 
+    }
 }
 
 void Presentation::displayVector(vector<Persons> p)

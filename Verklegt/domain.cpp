@@ -62,55 +62,65 @@ vector<Persons> Domain:: SortPersons(vector<Persons> getPerson, int viewInput)
     switch(viewInput) // fallegra að hafa switch case i þessu dæmi
     {
 
-    case '1':
+    case 1:
 
         return getPerson;
 
         break;
-    case '2':
+    case 2:
         // sort name descending
         // hæsta fyrst
         // byrja að overwrite operator ><
         PersonsNameSortingDesc des;
         std::sort(getPerson.begin(), getPerson.end(), des);
+
+        return getPerson;
     break;
-    case '3' :
+    case 3:
         // sort name ascending
         // lægsta fyrst
      PersonsNameSortingAsc asc;
      std::sort(getPerson.begin(), getPerson.end(), asc);
+     return getPerson;
+
      break;
-     case '4':
+     case 4:
         // sort gender descending
         PersonsGenderSortingDesc Gend;
         std::sort(getPerson.begin(), getPerson.end(), Gend);
+        return getPerson;
     break;
-    case '5' :
+    case 5:
         // sort gender ascending
         PersonsGenderSortingAsc GendAs;
         std::sort(getPerson.begin(), getPerson.end(), GendAs);
+        return getPerson;
     break;
 
-    case '6':
+    case 6:
         // sort birth year desc
         PersonsDOBSortingDesc Dob;
         std::sort(getPerson.begin(), getPerson.end(), Dob);
+        return getPerson;
     break;
 
-    case '7' :
+    case 7:
         // sort birth year asc.
         PersonsDOBSortingAsc DobAs;
         std::sort(getPerson.begin(), getPerson.end(), DobAs);
+        return getPerson;
     break;
 
-    case '8':
+    case 8:
         // sort death desc.
         PersonsDODSortingDesc Dod;
         std::sort(getPerson.begin(), getPerson.end(), Dod);
-    case '9' :
+        return getPerson;
+    case 9:
         // sort death asc.
         PersonsDODSortingAsc DodAs;
         std::sort(getPerson.begin(), getPerson.end(), DodAs);
+        return getPerson;
     break;
 
     default:
