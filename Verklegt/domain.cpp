@@ -132,6 +132,96 @@ vector<Persons> Domain:: SortPersons(vector<Persons> getPerson, int viewInput)
 }
 
 /*
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ * ****FÖLL****
+ *
+    void Presentation::displaySearch() {
+        int userChoice = 0;
+        cout << "Please enter one of the following commands: " << endl;
+        cout << "1. Search by name" << endl;
+        cout << "2. Search by gender" << endl;
+        cout << "3. Search by year of birth" << endl;
+        cout << "4. Search by year of death" << endl;
+        cout << "5. Return to main menu" << endl;
+        cin >> userChoice;
+    }
+
+    void Presentation::displaySearchName() {
+        string nameInput = " ";
+        cout << "Enter a name to search: ";
+        cin >> nameInput;
+    }
+
+    void Presentation::displaySearchGender() {
+        string genderInput = " ";
+        cout << "Enter 'male' for male results" << endl;
+        cout << "Enter 'female' for female results" << endl;
+        cin >> genderInput;
+    }
+
+    void Presentation::displaySearchBirthYear() {
+        int by = 0;
+        cout << "Enter birth year";
+        cin >> by;
+    }
+
+    void Presentation::displaySearchDeathYear() {
+        int dy = 0;
+        cout << "Enter death year";
+        cin >> dy;
+    }
+
+    void Domain::searchName() {
+        for(size_t i = 0; i < vec.size(); i++) {
+            if(vec[i].getName() == input) {
+                results.push_back(i); // if index is found, it is pushed back to results vector
+            }
+        }
+    }
+
+    void Domain::searchGender() {
+        for(size_t i = 0; i < vec.size(); i++) {
+            if(vec[i].getGender() == input) {
+                results.push_back(i); // if index is found, it is pushed back to results vector
+            }
+        }
+    }
+
+
+    void Domain::searchBirthYear() {
+        for(size_t i = 0; i < vec.size(); i++) {
+            if(vec[i].getYearOfBirth() == input) {
+                results.push_back(i); // if index is found, it is pushed back to results vector
+            }
+        }
+    }
+
+    void Domain::searchDeathYear() {
+        for(size_t i = 0; i < vec.size(); i++) {
+            if(vec[i].getYearOfDeath() == input) {
+                results.push_back(i); // if index is found, it is pushed back to results vector
+            }
+        }
+    }
+
+    void Presentation::displaySearchResults() {
+        for(int i = 0; i < results.size(); i++) {
+            cout << vec[i].getName() << " ";
+            cout << vec[i].getGender() << " ";
+            cout << vec[i].getYearOfBirth() << " ";
+            cout << vec[i].getYearOfDeath() << endl;
+        }
+        cout << endl;
+        results.clear();
+    }
+
+
 // á eftir að cutta niður og setja í önnur föll
 void searchDB(vector<Persons> vec) {
     // asking user to choose how he will search
@@ -279,7 +369,7 @@ void searchDB(vector<Persons> vec) {
 
         for(size_t i = 0; i < vec.size(); i++) {
             if(vec[i].getYearOfDeath() == input) {
-                results.push_back(i);
+
             }
         }
 
