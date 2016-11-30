@@ -33,7 +33,7 @@ public:
     Domain();
 
     void addPersons(Persons person);
-    void deletePersonFromFile(Persons person, int numberOfPerson);
+    void deletePersonFromFile(int numberOfPerson);
     vector<Persons> getPersons();
     vector<Persons> SortPersons(vector<Persons> getPerson, int viewInput);
 

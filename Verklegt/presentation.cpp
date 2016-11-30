@@ -61,12 +61,16 @@ void Presentation::program()
         }
     }
 
-    /*else if(input == 2)
+    else if(input == 2)
     {
-
+        vector<Persons> getPerson;
+        getPerson = _domain.getPersons();
+        displayVector(getPerson);
+        int numberOfPerson;
+        cout << "Enter the number of person you wish to delete from the database: ";
+        cin >> numberOfPerson;
+        _domain.deletePersonFromFile(numberOfPerson);
     }
-
-    */
     else if(input == 3)
     {
         cout << "How would you like view the database? " << endl;
@@ -119,7 +123,6 @@ void Presentation::displayVector(vector<Persons> p)
     cout << "----------------------------------------------" << endl;
     for(size_t i=0; i< p.size(); i++)
     {
-
         cout << (i+1) << ".  " <<p[i].getName() << "\t" << p[i].getGender() << "\t" << p[i].getYearOfBirth() << "\t" << "\t" << p[i].getYearOfDeath()<< endl;
     }
 }
