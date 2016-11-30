@@ -141,8 +141,7 @@ vector<Persons> Domain:: SortPersons(vector<Persons> getPerson, int viewInput)
  *
  * ****FÖLL****
  *
-    void Presentation::displaySearch() {
-        int userChoice = 0;
+    void Presentation::displaySearch(int& userChoice) {
         cout << "Please enter one of the following commands: " << endl;
         cout << "1. Search by name" << endl;
         cout << "2. Search by gender" << endl;
@@ -152,32 +151,28 @@ vector<Persons> Domain:: SortPersons(vector<Persons> getPerson, int viewInput)
         cin >> userChoice;
     }
 
-    void Presentation::displaySearchName() {
-        string nameInput = " ";
+    void Presentation::displaySearchName(string& nameInput) {
         cout << "Enter a name to search: ";
         cin >> nameInput;
     }
 
-    void Presentation::displaySearchGender() {
-        string genderInput = " ";
+    void Presentation::displaySearchGender(string& genderInput) {
         cout << "Enter 'male' for male results" << endl;
         cout << "Enter 'female' for female results" << endl;
         cin >> genderInput;
     }
 
-    void Presentation::displaySearchBirthYear() {
-        int by = 0;
+    void Presentation::displaySearchBirthYear(int& by) {
         cout << "Enter birth year";
         cin >> by;
     }
 
-    void Presentation::displaySearchDeathYear() {
-        int dy = 0;
+    void Presentation::displaySearchDeathYear(int& dy) {
         cout << "Enter death year";
         cin >> dy;
     }
 
-    void Domain::searchName() {
+    void Domain::searchName(vector<Persons>& vec, vector<int>& results, int input) {
         for(size_t i = 0; i < vec.size(); i++) {
             if(vec[i].getName() == input) {
                 results.push_back(i); // if index is found, it is pushed back to results vector
@@ -185,7 +180,7 @@ vector<Persons> Domain:: SortPersons(vector<Persons> getPerson, int viewInput)
         }
     }
 
-    void Domain::searchGender() {
+    void Domain::searchGender(vector<Persons>& vec, vector<int>& results, int input) {
         for(size_t i = 0; i < vec.size(); i++) {
             if(vec[i].getGender() == input) {
                 results.push_back(i); // if index is found, it is pushed back to results vector
@@ -194,7 +189,7 @@ vector<Persons> Domain:: SortPersons(vector<Persons> getPerson, int viewInput)
     }
 
 
-    void Domain::searchBirthYear() {
+    void Domain::searchBirthYear(vector<Persons>& vec, vector<int>& results, int input) {
         for(size_t i = 0; i < vec.size(); i++) {
             if(vec[i].getYearOfBirth() == input) {
                 results.push_back(i); // if index is found, it is pushed back to results vector
@@ -202,7 +197,7 @@ vector<Persons> Domain:: SortPersons(vector<Persons> getPerson, int viewInput)
         }
     }
 
-    void Domain::searchDeathYear() {
+    void Domain::searchDeathYear(vector<Persons>& vec, vector<int>& results, int input) {
         for(size_t i = 0; i < vec.size(); i++) {
             if(vec[i].getYearOfDeath() == input) {
                 results.push_back(i); // if index is found, it is pushed back to results vector
@@ -210,7 +205,7 @@ vector<Persons> Domain:: SortPersons(vector<Persons> getPerson, int viewInput)
         }
     }
 
-    void Presentation::displaySearchResults() {
+    void Presentation::displaySearchResults(vector<Persons>& vec, vector<int>& results) {
         for(int i = 0; i < results.size(); i++) {
             cout << vec[i].getName() << " ";
             cout << vec[i].getGender() << " ";
