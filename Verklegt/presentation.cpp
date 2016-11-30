@@ -47,7 +47,8 @@ void Presentation::program()
         for(int i=0; i<number; i++)
         {
             cout << "Enter name: ";
-            cin >> name1;
+            cin.ignore();
+            getline(cin, name1); // tekur fullt nafn
             cout << "Enter gender: ";
             cin >> gender1;
             cout << "Enter year of birth: ";
