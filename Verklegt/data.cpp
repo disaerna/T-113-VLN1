@@ -24,6 +24,7 @@ vector<Persons> Data::readPersonsFromFile()
      string gender;
      string dob;
      string dod;
+     string delimeter;
      vector<Persons> personsFromFile;
 
      ifstream myfile ("data.txt");
@@ -63,10 +64,24 @@ vector<Persons> Data::readPersonsFromFile()
          else if ( i == 4)
          {
             dod = line;
-            i = 1;
-            Persons p;
-            p.setPersons(name, gender, dob, dod);
-            personsFromFile.push_back(p);
+            i++;
+         }
+         else if( i == 5)
+         {
+             delimeter = line;
+
+             if(delimeter == "<3")
+             {
+                i = 1;
+                Persons p;
+                p.setPersons(name, gender, dob, dod);
+                personsFromFile.push_back(p);
+             }
+             else
+             {
+                 cout << "Error found while reading from file!" << endl;
+                 break;
+             }
          }
        }
      }
@@ -80,6 +95,11 @@ void Data::addPersonsToFile(Persons person)
 {
     ofstream file;
     file.open("data.txt", fstream::in | fstream::app); // Passar að yfirskrifa ekki í textafile.
-    file << person.getName() << "*" << person.getGender() << "*" << person.getYearOfBirth() << "*" << person.getYearOfDeath() << "*" << endl;
+    file << person.getName() << endl;
+    file << person.getGender() << endl;
+    file << person.getYearOfBirth() << endl;
+    file << person.getYearOfDeath() << endl;
+    file << "<3" << endl; // ONE LOVE
+
     file.close();
 }
