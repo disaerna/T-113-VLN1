@@ -22,13 +22,13 @@ vector<Persons> Data::readPersonsFromFile()
      string line;
      string name;
      string gender;
-     int dob = 0;
-     int dod = 0;
+     string dob;
+     string dod;
      vector<Persons> personsFromFile;
 
      ifstream myfile ("data.txt");
 
-     while (getline(myfile, line))
+    /* while (getline(myfile, line))
         {
             istringstream ss(line);
 
@@ -37,11 +37,11 @@ vector<Persons> Data::readPersonsFromFile()
             Persons p;
             p.setPersons(name,gender,dob,dod);
             personsFromFile.push_back(p);
-        }
+        }*/
 
-     myfile.close();
 
-     /*if (myfile.is_open())
+
+     if (myfile.is_open())
      {
        while (getline(myfile, line))
        {
@@ -57,12 +57,12 @@ vector<Persons> Data::readPersonsFromFile()
          }
          else if ( i == 3)
          {
-            dob = stoi(line);
+            dob = line;
             i++;
          }
          else if ( i == 4)
          {
-            //dod = (int)line;
+            dod = line;
             i = 1;
             Persons p;
             p.setPersons(name, gender, dob, dod);
@@ -72,8 +72,7 @@ vector<Persons> Data::readPersonsFromFile()
      }
     else
     cout << "Unable to open file";
-    */
-
+    myfile.close();
     return personsFromFile;
 
 }

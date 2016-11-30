@@ -33,8 +33,8 @@ void Presentation::program()
     {
         string name1;
         string gender1;
-        int yearOfBirth1;
-        int yearOfDeath1;
+        string yearOfBirth1;
+        string yearOfDeath1;
         Persons newPerson;
         int number = 0;
 

@@ -22,8 +22,8 @@ public:
     // föll til að fá og setja gildi
     string getName() const;
     string getGender() const;
-    int getYearOfBirth() const;
-    int getYearOfDeath() const;
+    string getYearOfBirth() const;
+    string getYearOfDeath() const;
     void setPersons(string n, string g, int yob, int yod);
 
 
@@ -31,8 +31,8 @@ private:
 
     string _name;
     string _gender;
-    int _yob; // date of birth
-    int _yod; // date of death
+    string _yob; // date of birth
+    string _yod; // date of death
 
 };
 

@@ -22,17 +22,17 @@ string Persons::getGender() const
     return _gender;
 }
 
-int Persons::getYearOfBirth() const
+string Persons::getYearOfBirth() const
 {
     return _yob;
 }
 
-int Persons::getYearOfDeath() const
+string Persons::getYearOfDeath() const
 {
     return _yod;
 }
 
-void Persons::setPersons(string n, string g, int yob, int yod)
+void Persons::setPersons(string n, string g, string yob, string yod)
 {
     _name = n;
     _gender = g;
