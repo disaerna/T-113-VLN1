@@ -146,93 +146,40 @@ vector<Persons> Domain:: SortPersons(vector<Persons> getPerson, int viewInput)
 }
 
 /*
- *
- *
- *
- *
- *
- *
- *
- * ****FÖLL****
- *
-    void Presentation::displaySearch(int& userChoice) {
-        cout << "Please enter one of the following commands: " << endl;
-        cout << "1. Search by name" << endl;
-        cout << "2. Search by gender" << endl;
-        cout << "3. Search by year of birth" << endl;
-        cout << "4. Search by year of death" << endl;
-        cout << "5. Return to main menu" << endl;
-        cin >> userChoice;
-    }
 
-    void Presentation::displaySearchName(string& nameInput) {
-        cout << "Enter a name to search: ";
-        cin >> nameInput;
-    }
-
-    void Presentation::displaySearchGender(string& genderInput) {
-        cout << "Enter 'male' for male results" << endl;
-        cout << "Enter 'female' for female results" << endl;
-        cin >> genderInput;
-    }
-
-    void Presentation::displaySearchBirthYear(int& by) {
-        cout << "Enter birth year";
-        cin >> by;
-    }
-
-    void Presentation::displaySearchDeathYear(int& dy) {
-        cout << "Enter death year";
-        cin >> dy;
-    }
-
-    void Domain::searchName(vector<Persons>& vec, vector<int>& results, int input) {
-        for(size_t i = 0; i < vec.size(); i++) {
-            if(vec[i].getName() == input) {
+void Domain::searchName(vector<Persons>& vec, vector<int> results, int naInput) {
+    for(size_t i = 0; i < vec.size(); i++) {
+            if(vec[i].getGender() == naInput) {
                 results.push_back(i);
             }
         }
-    }
+}
 
-    void Domain::searchGender(vector<Persons>& vec, vector<int>& results, int input) {
-        for(size_t i = 0; i < vec.size(); i++) {
-            if(vec[i].getGender() == input) {
-                results.push_back(i);
-            }
+void Domain::searchGender(vector<Persons>& vec, vector<int>& results, int geInput) {
+    for(size_t i = 0; i < vec.size(); i++) {
+        if(vec[i].getGender() == geInput) {
+            results.push_back(i);
         }
     }
+}
 
-
-    void Domain::searchBirthYear(vector<Persons>& vec, vector<int>& results, int input) {
-        for(size_t i = 0; i < vec.size(); i++) {
-            if(vec[i].getYearOfBirth() == input) {
-                results.push_back(i);
-            }
+void Domain::searchBirthYear(vector<Persons>& vec, vector<int>& results, int byInput) {
+    for(size_t i = 0; i < vec.size(); i++) {
+        if(vec[i].getYearOfBirth() == byInput) {
+            results.push_back(i);
         }
     }
+}
 
-    void Domain::searchDeathYear(vector<Persons>& vec, vector<int>& results, int input) {
-        for(size_t i = 0; i < vec.size(); i++) {
-            if(vec[i].getYearOfDeath() == input) {
-                results.push_back(i);
-            }
+void Domain::searchDeathYear(vector<Persons>& vec, vector<int>& results, int dyInput) {
+    for(size_t i = 0; i < vec.size(); i++) {
+        if(vec[i].getYearOfDeath() == dyInput) {
+            results.push_back(i);
         }
     }
+}
 
-    void Presentation::displaySearchResults(vector<Persons>& vec, vector<int>& results) {
-        for(int i = 0; i < results.size(); i++) {
-            cout << vec[i].getName() << " ";
-            cout << vec[i].getGender() << " ";
-            cout << vec[i].getYearOfBirth() << " ";
-            cout << vec[i].getYearOfDeath() << endl;
-        }
-        cout << endl;
-        results.clear(); // clear the results vector
-    }
 
-    void Presentation::nothingFound() {
-        cout << "Nothing found! << endl;
-    }
 
 
 // á eftir að cutta niður og setja í önnur föll

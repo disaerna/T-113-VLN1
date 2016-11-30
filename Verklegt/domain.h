@@ -37,7 +37,15 @@ public:
     vector<Persons> getPersons();
     vector<Persons> SortPersons(vector<Persons> getPerson, int viewInput);
 
-    //void searchDB(vector<Persons> vec);
+    //
+    void searchName(vector<Persons>& vec, vector<int> results, int naInput);
+    void searchGender(vector<Persons>& vec, vector<int>& results, int input);
+    void searchBirthYear(vector<Persons>& vec, vector<int>& results, int input);
+    void searchDeathYear(vector<Persons>& vec, vector<int>& results, int input);
+
+
+
+
 
 private:
 

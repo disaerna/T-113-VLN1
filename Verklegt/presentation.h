@@ -33,6 +33,16 @@ public:
     void program();
     void displayVector(vector<Persons> p);
 
+    //
+    int displaySearch();
+    string displaySearchName();
+    string displaySearchGender();
+    int displaySearchBirthYear();
+    int displaySearchDeathYear();
+    void displaySearchResults(vector<Persons>& vec, vector<int>& results);
+    void nothingFound();
+    //
+
 private:
     Domain _domain;
 
