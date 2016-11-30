@@ -22,6 +22,7 @@ vector<Persons> Domain::getPersons()
     return _data.readPersonsFromFile();
 }
 
+/*
 // á eftir að cutta niður og setja í önnur föll
 void searchDB(vector<Persons> vec) {
     // asking user to choose how he will search
@@ -195,3 +196,4 @@ void searchDB(vector<Persons> vec) {
     }
 
 }
+*/
