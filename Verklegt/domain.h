@@ -34,6 +34,7 @@ public:
 
     void addPersons(Persons person);
     vector<Persons> getPersons();
+    void searchDB(vector<Persons> vec);
 
 private:
 
