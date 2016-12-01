@@ -86,7 +86,7 @@ vector<Persons> Data::readPersonsFromFile()
 void Data::addPersonsToFile(Persons person)
 {                       //Aðgerð til að bæta manneskju við data.txt skrá.
     ofstream file;
-    file.open("data.txt", fstream::in | fstream::app); // Passar að yfirskrifa ekki í textafile.
+    file.open("data.txt", fstream::out | fstream::app); // Passar að yfirskrifa ekki í textafile.
 
     file << person.getName() << endl;
     file << person.getGender() << endl;

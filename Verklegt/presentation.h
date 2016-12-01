@@ -31,18 +31,27 @@ public:
 
     void run();
     void program();
-    void displayVector(vector<Persons> p);
-    void NewPersonsinFile();
+
+    void newPersonsinFile();
+
     void viewDatabase();
     void removePerson();
+    void searchDatabase();
+    void displayVector(vector<Persons> p);
 
+    void searchByName();
+    void searchByGender();
+    void searchByBirthYear();
+    void searchByDeathYear();
 
     //Search Föll
     int displaySearch();
-    string displaySearchName();
+    /*string displaySearchName();
     string displaySearchGender();
     int displaySearchBirthYear();
     int displaySearchDeathYear();
+    */
+
     void displaySearchResults(vector<Persons> p, vector<int> results);
     void nothingFound();
 
@@ -51,9 +60,8 @@ public:
     void inputToReturn();
 
 private:
+
     Domain _domain;
-
-
 };
 
 #endif // PRESENTATION_H

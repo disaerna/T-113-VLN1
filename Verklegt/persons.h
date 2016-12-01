@@ -26,7 +26,6 @@ public:
     string getYearOfDeath() const;
     void setPersons(string n, string g, string yob, string yod);
 
-
 private:
 
     string _name;

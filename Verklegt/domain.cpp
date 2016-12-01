@@ -7,7 +7,9 @@
 #include <fstream>
 #include <iterator>
 #include <algorithm>
-                                //Raða í lista eftir því hvað notandi hefur valið.
+#include <ctime>
+
+//Raða í lista eftir því hvað notandi hefur valið.
 struct PersonsNameSortingDesc {
     bool operator() (Persons i, Persons j) { return (i.getName() < j.getName() ); }
 };
@@ -135,10 +137,15 @@ vector<Persons> Domain:: SortPersons(vector<Persons> getPerson, int viewInput)
 
     return getPerson;
 }
+// function that returns current year
+int Domain::currentYear()
+{
+    time_t t = time(NULL);
+    tm* timePtr = localtime(&t);
+    int year = timePtr->tm_year + 1900;
 
-
-
-
+    return year;
+}
 // give private _results vector a value
 void Domain::setResults(vector<int> results)
 {
@@ -209,7 +216,6 @@ void Domain::searchDeathYear(vector<Persons> vec, string dyInput)      //Fall ti
             results.push_back(i);
         }
     }
-
     setResults(results);
 }
 

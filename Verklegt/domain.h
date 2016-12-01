@@ -36,6 +36,7 @@ public:
     void deletePersonFromFile(int numberOfPerson);
     vector<Persons> getPersons();
     vector<Persons> SortPersons(vector<Persons> getPerson, int viewInput);
+    int currentYear();
 
     // functions for search function
     void searchName(vector<Persons> vec, string input);
