@@ -60,7 +60,7 @@ void Presentation::program()
                     while ( name1.find_first_not_of("qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM ") != std::string::npos )
                     {
                         cout << "Name must only contain alphabet characters A-Z. \n Please enter a valid name." << endl;
-                        cin >> name1;
+                        getline(cin, name1);
                     }
                 }
                 cout << "Enter gender: ";
