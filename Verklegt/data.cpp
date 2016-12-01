@@ -18,7 +18,7 @@ Data::Data()
 vector<Persons> Data::readPersonsFromFile()
 {
      int i = 1;
-                        //Skilgreiningar á breytum.
+                        //Definition of variables.
      string line;
      string name;
      string gender;
@@ -31,7 +31,7 @@ vector<Persons> Data::readPersonsFromFile()
      ifstream myfile;
      myfile.open("data.txt");
 
-     if (myfile.is_open())      //Lesa úr data.txt skrá.
+     if (myfile.is_open())      //Reading out of data.txt file.
      {
         while (getline(myfile, line))
         {
@@ -84,7 +84,7 @@ vector<Persons> Data::readPersonsFromFile()
 
 }
 void Data::addPersonsToFile(Persons person)
-{                       //Aðgerð til að bæta manneskju við data.txt skrá.
+{                       //Function to add a person to data.txt file.
     ofstream file;
     file.open("data.txt", fstream::out | fstream::app); // Passar að yfirskrifa ekki í textafile.
 
@@ -97,7 +97,7 @@ void Data::addPersonsToFile(Persons person)
     file.close();
 }
 void Data::addPersonsAfterDelete(vector<Persons> afterDeletePersons)
-{                   //Aðgerð updatea skrá eftir að manneskju sé eytt úr data.txt skrá.
+{                   //Function to update data.txt file after deleting someone.
     ofstream file;
     file.open("data.txt", fstream::out | fstream::trunc);
 
