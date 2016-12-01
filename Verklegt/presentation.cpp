@@ -1,12 +1,3 @@
-#include <string>
-#include <iostream>
-#include <vector>
-#include <fstream>
-#include <iterator>
-#include <algorithm>
-#include <iomanip>
-#include <functional>
-
 #include "presentation.h"
 #include "persons.h"
 
@@ -52,6 +43,15 @@ void Presentation::newPersonsinFile()
         }
         cout << "Enter gender: ";
         cin >> gender1;
+        if (gender1 == "M" || gender1 == "m" || gender1 == "male") {
+            gender1 = "Male";
+        } else if (gender1 == "F" || gender1 == "f" || gender1 == "female") {
+            gender1 = "Female";
+        }
+        else {
+            cout << "Please enter either M for male or F for female";
+            cin >> gender1;
+        }
         cout << "Enter year of birth: ";
         cin >> yearOfBirth1;
         if(stoi(yearOfBirth1)>currentYear)
@@ -272,7 +272,7 @@ void Presentation::searchByDeathYear()
 
 void Presentation::program()
 {
-    int input = 6;
+    int input = 0;
     do
     {   //Það fyrsta sem birtist á skjá notanda.
         cout << "Please enter one of the following commands: " << endl;
@@ -318,7 +318,7 @@ void Presentation::displayVector(vector<Persons> p) //Uppröðun töflu.
     int maxNameSize = 0;
     for(unsigned int i=0; i<p.size(); i++)
     {
-        if(p[i].getName().length() > maxNameSize )
+        if(p[i].getName().length() > (unsigned)maxNameSize )
         {
             maxNameSize = p[i].getName().length();
         }
@@ -348,7 +348,7 @@ void Presentation::displaySearchResults(vector<Persons> p, vector<int> results)
     int maxNameSize = 0;
     for(unsigned int i=0; i<p.size(); i++)
     {
-        if(p[i].getName().length() > maxNameSize )
+        if(p[i].getName().length() > (unsigned)maxNameSize )
         {
             maxNameSize = p[i].getName().length();
         }
@@ -375,7 +375,7 @@ void Presentation::inputToReturn()
     int input = 0;
     while(input != 1)
     {
-        cout << "Enter '1' to return to main menu: ";
+        cout << "Enter '1' to return to main menu, any button to quit";
         cin >> input;
     }
     cout << endl;

@@ -1,13 +1,7 @@
 #include "domain.h"
 #include "persons.h"
 
-#include <string>
-#include <iostream>
-#include <vector>
-#include <fstream>
-#include <iterator>
-#include <algorithm>
-#include <ctime>
+
 
 //Raða í lista eftir því hvað notandi hefur valið.
 

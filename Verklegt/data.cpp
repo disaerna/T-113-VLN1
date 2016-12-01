@@ -1,12 +1,6 @@
 #include "data.h"
 #include "persons.h"
 
-#include <string>
-#include <iostream>
-#include <vector>
-#include <fstream>
-#include <iterator>
-#include <sstream>
 
 using namespace std;
 
@@ -101,7 +95,7 @@ void Data::addPersonsAfterDelete(vector<Persons> afterDeletePersons)
     ofstream file;
     file.open("data.txt", fstream::out | fstream::trunc);
 
-    for(int i=0; i<afterDeletePersons.size(); i++)
+    for(int i=0; (unsigned)i<afterDeletePersons.size(); i++)
     {
         file << afterDeletePersons[i].getName() << endl;
         file << afterDeletePersons[i].getGender() << endl;

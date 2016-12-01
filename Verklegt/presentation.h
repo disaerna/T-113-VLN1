@@ -6,6 +6,8 @@
 #include <vector>
 #include <fstream>
 #include <iterator>
+#include <string>
+#include <iomanip>
 
 #include "domain.h"
 #include "persons.h"
@@ -28,9 +30,12 @@ class Presentation
 public:
 
     Presentation();
-
-    void run();
     void program();
+    void splashMessage();
+
+private:
+    void run();         //What is this?
+
 
     void newPersonsinFile();
 
@@ -56,10 +61,10 @@ public:
     void nothingFound();
 
     // Önnur föll
-    void splashMessage();
+
     void inputToReturn();
 
-private:
+
 
     Domain _domain;
 };

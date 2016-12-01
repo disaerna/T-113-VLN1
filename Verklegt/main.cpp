@@ -1,8 +1,3 @@
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <vector>
-
 #include "presentation.h"
 
 using namespace std;

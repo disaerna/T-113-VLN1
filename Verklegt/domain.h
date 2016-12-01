@@ -6,6 +6,8 @@
 #include <vector>
 #include <fstream>
 #include <iterator>
+#include <algorithm>
+#include <ctime>
 
 #include "data.h"
 #include "persons.h"
@@ -43,12 +45,13 @@ public:
     void searchGender(vector<Persons> vec, string input);
     void searchBirthYear(vector<Persons> vec, string byInput);
     void searchDeathYear(vector<Persons> vec, string dyInput);
-    void setResults(vector<int> results);
+
     vector<int> getResults();
     void cleanVector(vector<int> results);
 
-private:
 
+private:
+    void setResults(vector<int> results);
     Data _data;
     vector<int> _results;
 
