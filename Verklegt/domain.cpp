@@ -7,7 +7,7 @@
 #include <fstream>
 #include <iterator>
 #include <algorithm>
-
+                                //Raða í lista eftir því hvað notandi hefur valið.
 struct PersonsNameSortingDesc {
     bool operator() (Persons i, Persons j) { return (i.getName() < j.getName() ); }
 };
@@ -45,12 +45,12 @@ Domain::Domain()
 
 }
 
-void Domain::addPersons(Persons person)
+void Domain::addPersons(Persons person)     //Kalla á addPersonToFile.
 {
     _data.addPersonsToFile(person);
 }
 
-void Domain::deletePersonFromFile(int numberOfPerson)
+void Domain::deletePersonFromFile(int numberOfPerson)        //Aðgerð til að eyða manneskju úr data.txt skrá.
 {
     vector<Persons> getPersonFromFile;
     getPersonFromFile = _data.readPersonsFromFile();
@@ -63,7 +63,7 @@ void Domain::deletePersonFromFile(int numberOfPerson)
     _data.addPersonsAfterDelete(getPersonFromFile);
 }
 
-vector<Persons> Domain::getPersons()
+vector<Persons> Domain::getPersons()            //Kalla á readPersonFromFile.
 {
     return _data.readPersonsFromFile();
 }
@@ -173,7 +173,7 @@ void Domain::searchName(vector<Persons> vec, string input)
     setResults(results); // give the results vector the values
 }
 
-void Domain::searchGender(vector<Persons> vec, string input)
+void Domain::searchGender(vector<Persons> vec, string input)    //Fall til að leita eftir kyni.
 {
     vector<int> results;
     for(size_t i = 0; i < vec.size(); i++)
@@ -186,7 +186,7 @@ void Domain::searchGender(vector<Persons> vec, string input)
     setResults(results);
 }
 
-void Domain::searchBirthYear(vector<Persons> vec, string byInput)
+void Domain::searchBirthYear(vector<Persons> vec, string byInput)      //Fall til að leita eftir fæðingarári.
 {
     vector<int> results;
     for(size_t i = 0; i < vec.size(); i++)
@@ -199,7 +199,7 @@ void Domain::searchBirthYear(vector<Persons> vec, string byInput)
     setResults(results);
 }
 
-void Domain::searchDeathYear(vector<Persons> vec, string dyInput)
+void Domain::searchDeathYear(vector<Persons> vec, string dyInput)      //Fall til að leita eftir dánarári.
 {
     vector<int> results;
     for(size_t i = 0; i < vec.size(); i++)
