@@ -17,7 +17,6 @@ Data::Data()
 
 vector<Persons> Data::readPersonsFromFile()
 {
-
      int i = 1;
 
      string line;
@@ -29,35 +28,36 @@ vector<Persons> Data::readPersonsFromFile()
 
      vector<Persons> personsFromFile;
 
-     ifstream myfile ("data.txt");
+     ifstream myfile;
+     myfile.open("data.txt");
 
      if (myfile.is_open())
      {
-       while (getline(myfile, line))
-       {
-         if (i == 1)
-         {
-            name = line;
-            i++;
-         }
-         else if ( i == 2)
-         {
-            gender = line;
-            i++;
-         }
-         else if ( i == 3)
-         {
-            dob = line;
-            i++;
-         }
-         else if ( i == 4)
-         {
-            dod = line;
-            i++;
-         }
-         else if( i == 5)
-         {
-             delimeter = line;
+        while (getline(myfile, line))
+        {
+            if (i == 1)
+            {
+                name = line;
+                i++;
+            }
+            else if ( i == 2)
+            {
+                gender = line;
+                i++;
+            }
+            else if ( i == 3)
+            {
+                dob = line;
+                i++;
+            }
+            else if ( i == 4)
+            {
+                dod = line;
+                i++;
+            }
+            else if( i == 5)
+            {
+                delimeter = line;
 
              if(delimeter == "<3")
              {
@@ -72,7 +72,7 @@ vector<Persons> Data::readPersonsFromFile()
                  break;
              }
          }
-       }
+    }
     }
     else
     {

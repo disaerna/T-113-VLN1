@@ -140,17 +140,20 @@ vector<Persons> Domain:: SortPersons(vector<Persons> getPerson, int viewInput)
 
 
 // give private _results vector a value
-void Domain::setResults(vector<int> results) {
+void Domain::setResults(vector<int> results)
+{
     _results = results;
 }
 
 // get the values from results vector
-vector<int> Domain::getResults() {
+vector<int> Domain::getResults()
+{
     return _results;
 }
 
 // clean the vector.. return indexes in results to 0
-void Domain::cleanVector(vector<int> results) {
+void Domain::cleanVector(vector<int> results)
+{
     results.clear();
     _results = results;
 }
@@ -160,19 +163,23 @@ void Domain::cleanVector(vector<int> results) {
 void Domain::searchName(vector<Persons> vec, string input)
 {
     vector<int> results;
-    for(size_t i = 0; i < vec.size(); i++) {
-        if(vec[i].getName() == input) { // if a name matches, then the index number will be pushed back
+    for(size_t i = 0; i < vec.size(); i++)
+    {
+        if(vec[i].getName() == input)
+        { // if a name matches, then the index number will be pushed back
             results.push_back(i);
         }
-     }
+    }
     setResults(results); // give the results vector the values
 }
 
 void Domain::searchGender(vector<Persons> vec, string input)
 {
     vector<int> results;
-    for(size_t i = 0; i < vec.size(); i++) {
-        if(vec[i].getGender() == input) {
+    for(size_t i = 0; i < vec.size(); i++)
+    {
+        if(vec[i].getGender() == input)
+        {
             results.push_back(i);
         }
     }
@@ -182,8 +189,10 @@ void Domain::searchGender(vector<Persons> vec, string input)
 void Domain::searchBirthYear(vector<Persons> vec, string byInput)
 {
     vector<int> results;
-    for(size_t i = 0; i < vec.size(); i++) {
-        if(vec[i].getYearOfBirth() == byInput) {
+    for(size_t i = 0; i < vec.size(); i++)
+    {
+        if(vec[i].getYearOfBirth() == byInput)
+        {
             results.push_back(i);
         }
     }
@@ -193,11 +202,14 @@ void Domain::searchBirthYear(vector<Persons> vec, string byInput)
 void Domain::searchDeathYear(vector<Persons> vec, string dyInput)
 {
     vector<int> results;
-    for(size_t i = 0; i < vec.size(); i++) {
-        if(vec[i].getYearOfDeath() == dyInput) {
+    for(size_t i = 0; i < vec.size(); i++)
+    {
+        if(vec[i].getYearOfDeath() == dyInput)
+        {
             results.push_back(i);
         }
     }
+
     setResults(results);
 }
 

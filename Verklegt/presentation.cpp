@@ -20,15 +20,15 @@ void displayVector(vector<Persons> p);
 
 void Presentation::program()
 {
-    do {
+    int input = 6;
+    do
+    {
     cout << "Please enter one of the following commands: " << endl;
     cout << "1 - Add a new person to the database" << endl;
     cout << "2 - Delete a person from the database" << endl; // TODO - EXTRA
     cout << "3 - View the database" << endl;
     cout << "4 - Search the database" << endl;
     cout << "5 - Quit the program" << endl;
-
-    int input = 0;
 
     cin >> input;
 
@@ -98,13 +98,11 @@ void Presentation::program()
         displayVector(_domain.SortPersons(getPerson, viewInput));
    }
 
-
-
     //search option
-    else if(input == 4) {
+   else if(input == 4)
+    {
         // search the database
         // fall inní domain ! leitar
-
         int userChoice = 0;
         cout << "Please enter one of the following commands: " << endl;
         cout << "1. Search by name" << endl;
@@ -120,7 +118,8 @@ void Presentation::program()
         //  our vector results gets the indexes searchName gave us
         //  we display the results
         //  we clean the vector so that the user can search again
-        if(userChoice == 1) {
+        if(userChoice == 1)
+        {
             vector<Persons> personVector;
             personVector = _domain.getPersons(); // get the vector from file input
             vector<int> results;
@@ -132,7 +131,8 @@ void Presentation::program()
             displaySearchResults(personVector, results);
             _domain.cleanVector(results);
         }
-        else if(userChoice == 2) {
+        else if(userChoice == 2)
+        {
             vector<Persons> personVector;
             personVector = _domain.getPersons();
             vector<int> results;
@@ -145,9 +145,8 @@ void Presentation::program()
             Presentation::displaySearchResults(personVector, results);
             _domain.cleanVector(results);
         }
-
-
-        else if(userChoice == 3) {
+        else if(userChoice == 3)
+        {
             vector<Persons> personVector;
             personVector = _domain.getPersons();
             vector<int> results;
@@ -160,9 +159,9 @@ void Presentation::program()
             Presentation::displaySearchResults(personVector, results);
             _domain.cleanVector(results);
 
-
         }
-        else if(userChoice == 4) {
+        else if(userChoice == 4)
+        {
             vector<Persons> personVector;
             personVector = _domain.getPersons();
             vector<int> results;
@@ -174,23 +173,15 @@ void Presentation::program()
             results = _domain.getResults();
             Presentation::displaySearchResults(personVector, results);
             _domain.cleanVector(results);
-
-
-
         }
-
     }
-
-
-    /*else if(input == 5)
+    else if(cin.fail())
     {
-            // hætta í forriti
-    }*/
-    else
-    {
-            // villutékk
-        cout << "Please enter a valid command!" << endl;
-    }} while ( input != 5 );
+        // clears the buffer
+        cin.clear();
+        cin.ignore(100, '\n');
+    }
+    }while ( input != 5 );
 }
 
 void Presentation::displayVector(vector<Persons> p)
@@ -205,11 +196,11 @@ void Presentation::displayVector(vector<Persons> p)
             maxNameSize = p[i].getName().length();
         }
     }
-    cout << "MaxNameSize: " << maxNameSize << endl;
+    //cout << "MaxNameSize: " << maxNameSize << endl;
 
     cout << endl;
     cout << "Nr. " << "Name" << setw(maxNameSize+3) << "Gender" << "\t" << "Born" << "\t" << "Died" << endl;
-    for(int i=0; i<25+maxNameSize; i++)
+    for(int i=0; i<maxNameSize*6; i++)
     {
         cout << "-";
     }
@@ -219,6 +210,7 @@ void Presentation::displayVector(vector<Persons> p)
         cout << (i+1) << ".  " << setw(maxNameSize) << left << p[i].getName() << "\t" << p[i].getGender() << "\t" << p[i].getYearOfBirth() << "\t" << p[i].getYearOfDeath()<< endl;
 
     }
+    cout << endl;
 }
 
 // prints out only information about the indexes that match the search
