@@ -116,6 +116,8 @@ void Presentation::program()
 
             _domain.deletePersonFromFile(numberOfPerson);
 
+            cout << getPerson[numberOfPerson-1].getName() << " has been deleted from the database." << endl;
+
             inputToReturn();
         }
         else if(input == 3)   //Ef valið er 3 bjóðum við valmöguleika til að skoða database.
