@@ -21,7 +21,7 @@ void Presentation::program()
 {
     int input = 6;
     do
-    {
+    {                                                           //Það fyrsta sem birtist á skjá notanda.
         cout << "Please enter one of the following commands: " << endl;
         cout << "1 - Add a new person to the database" << endl;
         cout << "2 - Delete a person from the database" << endl; // TODO - EXTRA
@@ -31,9 +31,9 @@ void Presentation::program()
 
         cin >> input;
 
-        if(input == 1)
+        if(input == 1)          //Ef valið er 1 bætist ný manneskja í database.
         {
-            Persons newPerson;
+            Persons newPerson;      //
             int number = 0;
             string name1;
             string gender1;
@@ -88,7 +88,7 @@ void Presentation::program()
             }
         }
 
-        else if(input == 2)
+        else if(input == 2)         //Ef valið er 2 eyðum við manneskju úr database.
         {
             vector<Persons> getPerson;
             getPerson = _domain.getPersons();
@@ -98,7 +98,7 @@ void Presentation::program()
             cin >> numberOfPerson;
             _domain.deletePersonFromFile(numberOfPerson);
         }
-        else if(input == 3)
+        else if(input == 3)   //Ef valið er 3 bjóðum við valmöguleika til að skoða database.
         {
             cout << "How would you like view the database? " << endl;
             cout << "1. Default" << endl;
@@ -124,9 +124,8 @@ void Presentation::program()
         }
 
         //search option
-        else if(input == 4)
+        else if(input == 4)     // Search the database.
         {
-            // search the database
             // fall inní domain ! leitar
             int userChoice = 0;
             cout << "Please enter one of the following commands: " << endl;
@@ -143,7 +142,7 @@ void Presentation::program()
             //  our vector results gets the indexes searchName gave us
             //  we display the results
             //  we clean the vector so that the user can search again
-            if(userChoice == 1)
+            if(userChoice == 1)         //Leita eftir nafni.
             {
                 vector<Persons> personVector;
                 personVector = _domain.getPersons(); // get the vector from file input
@@ -156,7 +155,7 @@ void Presentation::program()
                 displaySearchResults(personVector, results);
                 _domain.cleanVector(results);
             }
-            else if(userChoice == 2)
+            else if(userChoice == 2)            //Leita eftir kyni.
             {
                 vector<Persons> personVector;
                 personVector = _domain.getPersons();
@@ -170,7 +169,7 @@ void Presentation::program()
                 displaySearchResults(personVector, results);
                 _domain.cleanVector(results);
             }
-            else if(userChoice == 3)
+            else if(userChoice == 3)            //Leita eftir fæðingarári.
             {
             vector<Persons> personVector;
             personVector = _domain.getPersons();
@@ -185,7 +184,7 @@ void Presentation::program()
             _domain.cleanVector(results);
 
             }
-            else if(userChoice == 4)
+            else if(userChoice == 4)            //Leita eftir dánarári.
             {
                 vector<Persons> personVector;
                 personVector = _domain.getPersons();
@@ -206,10 +205,10 @@ void Presentation::program()
             cin.clear();
             cin.ignore(100, '\n');
         }
-    }while (input != 5);
+    }while (input != 5);        //Fer aftur inn í menu gluggan.
 }
 
-void Presentation::displayVector(vector<Persons> p)
+void Presentation::displayVector(vector<Persons> p) //Uppröðun töflu.
 {
     // raða betur upp í töflu, ef t.d langt nafn
     // cout << "Fer inni displayVector" << endl;
