@@ -167,7 +167,7 @@ void Domain::searchName(vector<Persons> vec, string input)
     vector<int> results;
     for(size_t i = 0; i < vec.size(); i++)
     {
-        if(vec[i].getName() == input)
+        if(str.find(input) != string::npos)
         { // if a name matches, then the index number will be pushed back
             results.push_back(i);
         }
