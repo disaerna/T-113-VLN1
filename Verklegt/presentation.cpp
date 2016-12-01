@@ -108,10 +108,15 @@ void Presentation::program()
             vector<Persons> getPerson;
             getPerson = _domain.getPersons();
             displayVector(getPerson);
+
             int numberOfPerson;
+
             cout << "Enter the number of person you wish to delete from the database: ";
             cin >> numberOfPerson;
+
             _domain.deletePersonFromFile(numberOfPerson);
+
+            inputToReturn();
         }
         else if(input == 3)   //Ef valið er 3 bjóðum við valmöguleika til að skoða database.
         {
@@ -130,12 +135,16 @@ void Presentation::program()
             // öll föll hér inní þurfa að nota readPersonsFromFile fallið í data !
 
             int viewInput = 0;
+            cout << "Enter your choice: ";
             cin >> viewInput;
 
             vector<Persons> getPerson;
             getPerson = _domain.getPersons();
 
             displayVector(_domain.SortPersons(getPerson, viewInput));
+
+            inputToReturn();
+
         }
 
         //search option
@@ -149,6 +158,7 @@ void Presentation::program()
             cout << "3. Search by year of birth" << endl;
             cout << "4. Search by year of death" << endl;
             cout << "5. Return to main menu" << endl;
+            cout << "Enter your choice: ";
             cin >> userChoice;
 
             //  if the user chooses to search by name
@@ -165,10 +175,13 @@ void Presentation::program()
                 string nameInput = " ";
                 cout << "Enter a name to search: ";
                 cin >> nameInput;
+                cout << endl;
                 _domain.searchName(personVector, nameInput);
                 results = _domain.getResults();
                 displaySearchResults(personVector, results);
                 _domain.cleanVector(results);
+                inputToReturn();
+
             }
             else if(userChoice == 2)            //Leita eftir kyni.
             {
@@ -183,6 +196,7 @@ void Presentation::program()
                 results = _domain.getResults();
                 displaySearchResults(personVector, results);
                 _domain.cleanVector(results);
+                inputToReturn();
             }
             else if(userChoice == 3)            //Leita eftir fæðingarári.
             {
@@ -197,6 +211,7 @@ void Presentation::program()
             results = _domain.getResults();
             Presentation::displaySearchResults(personVector, results);
             _domain.cleanVector(results);
+            inputToReturn();
 
             }
             else if(userChoice == 4)            //Leita eftir dánarári.
@@ -212,6 +227,13 @@ void Presentation::program()
                 results = _domain.getResults();
                 displaySearchResults(personVector, results);
                 _domain.cleanVector(results);
+                inputToReturn();
+            }
+            else if(userChoice == 5) {
+                cout << endl;
+                cout << "Going back to main menu..." << endl;
+                cout << endl;
+                program();
             }
         }
         else if(cin.fail())
@@ -261,6 +283,15 @@ void Presentation::displaySearchResults(vector<Persons> p, vector<int> results) 
         cout << p[number].getGender() << " ";
         cout << p[number].getYearOfBirth() << " ";
         cout << p[number].getYearOfDeath() << endl;
+    }
+    cout << endl;
+}
+
+void Presentation::inputToReturn() {
+    int input = 0;
+    while(input != 1) {
+        cout << "Enter '1' to return to main menu: ";
+        cin >> input;
     }
     cout << endl;
 }

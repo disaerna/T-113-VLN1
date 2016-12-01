@@ -48,7 +48,7 @@ public:
 
     // Önnur föll
     void splashMessage();
-
+    void inputToReturn();
 
 private:
     Domain _domain;
