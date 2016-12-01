@@ -133,11 +133,11 @@ vector<Persons> Domain:: SortPersons(vector<Persons> getPerson, int viewInput)
     return getPerson;
 }
 // function that returns current year
-int Domain::currentYear()
+string Domain::currentYear()
 {
     time_t t = time(NULL);
     tm* timePtr = localtime(&t);
-    int year = timePtr->tm_year + 1900;
+    string year = std::to_string(timePtr->tm_year + 1900);
 
     return year;
 }
@@ -167,7 +167,7 @@ void Domain::searchName(vector<Persons> vec, string input)
     vector<int> results;
     for(size_t i = 0; i < vec.size(); i++)
     {
-        if(str.find(input) != string::npos)
+        if(vec[i].getName() == input)
         { // if a name matches, then the index number will be pushed back
             results.push_back(i);
         }
@@ -212,5 +212,25 @@ void Domain::searchDeathYear(vector<Persons> vec, string dyInput)      //Fall ti
         }
     }
     setResults(results);
+}
+
+bool Domain::validnamecheck(string name)
+{
+   return (name.find_first_not_of("qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM ") != std::string::npos);
+}
+
+bool Domain::validbirthyearcheck(string year)
+{
+   return (year.find_first_not_of("0123456789")!= std::string::npos || year.length() != 4);
+}
+
+int Domain::validdeathyearcheck(string birth, string death)
+{
+
+    if  (death.find_first_not_of("0123456789")!= std::string::npos || death.length() != 4 || death < birth || currentYear() < death )
+    {
+        return 1;
+    }
+    else return 0;
 }
 

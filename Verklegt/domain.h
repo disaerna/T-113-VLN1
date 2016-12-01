@@ -38,17 +38,20 @@ public:
     void deletePersonFromFile(int numberOfPerson);
     vector<Persons> getPersons();
     vector<Persons> SortPersons(vector<Persons> getPerson, int viewInput);
-    int currentYear();
+
 
     // functions for search function
     void searchName(vector<Persons> vec, string input);
     void searchGender(vector<Persons> vec, string input);
     void searchBirthYear(vector<Persons> vec, string byInput);
     void searchDeathYear(vector<Persons> vec, string dyInput);
+    bool validnamecheck(string name1);
+    bool validbirthyearcheck(string year);
+    int validdeathyearcheck(string birth, string death);
 
     vector<int> getResults();
     void cleanVector(vector<int> results);
-
+string currentYear();
 
 private:
     void setResults(vector<int> results);

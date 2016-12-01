@@ -17,7 +17,7 @@ void Presentation::newPersonsinFile()
     string yearOfBirth1;
     string yearOfDeath1;
     char answer;
-    int currentYear;
+    string currentYear;
 
     currentYear = _domain.currentYear();
 
@@ -33,9 +33,9 @@ void Presentation::newPersonsinFile()
         cin.ignore();
         getline(cin, name1); // tekur fullt nafn
 
-        if (name1.find_first_not_of("qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM ") != std::string::npos)
+        if ( _domain.validnamecheck(name1))
         {
-            while ( name1.find_first_not_of("qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM ") != std::string::npos )
+            while ( _domain.validnamecheck(name1) )
             {
                 cout << "Name must only contain alphabet characters A-Z. \n Please enter a valid name." << endl;
                 cin >> name1;
@@ -43,10 +43,8 @@ void Presentation::newPersonsinFile()
         }
         cout << "Enter gender: ";
         cin >> gender1;
-        if (gender1 == "M" || gender1 == "m" || gender1 == "male") {
-            gender1 = "Male";
-        } else if (gender1 == "F" || gender1 == "f" || gender1 == "female") {
-            gender1 = "Female";
+        if (0){
+            gender1 = "utkoma fra bool falli?";
         }
         else {
             cout << "Please enter either M for male or F for female";
@@ -54,12 +52,12 @@ void Presentation::newPersonsinFile()
         }
         cout << "Enter year of birth: ";
         cin >> yearOfBirth1;
-        if(stoi(yearOfBirth1)>currentYear)
+        if( yearOfBirth1>currentYear)
         {
             cout << "You can't predict people's birth year! Please enter a valid year: ";
             cin >> yearOfBirth1;
         }
-        while (yearOfBirth1.find_first_not_of("0123456789")!= std::string::npos || yearOfBirth1.length() != 4)
+        while (_domain.validbirthyearcheck(yearOfBirth1))
         {
             cout << "Wrong input! Please enter 4 digits: ";
             cin >> yearOfBirth1;
@@ -72,15 +70,12 @@ void Presentation::newPersonsinFile()
         {
             cout << "Enter year of death: ";
             cin >> yearOfDeath1;
-            if(yearOfDeath1<yearOfBirth1)
+
+            while( _domain.validdeathyearcheck(yearOfBirth1, yearOfDeath1))
             {
-                cout << "Year of death must be higher or equal to year of birth." << endl;
+                cout << "People can't die before they're born! And no messing with spacetime continuum \n";
+                cout << "Wrong input! Please enter 4 digits" << endl;
                 cout << "Enter year of death: ";
-                cin >> yearOfDeath1;
-            }
-            while(yearOfDeath1.find_first_not_of("0123456789")!= std::string::npos || yearOfDeath1.length() != 4)
-            {
-                cout << "Wrong input! Please enter 4 digits: ";
                 cin >> yearOfDeath1;
             }
         }
