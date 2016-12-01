@@ -326,15 +326,15 @@ void Presentation::displayVector(vector<Persons> p) //Uppröðun töflu.
     //cout << "MaxNameSize: " << maxNameSize << endl;
 
     cout << endl;
-    cout << "Nr.\t" << setw(30) << left << "Name"  << "Gender" << "\t" << "Born" << "\t" << "Died" << endl;
-    for(int i=0; i<maxNameSize*3; i++)
+    cout << "Nr.\t" << setw(34) << left << "Name"  << setw(15) << "Gender" << setw(15) << "Born" << setw(15) << "Died" << endl;
+    for(int i=0; i<80; i++)
     {
         cout << "-";
     }
     cout << endl;
     for(size_t i=0; i< p.size(); i++)
     {
-        cout << (i+1) << ".\t" << setw(30) << left << p[i].getName() << p[i].getGender() << "\t" << p[i].getYearOfBirth() << "\t" << p[i].getYearOfDeath()<< endl;
+        cout << (i+1) << ".\t" << setw(34) << left << p[i].getName() << setw(15) << p[i].getGender() << setw(15) << p[i].getYearOfBirth() << setw(15) << p[i].getYearOfDeath()<< endl;
     }
     cout << endl;
 }
@@ -356,8 +356,8 @@ void Presentation::displaySearchResults(vector<Persons> p, vector<int> results)
     //cout << "MaxNameSize: " << maxNameSize << endl;
 
     cout << endl;
-    cout << "Nr.\t" << setw(30) << left << "Name"  << "Gender" << "\t" << "Born" << "\t" << "Died" << endl;
-    for(int i=0; i<maxNameSize*3; i++)
+    cout << "Nr.\t" << setw(34) << left << "Name"  << "Gender" << "\t" << "Born" << "\t" << "Died" << endl;
+    for(int i=0; i<80; i++)
     {
         cout << "-";
     }
@@ -365,7 +365,7 @@ void Presentation::displaySearchResults(vector<Persons> p, vector<int> results)
     for(size_t i=0; i< results.size(); i++)
     {
         number = results[i];
-        cout << (i+1) << ".\t" << setw(30) << left << p[number].getName() << p[number].getGender() << "\t" << p[number].getYearOfBirth() << "\t" << p[number].getYearOfDeath()<< endl;
+        cout << (i+1) << ".\t" << setw(34) << left << p[number].getName() << p[number].getGender() << "\t" << p[number].getYearOfBirth() << "\t" << p[number].getYearOfDeath()<< endl;
     }
     cout << endl;
 }
