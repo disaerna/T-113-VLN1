@@ -167,7 +167,10 @@ void Domain::searchName(vector<Persons> vec, string input)
     vector<int> results;
     for(size_t i = 0; i < vec.size(); i++)
     {
-        if(vec[i].getName() == input)
+        string str = vec[i].getName(); // str gets the string in the vector
+        transform(str.begin(), str.end(), str.begin(), ::tolower); // the str string gets transformed into lower case
+        transform(input.begin(), input.end(), input.begin(), ::tolower); // the input string gets transformed into lower case
+        if(str.find(input) != string::npos)
         { // if a name matches, then the index number will be pushed back
             results.push_back(i);
         }
