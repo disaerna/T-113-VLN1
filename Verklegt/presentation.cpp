@@ -23,6 +23,12 @@ void Presentation::newPersonsinFile()
 
     cout << "How many persons would you like to input: ";
     cin >> number;
+    if(cin.fail())
+    {
+        // clears the buffer
+        cin.clear();
+        cin.ignore(100, '\n');
+    }
 
     for(int i=0; i<number; i++)
     {
@@ -41,6 +47,10 @@ void Presentation::newPersonsinFile()
                 cin >> name1;
             }
         }
+        //Vantar að gera fallakall sem sendir inn strenginn castar honum í lower case og checkar hvort sett var inn male eða female og svarar viðeigandi
+        //
+        //
+        //
         cout << "Enter gender: ";
         cin >> gender1;
         if (0){
@@ -52,7 +62,7 @@ void Presentation::newPersonsinFile()
         }
         cout << "Enter year of birth: ";
         cin >> yearOfBirth1;
-        if( yearOfBirth1>currentYear)
+        if(_domain.futurbabies(yearOfBirth1))
         {
             cout << "You can't predict people's birth year! Please enter a valid year: ";
             cin >> yearOfBirth1;
@@ -66,6 +76,10 @@ void Presentation::newPersonsinFile()
         cout << "Is the person deceased? Y/N: ";
 
         cin >> answer;
+        //Vantar að setja inn fallakall á þessi
+        //
+        //
+        //
         if(answer == 'y' || answer == 'Y')
         {
             cout << "Enter year of death: ";
@@ -114,10 +128,16 @@ void Presentation::removePerson()
     getPerson = _domain.getPersons();
     displayVector(getPerson);
 
-    int numberOfPerson;
+    int numberOfPerson = 0;
 
     cout << "Enter the number of person you wish to delete from the database: ";
     cin >> numberOfPerson;
+    if(cin.fail())
+    {
+        // clears the buffer
+        cin.clear();
+        cin.ignore(100, '\n');
+    }
 
     _domain.deletePersonFromFile(numberOfPerson);
     cout << getPerson[numberOfPerson-1].getName() << " has been deleted from the database." << endl;
@@ -141,9 +161,15 @@ void Presentation::viewDatabase()
     // allt föll inní domain ! sortera
     // öll föll hér inní þurfa að nota readPersonsFromFile fallið í data !
 
-    int viewInput = 0;
+    int viewInput = 10;
     cout << "Enter your choice: ";
     cin >> viewInput;
+    if(cin.fail())
+    {
+        // clears the buffer
+        cin.clear();
+        cin.ignore(100, '\n');
+    }
 
     vector<Persons> getPerson;
     getPerson = _domain.getPersons();
@@ -195,6 +221,12 @@ void Presentation::searchDatabase()
         cout << "Going back to main menu..." << endl;
         cout << endl;
         program();
+    }
+    else if(cin.fail())
+    {
+        // clears the buffer
+        cin.clear();
+        cin.ignore(100, '\n');
     }
 }
 

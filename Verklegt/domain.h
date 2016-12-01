@@ -48,6 +48,7 @@ public:
     bool validnamecheck(string name1);
     bool validbirthyearcheck(string year);
     int validdeathyearcheck(string birth, string death);
+    bool futurbabies(string future_date);
 
     vector<int> getResults();
     void cleanVector(vector<int> results);

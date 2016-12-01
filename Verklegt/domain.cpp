@@ -237,3 +237,8 @@ int Domain::validdeathyearcheck(string birth, string death)
     else return 0;
 }
 
+bool Domain::futurbabies(string future_date)
+{
+    return future_date > currentYear() ;
+}
+
