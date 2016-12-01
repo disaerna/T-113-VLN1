@@ -29,7 +29,9 @@ void Presentation::program()
         cout << "4 - Search the database" << endl;
         cout << "5 - Quit the program" << endl;
 
+        cout << "Enter your choice: ";
         cin >> input;
+        cout << endl;
 
         if(input == 1)          //Ef valið er 1 bætist ný manneskja í database.
         {
@@ -46,6 +48,9 @@ void Presentation::program()
 
             for(int i=0; i<number; i++)
             {
+                cout << "-------------" << endl;
+                cout << "Person " << i+1 << " of " << number << endl;
+                cout << "-------------" << endl;
                 cout << "Enter name: ";
                 cin.ignore();
                 getline(cin, name1); // tekur fullt nafn
@@ -68,7 +73,11 @@ void Presentation::program()
                     cin >> yearOfBirth1;
 
                 }
+<<<<<<< HEAD
                 cout << "Is the person deceased? Y/N: ";
+=======
+                cout << "Is the person deceased? (Y/N): ";
+>>>>>>> origin/master
                 cin >> answer;
                 if(answer == 'y' || answer == 'Y')
                 {
@@ -94,7 +103,27 @@ void Presentation::program()
 
                 newPerson.setPersons(name1, gender1, yearOfBirth1, yearOfDeath1);
                 _domain.addPersons(newPerson);
+
+
             }
+
+            cout << "Your input has been saved..." << endl;
+            cout << endl;
+
+            vector<Persons> getPerson;
+            getPerson = _domain.getPersons();
+            int databaseSize = getPerson.size();
+
+            cout << "You added these people to the database: " << endl;
+            cout << endl;
+            for(int i = 0; i < number; i++) {
+                cout << i+1 << ". " << getPerson[databaseSize-number+i].getName() << endl;
+            }
+            cout << endl;
+
+
+            cout << "Going back to main screen..." << endl;
+            cout << endl;
         }
 
         else if(input == 2)         //Ef valið er 2 eyðum við manneskju úr database.
@@ -102,10 +131,19 @@ void Presentation::program()
             vector<Persons> getPerson;
             getPerson = _domain.getPersons();
             displayVector(getPerson);
+
             int numberOfPerson;
+
             cout << "Enter the number of person you wish to delete from the database: ";
             cin >> numberOfPerson;
+
             _domain.deletePersonFromFile(numberOfPerson);
+
+            cout << getPerson[numberOfPerson-1].getName() << " has been deleted from the database." << endl;
+
+            cout << endl;
+
+            inputToReturn();
         }
         else if(input == 3)   //Ef valið er 3 bjóðum við valmöguleika til að skoða database.
         {
@@ -124,12 +162,16 @@ void Presentation::program()
             // öll föll hér inní þurfa að nota readPersonsFromFile fallið í data !
 
             int viewInput = 0;
+            cout << "Enter your choice: ";
             cin >> viewInput;
 
             vector<Persons> getPerson;
             getPerson = _domain.getPersons();
 
             displayVector(_domain.SortPersons(getPerson, viewInput));
+
+            inputToReturn();
+
         }
 
         //search option
@@ -143,6 +185,7 @@ void Presentation::program()
             cout << "3. Search by year of birth" << endl;
             cout << "4. Search by year of death" << endl;
             cout << "5. Return to main menu" << endl;
+            cout << "Enter your choice: ";
             cin >> userChoice;
 
             //  if the user chooses to search by name
@@ -159,10 +202,13 @@ void Presentation::program()
                 string nameInput = " ";
                 cout << "Enter a name to search: ";
                 cin >> nameInput;
+                cout << endl;
                 _domain.searchName(personVector, nameInput);
                 results = _domain.getResults();
                 displaySearchResults(personVector, results);
                 _domain.cleanVector(results);
+                inputToReturn();
+
             }
             else if(userChoice == 2)            //Leita eftir kyni.
             {
@@ -177,6 +223,7 @@ void Presentation::program()
                 results = _domain.getResults();
                 displaySearchResults(personVector, results);
                 _domain.cleanVector(results);
+                inputToReturn();
             }
             else if(userChoice == 3)            //Leita eftir fæðingarári.
             {
@@ -191,6 +238,7 @@ void Presentation::program()
             results = _domain.getResults();
             Presentation::displaySearchResults(personVector, results);
             _domain.cleanVector(results);
+            inputToReturn();
 
             }
             else if(userChoice == 4)            //Leita eftir dánarári.
@@ -206,6 +254,13 @@ void Presentation::program()
                 results = _domain.getResults();
                 displaySearchResults(personVector, results);
                 _domain.cleanVector(results);
+                inputToReturn();
+            }
+            else if(userChoice == 5) {
+                cout << endl;
+                cout << "Going back to main menu..." << endl;
+                cout << endl;
+                program();
             }
         }
         else if(cin.fail())
@@ -257,4 +312,54 @@ void Presentation::displaySearchResults(vector<Persons> p, vector<int> results) 
         cout << p[number].getYearOfDeath() << endl;
     }
     cout << endl;
+}
+
+void Presentation::inputToReturn() {
+    int input = 0;
+    while(input != 1) {
+        cout << "Enter '1' to return to main menu: ";
+        cin >> input;
+    }
+    cout << endl;
+}
+
+void Presentation::splashMessage() {
+    for(int i = 0; i < 1; i++) {
+        for(int j = 0; j < 80; j++) {
+            cout << "*";
+        }
+        cout << endl;
+    }
+    for(int i = 0; i < 1; i++) {
+        for(int j = 0; j < 80; j++) {
+            cout << " ";
+        }
+        cout << endl;
+    }
+
+    for(int i = 0; i < 1; i++) {
+        for(int j = 0; j < 27; j++) {
+            cout << " ";
+        }
+        cout << "Computer Scientists v.1.0";
+        for(int j = 0; j < 28; j++) {
+            cout << " ";
+        }
+        cout << endl;
+    for(int i = 0; i < 1; i++) {
+        for(int j = 0; j < 80; j++) {
+            cout << " ";
+        }
+        cout << endl;
+    }
+
+        cout << endl;
+    for(int i = 0; i < 1; i++) {
+        for(int j = 0; j < 80; j++) {
+            cout << "*";
+        }
+    cout << endl;
+    }
+    cout << endl;
+    }
 }

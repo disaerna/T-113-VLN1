@@ -46,6 +46,9 @@ public:
     void displaySearchResults(vector<Persons> p, vector<int> results);
     void nothingFound();
 
+    // Önnur föll
+    void splashMessage();
+    void inputToReturn();
 
 private:
     Domain _domain;
