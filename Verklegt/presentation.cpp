@@ -29,7 +29,9 @@ void Presentation::program()
         cout << "4 - Search the database" << endl;
         cout << "5 - Quit the program" << endl;
 
+        cout << "Enter your choice: ";
         cin >> input;
+        cout << endl;
 
         if(input == 1)          //Ef valið er 1 bætist ný manneskja í database.
         {
@@ -46,6 +48,9 @@ void Presentation::program()
 
             for(int i=0; i<number; i++)
             {
+                cout << "-------------" << endl;
+                cout << "Person " << i+1 << " of " << number << endl;
+                cout << "-------------" << endl;
                 cout << "Enter name: ";
                 cin.ignore();
                 getline(cin, name1); // tekur fullt nafn
@@ -68,7 +73,7 @@ void Presentation::program()
                     cin >> yearOfBirth1;
 
                 }
-                cout << "Is the person deceased? (Y/N)";
+                cout << "Is the person deceased? (Y/N): ";
                 cin >> answer;
                 if(answer == 'y' || answer == 'Y')
                 {
@@ -88,7 +93,14 @@ void Presentation::program()
 
                 newPerson.setPersons(name1, gender1, yearOfBirth1, yearOfDeath1);
                 _domain.addPersons(newPerson);
+
+
             }
+
+            cout << "Your input has been saved..." << endl;
+            cout << endl;
+            cout << "Going back to main screen..." << endl;
+            cout << endl;
         }
 
         else if(input == 2)         //Ef valið er 2 eyðum við manneskju úr database.
@@ -251,4 +263,45 @@ void Presentation::displaySearchResults(vector<Persons> p, vector<int> results) 
         cout << p[number].getYearOfDeath() << endl;
     }
     cout << endl;
+}
+
+void Presentation::splashMessage() {
+    for(int i = 0; i < 1; i++) {
+        for(int j = 0; j < 80; j++) {
+            cout << "*";
+        }
+        cout << endl;
+    }
+    for(int i = 0; i < 1; i++) {
+        for(int j = 0; j < 80; j++) {
+            cout << " ";
+        }
+        cout << endl;
+    }
+
+    for(int i = 0; i < 1; i++) {
+        for(int j = 0; j < 27; j++) {
+            cout << " ";
+        }
+        cout << "Computer Scientists v.1.0";
+        for(int j = 0; j < 28; j++) {
+            cout << " ";
+        }
+        cout << endl;
+    for(int i = 0; i < 1; i++) {
+        for(int j = 0; j < 80; j++) {
+            cout << " ";
+        }
+        cout << endl;
+    }
+
+        cout << endl;
+    for(int i = 0; i < 1; i++) {
+        for(int j = 0; j < 80; j++) {
+            cout << "*";
+        }
+    cout << endl;
+    }
+    cout << endl;
+    }
 }
