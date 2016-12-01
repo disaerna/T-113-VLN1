@@ -20,7 +20,7 @@ void displayVector(vector<Persons> p);
 
 void Presentation::program()
 {
-
+    do {
     cout << "Please enter one of the following commands: " << endl;
     cout << "1 - Add a new person to the database" << endl;
     cout << "2 - Delete a person from the database" << endl; // TODO - EXTRA
@@ -190,7 +190,7 @@ void Presentation::program()
     {
             // villutékk
         cout << "Please enter a valid command!" << endl;
-    }
+    }} while ( input != 5 );
 }
 
 void Presentation::displayVector(vector<Persons> p)
