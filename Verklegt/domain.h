@@ -49,10 +49,7 @@ public:
 private:
 
     Data _data;
-
-
     vector<int> _results;
-
 
 };
 
