@@ -122,7 +122,7 @@ void Presentation::program()
         //  we clean the vector so that the user can search again
         if(userChoice == 1) {
             vector<Persons> personVector;
-            personVector = _domain.getPersons();
+            personVector = _domain.getPersons(); // get the vector from file input
             vector<int> results;
             string nameInput = " ";
             cout << "Enter a name to search: ";
@@ -140,7 +140,7 @@ void Presentation::program()
             cout << "Enter 'male' for male results" << endl;
             cout << "Enter 'female' for female results" << endl;
             cin >> genderInput;
-            _domain.searchName(personVector, genderInput);
+            _domain.searchGender(personVector, genderInput);
             results = _domain.getResults();
             Presentation::displaySearchResults(personVector, results);
             _domain.cleanVector(results);
@@ -222,6 +222,7 @@ void Presentation::displayVector(vector<Persons> p)
 }
 
 // prints out only information about the indexes that match the search
+// þarf að raða betur
 void Presentation::displaySearchResults(vector<Persons> p, vector<int> results) {
     for(size_t i = 0; i < results.size(); i++) {
         int number = 0;
