@@ -7,7 +7,7 @@
 #include <fstream>
 #include <iterator>
 #include <algorithm>
-                                //Rearranging the list after the order of the user.
+                                //Raða í lista eftir því hvað notandi hefur valið.
 struct PersonsNameSortingDesc {
     bool operator() (Persons i, Persons j) { return (i.getName() < j.getName() ); }
 };
@@ -45,12 +45,12 @@ Domain::Domain()
 
 }
 
-void Domain::addPersons(Persons person)     //Calling addPersonToFile function.
+void Domain::addPersons(Persons person)     //Kalla á addPersonToFile.
 {
     _data.addPersonsToFile(person);
 }
 
-void Domain::deletePersonFromFile(int numberOfPerson)        //Function to delete a Person from the data.txt file.
+void Domain::deletePersonFromFile(int numberOfPerson)        //Aðgerð til að eyða manneskju úr data.txt skrá.
 {
     vector<Persons> getPersonFromFile;
     getPersonFromFile = _data.readPersonsFromFile();
@@ -63,7 +63,7 @@ void Domain::deletePersonFromFile(int numberOfPerson)        //Function to delet
     _data.addPersonsAfterDelete(getPersonFromFile);
 }
 
-vector<Persons> Domain::getPersons()            //Calling eadPersonFromFile function.
+vector<Persons> Domain::getPersons()            //Kalla á readPersonFromFile.
 {
     return _data.readPersonsFromFile();
 }
@@ -71,66 +71,66 @@ vector<Persons> Domain::getPersons()            //Calling eadPersonFromFile func
 vector<Persons> Domain:: SortPersons(vector<Persons> getPerson, int viewInput)
 {
 
-    switch(viewInput) //Works better to have a switchcase.
+    switch(viewInput) // fallegra að hafa switch case i þessu dæmi
     {
 
     case 1:
-        // views default
+        // viewar default
         break;
 
     case 2:
-        // sorts name descending.
-        // highest first.
-        // starts to overwrite operator ><
+        // sort name descending
+        // hæsta fyrst
+        // byrja að overwrite operator ><
         PersonsNameSortingDesc des;
         std::sort(getPerson.begin(), getPerson.end(), des);
         break;
 
     case 3:
-        // sorts names ascending.
-        // lighest first.
+        // sort name ascending
+        // lægsta fyrst
         PersonsNameSortingAsc asc;
         std::sort(getPerson.begin(), getPerson.end(), asc);
         break;
 
      case 4:
-        // sorts gender descending
+        // sort gender descending
         PersonsGenderSortingDesc Gend;
         std::sort(getPerson.begin(), getPerson.end(), Gend);
         break;
 
     case 5:
-        // sorts gender ascending
+        // sort gender ascending
         PersonsGenderSortingAsc GendAs;
         std::sort(getPerson.begin(), getPerson.end(), GendAs);
         break;
 
     case 6:
-        // sorts birth year desc
+        // sort birth year desc
         PersonsDOBSortingDesc Dob;
         std::sort(getPerson.begin(), getPerson.end(), Dob);
         break;
 
     case 7:
-        // sorts birth year asc.
+        // sort birth year asc.
         PersonsDOBSortingAsc DobAs;
         std::sort(getPerson.begin(), getPerson.end(), DobAs);
         break;
 
     case 8:
-        // sorts death desc.
+        // sort death desc.
         PersonsDODSortingDesc Dod;
         std::sort(getPerson.begin(), getPerson.end(), Dod);
         break;
 
     case 9:
-        // sorts death asc.
+        // sort death asc.
         PersonsDODSortingAsc DodAs;
         std::sort(getPerson.begin(), getPerson.end(), DodAs);
         break;
 
     default:
-        cout << "Please enter a valid number!" << endl; // Error Check
+        cout << "Please enter a valid number!" << endl; // villutékk
     }
 
     return getPerson;
@@ -173,7 +173,7 @@ void Domain::searchName(vector<Persons> vec, string input)
     setResults(results); // give the results vector the values
 }
 
-void Domain::searchGender(vector<Persons> vec, string input)    //Function to search by gender.
+void Domain::searchGender(vector<Persons> vec, string input)    //Fall til að leita eftir kyni.
 {
     vector<int> results;
     for(size_t i = 0; i < vec.size(); i++)
@@ -186,7 +186,7 @@ void Domain::searchGender(vector<Persons> vec, string input)    //Function to se
     setResults(results);
 }
 
-void Domain::searchBirthYear(vector<Persons> vec, string byInput)      //Function to search by year of birth.
+void Domain::searchBirthYear(vector<Persons> vec, string byInput)      //Fall til að leita eftir fæðingarári.
 {
     vector<int> results;
     for(size_t i = 0; i < vec.size(); i++)
@@ -199,7 +199,7 @@ void Domain::searchBirthYear(vector<Persons> vec, string byInput)      //Functio
     setResults(results);
 }
 
-void Domain::searchDeathYear(vector<Persons> vec, string dyInput)      //Function to search after year of death.
+void Domain::searchDeathYear(vector<Persons> vec, string dyInput)      //Fall til að leita eftir dánarári.
 {
     vector<int> results;
     for(size_t i = 0; i < vec.size(); i++)
