@@ -21,7 +21,7 @@ void Presentation::program()
 {
     int input = 6;
     do
-    {                                                           //Það fyrsta sem birtist á skjá notanda.
+    {                                                           //The first thing that appears of the users screen.
         cout << "Please enter one of the following commands: " << endl;
         cout << "1 - Add a new person to the database" << endl;
         cout << "2 - Delete a person from the database" << endl; // TODO - EXTRA
@@ -33,9 +33,9 @@ void Presentation::program()
         cin >> input;
         cout << endl;
 
-        if(input == 1)          //Ef valið er 1 bætist ný manneskja í database.
+        if(input == 1)          //If 1 is entered then a new person will be added.
         {
-            Persons newPerson;      //
+            Persons newPerson;
             int number = 0;
             string name1;
             string gender1;
@@ -73,11 +73,8 @@ void Presentation::program()
                     cin >> yearOfBirth1;
 
                 }
-<<<<<<< HEAD
+
                 cout << "Is the person deceased? Y/N: ";
-=======
-                cout << "Is the person deceased? (Y/N): ";
->>>>>>> origin/master
                 cin >> answer;
                 if(answer == 'y' || answer == 'Y')
                 {
@@ -126,7 +123,7 @@ void Presentation::program()
             cout << endl;
         }
 
-        else if(input == 2)         //Ef valið er 2 eyðum við manneskju úr database.
+        else if(input == 2)         //If 2 is entered the option to delete a person is open.
         {
             vector<Persons> getPerson;
             getPerson = _domain.getPersons();
@@ -145,7 +142,7 @@ void Presentation::program()
 
             inputToReturn();
         }
-        else if(input == 3)   //Ef valið er 3 bjóðum við valmöguleika til að skoða database.
+        else if(input == 3)   //If 3 is entered we open the option to view the database.
         {
             cout << "How would you like view the database? " << endl;
             cout << "1. Default" << endl;
@@ -157,9 +154,6 @@ void Presentation::program()
             cout << "7. Birth Year: Asc." << endl;
             cout << "8. Death Year: Desc." << endl;
             cout << "9. Death Year: Asc." << endl;
-
-            // allt föll inní domain ! sortera
-            // öll föll hér inní þurfa að nota readPersonsFromFile fallið í data !
 
             int viewInput = 0;
             cout << "Enter your choice: ";
@@ -210,7 +204,7 @@ void Presentation::program()
                 inputToReturn();
 
             }
-            else if(userChoice == 2)            //Leita eftir kyni.
+            else if(userChoice == 2)            //Search by gender.
             {
                 vector<Persons> personVector;
                 personVector = _domain.getPersons();
@@ -225,7 +219,7 @@ void Presentation::program()
                 _domain.cleanVector(results);
                 inputToReturn();
             }
-            else if(userChoice == 3)            //Leita eftir fæðingarári.
+            else if(userChoice == 3)            //Search by year of birth.
             {
             vector<Persons> personVector;
             personVector = _domain.getPersons();
@@ -241,7 +235,7 @@ void Presentation::program()
             inputToReturn();
 
             }
-            else if(userChoice == 4)            //Leita eftir dánarári.
+            else if(userChoice == 4)            //Search by year of death.
             {
                 vector<Persons> personVector;
                 personVector = _domain.getPersons();
@@ -269,13 +263,13 @@ void Presentation::program()
             cin.clear();
             cin.ignore(100, '\n');
         }
-    }while (input != 5);        //Fer aftur inn í menu gluggan.
+    }
+    while (input != 5) ;    //Go back to main menu.
 }
 
-void Presentation::displayVector(vector<Persons> p) //Uppröðun töflu.
+void Presentation::displayVector(vector<Persons> p) //Tabel setup.
 {
-    // raða betur upp í töflu, ef t.d langt nafn
-    // cout << "Fer inni displayVector" << endl;
+
     int maxNameSize = 0;
     for(unsigned int i=0; i<p.size(); i++)
     {
@@ -301,7 +295,6 @@ void Presentation::displayVector(vector<Persons> p) //Uppröðun töflu.
 }
 
 // prints out only information about the indexes that match the search
-// þarf að raða betur
 void Presentation::displaySearchResults(vector<Persons> p, vector<int> results) {
     for(size_t i = 0; i < results.size(); i++) {
         int number = 0;

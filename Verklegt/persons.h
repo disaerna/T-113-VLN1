@@ -9,10 +9,6 @@
 
 using namespace std;
 
-/* Tekur við breytum frá notenda
- * Sendir þær yfir í domain
-*/
-
 class Persons
 {
 
