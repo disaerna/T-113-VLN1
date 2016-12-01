@@ -176,8 +176,7 @@ void Domain::searchGender(vector<Persons> vec, string input)
             results.push_back(i);
         }
     }
-
-    Domain::setResults(results);
+    setResults(results);
 }
 
 void Domain::searchBirthYear(vector<Persons> vec, string byInput)
@@ -188,7 +187,7 @@ void Domain::searchBirthYear(vector<Persons> vec, string byInput)
             results.push_back(i);
         }
     }
-    Domain::setResults(results);
+    setResults(results);
 }
 
 void Domain::searchDeathYear(vector<Persons> vec, string dyInput)
@@ -199,6 +198,6 @@ void Domain::searchDeathYear(vector<Persons> vec, string dyInput)
             results.push_back(i);
         }
     }
-    Domain::setResults(results);
+    setResults(results);
 }
 

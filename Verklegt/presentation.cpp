@@ -122,6 +122,7 @@ void Presentation::program()
         //  we clean the vector so that the user can search again
         if(userChoice == 1) {
             vector<Persons> personVector;
+            personVector = _domain.getPersons();
             vector<int> results;
             string nameInput = " ";
             cout << "Enter a name to search: ";
@@ -133,6 +134,7 @@ void Presentation::program()
         }
         else if(userChoice == 2) {
             vector<Persons> personVector;
+            personVector = _domain.getPersons();
             vector<int> results;
             string genderInput = " ";
             cout << "Enter 'male' for male results" << endl;
@@ -147,6 +149,7 @@ void Presentation::program()
 
         else if(userChoice == 3) {
             vector<Persons> personVector;
+            personVector = _domain.getPersons();
             vector<int> results;
             string birthYear = " ";
             cout << "Enter birth year";
@@ -161,6 +164,7 @@ void Presentation::program()
         }
         else if(userChoice == 4) {
             vector<Persons> personVector;
+            personVector = _domain.getPersons();
             vector<int> results;
             string deathYear = " ";
             cout << "Enter death year";
@@ -194,7 +198,7 @@ void Presentation::displayVector(vector<Persons> p)
     // raða betur upp í töflu, ef t.d langt nafn
     //cout << "Fer inni displayVector" << endl;
     int maxNameSize = 0;
-    for(int i=0; i<p.size(); i++)
+    for(unsigned int i=0; i<p.size(); i++)
     {
         if(p[i].getName().length() > maxNameSize )
         {
