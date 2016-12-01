@@ -7,9 +7,13 @@
 #include <fstream>
 #include <iterator>
 #include <algorithm>
+<<<<<<< HEAD
 #include <ctime>
 
 //Raða í lista eftir því hvað notandi hefur valið.
+=======
+                                //Raða í lista eftir því hvað notandi hefur valið.
+>>>>>>> origin/master
 struct PersonsNameSortingDesc {
     bool operator() (Persons i, Persons j) { return (i.getName() < j.getName() ); }
 };
