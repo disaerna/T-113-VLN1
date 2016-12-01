@@ -32,6 +32,10 @@ public:
     void run();
     void program();
     void displayVector(vector<Persons> p);
+    void NewPersonsinFile();
+    void viewDatabase();
+    void removePerson();
+
 
     //Search Föll
     int displaySearch();
