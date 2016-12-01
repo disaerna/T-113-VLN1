@@ -68,12 +68,18 @@ void Presentation::program()
                     cin >> yearOfBirth1;
 
                 }
-                cout << "Is the person deceased? (Y/N)";
+                cout << "Is the person deceased? Y/N: ";
                 cin >> answer;
                 if(answer == 'y' || answer == 'Y')
                 {
                     cout << "Enter year of death: ";
                     cin >> yearOfDeath1;
+                    if(yearOfDeath1<yearOfBirth1)
+                    {
+                        cout << "Year of death must be higher then year of birth." << endl;
+                        cout << "Enter year of death: ";
+                        cin >> yearOfDeath1;
+                    }
                     while(yearOfDeath1.find_first_not_of("0123456789")!= std::string::npos || yearOfDeath1.length() != 4)
                     {
                         cout << "Wrong input! Please enter 4 digits: ";
