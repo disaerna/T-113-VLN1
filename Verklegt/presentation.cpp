@@ -39,6 +39,7 @@ void Presentation::program()
             string gender1;
             string yearOfBirth1;
             string yearOfDeath1;
+            char answer;
 
             cout << "How many persons would you like to input: ";
             cin >> number;
@@ -58,12 +59,31 @@ void Presentation::program()
                 cin >> gender1;
                 cout << "Enter year of birth: ";
                 cin >> yearOfBirth1;
-                cout << "If deceased enter year of death, else enter 0: ";
-                cin >> yearOfDeath1;
+                while (yearOfBirth1.find_first_not_of("0123456789")!= std::string::npos || yearOfBirth1.length() != 4)
+                {
+                    cout << "Wrong input! Please enter 4 digits: ";
+                    cin >> yearOfBirth1;
+
+                }
+                cout << "Is the person deceased? (Y/N)";
+                cin >> answer;
+                if(answer == 'y' || answer == 'Y')
+                {
+                    cout << "Enter year of death: ";
+                    cin >> yearOfDeath1;
+                    while(yearOfDeath1.find_first_not_of("0123456789")!= std::string::npos || yearOfDeath1.length() != 4)
+                    {
+                        cout << "Wrong input! Please enter 4 digits: ";
+                        cin >> yearOfDeath1;
+                    }
+                }
+                else if(answer == 'n' || answer == 'N')
+                {
+                    yearOfDeath1 = '-';
+                }
                 cout << endl;
 
                 newPerson.setPersons(name1, gender1, yearOfBirth1, yearOfDeath1);
-
                 _domain.addPersons(newPerson);
             }
         }
@@ -186,13 +206,13 @@ void Presentation::program()
             cin.clear();
             cin.ignore(100, '\n');
         }
-    }while ( input != 5 );
+    }while (input != 5);
 }
 
 void Presentation::displayVector(vector<Persons> p)
 {
     // raða betur upp í töflu, ef t.d langt nafn
-    //cout << "Fer inni displayVector" << endl;
+    // cout << "Fer inni displayVector" << endl;
     int maxNameSize = 0;
     for(unsigned int i=0; i<p.size(); i++)
     {
@@ -204,16 +224,15 @@ void Presentation::displayVector(vector<Persons> p)
     cout << "MaxNameSize: " << maxNameSize << endl;
 
     cout << endl;
-    cout << "Nr. " << "Name" << setw(maxNameSize+3) << "Gender" << "\t" << "Born" << "\t" << "Died" << endl;
-    for(int i=0; i<29+(maxNameSize); i++)
+    cout << "Nr.\t" << "Name"  << "Gender" << "\t" << "Born" << "\t" << "Died" << endl;
+    for(int i=0; i<maxNameSize*3 +1; i++)
     {
         cout << "-";
     }
     cout << endl;
     for(size_t i=0; i< p.size(); i++)
     {
-        cout << (i+1) << ".  " << setw(maxNameSize) << left << p[i].getName() << "\t" << p[i].getGender() << "\t" << p[i].getYearOfBirth() << "\t" << p[i].getYearOfDeath()<< endl;
-
+        cout << (i+1) << ".\t" << setw(30) << left << p[i].getName() << p[i].getGender() << "\t\t" << p[i].getYearOfBirth() << "\t" << p[i].getYearOfDeath()<< endl;
     }
     cout << endl;
 }
