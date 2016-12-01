@@ -50,10 +50,13 @@ void Presentation::program()
                 cin.ignore();
                 getline(cin, name1); // tekur fullt nafn
 
-                if (name1.find_first_of("0123456789")!= std::string::npos)
+                if (name1.find_first_not_of("qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM ") != std::string::npos)
                 {
-                    cout << "Invalid entry" << endl;
-                    break;
+                    while ( name1.find_first_not_of("qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM ") != std::string::npos )
+                    {
+                        cout << "Name must only contain alphabet characters A-Z. \n Please enter a valid name." << endl;
+                        cin >> name1;
+                    }
                 }
                 cout << "Enter gender: ";
                 cin >> gender1;
