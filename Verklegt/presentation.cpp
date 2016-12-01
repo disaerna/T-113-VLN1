@@ -226,15 +226,15 @@ void Presentation::displayVector(vector<Persons> p) //Uppröðun töflu.
     cout << "MaxNameSize: " << maxNameSize << endl;
 
     cout << endl;
-    cout << "Nr.\t" << "Name"  << "Gender" << "\t" << "Born" << "\t" << "Died" << endl;
-    for(int i=0; i<maxNameSize*3 +1; i++)
+    cout << "Nr.\t" << setw(30) << left << "Name"  << "Gender" << "\t" << "Born" << "\t" << "Died" << endl;
+    for(int i=0; i<maxNameSize*3; i++)
     {
         cout << "-";
     }
     cout << endl;
     for(size_t i=0; i< p.size(); i++)
     {
-        cout << (i+1) << ".\t" << setw(30) << left << p[i].getName() << p[i].getGender() << "\t\t" << p[i].getYearOfBirth() << "\t" << p[i].getYearOfDeath()<< endl;
+        cout << (i+1) << ".\t" << setw(30) << left << p[i].getName() << p[i].getGender() << "\t" << p[i].getYearOfBirth() << "\t" << p[i].getYearOfDeath()<< endl;
     }
     cout << endl;
 }
