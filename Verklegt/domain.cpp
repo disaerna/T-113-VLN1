@@ -144,7 +144,22 @@ string Domain::currentYear()
 }
 
 // function for searching through the name column of the vector
-
+vector<Persons> Domain::searchName(vector<Persons> vec, string input)
+{
+    //vector<int> results;
+    vector<Persons> results;
+    for(size_t i = 0; i < vec.size(); i++)
+    {
+        string str = vec[i].getName(); // str gets the string in the vector
+        transform(str.begin(), str.end(), str.begin(), ::tolower); // the str string gets transformed into lower case
+        transform(input.begin(), input.end(), input.begin(), ::tolower); // the input string gets transformed into lower case
+        if(str.find(input) != string::npos)
+        { // if a name matches, then the index number will be pushed back
+            results.push_back(vec[i]);
+        }
+    }
+    return results;
+}
 
 vector<Persons> Domain::searchGender(vector<Persons> vec, string input)    //Fall til að leita eftir kyni.
 {
@@ -259,6 +274,7 @@ bool Domain::validDeleteOfPerson(int number)
     }
     return false;
 }
+<<<<<<< HEAD
 
 
 
@@ -353,3 +369,5 @@ vector<Persons> Domain::searchAlgo()
 
 
 
+=======
+>>>>>>> origin/master
