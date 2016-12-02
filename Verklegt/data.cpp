@@ -53,20 +53,20 @@ vector<Persons> Data::readPersonsFromFile()
             {
                 delimeter = line;
 
-             if(delimeter == "<3")
-             {
-                i = 1;
-                Persons p;
-                p.setPersons(name, gender, dob, dod);
-                personsFromFile.push_back(p);
-             }
-             else
-             {
-                 cout << "Error found while reading from file!" << endl;
-                 break;
-             }
-         }
-    }
+                if(delimeter == "<3")
+                {
+                    i = 1;
+                    Persons p;
+                    p.setPersons(name, gender, dob, dod);
+                    personsFromFile.push_back(p);
+                }
+                else
+                {
+                    cout << "Error found while reading from file!" << endl;
+                    break;
+                }
+            }
+        }
     }
     else
     {

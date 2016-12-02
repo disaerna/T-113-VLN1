@@ -35,24 +35,28 @@ public:
     Domain();
 
     void addPersons(Persons person);
-    void deletePersonFromFile(int numberOfPerson);
+    string deletePersonFromFile(int numberOfPerson);
     vector<Persons> getPersons();
     vector<Persons> SortPersons(vector<Persons> getPerson, int viewInput);
-
 
     // functions for search function
     void searchName(vector<Persons> vec, string input);
     void searchGender(vector<Persons> vec, string input);
     void searchBirthYear(vector<Persons> vec, string byInput);
     void searchDeathYear(vector<Persons> vec, string dyInput);
-    bool validnamecheck(string name1);
-    bool validbirthyearcheck(string year);
-    int validdeathyearcheck(string birth, string death);
-    bool futurbabies(string future_date);
+
+    // functions for error checking add input
+    bool validNameCheck(string name1);
+    bool validGenderCheck(string gender);
+    string setGender(string gender);
+    bool validBirthYearCheck(string year);
+    bool isDeadCheck(string answer);
+    int validDeathYearCheck(string birth, string death);
+    bool futureBabies(string future_date);
 
     vector<int> getResults();
     void cleanVector(vector<int> results);
-string currentYear();
+    string currentYear();
 
 private:
     void setResults(vector<int> results);
