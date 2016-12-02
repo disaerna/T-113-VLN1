@@ -49,20 +49,14 @@ private:
     void searchByBirthYear();
     void searchByDeathYear();
 
+    void ifNotFound();
     //Search Föll
     int displaySearch();
 
     void displaySearchResults(vector<Persons> results);
-    void nothingFound();
+    void inputToReturn();
 
     // Önnur föll
-
-    void inputToReturn();
-    void search();
-    void noResults();
-    void searchAgain();
-    void searchLogic();
-    void showResults();
 
 
 

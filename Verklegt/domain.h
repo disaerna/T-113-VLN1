@@ -50,49 +50,22 @@ public:
     bool validGenderCheck(string gender);
     string setGender(string gender);
     bool validBirthYearCheck(string year);
-    bool isDeadCheck(string answer);
+    int isDeadCheck(string answer);
     int validDeathYearCheck(string birth, string death);
     bool validDeleteOfPerson(int number);
 
     string currentYear();
 
-<<<<<<< HEAD
+    bool returnIfFound(bool isFound);
 
 
-
-
-
-    // new functions
-    void setSearchInput(string input);
-    string getSearchInput();
-
-    void setCommandInput(string input);
-    string getCommandInput();
-
-    void setUserInput(int input);
-    int getUserInput();
-
-
-    void searchAgainLogic();
-    void showSearchResults();
-    vector<Persons> searchAlgo();
-
-
-=======
->>>>>>> origin/master
 private:
 
     Data _data;
-    vector<int> _results;
-<<<<<<< HEAD
-    string _searchInput;
-    string _commandInput;
-    int _userInput;
 
 
 
-=======
->>>>>>> origin/master
+   bool isFound;
 
 };
 

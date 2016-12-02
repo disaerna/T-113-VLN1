@@ -142,6 +142,34 @@ string Domain::currentYear()
 
     return year;
 }
+// function that return if found
+bool Domain::returnIfFound(bool isFound)
+{
+    if(isFound == true)
+    {
+        return true;
+    }
+    return false;
+}
+// give private _results vector a value
+/*void Domain::setResults(vector<int> results)
+{
+    _results = results;
+}
+
+// get the values from results vector
+vector<int> Domain::getResults()
+{
+    return _results;
+}
+
+// clean the vector.. return indexes in results to 0
+void Domain::cleanVector(vector<int> results)
+{
+    results.clear();
+    _results = results;
+}
+*/
 
 // function for searching through the name column of the vector
 vector<Persons> Domain::searchName(vector<Persons> vec, string input)
@@ -156,17 +184,21 @@ vector<Persons> Domain::searchName(vector<Persons> vec, string input)
         if(str.find(input) != string::npos)
         { // if a name matches, then the index number will be pushed back
             results.push_back(vec[i]);
+            isFound = true;
+           returnIfFound(isFound);
         }
     }
+    //setResults(results); // give the results vector the values
     return results;
 }
 
 vector<Persons> Domain::searchGender(vector<Persons> vec, string input)    //Fall til að leita eftir kyni.
 {
+    //vector<int> results;
     vector<Persons> results;
     if(input == "M" || input == "m")
     {
-        input = "Male";
+        input = "Male  ";
     }
     if(input == "F" || input == "f")
     {
@@ -177,34 +209,48 @@ vector<Persons> Domain::searchGender(vector<Persons> vec, string input)    //Fal
         if(vec[i].getGender() == input)
         {
             results.push_back(vec[i]);
+            isFound = true;
+            returnIfFound(isFound);
         }
     }
+    //setResults(results);
     return results;
 }
 
 vector<Persons> Domain::searchBirthYear(vector<Persons> vec, string byInput)      //Fall til að leita eftir fæðingarári.
 {
+    //vector<int> results;
     vector<Persons> results;
     for(size_t i = 0; i < vec.size(); i++)
     {
         if(vec[i].getYearOfBirth() == byInput)
         {
             results.push_back(vec[i]);
+            isFound = true;
+            returnIfFound(isFound);
+
+
         }
     }
+    //setResults(results);
     return results;
 }
 
 vector<Persons> Domain::searchDeathYear(vector<Persons> vec, string dyInput)      //Fall til að leita eftir dánarári.
 {
+    //vector<int> results;
     vector<Persons> results;
     for(size_t i = 0; i < vec.size(); i++)
     {
         if(vec[i].getYearOfDeath() == dyInput)
         {
             results.push_back(vec[i]);
+            isFound = true;
+            returnIfFound(isFound);
+
         }
     }
+    //setResults(results);
     return results;
 }
 
@@ -232,13 +278,12 @@ string Domain::setGender(string gender)
 
     if(gender == "M" || gender == "m")
     {
-        fixedGender = "Male";
+        fixedGender = "Male  ";
     }
     if(gender == "F" || gender == "f")
     {
         fixedGender = "Female";
     }
-
     return fixedGender;
 }
 
@@ -246,17 +291,25 @@ bool Domain::validBirthYearCheck(string year)
 {
     return (year.find_first_not_of("0123456789")!= std::string::npos || year.length() != 4);
 }
-bool Domain::isDeadCheck(string answer)
+int Domain::isDeadCheck(string answer)
 {
-    if(answer == "Y" || answer == "y")
+    for(int i=0; i<answer.length(); i++)
     {
-        return true;
+        if(isdigit(answer[i]) == false)
+        {
+            if(answer == "Y" || answer == "y")
+            {
+                return 1;
+            }
+            if(answer == "N" || answer == "n")
+            {
+                return 0;
+            }
+        }
     }
-    if(answer == "N" || answer == "n")
-    {
-        return false;
-    }
-    return false;
+
+    return 2;
+
 }
 int Domain::validDeathYearCheck(string birth, string death)
 {
@@ -274,100 +327,3 @@ bool Domain::validDeleteOfPerson(int number)
     }
     return false;
 }
-<<<<<<< HEAD
-
-
-
-void Domain::setSearchInput(string input) {
-    _searchInput = input;
-}
-
-string Domain::getSearchInput() {
-    return _searchInput;
-}
-
-void Domain::setCommandInput(string input) {
-    _commandInput = input;
-}
-
-string Domain::getCommandInput() {
-    return _commandInput;
-}
-
-void Domain::setUserInput(int input) {
-    _userInput = input;
-}
-
-int Domain::getUserInput() {
-    return _userInput;
-}
-
-vector<Persons> Domain::searchAlgo()
-{
-    //vector<int> results;
-    vector<Persons> results;
-    vector<Persons> vec;
-    vec = _data.readPersonsFromFile();
-
-    int userChoice = getUserInput();
-
-
-    string str = Domain::getSearchInput();
-    string input = Domain::getSearchInput();
-
-    for(size_t i = 0; i < vec.size(); i++)
-    {
-        if(userChoice == 1) {
-            string str = vec[i].getName(); // str gets the string in the vector
-        }
-        else if(userChoice == 2) {
-            string str = vec[i].getGender();
-        }
-        else if(userChoice == 3) {
-             string str = vec[i].getYearOfBirth();
-        }
-        else if(userChoice == 4) {
-             string str = vec[i].getYearOfDeath();
-        }
-
-
-        transform(str.begin(), str.end(), str.begin(), ::tolower); // the str string gets transformed into lower case
-        transform(input.begin(), input.end(), input.begin(), ::tolower); // the input string gets transformed into lower case
-        if(str.find(input) != string::npos)
-        { // if a name matches, then the index number will be pushed back
-            results.push_back(vec[i]);
-        }
-    }
-    return results;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
->>>>>>> origin/master
