@@ -40,10 +40,10 @@ public:
     vector<Persons> SortPersons(vector<Persons> getPerson, int viewInput);
 
     // functions for search function
-    void searchName(vector<Persons> vec, string input);
-    void searchGender(vector<Persons> vec, string input);
-    void searchBirthYear(vector<Persons> vec, string byInput);
-    void searchDeathYear(vector<Persons> vec, string dyInput);
+    vector<Persons> searchName(vector<Persons> vec, string input);
+    vector<Persons> searchGender(vector<Persons> vec, string input);
+    vector<Persons> searchBirthYear(vector<Persons> vec, string byInput);
+    vector<Persons> searchDeathYear(vector<Persons> vec, string dyInput);
 
     // functions for error checking add input
     bool validNameCheck(string name1);
@@ -52,14 +52,12 @@ public:
     bool validBirthYearCheck(string year);
     bool isDeadCheck(string answer);
     int validDeathYearCheck(string birth, string death);
-    bool futureBabies(string future_date);
+    bool validDeleteOfPerson(int number);
 
-    vector<int> getResults();
-    void cleanVector(vector<int> results);
     string currentYear();
 
 private:
-    void setResults(vector<int> results);
+
     Data _data;
     vector<int> _results;
 

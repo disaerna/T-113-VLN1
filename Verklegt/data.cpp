@@ -62,7 +62,7 @@ vector<Persons> Data::readPersonsFromFile()
                 }
                 else
                 {
-                    cout << "Error found while reading from file!" << endl;
+                    cout << "Error found while reading from file!" << endl; // BURT MEÐ ÞETTA
                     break;
                 }
             }

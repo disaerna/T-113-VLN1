@@ -142,30 +142,12 @@ string Domain::currentYear()
 
     return year;
 }
-// give private _results vector a value
-void Domain::setResults(vector<int> results)
-{
-    _results = results;
-}
-
-// get the values from results vector
-vector<int> Domain::getResults()
-{
-    return _results;
-}
-
-// clean the vector.. return indexes in results to 0
-void Domain::cleanVector(vector<int> results)
-{
-    results.clear();
-    _results = results;
-}
-
 
 // function for searching through the name column of the vector
-void Domain::searchName(vector<Persons> vec, string input)
+vector<Persons> Domain::searchName(vector<Persons> vec, string input)
 {
-    vector<int> results;
+    //vector<int> results;
+    vector<Persons> results;
     for(size_t i = 0; i < vec.size(); i++)
     {
         string str = vec[i].getName(); // str gets the string in the vector
@@ -173,57 +155,57 @@ void Domain::searchName(vector<Persons> vec, string input)
         transform(input.begin(), input.end(), input.begin(), ::tolower); // the input string gets transformed into lower case
         if(str.find(input) != string::npos)
         { // if a name matches, then the index number will be pushed back
-            results.push_back(i);
+            results.push_back(vec[i]);
         }
     }
-    setResults(results); // give the results vector the values
+    return results;
 }
 
-void Domain::searchGender(vector<Persons> vec, string input)    //Fall til að leita eftir kyni.
+vector<Persons> Domain::searchGender(vector<Persons> vec, string input)    //Fall til að leita eftir kyni.
 {
-    vector<int> results;
+    vector<Persons> results;
     if(input == "M" || input == "m")
     {
-        input = "male";
+        input = "Male";
     }
     if(input == "F" || input == "f")
     {
-        input = "female";
+        input = "Female";
     }
     for(size_t i = 0; i < vec.size(); i++)
     {
         if(vec[i].getGender() == input)
         {
-            results.push_back(i);
+            results.push_back(vec[i]);
         }
     }
-    setResults(results);
+    return results;
 }
 
-void Domain::searchBirthYear(vector<Persons> vec, string byInput)      //Fall til að leita eftir fæðingarári.
+vector<Persons> Domain::searchBirthYear(vector<Persons> vec, string byInput)      //Fall til að leita eftir fæðingarári.
 {
-    vector<int> results;
+    vector<Persons> results;
     for(size_t i = 0; i < vec.size(); i++)
     {
         if(vec[i].getYearOfBirth() == byInput)
         {
-            results.push_back(i);
+            results.push_back(vec[i]);
         }
     }
-    setResults(results);
+    return results;
 }
 
-void Domain::searchDeathYear(vector<Persons> vec, string dyInput)      //Fall til að leita eftir dánarári.
+vector<Persons> Domain::searchDeathYear(vector<Persons> vec, string dyInput)      //Fall til að leita eftir dánarári.
 {
-    vector<int> results;
+    vector<Persons> results;
     for(size_t i = 0; i < vec.size(); i++)
     {
         if(vec[i].getYearOfDeath() == dyInput)
         {
-            results.push_back(i);
+            results.push_back(vec[i]);
         }
     }
-    setResults(results);
+    return results;
 }
 
 bool Domain::validNameCheck(string name)
@@ -250,12 +232,13 @@ string Domain::setGender(string gender)
 
     if(gender == "M" || gender == "m")
     {
-        fixedGender = "male";
+        fixedGender = "Male";
     }
     if(gender == "F" || gender == "f")
     {
-        fixedGender = "female";
+        fixedGender = "Female";
     }
+
     return fixedGender;
 }
 
@@ -280,12 +263,14 @@ int Domain::validDeathYearCheck(string birth, string death)
     if  (death.find_first_not_of("0123456789")!= std::string::npos || death.length() != 4 || death < birth || currentYear() < death )
     {
         return true;
-    } 
+    }
         return false;
 }
-
-bool Domain::futureBabies(string future_date)
+bool Domain::validDeleteOfPerson(int number)
 {
-    return (future_date > currentYear());
+    if(number > 0 && number <= getPersons().size())
+    {
+        return true;
+    }
+    return false;
 }
-

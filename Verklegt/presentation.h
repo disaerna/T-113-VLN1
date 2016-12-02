@@ -51,13 +51,8 @@ private:
 
     //Search Föll
     int displaySearch();
-    /*string displaySearchName();
-    string displaySearchGender();
-    int displaySearchBirthYear();
-    int displaySearchDeathYear();
-    */
 
-    void displaySearchResults(vector<Persons> p, vector<int> results);
+    void displaySearchResults(vector<Persons> results);
     void nothingFound();
 
     // Önnur föll
