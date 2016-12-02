@@ -57,6 +57,7 @@ public:
     string currentYear();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 
@@ -80,10 +81,13 @@ public:
 
 =======
 >>>>>>> origin/master
+=======
+>>>>>>> parent of 990ded0... test
 private:
 
     Data _data;
     vector<int> _results;
+<<<<<<< HEAD
 <<<<<<< HEAD
     string _searchInput;
     string _commandInput;
@@ -93,6 +97,8 @@ private:
 
 =======
 >>>>>>> origin/master
+=======
+>>>>>>> parent of 990ded0... test
 
 };
 
