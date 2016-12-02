@@ -286,7 +286,6 @@ void Presentation::searchByName()
     cout << "Enter a name to search: ";
     cin >> nameInput;
     ifNotFound();
-    cout << "Fann ekki - back in searchName;";
     cout << endl;
 
     //_domain.searchName(personVector, nameInput);
