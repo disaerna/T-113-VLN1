@@ -12,19 +12,6 @@
 #include "data.h"
 #include "persons.h"
 
-/* Dependar á DATA klasann
-    Sorterar
-    Leitar
-
-    Tekur við upplýsingum frá persons
-    Búa til fall sem sorterar
-    Búa til fall sem leitar
-    Sendir upplýsingar yfir í presentation
-        -> til þess að birta upplýsingarnar
-    Sendir upplýsingar yfir í data
-        -> til þess að lesa í skránna
-*/
-
 using namespace std;
 
 class Domain
@@ -37,35 +24,29 @@ public:
     void addPersons(Persons person);
     string deletePersonFromFile(int numberOfPerson);
     vector<Persons> getPersons();
-    vector<Persons> SortPersons(vector<Persons> getPerson, int viewInput);
+    vector<Persons> sortPersons(int viewInput);
 
-    // functions for search function
-    vector<Persons> searchName(vector<Persons> vec, string input);
-    vector<Persons> searchGender(vector<Persons> vec, string input);
-    vector<Persons> searchBirthYear(vector<Persons> vec, string byInput);
-    vector<Persons> searchDeathYear(vector<Persons> vec, string dyInput);
+    // Functions for search function
+    vector<Persons> searchName(string input);
+    vector<Persons> searchGender(string input);
+    vector<Persons> searchBirthYear(string input);
+    vector<Persons> searchDeathYear(string input);
 
-    // functions for error checking add input
-    bool validNameCheck(string name1);
+    // Functions for error checking input
+    bool validNameCheck(string name);
     bool validGenderCheck(string gender);
-    string setGender(string gender);
+
     bool validBirthYearCheck(string year);
-    int isDeadCheck(string answer);
-    int validDeathYearCheck(string birth, string death);
+    int isDeadCheck(string answer); // Three option for this function. Checks if input is digit, yes or no
+    bool validDeathYearCheck(string birth, string death);
     bool validDeleteOfPerson(int number);
 
-    string currentYear();
-
-    bool returnIfFound(bool isFound);
-
+    string setGender(string gender); // Sets input from user M/F to Male/Female
+    string currentYear(); // Gets current year
 
 private:
 
     Data _data;
-
-
-
-   bool isFound;
 
 };
 

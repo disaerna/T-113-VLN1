@@ -14,16 +14,6 @@
 
 using namespace std;
 
-/*
-    Öll samskipti við notenda
-    Displayar allt
-    Dependar á DOMAIN klasann
-    cout
-    cin
-    skilagildi í PRESENTATION = PERSON klasi
-*/
-
-
 class Presentation
 {
 
@@ -34,33 +24,25 @@ public:
     void splashMessage();
 
 private:
-    void run();         //What is this?
+    // Functions for main menu.
+    void newPersonsInFile(); // Adds new persons to the file.
+    void removePerson(); // Removes person from the file.
+    void viewDatabase(); // View options for the file.
+    void searchDatabase(); // Searches the database for input.
 
+    void displayVector(vector<Persons> p); // Displays a table from the file.
 
-    void newPersonsinFile();
-
-    void viewDatabase();
-    void removePerson();
-    void searchDatabase();
-    void displayVector(vector<Persons> p);
-
+    // Functions for search options.
     void searchByName();
     void searchByGender();
     void searchByBirthYear();
     void searchByDeathYear();
 
-    void ifNotFound();
-    //Search Föll
-    int displaySearch();
-
-    void displaySearchResults(vector<Persons> results);
+    // Function that asks the user to return or quit.
     void inputToReturn();
 
-    // Önnur föll
-
-
-
     Domain _domain;
+
 };
 
 #endif // PRESENTATION_H

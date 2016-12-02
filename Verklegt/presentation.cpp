@@ -8,22 +8,21 @@ Presentation::Presentation()
 
 }
 
-void Presentation::newPersonsinFile()
+// Adds person to file.
+void Presentation::newPersonsInFile()
 {
     Persons newPerson;
     int number = 0;
-    string name1;
-    string gender1;
-    string yearOfBirth1;
-    string yearOfDeath1;
+    string name;
+    string gender;
+    string yearOfBirth;
+    string yearOfDeath;
     string answer;
     string currentYear;
     string userInput;
     bool valid = false;
 
-
-    currentYear = _domain.currentYear();
-
+    currentYear = _domain.currentYear(); // sets currentYear to the current year
 
     do
     {
@@ -42,10 +41,9 @@ void Presentation::newPersonsinFile()
                 valid = true;
                 number = stoi(userInput);
             }
-         }
+        }
 
-        }while (valid == false);
-
+    }while(!valid);
 
     for(int i=0; i<number; i++)
     {
@@ -54,77 +52,62 @@ void Presentation::newPersonsinFile()
         cout << "-------------" << endl;
         cout << "Enter name: ";
         cin.ignore();
-        getline(cin, name1); // tekur fullt nafn
+        getline(cin, name); // tekur fullt nafn
 
-            while ( _domain.validNameCheck(name1) )
-            {
-                cout << "Name must only contain alphabet characters A-Z. \n Please enter a valid name." << endl;
-                cin >> name1;
-            }
+        while (_domain.validNameCheck(name))
+        {
+            cout << "Name must only contain alphabet characters A-Z. \n Please enter a valid name." << endl;
+            cin >> name;
+        }
 
-        //Vantar að gera fallakall sem sendir inn strenginn castar honum í lower case og checkar hvort sett var inn male eða female og svarar viðeigandi
         cout << "Enter gender M/F: ";
-        cin >> gender1;
-        while(!_domain.validGenderCheck(gender1))
+        cin >> gender;
+        while(!_domain.validGenderCheck(gender))
         {
             cout << "Please enter either 'M' for male or 'F' for female: ";
-            cin >> gender1;
+            cin >> gender;
         }
 
-        gender1 = _domain.setGender(gender1); // setur M/m = male & F/f = female
+        gender = _domain.setGender(gender); // setur M/m = male & F/f = female
+
         cout << "Enter year of birth: ";
-        cin >> yearOfBirth1;
-        /*if(_domain.futureBabies(yearOfBirth1))
-        {
-            cout << "Wrong input! Please enter a valid year: ";
-            cin >> yearOfBirth1;
-        }*/
-        while (_domain.validBirthYearCheck(yearOfBirth1))
+        cin >> yearOfBirth;
+
+        while (_domain.validBirthYearCheck(yearOfBirth))
         {
             cout << "Wrong input! Please enter 4 digits: ";
-            cin >> yearOfBirth1;
+            cin >> yearOfBirth;
         }
 
+        cout << "Is the person deceased? Y/N: ";
+        cin >> answer;
 
-        //while(_domain.isDeadCheck(answer) == 2)
-        //{
-            cout << "Is the person deceased? Y/N: ";
-            cin >> answer;
-            while(_domain.isDeadCheck(answer) == 2)
-            {
-                cout << "Wrong input! Please enter Y/N" << endl;
-                cin >> answer;
-            }
-
-            if(_domain.isDeadCheck(answer) == 1)
-            {
-                cout << "Enter year of death: ";
-                cin >> yearOfDeath1;
-
-                while( _domain.validDeathYearCheck(yearOfBirth1, yearOfDeath1))
-                {
-                    cout << "People can't die before they're born! And no messing with spacetime continuum. \n";
-                    cout << "Wrong input! Please enter 4 digits." << endl;
-                    cout << "Enter year of death: ";
-                    cin >> yearOfDeath1;
-                }
-            }
-            else if(_domain.isDeadCheck(answer) == 0)
-            {
-                yearOfDeath1 = '-';
-            }
-//        }
-
-        /*while(_domain.isDeadCheck(answer) == 2)
+        while(_domain.isDeadCheck(answer) == 2)
         {
             cout << "Wrong input! Please enter Y/N" << endl;
-            cout << "Is the person deceased? Y/N: ";
             cin >> answer;
-        }*/
+        }
+
+        if(_domain.isDeadCheck(answer) == 1)
+        {
+            cout << "Enter year of death: ";
+            cin >> yearOfDeath;
+
+            while( _domain.validDeathYearCheck(yearOfBirth, yearOfDeath))
+            {
+                cout << "Wrong input! Please enter 4 digits." << endl;
+                cout << "Enter year of death: ";
+                cin >> yearOfDeath;
+            }
+        }
+        else if(_domain.isDeadCheck(answer) == 0)
+        {
+            yearOfDeath = '-'; // If not dead
+        }
 
         cout << endl;
 
-        newPerson.setPersons(name1, gender1, yearOfBirth1, yearOfDeath1);
+        newPerson.setPersons(name, gender, yearOfBirth, yearOfDeath);
         _domain.addPersons(newPerson);
     }
 
@@ -147,11 +130,9 @@ void Presentation::newPersonsinFile()
     cout << endl;
 }
 
+// Removes person
 void Presentation::removePerson()
 {
-    //vector<Persons> getPerson;
-    //getPerson = _domain.getPersons();
-    //_domain.getPersons() returns a vector which can be sent right into the displayVector function
     displayVector(_domain.getPersons());
 
     int numberOfPerson = 0;
@@ -174,10 +155,12 @@ void Presentation::removePerson()
     string deletedName = _domain.deletePersonFromFile(numberOfPerson);
     cout << deletedName << " has been deleted from the database." << endl;
     cout << endl;
+
     displayVector(_domain.getPersons());
     inputToReturn();
 }
 
+// View menu
 void Presentation::viewDatabase()
 {
     cout << "How would you like view the database? " << endl;
@@ -196,7 +179,7 @@ void Presentation::viewDatabase()
     cout << "Enter your choice: ";
     cin >> viewInput;
 
-    if(cin.fail()) // athuga þetta betur ? hvað gerir eþtta
+    if(cin.fail())
     {
         // clears the buffer
         cin.clear();
@@ -208,25 +191,21 @@ void Presentation::viewDatabase()
         cout << "Enter your choice: ";
         cin >> viewInput;
 
-       if(cin.fail()) // athuga þetta betur ? hvað gerir eþtta
-       {
+        if(cin.fail())
+        {
             // clears the buffer
             cin.clear();
             cin.ignore(100, '\n');
-       }
+        }
     }
 
-    vector<Persons> getPerson;
-    getPerson = _domain.getPersons();
-
-    displayVector(_domain.SortPersons(getPerson, viewInput));
+    displayVector(_domain.sortPersons(viewInput));
     inputToReturn();
-
 }
 
+// Searches the database(file).
 void Presentation::searchDatabase()
 {
-    // fall inní domain ! leitar
     int userChoice = 0;
     cout << "Please enter one of the following commands: " << endl;
     cout << "1. Search by name" << endl;
@@ -238,28 +217,21 @@ void Presentation::searchDatabase()
     cout << "Enter your choice: ";
     cin >> userChoice;
 
-    //  if the user chooses to search by name
-    //  we need to link the Person vector to the vector
-    //  we use the searchName function in the Domain class
-    //  our vector results gets the indexes searchName gave us
-    //  we display the results
-    //  we clean the vector so that the user can search again
-
-    if(userChoice == 1)                 //Leita eftir nafni.
+    if(userChoice == 1)
     {
         searchByName();
     }
-    else if(userChoice == 2)            //Leita eftir kyni.
+    else if(userChoice == 2)
     {
         searchByGender();
     }
-    else if(userChoice == 3)            //Leita eftir fæðingarári.
+    else if(userChoice == 3)
     {
         searchByBirthYear();
     }
-    else if(userChoice == 4)            //Leita eftir dánarári.
+    else if(userChoice == 4)
     {
-       searchByDeathYear();
+        searchByDeathYear();
     }
     else if(userChoice == 5)
     {
@@ -268,115 +240,71 @@ void Presentation::searchDatabase()
         cout << endl;
         program();
     }
-    else if(cin.fail())
+    else
     {
         // clears the buffer
         cin.clear();
         cin.ignore(100, '\n');
+        cout << "Wrong input!" << endl;
+        cout << endl;
+        searchDatabase();
     }
 }
 
 void Presentation::searchByName()
 {
-    vector<Persons> personVector;
-    personVector = _domain.getPersons(); // get the vector from file input
-    vector<int> results;
     string nameInput = " ";
 
     cout << "Enter a name to search: ";
     cin >> nameInput;
-    ifNotFound();
     cout << endl;
 
-    //_domain.searchName(personVector, nameInput);
-    //results = _domain.getResults();
-
-    displaySearchResults( _domain.searchName(personVector, nameInput));
-    //_domain.cleanVector(results);
+    displayVector( _domain.searchName(nameInput));
     inputToReturn();
 }
+
 void Presentation::searchByGender()
 {
-    vector<Persons> personVector;
-    personVector = _domain.getPersons();
-    vector<int> results;
     string genderInput = " ";
 
     cout << "Enter 'M' for male results" << endl;
     cout << "Enter 'F' for female results" << endl;
     cout << ": ";
     cin >> genderInput;
-    ifNotFound();
 
-    //_domain.searchGender(personVector, genderInput);
-    //results = _domain.getResults();
-    displaySearchResults(_domain.searchGender(personVector, genderInput));
-    //_domain.cleanVector(results);
+    displayVector(_domain.searchGender(genderInput));
     inputToReturn();
 }
+
 void Presentation::searchByBirthYear()
 {
-    vector<Persons> personVector;
-    personVector = _domain.getPersons();
-    vector<int> results;
     string birthYear = " ";
 
     cout << "Enter birth year: ";
     cin >> birthYear;
-    ifNotFound();
 
-    //results = _domain.getResults();
-    displaySearchResults( _domain.searchBirthYear(personVector, birthYear));
-    //_domain.cleanVector(results);
+    displayVector( _domain.searchBirthYear(birthYear));
     inputToReturn();
 }
+
 void Presentation::searchByDeathYear()
 {
-    vector<Persons> personVector;
-    personVector = _domain.getPersons();
-    vector<int> results;
     string deathYear = " ";
 
     cout << "Enter death year: ";
     cin >> deathYear;
-    ifNotFound();
 
-    //results = _domain.getResults();
-    displaySearchResults(_domain.searchDeathYear(personVector, deathYear));
-    //_domain.cleanVector(results);
+    displayVector(_domain.searchDeathYear(deathYear));
     inputToReturn();
 }
-void Presentation::ifNotFound()
-{
-/*string commandInput = "";
 
-    if(!_domain.returnIfFound())
-    {
-        cout << "No results to display!" << endl;
-        cout << endl;
-
-        while(commandInput != "s" && commandInput != "S" && commandInput != "r" && commandInput != "R")
-        {
-            cout << "Enter 's' to search again or 'r' to return to main menu: ";
-            cin >> commandInput;
-            if(commandInput == "s" || commandInput == "S")
-            {
-                  searchDatabase();  // user returns to search by name
-            }
-            else if(commandInput == "r" || commandInput == "R")
-            {
-                inputToReturn(); // user returns to main menu
-            }
-         }
-    }
-    */
-}
-
+// Main program that gets called from main.
 void Presentation::program()
 {
     int input = 0;
     do
-    {   // Það fyrsta sem birtist á skjá notanda.
+    {   // Displays a menu for user
+
         cout << "Please enter one of the following commands: " << endl;
         cout << "1 - Add a new person to the database" << endl;
         cout << "2 - Delete a person from the database" << endl; // TODO - EXTRA
@@ -388,19 +316,19 @@ void Presentation::program()
         cin >> input;
         cout << endl;
 
-        if(input == 1)              // Ef valið er 1 bætist ný manneskja í database.
+        if(input == 1)
         {
-            newPersonsinFile();
+            newPersonsInFile();
         }
-        else if(input == 2)         // Ef valið er 2 eyðum við manneskju úr database.
+        else if(input == 2)
         {
             removePerson();
         }
-        else if(input == 3)         // Ef valið er 3 bjóðum við valmöguleika til að skoða database.
+        else if(input == 3)
         {
             viewDatabase();
         }
-        else if(input == 4)         // Search the database.
+        else if(input == 4)
         {
             searchDatabase();
         }
@@ -410,13 +338,12 @@ void Presentation::program()
             cin.clear();
             cin.ignore(100, '\n');
         }
-    }while (input != 5);        //Fer aftur inn í menu gluggan.
+    }while (input != 5);
 }
 
-void Presentation::displayVector(vector<Persons> p) //Uppröðun töflu.
+// Displays a table with file information.
+void Presentation::displayVector(vector<Persons> p)
 {
-    // cout << "Fer inni displayVector" << endl;
-
     cout << endl;
     cout << "Nr.\t" << setw(34) << left << "Name"  << setw(15) << "Gender" << setw(15) << "Born" << setw(15) << "Died" << endl;
     for(int i=0; i<80; i++)
@@ -424,68 +351,52 @@ void Presentation::displayVector(vector<Persons> p) //Uppröðun töflu.
         cout << "-";
     }
     cout << endl;
-    for(size_t i=0; i< p.size(); i++)
-    {
-        cout << (i+1) << ".\t" << setw(34) << left << p[i].getName() << setw(15) << p[i].getGender() << setw(15) << p[i].getYearOfBirth() << setw(15) << p[i].getYearOfDeath()<< endl;
+    if(p.size() > 0){
+
+        for(size_t i=0; i< p.size(); i++)
+        {
+            cout << (i+1) << ".\t" << setw(34) << left << p[i].getName() << setw(15) << p[i].getGender() << setw(15) << p[i].getYearOfBirth() << setw(15) << p[i].getYearOfDeath()<< endl;
+        }
+        cout << endl;
+    }else{
+        cout << "Operation returned no results!" << endl;
+        cout << endl;
     }
-    cout << endl;
 }
 
-// prints out only information about the indexes that match the search
-// þarf að raða betur
-void Presentation::displaySearchResults( vector<Persons> results)
-{
-    cout << endl;
-    cout << "Nr.\t" << setw(34) << left << "Name"  << "Gender" << "\t" << "Born" << "\t" << "Died" << endl;
-    for(int i=0; i<80; i++)
-    {
-        cout << "-";
-    }
-    cout << endl;
-    for(size_t i=0; i< results.size(); i++)
-    {
-        //number = results[i];
-        //cout << (i+1) << ".\t" << setw(34) << left << p[number].getName() << p[number].getGender() << "\t" << p[number].getYearOfBirth() << "\t" << p[number].getYearOfDeath()<< endl;
-        cout << (i+1) << ".\t" << setw(34) << left << results[i].getName() << results[i].getGender() << "\t" << results[i].getYearOfBirth() << "\t" << results[i].getYearOfDeath()<< endl;
-
-    }
-    cout << endl;
-}
-
+// Asks user to return to main or quit the program.
 void Presentation::inputToReturn()
 {
     string input = "";
-       // the program will loop until user inputs the right command
-       do
-       {
-           cout << "Enter 'r' to return to main menu or 'q' to quit the program: ";
-           cin >> input;
-       }
-       while(input != "r" && input != "R" && input != "q" && input != "Q");
-       cout << endl;
-
-       // asking user if he is sure he wants to quit the program
-       if(input != "r" && input != "R") {
-           string userQuitting = "";
-           while(userQuitting != "N" && userQuitting != "n" && userQuitting != "Y" && userQuitting != "y") {
-               cout << "Are you sure that you want to quit the program?" << endl;
-               cout << "Y/N: ";
-               cin >> userQuitting;
-           }
-           if(userQuitting != "N" && userQuitting != "n") {
-               // exit = quitting the program
-               exit(1);
-           }
-       }
-       cout << endl;
-}
-
-void Presentation::splashMessage()
-{
-    // endl í byrjun
+    // the program will loop until user inputs the right command
+    do
+    {
+        cout << "Enter 'R' to return to main menu or 'Q' to quit the program: ";
+        cin >> input;
+    }
+    while(input != "r" && input != "R" && input != "q" && input != "Q");
     cout << endl;
 
-    // lína uppi
+    // asking user if he is sure he wants to quit the program
+    if(input != "r" && input != "R") {
+        string userQuitting = "";
+        while(userQuitting != "N" && userQuitting != "n" && userQuitting != "Y" && userQuitting != "y") {
+            cout << "Are you sure that you want to quit the program?" << endl;
+            cout << "Y/N: ";
+            cin >> userQuitting;
+        }
+        if(userQuitting != "N" && userQuitting != "n") {
+            // exit = quitting the program
+            exit(1);
+        }
+    }
+    cout << endl;
+}
+
+// Message that prints out when program begins.
+void Presentation::splashMessage()
+{
+    cout << endl;
     for(int i = 0; i < 1; i++)
     {
         for(int j = 0; j < 40; j++)
@@ -495,7 +406,6 @@ void Presentation::splashMessage()
         cout << endl;
     }
 
-    // önnur lína
     for(int i = 0; i < 1; i++)
     {
         cout << "*" << "*";
@@ -511,7 +421,6 @@ void Presentation::splashMessage()
         cout << "*" << "*" << endl;
     }
 
-    // þriðja lína
     for(int i = 0; i < 1; i++)
     {
         for(int j = 0; j < 40; j++)
@@ -520,7 +429,5 @@ void Presentation::splashMessage()
         }
         cout << endl;
     }
-
-    // eitt endl í lokin
     cout << endl;
 }

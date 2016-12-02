@@ -1,9 +1,7 @@
 #include "domain.h"
 #include "persons.h"
 
-
-
-//Raða í lista eftir því hvað notandi hefur valið.
+// Structs used for sorting
 
 struct PersonsNameSortingDesc {
     bool operator() (Persons i, Persons j) { return (i.getName() < j.getName() ); }
@@ -42,12 +40,13 @@ Domain::Domain()
 
 }
 
-void Domain::addPersons(Persons person)     //Kalla á addPersonToFile.
+void Domain::addPersons(Persons person)
 {
     _data.addPersonsToFile(person);
 }
 
-string Domain::deletePersonFromFile(int numberOfPerson)        //Aðgerð til að eyða manneskju úr data.txt skrá.
+// Gets all persons from file, deletes person that matches input from user then rewrites.
+string Domain::deletePersonFromFile(int numberOfPerson)
 {
     vector<Persons> getPersonFromFile;
     getPersonFromFile = _data.readPersonsFromFile();
@@ -61,79 +60,89 @@ string Domain::deletePersonFromFile(int numberOfPerson)        //Aðgerð til a�
     return deletedPerson;
 }
 
-vector<Persons> Domain::getPersons()            //Kalla á readPersonFromFile.
+
+vector<Persons> Domain::getPersons()
 {
     return _data.readPersonsFromFile();
 }
 
-vector<Persons> Domain:: SortPersons(vector<Persons> getPerson, int viewInput)
+vector<Persons> Domain:: sortPersons(int viewInput)
 {
+    vector<Persons> getPerson = getPersons();
 
-    switch(viewInput) // fallegra að hafa switch case i þessu dæmi
+    switch(viewInput)
     {
 
     case 1:
-        // viewar default
+
+        // Views default
         break;
 
     case 2:
-        // sort name descending
-        // hæsta fyrst
-        // byrja að overwrite operator ><
+
+        // Sort name descending
         PersonsNameSortingDesc des;
         std::sort(getPerson.begin(), getPerson.end(), des);
         break;
 
     case 3:
-        // sort name ascending
-        // lægsta fyrst
+
+        // Sort name ascending
         PersonsNameSortingAsc asc;
         std::sort(getPerson.begin(), getPerson.end(), asc);
         break;
 
-     case 4:
-        // sort gender descending
+    case 4:
+
+        // Sort gender descending
         PersonsGenderSortingDesc Gend;
         std::sort(getPerson.begin(), getPerson.end(), Gend);
         break;
 
     case 5:
-        // sort gender ascending
+
+        // Sort gender ascending
         PersonsGenderSortingAsc GendAs;
         std::sort(getPerson.begin(), getPerson.end(), GendAs);
         break;
 
     case 6:
-        // sort birth year desc
+
+        // Sort birth year descending
         PersonsDOBSortingDesc Dob;
         std::sort(getPerson.begin(), getPerson.end(), Dob);
         break;
 
     case 7:
-        // sort birth year asc.
+
+        // Sort birth year ascending
         PersonsDOBSortingAsc DobAs;
         std::sort(getPerson.begin(), getPerson.end(), DobAs);
         break;
 
     case 8:
-        // sort death desc.
+
+        // Sort death year descending
         PersonsDODSortingDesc Dod;
         std::sort(getPerson.begin(), getPerson.end(), Dod);
         break;
 
     case 9:
-        // sort death asc.
+
+        // sort death yearascending
         PersonsDODSortingAsc DodAs;
         std::sort(getPerson.begin(), getPerson.end(), DodAs);
         break;
 
     default:
+
         cout << "Please enter a valid number!" << endl; // villutékk
     }
 
     return getPerson;
 }
-// function that returns current year
+
+// Gets current year.
 string Domain::currentYear()
 {
     time_t t = time(NULL);
@@ -142,60 +151,32 @@ string Domain::currentYear()
 
     return year;
 }
-// function that return if found
-bool Domain::returnIfFound(bool isFound)
-{
-    if(isFound == true)
-    {
-        return true;
-    }
-    return false;
-}
-// give private _results vector a value
-/*void Domain::setResults(vector<int> results)
-{
-    _results = results;
-}
 
-// get the values from results vector
-vector<int> Domain::getResults()
+// Searches vector by name.
+vector<Persons> Domain::searchName(string input)
 {
-    return _results;
-}
-
-// clean the vector.. return indexes in results to 0
-void Domain::cleanVector(vector<int> results)
-{
-    results.clear();
-    _results = results;
-}
-*/
-
-// function for searching through the name column of the vector
-vector<Persons> Domain::searchName(vector<Persons> vec, string input)
-{
-    //vector<int> results;
+    vector<Persons> vec = getPersons();
     vector<Persons> results;
+
     for(size_t i = 0; i < vec.size(); i++)
     {
         string str = vec[i].getName(); // str gets the string in the vector
         transform(str.begin(), str.end(), str.begin(), ::tolower); // the str string gets transformed into lower case
         transform(input.begin(), input.end(), input.begin(), ::tolower); // the input string gets transformed into lower case
         if(str.find(input) != string::npos)
-        { // if a name matches, then the index number will be pushed back
+        {
             results.push_back(vec[i]);
-            isFound = true;
-           returnIfFound(isFound);
         }
     }
-    //setResults(results); // give the results vector the values
     return results;
 }
 
-vector<Persons> Domain::searchGender(vector<Persons> vec, string input)    //Fall til að leita eftir kyni.
+// Searches vector by gender.
+vector<Persons> Domain::searchGender(string input)
 {
-    //vector<int> results;
+    vector<Persons> vec = getPersons();
     vector<Persons> results;
+
     if(input == "M" || input == "m")
     {
         input = "Male  ";
@@ -209,56 +190,50 @@ vector<Persons> Domain::searchGender(vector<Persons> vec, string input)    //Fal
         if(vec[i].getGender() == input)
         {
             results.push_back(vec[i]);
-            isFound = true;
-            returnIfFound(isFound);
         }
     }
-    //setResults(results);
     return results;
 }
 
-vector<Persons> Domain::searchBirthYear(vector<Persons> vec, string byInput)      //Fall til að leita eftir fæðingarári.
+// Searches vector by birth year.
+vector<Persons> Domain::searchBirthYear(string input)
 {
-    //vector<int> results;
+    vector<Persons> vec = getPersons();
     vector<Persons> results;
+
     for(size_t i = 0; i < vec.size(); i++)
     {
-        if(vec[i].getYearOfBirth() == byInput)
+        if(vec[i].getYearOfBirth() == input)
         {
             results.push_back(vec[i]);
-            isFound = true;
-            returnIfFound(isFound);
-
-
         }
     }
-    //setResults(results);
     return results;
 }
 
-vector<Persons> Domain::searchDeathYear(vector<Persons> vec, string dyInput)      //Fall til að leita eftir dánarári.
+// Searches vector by death year.
+vector<Persons> Domain::searchDeathYear(string input)
 {
-    //vector<int> results;
+    vector<Persons> vec = getPersons();
     vector<Persons> results;
+
     for(size_t i = 0; i < vec.size(); i++)
     {
-        if(vec[i].getYearOfDeath() == dyInput)
+        if(vec[i].getYearOfDeath() == input)
         {
             results.push_back(vec[i]);
-            isFound = true;
-            returnIfFound(isFound);
-
         }
     }
-    //setResults(results);
     return results;
 }
 
+// Checks if input is all characters.
 bool Domain::validNameCheck(string name)
 {
-    return (name.find_first_not_of("qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM ") != std::string::npos);
+    return (name.find_first_not_of("qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM -") != std::string::npos);
 }
 
+// Checks if input is M/m or F/f.
 bool Domain::validGenderCheck(string gender)
 {
     if(gender == "M" || gender == "m")
@@ -272,6 +247,8 @@ bool Domain::validGenderCheck(string gender)
 
     return false;
 }
+
+// Sets M/m to Male and F/f to Female.
 string Domain::setGender(string gender)
 {
     string fixedGender = " ";
@@ -287,10 +264,12 @@ string Domain::setGender(string gender)
     return fixedGender;
 }
 
+// Checks if input is all digits.
 bool Domain::validBirthYearCheck(string year)
 {
     return (year.find_first_not_of("0123456789")!= std::string::npos || year.length() != 4);
 }
+// Chekcs input for is input a digit, is it Y or N.
 int Domain::isDeadCheck(string answer)
 {
     for(int i=0; i<answer.length(); i++)
@@ -307,18 +286,20 @@ int Domain::isDeadCheck(string answer)
             }
         }
     }
-
     return 2;
-
 }
-int Domain::validDeathYearCheck(string birth, string death)
+
+// Checks if input is digits, if 4 digits, if death year is lower than birth year and if current year is lower than death year.
+bool Domain::validDeathYearCheck(string birth, string death)
 {
     if  (death.find_first_not_of("0123456789")!= std::string::npos || death.length() != 4 || death < birth || currentYear() < death )
     {
         return true;
     }
-        return false;
+    return false;
 }
+
+// Checks input from user for delete function in presentation class.
 bool Domain::validDeleteOfPerson(int number)
 {
     if(number > 0 && number <= getPersons().size())

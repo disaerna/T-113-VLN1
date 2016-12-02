@@ -9,29 +9,25 @@
 
 using namespace std;
 
-/* Tekur við breytum frá notenda
- * Sendir þær yfir í domain
-*/
-
 class Persons
 {
 
 public:
+
     Persons();
 
-    // föll til að fá og setja gildi
     string getName() const;
     string getGender() const;
     string getYearOfBirth() const;
     string getYearOfDeath() const;
-    void setPersons(string n, string g, string yob, string yod);
+    void setPersons(string name, string gender, string birth, string death);
 
 private:
 
     string _name;
     string _gender;
-    string _yob; // date of birth
-    string _yod; // date of death
+    string _birth; // year of birth
+    string _death; // year of death
 
 };
 

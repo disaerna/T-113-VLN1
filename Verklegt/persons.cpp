@@ -19,18 +19,18 @@ string Persons::getGender() const
 
 string Persons::getYearOfBirth() const
 {
-    return _yob;
+    return _birth;
 }
 
 string Persons::getYearOfDeath() const
 {
-    return _yod;
+    return _death;
 }
 
-void Persons::setPersons(string n, string g, string yob, string yod)
+void Persons::setPersons(string name, string gender, string birth, string death)
 {
-    _name = n;
-    _gender = g;
-    _yob = yob;
-    _yod= yod;
+    _name = name;
+    _gender = gender;
+    _birth = birth;
+    _death= death;
 }
