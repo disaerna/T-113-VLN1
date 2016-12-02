@@ -273,6 +273,7 @@ bool Domain::isDeadCheck(string answer)
     {
         return false;
     }
+    return false;
 }
 int Domain::validDeathYearCheck(string birth, string death)
 {
