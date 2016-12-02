@@ -199,9 +199,21 @@ void Presentation::searchDatabase()
     //  we display the results
     //  we clean the vector so that the user can search again
 
-    if(userChoice >0 && userChoice <5)                 //Leita eftir nafni.
+    if(userChoice == 1)                 //Leita eftir nafni.
     {
-        searchLogic(userChoice);
+        searchByName();
+    }
+    else if(userChoice == 2)            //Leita eftir kyni.
+    {
+        searchByGender();
+    }
+    else if(userChoice == 3)            //Leita eftir fæðingarári.
+    {
+        searchByBirthYear();
+    }
+    else if(userChoice == 4)            //Leita eftir dánarári.
+    {
+       searchByDeathYear();
     }
     else if(userChoice == 5)
     {
@@ -353,74 +365,6 @@ void Presentation::inputToReturn()
 
     cout << endl;
 }
-
-
-
-
-//////////////////////////
-
-
-void Presentation::search(int userChoice) {
-    int input;
-    if(userChoice == 1) {
-        cout << "Enter a name to search: ";
-        cin >> input;
-    }
-    else if(userChoice == 2) {
-        cout << "Enter 'Male' for male results" << endl;
-        cout << "Enter 'Female' for female results" << endl;
-        cout << "Enter your choice: ";
-        cin >> input;
-    }
-    else if(userChoice == 3) {
-        cout << "Enter birth year: ";
-        cin >> input;
-    }
-    else if(userChoice == 4) {
-        cout "Enter year of death (enter '-' for living persons): ";
-        cin >> input;
-    }
-    Domain::setSearchInput(input);
-}
-
-void Presentation::noResults() {
-    cout << "No results to display! Try another search term." << endl;
-}
-
-void Presentation::searchAgain() {
-    string commandInput;
-    cout << "Enter 's' to search again or 'r' to return to main menu: ;"
-    cin >> commandInput;
-    Domain::setCommandInput(commandInput);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 void Presentation::splashMessage()
 {

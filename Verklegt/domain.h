@@ -56,31 +56,10 @@ public:
 
     string currentYear();
 
-
-
-
-
-
-    // new functions
-    void setSearchInput();
-    int getSearchInput();
-
-    void setCommandInput();
-    string getCommandInput();
-
-
-
-
-
-
 private:
 
     Data _data;
     vector<int> _results;
-    int _searchInput;
-    string _commandInput;
-
-
 
 };
 
