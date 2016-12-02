@@ -203,11 +203,8 @@ void Presentation::searchDatabase()
     if(userChoice == 1)                 //Leita eftir nafni.
     {
 <<<<<<< HEAD
-<<<<<<< HEAD
        searchLogic();
 =======
-=======
->>>>>>> parent of 990ded0... test
         searchByName();
     }
     else if(userChoice == 2)            //Leita eftir kyni.
@@ -221,10 +218,7 @@ void Presentation::searchDatabase()
     else if(userChoice == 4)            //Leita eftir dánarári.
     {
        searchByDeathYear();
-<<<<<<< HEAD
 >>>>>>> origin/master
-=======
->>>>>>> parent of 990ded0... test
     }
     else if(userChoice == 5)
     {
@@ -382,7 +376,6 @@ void Presentation::inputToReturn()
 }
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 
 
 
@@ -500,8 +493,6 @@ void Domain::showSearchResults() {
 
 =======
 >>>>>>> origin/master
-=======
->>>>>>> parent of 990ded0... test
 void Presentation::splashMessage()
 {
     // endl í byrjun
