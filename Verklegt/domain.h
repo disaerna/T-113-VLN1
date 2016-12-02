@@ -62,23 +62,29 @@ public:
 
 
     // new functions
-    void setSearchInput();
-    int getSearchInput();
+    void setSearchInput(string input);
+    string getSearchInput();
 
-    void setCommandInput();
+    void setCommandInput(string input);
     string getCommandInput();
 
+    void setUserInput(int input);
+    int getUserInput();
 
 
-
+    void searchAgainLogic();
+    void showSearchResults();
+    vector<Persons> searchAlgo();
 
 
 private:
 
     Data _data;
     vector<int> _results;
-    int _searchInput;
+    string _searchInput;
     string _commandInput;
+    int _userInput;
+
 
 
 

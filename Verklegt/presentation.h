@@ -58,6 +58,11 @@ private:
     // Önnur föll
 
     void inputToReturn();
+    void search();
+    void noResults();
+    void searchAgain();
+    void searchLogic();
+    void showResults();
 
 
 

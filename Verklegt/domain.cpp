@@ -260,68 +260,13 @@ bool Domain::validDeleteOfPerson(int number)
     return false;
 }
 
-vector<Persons> Domain::searchLogic(int& userChoice) {
-    vector<Persons> results;
-
-    Presentation::search(userChoice);
-
-    results = Domain::searchAlgo(userChoice);
-
-    // error check if input matches the search
 
 
-
-    Domain::showSearchResults(results);
-
-
-    return results;
-}
-
-void Domain::searchAgainLogic() {
-    Presentation::searchAgain();
-    string commandInput = Domain::getCommandInput;
-    if(commandInput == "s" || commandInput == "S") {
-        if(searchOption == 1) {
-            Domain::searchLogic();// vantar userChoice
-        }
-        else if(searchOption == 2) { // vantar userChoice
-            Domain::searchLogic();
-        }
-        else if(searchOption == 3) { // vantar userChoice
-            Domain::searchLogic();
-        }
-        else if(searchOption == 4) { // vantar userChoice
-            Domain::searchLogic();
-        }
-    }
-    else if(commandInput == "r" || commandInput == "R") {
-        Presentation::program();
-    }
-}
-
-void Domain::showSearchResults(vector<Persons> results) {
-    string commandInput = Domain::getCommandInput;
-    if(results.size() < 1) { // no results
-        Presentation::noResults();
-        while(commandInput != "s" && commandInput != "S" && commandInput != "r" && commandInput != "R") {
-            Presentation::searchAgain(commandInput);
-            commandInput = Domain::getCommandInput;
-            Domain::searchAgainLogic();
-        }
-    }
-    else if(results.size() > 0) { // results found
-        displaySearchResults(personVector, results);
-        while(commandInput != "s" && commandInput != "S" && commandInput != "r" && commandInput != "R") {
-            Domain::searchAgainLogic(string commandInput)
-        }
-    }
-}
-
-void Domain::setSearchInput(int input) {
+void Domain::setSearchInput(string input) {
     _searchInput = input;
 }
 
-int Domain::getSearchInput() {
+string Domain::getSearchInput() {
     return _searchInput;
 }
 
@@ -333,12 +278,26 @@ string Domain::getCommandInput() {
     return _commandInput;
 }
 
-vector<Persons> Domain::searchAlgo(int& userChoice)
+void Domain::setUserInput(int input) {
+    _userInput = input;
+}
+
+int Domain::getUserInput() {
+    return _userInput;
+}
+
+vector<Persons> Domain::searchAlgo()
 {
     //vector<int> results;
     vector<Persons> results;
+    vector<Persons> vec;
+    vec = _data.readPersonsFromFile();
+
+    int userChoice = getUserInput();
+
 
     string str = Domain::getSearchInput();
+    string input = Domain::getSearchInput();
 
     for(size_t i = 0; i < vec.size(); i++)
     {
@@ -349,10 +308,10 @@ vector<Persons> Domain::searchAlgo(int& userChoice)
             string str = vec[i].getGender();
         }
         else if(userChoice == 3) {
-             string str = vec[i].getYearOfBirth;
+             string str = vec[i].getYearOfBirth();
         }
         else if(userChoice == 4) {
-             string str = vec[i].getYearOfDeath;
+             string str = vec[i].getYearOfDeath();
         }
 
 

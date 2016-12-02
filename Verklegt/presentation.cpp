@@ -191,6 +191,7 @@ void Presentation::searchDatabase()
     cout << endl;
     cout << "Enter your choice: ";
     cin >> userChoice;
+    _domain.setUserInput(userChoice);
 
     //  if the user chooses to search by name
     //  we need to link the Person vector to the vector
@@ -201,7 +202,7 @@ void Presentation::searchDatabase()
 
     if(userChoice >0 && userChoice <5)                 //Leita eftir nafni.
     {
-        searchLogic(userChoice);
+       searchLogic();
     }
     else if(userChoice == 5)
     {
@@ -217,6 +218,8 @@ void Presentation::searchDatabase()
         cin.ignore(100, '\n');
     }
 }
+
+/*
 
 void Presentation::searchByName()
 {
@@ -265,6 +268,8 @@ void Presentation::searchByDeathYear()
     displaySearchResults(_domain.searchDeathYear(personVector, deathYear));
     inputToReturn();
 }
+
+*/
 
 void Presentation::program()
 {
@@ -360,47 +365,94 @@ void Presentation::inputToReturn()
 //////////////////////////
 
 
-void Presentation::search(int userChoice) {
-    int input;
+void Presentation::search() {
+    int userChoice = _domain.getUserInput();
+    string searchInput = "";
     if(userChoice == 1) {
         cout << "Enter a name to search: ";
-        cin >> input;
+        cin >> searchInput;
     }
     else if(userChoice == 2) {
-        cout << "Enter 'Male' for male results" << endl;
-        cout << "Enter 'Female' for female results" << endl;
+        cout << "Enter 'm' for male results" << endl;
+        cout << "Enter 'f' for female results" << endl;
         cout << "Enter your choice: ";
-        cin >> input;
+        cin >> searchInput;
     }
     else if(userChoice == 3) {
         cout << "Enter birth year: ";
-        cin >> input;
+        cin >> searchInput;
     }
     else if(userChoice == 4) {
-        cout "Enter year of death (enter '-' for living persons): ";
-        cin >> input;
+        cout << "Enter year of death (enter '-' for living persons): ";
+        cin >> searchInput;
     }
-    Domain::setSearchInput(input);
+    _domain.setSearchInput(searchInput);
 }
 
 void Presentation::noResults() {
     cout << "No results to display! Try another search term." << endl;
 }
 
+/*
+
+void Presentation::showResults() {
+    _domain.showSearchResults();
+    searchAgain();
+    string commandInput = _domain.getCommandInput();
+}
+
+*/
+
 void Presentation::searchAgain() {
     string commandInput;
-    cout << "Enter 's' to search again or 'r' to return to main menu: ;"
+    cout << "Enter 's' to search again or 'r' to return to main menu: ;";
     cin >> commandInput;
-    Domain::setCommandInput(commandInput);
+    _domain.setCommandInput(commandInput);
+}
+
+void Presentation::searchLogic() {
+    vector<Persons> results;
+
+    Presentation::search();
+
+    _domain.searchAlgo();
+
+    results = _domain.searchAlgo();
+
+
+
+    // error check if input matches the search
+
+
+/*
+    _domain.showSearchResults();
+    */
 }
 
 
+/*
 
+void Domain::showSearchResults() {
+    vector<Persons> results;
+    results = searchAlgo();
+    string commandInput = Domain::getCommandInput();
+    if(results.size() < 1) { // no results
+        Presentation::noResults();
+        Presentation::searchAgain();
+        while(commandInput != "s" && commandInput != "S" && commandInput != "r" && commandInput != "R") {
+            Domain::searchAgainLogic();
+            commandInput = Domain::getCommandInput;
+        }
+    }
+    else if(results.size() > 0) { // results found
+        displaySearchResults(personVector, results);
+        while(commandInput != "s" && commandInput != "S" && commandInput != "r" && commandInput != "R") {
+            Domain::searchAgainLogic()
+        }
+    }
+}
 
-
-
-
-
+*/
 
 
 
