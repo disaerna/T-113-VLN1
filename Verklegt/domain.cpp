@@ -144,22 +144,7 @@ string Domain::currentYear()
 }
 
 // function for searching through the name column of the vector
-vector<Persons> Domain::searchName(vector<Persons> vec, string input)
-{
-    //vector<int> results;
-    vector<Persons> results;
-    for(size_t i = 0; i < vec.size(); i++)
-    {
-        string str = vec[i].getName(); // str gets the string in the vector
-        transform(str.begin(), str.end(), str.begin(), ::tolower); // the str string gets transformed into lower case
-        transform(input.begin(), input.end(), input.begin(), ::tolower); // the input string gets transformed into lower case
-        if(str.find(input) != string::npos)
-        { // if a name matches, then the index number will be pushed back
-            results.push_back(vec[i]);
-        }
-    }
-    return results;
-}
+
 
 vector<Persons> Domain::searchGender(vector<Persons> vec, string input)    //Fall til að leita eftir kyni.
 {
@@ -274,3 +259,138 @@ bool Domain::validDeleteOfPerson(int number)
     }
     return false;
 }
+
+vector<Persons> Domain::searchLogic(int& userChoice) {
+    vector<Persons> results;
+
+    Presentation::search(userChoice);
+
+    results = Domain::searchAlgo(userChoice);
+
+    // error check if input matches the search
+
+
+
+    Domain::showSearchResults(results);
+
+
+    return results;
+}
+
+void Domain::searchAgainLogic() {
+    Presentation::searchAgain();
+    string commandInput = Domain::getCommandInput;
+    if(commandInput == "s" || commandInput == "S") {
+        if(searchOption == 1) {
+            Domain::searchLogic();// vantar userChoice
+        }
+        else if(searchOption == 2) { // vantar userChoice
+            Domain::searchLogic();
+        }
+        else if(searchOption == 3) { // vantar userChoice
+            Domain::searchLogic();
+        }
+        else if(searchOption == 4) { // vantar userChoice
+            Domain::searchLogic();
+        }
+    }
+    else if(commandInput == "r" || commandInput == "R") {
+        Presentation::program();
+    }
+}
+
+void Domain::showSearchResults(vector<Persons> results) {
+    string commandInput = Domain::getCommandInput;
+    if(results.size() < 1) { // no results
+        Presentation::noResults();
+        while(commandInput != "s" && commandInput != "S" && commandInput != "r" && commandInput != "R") {
+            Presentation::searchAgain(commandInput);
+            commandInput = Domain::getCommandInput;
+            Domain::searchAgainLogic();
+        }
+    }
+    else if(results.size() > 0) { // results found
+        displaySearchResults(personVector, results);
+        while(commandInput != "s" && commandInput != "S" && commandInput != "r" && commandInput != "R") {
+            Domain::searchAgainLogic(string commandInput)
+        }
+    }
+}
+
+void Domain::setSearchInput(int input) {
+    _searchInput = input;
+}
+
+int Domain::getSearchInput() {
+    return _searchInput;
+}
+
+void Domain::setCommandInput(string input) {
+    _commandInput = input;
+}
+
+string Domain::getCommandInput() {
+    return _commandInput;
+}
+
+vector<Persons> Domain::searchAlgo(int& userChoice)
+{
+    //vector<int> results;
+    vector<Persons> results;
+
+    string str = Domain::getSearchInput();
+
+    for(size_t i = 0; i < vec.size(); i++)
+    {
+        if(userChoice == 1) {
+            string str = vec[i].getName(); // str gets the string in the vector
+        }
+        else if(userChoice == 2) {
+            string str = vec[i].getGender();
+        }
+        else if(userChoice == 3) {
+             string str = vec[i].getYearOfBirth;
+        }
+        else if(userChoice == 4) {
+             string str = vec[i].getYearOfDeath;
+        }
+
+
+        transform(str.begin(), str.end(), str.begin(), ::tolower); // the str string gets transformed into lower case
+        transform(input.begin(), input.end(), input.begin(), ::tolower); // the input string gets transformed into lower case
+        if(str.find(input) != string::npos)
+        { // if a name matches, then the index number will be pushed back
+            results.push_back(vec[i]);
+        }
+    }
+    return results;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
