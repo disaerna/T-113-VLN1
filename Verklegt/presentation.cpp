@@ -245,111 +245,27 @@ void Presentation::searchByName()
 
     _domain.searchName(personVector, nameInput);
     results = _domain.getResults();
-
-    // error check to check if the user has input only letters
-    if (nameInput.find_first_not_of("qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM ") != std::string::npos)
-    {
-        while ( nameInput.find_first_not_of("qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM ") != std::string::npos )
-        {
-            cout << "Name must only contain alphabet characters A-Z. \nPlease enter a valid name: ";
-            cin >> nameInput;
-        }
-    }
-
-    string commandInput = "";
-
-    // if the search returns nothing, it will show on the screen
-    if(results.size() < 1 && commandInput != "r" && commandInput != "s") {
-        cout << "No results to display!" << endl;
-        cout << endl;
-        while(commandInput != "s" && commandInput != "S" && commandInput != "r" && commandInput != "R") {
-            cout << "Enter 's' to search again or 'r' to return to main menu: ";
-            cin >> commandInput;
-            if(commandInput == "s" || commandInput == "S") {
-                   searchByName(); // user returns to search by name
-            }
-            else if(commandInput == "r" || commandInput == "R") {
-                program(); // user returns to main menu
-            }
-        }
-    }
-    // if the search returns >0 results, a table will be displayed
-    else if(results.size() > 0) {
-        displaySearchResults(personVector, results);
-        _domain.cleanVector(results);
-        while(commandInput != "s" && commandInput != "S" && commandInput != "r" && commandInput != "R") {
-            cout << "Enter 's' to search again or 'r' to return to main menu: ";
-            cin >> commandInput;
-            if(commandInput == "s" || commandInput == "S") {
-                   searchByName();
-            }
-            else if(commandInput == "r" || commandInput == "R") {
-                program();
-            }
-        }
-    }
-
+    displaySearchResults(personVector, results);
+    _domain.cleanVector(results);
+    inputToReturn();
 }
-
 void Presentation::searchByGender()
 {
-
     vector<Persons> personVector;
     personVector = _domain.getPersons();
     vector<int> results;
+    string genderInput = " ";
 
-    string genderInput = "m";
-    int counter = 0;
+    cout << "Enter 'M' for male results" << endl;
+    cout << "Enter 'F' for female results" << endl;
+    cin >> genderInput;
 
-    do
-    { // if the string doesn't match, then this will loop
-        if(counter > 0) {
-            cout << endl;
-            cout << "Error: Please input the correct character" << endl;
-            cout << endl;
-        }
-        cout << "Enter 'Male' for male results" << endl;
-        cout << "Enter 'Female' for female results" << endl;
-        cout << "Enter your choice: ";
-        cin >> genderInput;
-        counter++;
-    }
-    while(genderInput != "Male" && genderInput != "Female");
-
-    string commandInput = "";
     _domain.searchGender(personVector, genderInput);
     results = _domain.getResults();
-
-    if(results.size() < 1 && commandInput != "r" && commandInput != "s") {
-        cout << "No results to display!" << endl;
-        cout << endl;
-        while(commandInput != "s" && commandInput != "S" && commandInput != "r" && commandInput != "R") {
-            cout << "Enter 's' to search again or 'r' to return to main menu: ";
-            cin >> commandInput;
-            if(commandInput == "s" || commandInput == "S") {
-                   searchByGender();
-            }
-            else if(commandInput == "r" || commandInput == "R") {
-                program();
-            }
-        }
-    }
-    else if(results.size() > 0) {
-        displaySearchResults(personVector, results);
-        _domain.cleanVector(results);
-        while(commandInput != "s" && commandInput != "S" && commandInput != "r" && commandInput != "R") {
-            cout << "Enter 's' to search again or 'r' to return to main menu: ";
-            cin >> commandInput;
-            if(commandInput == "s" || commandInput == "S") {
-                   searchByGender();
-            }
-            else if(commandInput == "r" || commandInput == "R") {
-                program();
-            }
-        }
-    }
+    displaySearchResults(personVector, results);
+    _domain.cleanVector(results);
+    inputToReturn();
 }
-
 void Presentation::searchByBirthYear()
 {
     vector<Persons> personVector;
@@ -357,49 +273,15 @@ void Presentation::searchByBirthYear()
     vector<int> results;
     string birthYear = " ";
 
-    cout << "Enter birth year: ";
+    cout << "Enter birth year";
     cin >> birthYear;
-
-    while(birthYear.find_first_not_of("0123456789")!= std::string::npos || birthYear.length() != 4) {
-        cout << "Wrong input! Please enter 4 digits: ";
-        cin >> birthYear;
-    }
 
     _domain.searchBirthYear(personVector, birthYear);
     results = _domain.getResults();
-
-    string commandInput = "";
-    if(results.size() < 1 && commandInput != "r" && commandInput != "s") {
-        cout << "No results to display!" << endl;
-        cout << endl;
-        while(commandInput != "s" && commandInput != "S" && commandInput != "r" && commandInput != "R") {
-            cout << "Enter 's' to search again or 'r' to return to main menu: ";
-            cin >> commandInput;
-            if(commandInput == "s" || commandInput == "S") {
-                   searchByBirthYear();
-            }
-            else if(commandInput == "r" || commandInput == "R") {
-                program();
-            }
-        }
-    }
-    else if(results.size() > 0) {
-        displaySearchResults(personVector, results);
-        _domain.cleanVector(results);
-        while(commandInput != "s" && commandInput != "S" && commandInput != "r" && commandInput != "R") {
-            cout << "Enter 's' to search again or 'r' to return to main menu: ";
-            cin >> commandInput;
-            if(commandInput == "s" || commandInput == "S") {
-                   searchByBirthYear();
-            }
-            else if(commandInput == "r" || commandInput == "R") {
-                program();
-            }
-        }
-    }
-
+    displaySearchResults(personVector, results);
+    _domain.cleanVector(results);
+    inputToReturn();
 }
-
 void Presentation::searchByDeathYear()
 {
     vector<Persons> personVector;
@@ -407,50 +289,14 @@ void Presentation::searchByDeathYear()
     vector<int> results;
     string deathYear = " ";
 
-    cout << "Enter year of death (enter '-' for living persons): ";
+    cout << "Enter death year";
     cin >> deathYear;
-
-    // if the death year is not all numbers and not 4 characters, the program will loop until he inputs the correct input
-    while(deathYear.find_first_not_of("0123456789")!= std::string::npos || deathYear.length() != 4) {
-        if(deathYear == "-") { // if the user inputs '-', or not deceased, the user will break out of the loop
-            break;
-        }
-        cout << "Wrong input! Please enter 4 digits or '-': ";
-        cin >> deathYear;
-    }
 
     _domain.searchDeathYear(personVector, deathYear);
     results = _domain.getResults();
-
-    string commandInput = "";
-    if(results.size() < 1 && commandInput != "r" && commandInput != "s") {
-        cout << "No results to display!" << endl;
-        cout << endl;
-        while(commandInput != "s" && commandInput != "S" && commandInput != "r" && commandInput != "R") {
-            cout << "Enter 's' to search again or 'r' to return to main menu: ";
-            cin >> commandInput;
-            if(commandInput == "s" || commandInput == "S") {
-                   searchByDeathYear();
-            }
-            else if(commandInput == "r" || commandInput == "R") {
-                program();
-            }
-        }
-    }
-    else if(results.size() > 0) {
-        displaySearchResults(personVector, results);
-        _domain.cleanVector(results);
-        while(commandInput != "s" && commandInput != "S" && commandInput != "r" && commandInput != "R") {
-            cout << "Enter 's' to search again or 'r' to return to main menu: ";
-            cin >> commandInput;
-            if(commandInput == "s" || commandInput == "S") {
-                   searchByDeathYear();
-            }
-            else if(commandInput == "r" || commandInput == "R") {
-                program();
-            }
-        }
-    }
+    displaySearchResults(personVector, results);
+    _domain.cleanVector(results);
+    inputToReturn();
 }
 
 void Presentation::program()
@@ -485,25 +331,13 @@ void Presentation::program()
         {
             searchDatabase();
         }
-        else if(input == 5) {
-            string userQuitting = "";
-            while(userQuitting != "N" && userQuitting != "n" && userQuitting != "Y" && userQuitting != "y") {
-                cout << "Are you sure that you want to quit the program?" << endl;
-                cout << "Y/N: ";
-                cin >> userQuitting;
-            }
-            if(userQuitting != "N" && userQuitting != "n") {
-                // exit = quitting the program
-                exit(1);
-            }
-        }
         else if(cin.fail())
         {
             // clears the buffer
             cin.clear();
             cin.ignore(100, '\n');
         }
-    }while (input != 6);        //Fer aftur inn í menu gluggan.
+    }while (input != 5);        //Fer aftur inn í menu gluggan.
 }
 
 void Presentation::displayVector(vector<Persons> p) //Uppröðun töflu.
@@ -545,32 +379,14 @@ void Presentation::displaySearchResults(vector<Persons> p, vector<int> results)
     cout << endl;
 }
 
-// function to stop the user to exit immediately back to the main menu, allowing the user to view the data requested
 void Presentation::inputToReturn()
 {
-    string input = "";
-    // the program will loop until user inputs the right command
-    do
-    {
-        cout << "Enter 'r' to return to main menu or 'q' to quit the program: ";
-        cin >> input;
-    }
-    while(input != "r" && input != "R" && input != "q" && input != "Q");
-    cout << endl;
+    // ??
+    int input = 0;
 
-    // asking user if he is sure he wants to quit the program
-    if(input != "r" && input != "R") {
-        string userQuitting = "";
-        while(userQuitting != "N" && userQuitting != "n" && userQuitting != "Y" && userQuitting != "y") {
-            cout << "Are you sure that you want to quit the program?" << endl;
-            cout << "Y/N: ";
-            cin >> userQuitting;
-        }
-        if(userQuitting != "N" && userQuitting != "n") {
-            // exit = quitting the program
-            exit(1);
-        }
-    }
+    cout << "Enter '1' to return to main menu, any button to quit";
+    cin >> input;
+
     cout << endl;
 }
 
