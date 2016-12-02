@@ -56,8 +56,6 @@ public:
 
     string currentYear();
 
-<<<<<<< HEAD
-
 
 
 
@@ -78,21 +76,16 @@ public:
     vector<Persons> searchAlgo();
 
 
-=======
->>>>>>> origin/master
 private:
 
     Data _data;
     vector<int> _results;
-<<<<<<< HEAD
     string _searchInput;
     string _commandInput;
     int _userInput;
 
 
 
-=======
->>>>>>> origin/master
 
 };
 

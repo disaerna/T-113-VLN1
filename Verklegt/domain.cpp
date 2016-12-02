@@ -274,7 +274,6 @@ bool Domain::validDeleteOfPerson(int number)
     }
     return false;
 }
-<<<<<<< HEAD
 
 
 
@@ -368,6 +367,3 @@ vector<Persons> Domain::searchAlgo()
 
 
 
-
-=======
->>>>>>> origin/master

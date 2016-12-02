@@ -200,25 +200,9 @@ void Presentation::searchDatabase()
     //  we display the results
     //  we clean the vector so that the user can search again
 
-    if(userChoice == 1)                 //Leita eftir nafni.
+    if(userChoice >0 && userChoice <5)                 //Leita eftir nafni.
     {
-<<<<<<< HEAD
        searchLogic();
-=======
-        searchByName();
-    }
-    else if(userChoice == 2)            //Leita eftir kyni.
-    {
-        searchByGender();
-    }
-    else if(userChoice == 3)            //Leita eftir fæðingarári.
-    {
-        searchByBirthYear();
-    }
-    else if(userChoice == 4)            //Leita eftir dánarári.
-    {
-       searchByDeathYear();
->>>>>>> origin/master
     }
     else if(userChoice == 5)
     {
@@ -375,12 +359,6 @@ void Presentation::inputToReturn()
     cout << endl;
 }
 
-<<<<<<< HEAD
-
-
-
-//////////////////////////
-
 
 void Presentation::search() {
     int userChoice = _domain.getUserInput();
@@ -434,6 +412,7 @@ void Presentation::searchLogic() {
 
     _domain.searchAlgo();
 
+    // senda results vectorinn í show search results
     results = _domain.searchAlgo();
 
 
@@ -490,9 +469,6 @@ void Domain::showSearchResults() {
 
 
 
-
-=======
->>>>>>> origin/master
 void Presentation::splashMessage()
 {
     // endl í byrjun
