@@ -11,6 +11,7 @@
 
 #include "data.h"
 #include "persons.h"
+#include "computers.h"
 
 using namespace std;
 
@@ -20,7 +21,10 @@ class Domain
 public:
 
     Domain();
+    // Functions for computers class
+    vector<Computers> getComputers();
 
+    // Functions for persons class
     void addPersons(Persons person);
     string deletePersonFromFile(int numberOfPerson);
     vector<Persons> getPersons();

@@ -1,5 +1,6 @@
 #include "domain.h"
 #include "persons.h"
+#include "computers.h"
 
 // Structs used for sorting
 
@@ -63,6 +64,13 @@ string Domain::deletePersonFromFile(int numberOfPerson)
 vector<Persons> Domain::getPersons()
 {
     return _data.readPersonsFromFile();
+}
+
+vector<Computers> Domain::getComputers()
+{
+   // return _data.readComputersFromDatabase();
+    vector<Computers> tempRet;
+    return tempRet;
 }
 
 vector<Persons> Domain:: sortPersons(int viewInput)

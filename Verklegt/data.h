@@ -9,6 +9,7 @@
 #include <sstream>
 #include <QSqlDatabase>
 #include "persons.h"
+#include "computers.h"
 
 using namespace std;
 

@@ -11,6 +11,7 @@
 
 #include "domain.h"
 #include "persons.h"
+#include "computers.h"
 
 using namespace std;
 
