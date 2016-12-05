@@ -132,7 +132,7 @@ void Presentation::newPersonsInFile()
 
 /*void Presentation::newComputer()
 {
-     //Tilvik af computer klasa
+    Computer newComp;
     int number = 0;
     string nameC;
     string yearOfBuild;
@@ -220,8 +220,8 @@ void Presentation::newPersonsInFile()
 
         cout << endl;
 
-        //kalasanafn.setComputer(name, yearOfBuild, type, didItWork);
-        _domain.addComputer(//klasanafn);
+        //newComp.setComputers(name, yearOfBuild, type, didItWork);
+        _domain.addComputer(newComp);
     }
 
     cout << "Your input has been saved..." << endl;
@@ -250,7 +250,7 @@ void Presentation::newPersonsInFile()
 // Removes person
 void Presentation::removePerson()
 {
-    displayVector(_domain.getPersons());
+    displayPersonsVector(_domain.getPersons());
 
     int numberOfPerson = 0;
 
@@ -274,14 +274,14 @@ void Presentation::removePerson()
     cout << deletedName << " has been deleted from the database." << endl;
     cout << endl;
 
-    displayVector(_domain.getPersons());
+    displayPersonsVector(_domain.getPersons());
     inputToReturn();
 }
 
 // Removes computer
 /*void Presentation::removeComputer()
 {
-    displayVector(_domain.//get fall úr computerkalsa());
+    displayPersonsVector(_domain.//get fall úr computerkalsa());
 
     int numberOfComputer = 0;
 
@@ -305,14 +305,14 @@ void Presentation::removePerson()
     cout << deleteComputer << " has been deleted from the database." << endl;
     cout << endl;
 
-    displayVector(_domain. get computer fall());
+    displayPersonsVector(_domain. get computer fall());
     inputToReturn();
 }*/
 
 
 
 // View menu
-void Presentation::viewDatabase()
+void Presentation::viewPersonsDatabase()
 {
     cout << "How would you like view the database? " << endl;
     cout << "1. Default" << endl;
@@ -350,12 +350,55 @@ void Presentation::viewDatabase()
         }
     }
 
-    displayVector(_domain.sortPersons(viewInput));
+    displayPersonsVector(_domain.sortPersons(viewInput));
     inputToReturn();
+}
+void Presentation::viewComputersDatabase()
+{
+    cout << "How would you like view the database? " << endl;
+    cout << "1. Default" << endl;
+    cout << "2. Name of computer: A-Z" << endl;
+    cout << "3. Name of computer: Z-A" << endl;
+    cout << "4. When built: Desc." << endl;
+    cout << "5. When built: Asc." << endl;
+    cout << "6. Type: Desc." << endl;
+    cout << "7. Type: Year: Asc." << endl;
+    cout << "8. Build successful: Y" << endl;
+    cout << "9. Build successful: N" << endl;
+    cout << endl;
+
+    int viewInput = 0;
+    cout << "Enter your choice: ";
+    cin >> viewInput;
+
+    if(cin.fail())
+    {
+        // clears the buffer
+        cin.clear();
+        cin.ignore(100, '\n');
+    }
+    while(viewInput < 1 || viewInput > 9)
+    {
+        cout << "Please enter a valid number!" << endl;
+        cout << "Enter your choice: ";
+        cin >> viewInput;
+
+        if(cin.fail())
+        {
+            // clears the buffer
+            cin.clear();
+            cin.ignore(100, '\n');
+        }
+    }
+
+    // Kalla á fall í domain sem tekur inn val notenda(tölu) sem kallar á data & birtir einungis þær uppl.
+
+    //displayPersonsVector(_domain.sortPersons(viewInput));
+    //inputToReturn();
 }
 
 // Searches the database(file).
-void Presentation::searchDatabase()
+void Presentation::searchPersonDatabase()
 {
     int userChoice = 0;
     cout << "Please enter one of the following commands: " << endl;
@@ -398,7 +441,54 @@ void Presentation::searchDatabase()
         cin.ignore(100, '\n');
         cout << "Wrong input!" << endl;
         cout << endl;
-        searchDatabase();
+        searchPersonDatabase();
+    }
+}
+
+void Presentation::searchComputerDatabase()
+{
+    int userChoice = 0;
+    cout << "Please enter one of the following commands: " << endl;
+    cout << "1. Search by name" << endl;
+    cout << "2. Search by built year" << endl;
+    cout << "3. Search by type" << endl;
+    cout << "4. Search by if built was successful" << endl;
+    cout << "5. Return to main menu" << endl;
+    cout << endl;
+    cout << "Enter your choice: ";
+    cin >> userChoice;
+
+    if(userChoice == 1)
+    {
+        searchByComputerName();
+    }
+    else if(userChoice == 2)
+    {
+        searchByBuiltYear();
+    }
+    else if(userChoice == 3)
+    {
+        searchByType();
+    }
+    else if(userChoice == 4)
+    {
+        searchBySuccessfulBuilt();
+    }
+    else if(userChoice == 5)
+    {
+        cout << endl;
+        cout << "Going back to main menu..." << endl;
+        cout << endl;
+        addScientist();
+    }
+    else
+    {
+        // clears the buffer
+        cin.clear();
+        cin.ignore(100, '\n');
+        cout << "Wrong input!" << endl;
+        cout << endl;
+        searchComputerDatabase();
     }
 }
 
@@ -410,7 +500,7 @@ void Presentation::searchByName()
     cin >> nameInput;
     cout << endl;
 
-    displayVector( _domain.searchName(nameInput));
+    displayPersonsVector( _domain.searchName(nameInput));
     inputToReturn();
 }
 
@@ -423,7 +513,7 @@ void Presentation::searchByGender()
     cout << ": ";
     cin >> genderInput;
 
-    displayVector(_domain.searchGender(genderInput));
+    displayPersonsVector(_domain.searchGender(genderInput));
     inputToReturn();
 }
 
@@ -434,7 +524,7 @@ void Presentation::searchByBirthYear()
     cout << "Enter birth year: ";
     cin >> birthYear;
 
-    displayVector( _domain.searchBirthYear(birthYear));
+    displayPersonsVector( _domain.searchBirthYear(birthYear));
     inputToReturn();
 }
 
@@ -445,8 +535,41 @@ void Presentation::searchByDeathYear()
     cout << "Enter death year: ";
     cin >> deathYear;
 
-    displayVector(_domain.searchDeathYear(deathYear));
+    displayPersonsVector(_domain.searchDeathYear(deathYear));
     inputToReturn();
+}
+
+void Presentation::searchByComputerName()
+{
+    string nameInput = " ";
+
+    cout << "Enter a computer name to search: ";
+    cin >> nameInput;
+    cout << endl;
+}
+void Presentation::searchByBuiltYear()
+{
+    string builtYearInput = " ";
+
+    cout << "Enter a year to search: ";
+    cin >> builtYearInput;
+    cout << endl;
+}
+void Presentation::searchByType()
+{
+    string typeInput = " ";
+
+    cout << "Enter a type to search: ";
+    cin >> typeInput;
+    cout << endl;
+}
+void Presentation::searchBySuccessfulBuilt()
+{
+    string SBinput = " ";
+
+    cout << "Enter Y/N to search: ";
+    cin >> SBinput;
+    cout << endl;
 }
 
 // Main addScientist that gets called from main.
@@ -477,11 +600,11 @@ void Presentation::addScientist()
         }
         else if(input == 3)
         {
-            viewDatabase();
+            viewPersonsDatabase();
         }
         else if(input == 4)
         {
-            searchDatabase();
+            searchPersonDatabase();
         }
         else if(cin.fail())
         {
@@ -535,9 +658,8 @@ void Presentation::addScientist()
 }*/
 
 
-
 // Displays a table with file information.
-void Presentation::displayVector(vector<Persons> p)
+void Presentation::displayPersonsVector(vector<Persons> p)
 {
     cout << endl;
     cout << "Nr.\t" << setw(34) << left << "Name"  << setw(15) << "Gender" << setw(15) << "Born" << setw(15) << "Died" << endl;

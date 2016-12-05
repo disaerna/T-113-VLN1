@@ -44,6 +44,10 @@ void Domain::addPersons(Persons person)
 {
     _data.addPersonsToFile(person);
 }
+void Domain::addComputer(Computers computer)
+{
+    //_data.addComputerToDatabase(computer);
+}
 
 // Gets all persons from file, deletes person that matches input from user then rewrites.
 string Domain::deletePersonFromFile(int numberOfPerson)

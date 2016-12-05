@@ -23,6 +23,7 @@ public:
     Domain();
     // Functions for computers class
     vector<Computers> getComputers();
+    void addComputer (Computers computer);
 
     // Functions for persons class
     void addPersons(Persons person);

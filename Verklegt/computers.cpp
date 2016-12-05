@@ -32,11 +32,11 @@ string Computers::getCompClockSpeed () const {
 }
 
 // set fall
-void Computers::setComputers(string compName, string compYearBuild, string compType, string compBuilt, string compMemory, string compClockSpeed) {
+void Computers::setComputers(string compName, string compYearBuild, string compType, string compBuilt) {
     _compName = compName;
     _compYearBuild = compYearBuild;
     _compType = compType;
     _compBuilt = compBuilt;
-    _compMemory = compMemory;
-    _compClockSpeed = compClockSpeed;
+   // _compMemory = compMemory;
+   // _compClockSpeed = compClockSpeed;
 }
