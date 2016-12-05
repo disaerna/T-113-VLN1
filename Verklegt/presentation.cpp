@@ -73,7 +73,7 @@ void Presentation::newPersonsInFile()
         cout << "Enter year of birth: ";
         cin >> yearOfBirth;
 
-        while (_domain.validBirthYearCheck(yearOfBirth))
+        while (_domain.validYearCheck(yearOfBirth))
         {
             cout << "Wrong input! Please enter 4 digits: ";
             cin >> yearOfBirth;
@@ -82,13 +82,13 @@ void Presentation::newPersonsInFile()
         cout << "Is the person deceased? Y/N: ";
         cin >> answer;
 
-        while(_domain.isDeadCheck(answer) == 2)
+        while(_domain.yesOrNoCheck(answer) == 2)
         {
             cout << "Wrong input! Please enter Y/N" << endl;
             cin >> answer;
         }
 
-        if(_domain.isDeadCheck(answer) == 1)
+        if(_domain.yesOrNoCheck(answer) == 1)
         {
             cout << "Enter year of death: ";
             cin >> yearOfDeath;
@@ -100,7 +100,7 @@ void Presentation::newPersonsInFile()
                 cin >> yearOfDeath;
             }
         }
-        else if(_domain.isDeadCheck(answer) == 0)
+        else if(_domain.yesOrNoCheck(answer) == 0)
         {
             yearOfDeath = '-'; // If not dead
         }
@@ -130,6 +130,123 @@ void Presentation::newPersonsInFile()
     cout << endl;
 }
 
+/*void Presentation::newComputer()
+{
+     //Tilvik af computer klasa
+    int number = 0;
+    string nameC;
+    string yearOfBuild;
+    string type;
+    string didItWork;
+    string currentYear;
+    string userInput;
+    bool valid = false;
+
+    currentYear = _domain.currentYear(); // sets currentYear to the current year
+
+    do
+    {
+        cout << "How many computers would you like to input: ";
+        cin >> userInput;
+
+        for (int i = 0; i < userInput.length(); i++)
+        {
+            if (isdigit(userInput[i]) == false)
+            {
+                cout << "You must enter an integer." << endl;
+                break;
+            }
+            else
+            {
+                valid = true;
+                number = stoi(userInput);
+            }
+        }
+
+    }while(!valid);
+
+    for(int i=0; i<number; i++)
+    {
+        cout << "-------------" << endl;
+        cout << "Computer " << i+1 << " of " << number << endl;
+        cout << "-------------" << endl;
+        cout << "Enter name: ";
+        cin.ignore();
+        getline(cin, name); // tekur fullt nafn
+
+        while (_domain.validNameCheck(nameC))
+        {
+            cout << "Name must only contain alphabet characters A-Z. \n Please enter a valid name." << endl;
+            cin >> name;
+        }
+
+        while (_domain.validYearCheck(yearOfBuild))
+        {
+            cout << "Wrong input! Please enter 4 digits: ";
+            cin >> yearOfBuild;
+        }
+
+        while (_domain.type)
+        {
+            cout << "What type of computer is this?: ";
+            cin >> type;
+        }
+
+        cout << "Was the build successful? Y/N: ";
+        cin >> answer;
+
+        while(_domain.wasBuiltCheck(answer) == 2)
+        {
+            cout << "Wrong input! Please enter Y/N" << endl;
+            cin >> answer;
+        }
+
+        if(_domain.wasBuiltCheck(answer) == 1)
+        {
+            cout << "What year was it built: ";
+            cin >> yearOfBuild;
+
+            while( _domain.validBuiltCheck(yearOfBuild))
+            {
+                cout << "Wrong input! Please enter 4 digits." << endl;
+                cout << "What year was it built: ";
+                cin >> yearOfBuild;
+            }
+        }
+        else if(_domain.wasBuiltCheck(answer) == 0)
+        {
+            yearOfBuild = NULL; // If not built.
+        }
+
+        cout << endl;
+
+        //kalasanafn.setComputer(name, yearOfBuild, type, didItWork);
+        _domain.addComputer(//klasanafn);
+    }
+
+    cout << "Your input has been saved..." << endl;
+    cout << endl;
+
+     //vector<Persons> getPerson;
+     //getPerson = _domain.getPersons();
+    //int databaseSize = getPerson.size();
+    // þurfum að hafa vector af computer klasa
+    //þurfum að búa titl fall inní domain sem sækir tölvur úr database
+    //þurfum að sækja stærð af computer klasa
+
+    cout << "You added these computers to the database: " << endl;
+    cout << endl;
+    for(int i = 0; i < number; i++)
+    {
+        cout << i+1 << ". " << //nafn af vector af computer kalsa[databaseSize-number+i].//get fall í computerklasa() << endl;
+    }
+    cout << endl;
+
+    cout << "Going back to main screen..." << endl;
+    cout << endl;
+}*/
+
+
 // Removes person
 void Presentation::removePerson()
 {
@@ -140,6 +257,7 @@ void Presentation::removePerson()
     cout << "Enter the number of person you wish to delete from the database: ";
     cin >> numberOfPerson;
     cout << endl;
+
     if(cin.fail())
     {
         // clears the buffer
@@ -159,6 +277,39 @@ void Presentation::removePerson()
     displayVector(_domain.getPersons());
     inputToReturn();
 }
+
+// Removes computer
+/*void Presentation::removeComputer()
+{
+    displayVector(_domain.//get fall úr computerkalsa());
+
+    int numberOfComputer = 0;
+
+    cout << "Enter the number of computer you wish to delete from the database: ";
+    cin >> numberOfComputer;
+    cout << endl;
+
+    if(cin.fail())
+    {
+        // clears the buffer
+        cin.clear();
+        cin.ignore(100, '\n');
+    }
+    while(!_domain.validDeleteOfPerson(numberOfComputer))
+    {
+        cout << "Please enter a valid number from 1 - " << _domain.//get fall úr computer klasa().size() << ": ";
+        cin >> numberOfComputer;
+    }
+
+   /* string deletedComputer = _domain.deleteComputerFromDatabase(numberOfComputer);
+    cout << deleteComputer << " has been deleted from the database." << endl;
+    cout << endl;
+
+    displayVector(_domain. get computer fall());
+    inputToReturn();
+}*/
+
+
 
 // View menu
 void Presentation::viewDatabase()
@@ -238,7 +389,7 @@ void Presentation::searchDatabase()
         cout << endl;
         cout << "Going back to main menu..." << endl;
         cout << endl;
-        program();
+        addScientist();
     }
     else
     {
@@ -298,19 +449,19 @@ void Presentation::searchByDeathYear()
     inputToReturn();
 }
 
-// Main program that gets called from main.
-void Presentation::program()
+// Main addScientist that gets called from main.
+void Presentation::addScientist()
 {
     int input = 0;
     do
     {   // Displays a menu for user
 
         cout << "Please enter one of the following commands: " << endl;
-        cout << "1 - Add a new person to the database" << endl;
-        cout << "2 - Delete a person from the database" << endl; // TODO - EXTRA
-        cout << "3 - View the database" << endl;
-        cout << "4 - Search the database" << endl;
-        cout << "5 - Quit the program" << endl;
+        cout << "1 - Add a new scientist to the database" << endl;
+        cout << "2 - Delete a scientist from the database" << endl; // TODO - EXTRA
+        cout << "3 - View the scientist database" << endl;
+        cout << "4 - Search the scientist database" << endl;
+        cout << "5 - Quit" << endl;
         cout << endl;
         cout << "Enter your choice: ";
         cin >> input;
@@ -341,6 +492,50 @@ void Presentation::program()
     }while (input != 5);
 }
 
+/*void Presentation::addComputer()
+{
+    int input = 0;
+    do
+    {   // Displays a menu for user
+
+        cout << "Please enter one of the following commands: " << endl;
+        cout << "1 - Add a new computer to the database" << endl;
+        cout << "2 - Delete a computer from the database" << endl; // TODO - EXTRA
+        cout << "3 - View the computer database" << endl;
+        cout << "4 - Search the computer database" << endl;
+        cout << "5 - Quit" << endl;
+        cout << endl;
+        cout << "Enter your choice: ";
+        cin >> input;
+        cout << endl;
+
+        if(input == 1)
+        {
+            newComputer();
+        }
+        else if(input == 2)
+        {
+            removeComputer();
+        }
+        else if(input == 3)
+        {
+            viewComputerDatabase();
+        }
+        else if(input == 4)
+        {
+            searchComputerDatabase();
+        }
+        else if(cin.fail())
+        {
+            // clears the buffer
+            cin.clear();
+            cin.ignore(100, '\n');
+        }
+    }while (input != 5);
+}*/
+
+
+
 // Displays a table with file information.
 void Presentation::displayVector(vector<Persons> p)
 {
@@ -364,38 +559,38 @@ void Presentation::displayVector(vector<Persons> p)
     }
 }
 
-// Asks user to return to main or quit the program.
+// Asks user to return to main or quit the addScientist.
 void Presentation::inputToReturn()
 {
     string input = "";
-    // the program will loop until user inputs the right command
+    // the addScientist function will loop until user inputs the right command
     do
     {
-        cout << "Enter 'R' to return to main menu or 'Q' to quit the program: ";
+        cout << "Enter 'R' to return to main menu or 'Q' to quit the addScientist: ";
         cin >> input;
     }
     while(input != "r" && input != "R" && input != "q" && input != "Q");
     cout << endl;
 
-    // asking user if he is sure he wants to quit the program
+    // asking user if he is sure he wants to quit the addScientist
     if(input != "r" && input != "R")
     {
         string userQuitting = "";
         while(userQuitting != "N" && userQuitting != "n" && userQuitting != "Y" && userQuitting != "y") {
-            cout << "Are you sure that you want to quit the program?" << endl;
+            cout << "Are you sure that you want to quit the addScientist?" << endl;
             cout << "Y/N: ";
             cin >> userQuitting;
         }
         if(userQuitting != "N" && userQuitting != "n")
         {
-            // exit = quitting the program
+            // exit = quitting the addScientist
             exit(1);
         }
     }
     cout << endl;
 }
 
-// Message that prints out when program begins.
+// Message that prints out when addScientist begins.
 void Presentation::splashMessage()
 {
     cout << endl;

@@ -113,6 +113,7 @@ void Data::addPersonsToFile(Persons person)
     file.close();
 }
 
+
 // Clears the file and add the remaining persons back
 void Data::addPersonsAfterDelete(vector<Persons> afterDeletePersons)
 {
