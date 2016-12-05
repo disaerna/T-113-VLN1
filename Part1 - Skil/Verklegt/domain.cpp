@@ -37,6 +37,7 @@ struct PersonsDODSortingAsc {
 
 Domain::Domain()
 {
+
 }
 
 void Domain::addPersons(Persons person)
@@ -226,7 +227,7 @@ vector<Persons> Domain::searchDeathYear(string input)
     return results;
 }
 
-// Checks if input is all characters, space or -.
+// Checks if input is all characters.
 bool Domain::validNameCheck(string name)
 {
     return (name.find_first_not_of("qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM -") != std::string::npos);

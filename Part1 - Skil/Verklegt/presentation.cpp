@@ -378,16 +378,14 @@ void Presentation::inputToReturn()
     cout << endl;
 
     // asking user if he is sure he wants to quit the program
-    if(input != "r" && input != "R")
-    {
+    if(input != "r" && input != "R") {
         string userQuitting = "";
         while(userQuitting != "N" && userQuitting != "n" && userQuitting != "Y" && userQuitting != "y") {
             cout << "Are you sure that you want to quit the program?" << endl;
             cout << "Y/N: ";
             cin >> userQuitting;
         }
-        if(userQuitting != "N" && userQuitting != "n")
-        {
+        if(userQuitting != "N" && userQuitting != "n") {
             // exit = quitting the program
             exit(1);
         }

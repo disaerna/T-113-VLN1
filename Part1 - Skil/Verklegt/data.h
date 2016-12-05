@@ -7,7 +7,7 @@
 #include <fstream>
 #include <iterator>
 #include <sstream>
-#include <QSqlDatabase>
+
 #include "persons.h"
 
 using namespace std;
@@ -24,7 +24,7 @@ public:
     void addPersonsAfterDelete(vector<Persons> afterDeletePersons);
 
 private:
-    QSqlDatabase m_db; // eintak af database-num
+
 };
 
 #endif // DATA_H

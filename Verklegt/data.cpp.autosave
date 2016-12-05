@@ -16,7 +16,7 @@ Data::Data()
         //Kanna hvort töflurnar eru til, ef ekki þá búa þær til.
         if (! m_db.tables().contains( QLatin1String("people")))
         {
-
+            
         }
         if (! m_db.tables().contains( QLatin1String("computers")))
         {

@@ -37,6 +37,7 @@ struct PersonsDODSortingAsc {
 
 Domain::Domain()
 {
+
 }
 
 void Domain::addPersons(Persons person)

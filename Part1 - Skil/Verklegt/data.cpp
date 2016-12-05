@@ -1,32 +1,12 @@
 #include "data.h"
 #include "persons.h"
-#include <QStringList>
 
 
 using namespace std;
 
 Data::Data()
 {
-    m_db = QSqlDatabase::addDatabase("QSQLITE");
-    m_db.setDatabaseName("people.db");
 
-    if (!m_db.open())
-    {
-
-        //Kanna hvort töflurnar eru til, ef ekki þá búa þær til.
-        if (! m_db.tables().contains( QLatin1String("people")))
-        {
-
-        }
-        if (! m_db.tables().contains( QLatin1String("computers")))
-        {
-
-        }
-    }
-    else
-    {
-
-    }
 }
 
 // Reads from the file.
