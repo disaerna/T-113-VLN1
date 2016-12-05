@@ -36,12 +36,16 @@ public:
     vector<Persons> searchBirthYear(string input);
     vector<Persons> searchDeathYear(string input);
 
+    //Functions for computer
+    bool validDeleteOfComputer(int number);
+    string deleteComputerFromDatabase(int numberOfComputer);
+
     // Functions for error checking input
     bool validNameCheck(string name);
     bool validGenderCheck(string gender);
 
-    bool validBirthYearCheck(string year);
-    int isDeadCheck(string answer); // Three option for this function. Checks if input is digit, yes or no
+    bool validYearCheck(string year);
+    int yesOrNoCheck(string answer); // Three option for this function. Checks if input is digit, yes or no
     bool validDeathYearCheck(string birth, string death);
     bool validDeleteOfPerson(int number);
 

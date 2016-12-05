@@ -60,6 +60,36 @@ string Domain::deletePersonFromFile(int numberOfPerson)
     return deletedPerson;
 }
 
+// Gets all computers from file, deletes computer that matches input from user then rewrites.
+/*string Domain::deleteComputerFromDatabase(int numberOfComputer)
+{
+    /*vector<Persons> getPersonFromFile;
+    getPersonFromFile = _data.readPersonsFromFile();
+
+    string deletedPerson = getPersonFromFile[numberOfPerson-1].getName();
+
+    getPersonFromFile.erase(getPersonFromFile.begin()+numberOfPerson - 1);
+
+    _data.addPersonsAfterDelete(getPersonFromFile);
+
+    return deletedPerson;*/
+
+    /*vector<úr computer klasa> getComputerFromDatabase
+    getComputerFromDatabase = _data.lesa tölvur úr database
+
+    string deleteComputer = getComputerFromDatabase[numberOfComputer-1].get fall();
+
+    getComputerFromDatabase.erase(getComputerFromDatabase.begin()+numberOfComputer - 1);
+
+    _data. fall adda manneskju eftir hún var eydd(getComputerFromDatabase);
+
+    return deleteComputer
+
+    string tempRet;
+    return tempRet;
+
+}*/
+
 
 vector<Persons> Domain::getPersons()
 {
@@ -240,6 +270,8 @@ bool Domain::validNameCheck(string name)
     return (name.find_first_not_of("qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM -") != std::string::npos);
 }
 
+
+
 // Checks if input is M/m or F/f.
 bool Domain::validGenderCheck(string gender)
 {
@@ -272,12 +304,13 @@ string Domain::setGender(string gender)
 }
 
 // Checks if input is all digits.
-bool Domain::validBirthYearCheck(string year)
+bool Domain::validYearCheck(string year)
 {
     return (year.find_first_not_of("0123456789")!= std::string::npos || year.length() != 4);
 }
+
 // Chekcs input for is input a digit, is it Y or N.
-int Domain::isDeadCheck(string answer)
+int Domain::yesOrNoCheck(string answer)
 {
     for(int i=0; i<answer.length(); i++)
     {
@@ -296,6 +329,29 @@ int Domain::isDeadCheck(string answer)
     return 2;
 }
 
+// Chekcs input for is input a digit, is it Y or N.
+/*int Domain::wasBuiltCheck(string answer)
+{
+    for(int i=0; i<answer.length(); i++)
+    {
+        if(isdigit(answer[i]) == false)
+        {
+            if(answer == "Y" || answer == "y")
+            {
+                return 1;
+            }
+            if(answer == "N" || answer == "n")
+            {
+                return 0;
+            }
+        }
+    }
+    return 2;
+}*/
+
+
+
+
 // Checks if input is digits, if 4 digits, if death year is lower than birth year and if current year is lower than death year.
 bool Domain::validDeathYearCheck(string birth, string death)
 {
@@ -306,6 +362,9 @@ bool Domain::validDeathYearCheck(string birth, string death)
     return false;
 }
 
+
+
+
 // Checks input from user for delete function in presentation class.
 bool Domain::validDeleteOfPerson(int number)
 {
@@ -315,3 +374,13 @@ bool Domain::validDeleteOfPerson(int number)
     }
     return false;
 }
+
+// Checks input from user for delete function in presentation class.
+/*bool Domain::validDeleteOfComputer(int number)
+{
+    if(number > 0 && number <= //get fall frá computer klasa().size())
+    {
+        return true;
+    }
+    return false;
+}*/

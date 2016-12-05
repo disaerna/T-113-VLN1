@@ -21,7 +21,7 @@ class Presentation
 public:
 
     Presentation();
-    void program();
+    void addScientist();
     void splashMessage();
 
 private:
@@ -31,7 +31,13 @@ private:
     void viewDatabase(); // View options for the file.
     void searchDatabase(); // Searches the database for input.
 
+    //function for computer
+    void removeComputer(); //Removes Computer from database.
+
     void displayVector(vector<Persons> p); // Displays a table from the file.
+
+
+
 
     // Functions for search options.
     void searchByName();
