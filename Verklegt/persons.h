@@ -20,7 +20,7 @@ public:
     string getGender() const;
     string getYearOfBirth() const;
     string getYearOfDeath() const;
-    void setPersons(string name, string gender, string birth, string death);
+    void setPersons(int id, string name, string gender, string birth, string death);
 
 private:
 
@@ -28,6 +28,7 @@ private:
     string _gender;
     string _birth; // year of birth
     string _death; // year of death
+    int _id;
 };
 
 #endif // PERSONS_H

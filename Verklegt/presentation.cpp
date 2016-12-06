@@ -107,8 +107,9 @@ void Presentation::newPersonsInFile()
 
         cout << endl;
 
-        newPerson.setPersons(name, gender, yearOfBirth, yearOfDeath);
+        newPerson.setPersons(3, name, gender, yearOfBirth, yearOfDeath);
         _domain.addPersons(newPerson);
+
     }
 
     cout << "Your input has been saved..." << endl;
@@ -118,14 +119,14 @@ void Presentation::newPersonsInFile()
     getPerson = _domain.getPersons();
     int databaseSize = getPerson.size();
 
-    cout << "You added these people to the database: " << endl;
+    /*cout << "You added these people to the database: " << endl;
     cout << endl;
     for(int i = 0; i < number; i++)
     {
         cout << i+1 << ". " << getPerson[databaseSize-number+i].getName() << endl;
     }
     cout << endl;
-
+    */
     cout << "Going back to main screen..." << endl;
     cout << endl;
 }
@@ -349,9 +350,18 @@ void Presentation::viewPersonsDatabase()
             cin.ignore(100, '\n');
         }
     }
+    if(viewInput == '1')
+    {
+        vector<Persons> printPersons = _domain.getPersons();
 
-    displayPersonsVector(_domain.sortPersons(viewInput));
-    inputToReturn();
+        displayPersonsVector(printPersons);
+    }
+    else
+    {
+        displayPersonsVector(_domain.sortPersons(viewInput));
+        inputToReturn();
+    }
+
 }
 void Presentation::viewComputersDatabase()
 {
@@ -679,6 +689,7 @@ void Presentation::displayPersonsVector(vector<Persons> p)
         cout << "Operation returned no results!" << endl;
         cout << endl;
     }
+
 }
 
 // Asks user to return to main or quit the addScientist.

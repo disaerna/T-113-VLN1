@@ -27,11 +27,12 @@ string Persons::getYearOfDeath() const
     return _death;
 }
 
-void Persons::setPersons(string name, string gender, string birth, string death)
+void Persons::setPersons(int id, string name, string gender, string birth, string death)
 {
     _name = name;
     _gender = gender;
     _birth = birth;
     _death= death;
+    _id = id;
 }
 

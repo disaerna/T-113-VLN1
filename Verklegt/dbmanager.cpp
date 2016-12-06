@@ -89,12 +89,35 @@ bool DbManager::addPersonToScientists()
 {
 
 }
-
-void DbManager::printAllPerson()
+*/
+vector<Persons> DbManager::printAllPersons()
 {
+    vector<Persons> printPersonsData;
+    qDebug() << "Persons in database:";
+    QSqlQuery query(db);
+    query.exec("SELECT * FROM Scientists");
 
+    //int id = query.record().indexOf("name");
+
+    while (query.next())
+    {
+        int id = query.value("id").toUInt();
+        string name = query.value("name").toString().toStdString();
+        string gender = query.value("gender").toString().toStdString();
+        string YearOfBirth = query.value("YearOfBirth").toString().toStdString();
+        string YearOfDeath = query.value("YearOfDeath").toString().toStdString();
+
+        //cout << "===" << id << name << "\t" << gender << "\t" << YearOfBirth << "\t" << YearOfDeath << "\t" << endl;
+        //printPersonsData.push_back();
+        _persons.setPersons(id, name, gender, YearOfBirth, YearOfDeath);
+
+        printPersonsData.push_back(_persons);
+    }
+
+    return printPersonsData;
 }
 
+/*
 void DbManager::ifExist()
 {
 

@@ -18,10 +18,12 @@ public:
     QSqlError lastError();
     bool addPersonToScientists();
     void setValues(string name, string gender, string birth, string death);
+    vector<Persons> printAllPersons();
 
 private:
     QSqlDatabase db;
     QSqlQuery query;
+
 
     Persons _persons;
 

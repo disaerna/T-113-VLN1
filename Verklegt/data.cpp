@@ -77,7 +77,7 @@ vector<Persons> Data::readPersonsFromFile()
                 {
                     i = 1;
                     Persons p;
-                    p.setPersons(name, gender, birth, death);
+                    p.setPersons(i, name, gender, birth, death);
                     personsFromFile.push_back(p);
                 }
                 else
@@ -112,7 +112,6 @@ void Data::addPersonsToFile(Persons person)
 
     file.close();
 }
-
 
 // Clears the file and add the remaining persons back
 void Data::addPersonsAfterDelete(vector<Persons> afterDeletePersons)

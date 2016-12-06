@@ -8,6 +8,10 @@
 
 using namespace std;
 
+void Domain::printPerson()
+{
+    _DbManager.printAllPersons();
+}
 
 struct PersonsNameSortingDesc {
     bool operator() (Persons i, Persons j) { return (i.getName() < j.getName() ); }
@@ -63,7 +67,7 @@ void Domain::addComputer(Computers computer)
 // Gets all persons from file, deletes person that matches input from user then rewrites.
 string Domain::deletePersonFromFile(int numberOfPerson)
 {
-    vector<Persons> getPersonFromFile;
+    /*vector<Persons> getPersonFromFile;
     getPersonFromFile = _data.readPersonsFromFile();
 
     string deletedPerson = getPersonFromFile[numberOfPerson-1].getName();
@@ -71,6 +75,8 @@ string Domain::deletePersonFromFile(int numberOfPerson)
     getPersonFromFile.erase(getPersonFromFile.begin()+numberOfPerson - 1);
 
     _data.addPersonsAfterDelete(getPersonFromFile);
+    */
+    string deletedPerson;
 
     return deletedPerson;
 }
@@ -108,7 +114,17 @@ string Domain::deletePersonFromFile(int numberOfPerson)
 
 vector<Persons> Domain::getPersons()
 {
+    vector<Persons> allPersons = _DbManager.printAllPersons();
+    /*for(int i=0; i<5; i++) // hættulegt finna aðra lausn ! Keyrir endalaust :|
+    {
+        allPersons.push_back(newPerson)
+
+    }
+    return allPersons;
+
     return _data.readPersonsFromFile();
+    */
+    return allPersons;
 }
 
 vector<Computers> Domain::getComputers()

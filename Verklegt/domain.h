@@ -31,6 +31,7 @@ public:
     string deletePersonFromFile(int numberOfPerson);
     vector<Persons> getPersons();
     vector<Persons> sortPersons(int viewInput);
+    void printPerson();
 
     // Functions for search function
     vector<Persons> searchName(string input);
