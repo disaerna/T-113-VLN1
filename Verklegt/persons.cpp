@@ -34,3 +34,4 @@ void Persons::setPersons(string name, string gender, string birth, string death)
     _birth = birth;
     _death= death;
 }
+

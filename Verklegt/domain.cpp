@@ -1,8 +1,13 @@
 #include "domain.h"
 #include "persons.h"
 #include "computers.h"
+#include "dbmanager.h"
+#include <iostream>
 
 // Structs used for sorting
+
+using namespace std;
+
 
 struct PersonsNameSortingDesc {
     bool operator() (Persons i, Persons j) { return (i.getName() < j.getName() ); }
@@ -42,8 +47,13 @@ Domain::Domain()
 
 void Domain::addPersons(Persons person)
 {
-    _data.addPersonsToFile(person);
-    _DbManager.addPersonToScientists();
+    //_data.addPersonsToFile(person);
+    cout << person.getName() << endl;
+    _DbManager.setValues(person.getName(), person.getGender(), person.getYearOfBirth(), person.getYearOfDeath());
+    if(_DbManager.addPersonToScientists())
+    {
+        cout << "Add person to dbMan success" << endl;
+    }
 }
 void Domain::addComputer(Computers computer)
 {

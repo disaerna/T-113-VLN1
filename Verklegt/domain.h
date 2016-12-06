@@ -58,6 +58,7 @@ private:
 
     Data _data;
     DbManager _DbManager;
+    Persons person;
 
 };
 

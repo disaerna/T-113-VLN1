@@ -1,7 +1,7 @@
 #include "dbmanager.h"
 #include <iostream>
 #include <QSqlQuery>
-
+#include <iostream>
 #include "persons.h"
 #include <QVariant>
 
@@ -9,11 +9,18 @@ DbManager::DbManager()
 {
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName("verkefni2.sqlite"); // spurning hvort það sé nóg að hafa bara nafnið á file-num
-    //db.open();
+    db.open();
 
+    /*QSqlQuery query;
+    query.exec("create table person"
+               "(id integer primary key, "
+               "firstname varchar(20), "
+               "lastname varchar(30), "
+               "age integer)");
+    */
     if (!db.open())
     {
-        qDebug() << db.lastError();
+        // qDebug() << db.lastError();
         qDebug() << "Error: connection with database fail";
     }
     else
@@ -30,37 +37,49 @@ QSqlError DbManager::lastError()
 
 }
 
+void DbManager::setValues(string name, string gender, string birth, string death)
+{
+    _name = name;
+    _gender = gender;
+    _birth = birth;
+    _death = death;
+}
 //QSqlQuery query;
 //query exec(//hvað á að gera?)
 
 
-void DbManager::addPersonToScientists()
+bool DbManager::addPersonToScientists()
 {
-       QSqlQuery query;
-       query.prepare("INSERT INTO Scientists (name, gender, YearOfBirth, YearOfDeath) "
-                     "VALUES (:name, :gender, :YearOfBirth, :YearOfDeath)");
+    bool success = false;
+    int id;
+    QSqlQuery query;
 
-       string name = _persons.getName();
-       string gender = _persons.getGender();
-       string birth = _persons.getYearOfBirth();
-       string death = _persons.getYearOfDeath();
+    query.prepare("INSERT INTO Scientists (name, gender, YearOfBirth, YearOfDeath) "
+                  "VALUES (:name, :gender, :YearOfBirth, :YearOfDeath)");
 
-       QString qName = QString::fromStdString(name);
-       QString qGender = QString::fromStdString(gender);
-       QString qBirth = QString::fromStdString(birth);
-       QString qDeath = QString::fromStdString(death);
-       
-       int id;
+    QString qName = QString::fromStdString(_name);
+    QString qGender = QString::fromStdString(_gender);
+    QString qBirth = QString::fromStdString(_birth);
+    QString qDeath = QString::fromStdString(_death);
 
-       query.bindValue(":id", id);
-       query.bindValue(":name", qName);
-       query.bindValue(":gender", qGender);
-       query.bindValue(":YearOfBirth", qBirth);
-       query.bindValue(":YearOfDeath", qDeath);
+    query.bindValue(":id", id);
+    query.bindValue(":name", qName);
+    query.bindValue(":gender", qGender);
+    query.bindValue(":YearOfBirth", qBirth);
+    query.bindValue(":YearOfDeath", qDeath);
 
-       qDebug() << query.exec() <<endl;
 
-       query.exec();
+    if(query.exec())
+    {
+        success = true;
+    }
+    else
+    {
+        qDebug() << "Error adding scientist: " << query.exec() <<endl;
+    }
+
+
+    return success;
 
 }
 

@@ -28,7 +28,6 @@ private:
     string _gender;
     string _birth; // year of birth
     string _death; // year of death
-
 };
 
 #endif // PERSONS_H

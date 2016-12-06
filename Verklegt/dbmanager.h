@@ -16,13 +16,20 @@ class DbManager
 public:
     DbManager();
     QSqlError lastError();
-    void addPersonToScientists();
+    bool addPersonToScientists();
+    void setValues(string name, string gender, string birth, string death);
 
 private:
     QSqlDatabase db;
     QSqlQuery query;
 
     Persons _persons;
+
+    string _name;
+    string _gender;
+    string _birth;
+    string _death;
+
 };
 
 #endif // DBMANAGER_H
