@@ -43,6 +43,7 @@ Domain::Domain()
 void Domain::addPersons(Persons person)
 {
     _data.addPersonsToFile(person);
+    _DbManager.addPersonToScientists();
 }
 void Domain::addComputer(Computers computer)
 {

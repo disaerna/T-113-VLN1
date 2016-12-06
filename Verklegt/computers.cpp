@@ -23,13 +23,13 @@ string Computers::getCompBuilt () const {
     return _compBuilt;
 }
 
-string Computers::getCompMemory () const {
+/*string Computers::getCompMemory () const {
     return _compMemory;
 }
 
 string Computers::getCompClockSpeed () const {
     return _compClockSpeed;
-}
+}*/
 
 // set fall
 void Computers::setComputers(string compName, string compYearBuild, string compType, string compBuilt) {

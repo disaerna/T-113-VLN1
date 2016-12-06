@@ -8,7 +8,7 @@
 DbManager::DbManager()
 {
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("verkefni2(1).sqlite"); // spurning hvort það sé nóg að hafa bara nafnið á file-num
+    db.setDatabaseName("verkefni2.sqlite"); // spurning hvort það sé nóg að hafa bara nafnið á file-num
     //db.open();
 
     if (!db.open())
@@ -22,7 +22,6 @@ DbManager::DbManager()
 
     }
 }
-
 
 QSqlError DbManager::lastError()
 {
@@ -41,12 +40,23 @@ void DbManager::addPersonToScientists()
        query.prepare("INSERT INTO Scientists (name, gender, YearOfBirth, YearOfDeath) "
                      "VALUES (:name, :gender, :YearOfBirth, :YearOfDeath)");
 
-       string name = "vikak";
-       //query.bindValue(":id", id);
-       query.bindValue(":name", name);
-       //query.bindValue(":gender", _persons.getGender());
-       //query.bindValue(":YearOfBirth", _persons.getYearOfBirth());
-      // query.bindValue(":YearOfDeath", _persons.getYearOfDeath());
+       string name = _persons.getName();
+       string gender = _persons.getGender();
+       string birth = _persons.getYearOfBirth();
+       string death = _persons.getYearOfDeath();
+
+       QString qName = QString::fromStdString(name);
+       QString qGender = QString::fromStdString(gender);
+       QString qBirth = QString::fromStdString(birth);
+       QString qDeath = QString::fromStdString(death);
+       
+       int id;
+
+       query.bindValue(":id", id);
+       query.bindValue(":name", qName);
+       query.bindValue(":gender", qGender);
+       query.bindValue(":YearOfBirth", qBirth);
+       query.bindValue(":YearOfDeath", qDeath);
 
        qDebug() << query.exec() <<endl;
 

@@ -1,4 +1,5 @@
 #include "presentation.h"
+#include "dbmanager.h"
 
 using namespace std;
 

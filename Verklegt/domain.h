@@ -12,6 +12,7 @@
 #include "data.h"
 #include "persons.h"
 #include "computers.h"
+#include "dbmanager.h"
 
 using namespace std;
 
@@ -56,6 +57,7 @@ public:
 private:
 
     Data _data;
+    DbManager _DbManager;
 
 };
 
