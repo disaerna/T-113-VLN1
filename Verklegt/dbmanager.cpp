@@ -261,15 +261,8 @@ vector<Persons> DbManager::printPersonsResults(string searchTerm, int userChoice
 
 
     QString qSearchTerm = QString::fromStdString(searchTerm);
-    qDebug() << "qSearch: " << qSearchTerm <<endl;
-
-    qDebug() << "qSearch2: " << qSearchTerm <<endl;
-    qDebug() << "text1: " << text1 <<endl;
-
 
     query.exec("SELECT * FROM Scientists WHERE " + text1 + " LIKE '%" + qSearchTerm + "%'");
-
-
 
     return readPersons(query);
 }
@@ -284,13 +277,12 @@ vector<Computers> DbManager::printComputersResults(string searchTerm, int userCh
         text1 = "Name";
     }
     else if(userChoice == 2) {
-        text1 = "Year Built";
+        text1 = "YearBuilt";
     }
     else if(userChoice == 3) {
         text1 = "Type";
     }
     else if(userChoice == 4) {
-        text1 = "Built";
     }
 
     QString qSearchTerm = QString::fromStdString(searchTerm);
