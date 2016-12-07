@@ -162,10 +162,85 @@ vector<Persons> Domain::sortPersons(int viewInput)
 
     default:
 
-        cout << "Please enter a valid number!" << endl; // villutékk
+        getPerson = _DbManager.printAllPersons(); // returns the whole database
     }
 
     return getPerson;
+}
+vector<Computers> Domain::sortComputers(int viewInput)
+{
+    vector<Computers> getComputer;
+
+    switch(viewInput)
+    {
+
+    case 1:
+
+        // Views default
+        break;
+
+    case 2:
+
+        // Sort name descending
+        getComputer = _DbManager.sortComputersByValue("Name","desc");
+
+        break;
+
+    case 3:
+
+        // Sort name ascending
+        getComputer = _DbManager.sortComputersByValue("Name","asc");
+
+        break;
+
+    case 4:
+
+        // Sort by when built descending
+        getComputer = _DbManager.sortComputersByValue("YearBuilt","desc");
+
+        break;
+
+    case 5:
+
+        // Sort by when built ascending
+        getComputer = _DbManager.sortComputersByValue("YearBuilt","asc");
+
+        break;
+
+    case 6:
+
+        // Sort by type descending
+        getComputer = _DbManager.sortComputersByValue("Type","desc");
+
+        break;
+
+    case 7:
+
+        // Sort by type ascending
+        getComputer = _DbManager.sortComputersByValue("Type","asc");
+
+        break;
+
+    case 8:
+
+        // Sort by built successful YES
+        getComputer = _DbManager.sortComputersByValue("1","desc");
+
+        break;
+
+    case 9:
+
+        // Sort by built successful NO
+        getComputer = _DbManager.sortComputersByValue("0","asc");
+
+        break;
+
+    default:
+
+        getComputer = _DbManager.printAllComputers(); // returns the whole database
+    }
+
+    return getComputer;
 }
 
 // Gets current year.

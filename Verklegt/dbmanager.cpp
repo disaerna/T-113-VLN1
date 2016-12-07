@@ -181,8 +181,6 @@ vector<Computers> DbManager::readComputers(QSqlQuery query)
     return printComputersData;
 }
 
-
-
 vector<Persons>DbManager::getSinglePerson(int ID)
 {
     QSqlQuery query(db);
@@ -273,16 +271,21 @@ vector<Computers> DbManager::printComputersResults(string searchTerm, int userCh
     QString text1 = "";
 
 
-    if(userChoice == 1) {
+    if(userChoice == 1)
+    {
         text1 = "Name";
     }
-    else if(userChoice == 2) {
+    else if(userChoice == 2)
+    {
         text1 = "YearBuilt";
     }
-    else if(userChoice == 3) {
+    else if(userChoice == 3)
+    {
         text1 = "Type";
     }
-    else if(userChoice == 4) {
+    else if(userChoice == 4)
+    {
+            text1 = "Built";
     }
 
     QString qSearchTerm = QString::fromStdString(searchTerm);

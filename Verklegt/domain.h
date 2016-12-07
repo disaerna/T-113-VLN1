@@ -29,6 +29,8 @@ public:
     bool deleteComputerFromDatabase(int ID);
     int wasBuiltCheck (string answer);
     Computers getSingleComputer(int ID);
+    vector<Computers> sortComputers(int viewInput);
+
 
     // Functions for persons class
     void addPersons(Persons person);

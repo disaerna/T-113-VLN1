@@ -30,7 +30,7 @@ void Presentation::startProgram()
     }
     else if(input == 3)
     {
-        // báðar töflur !
+        connectTables();
     }
 
 }
@@ -81,9 +81,14 @@ void Presentation::newPersonsInFile()
         getline(cin, name); // TODO ! Passa að ekki sé leyfilegt að slá inn tómt nafn !
         while (_domain.validNameCheck(name))
         {
-            cout << "Name must only contain alphabet characters A-Z. \n Please enter a valid name." << endl;
+            cout << "Name must only contain alphabet characters A-Z. \n Please enter a valid name: " << endl;
             cin >> name;
         }
+        if(name == " ")
+        {
+               cout << "\n Name cannot be empty. \n Please enter a valid name: " << endl;
+               cin >> name;
+    }
 
         cout << "Enter gender M/F: ";
         cin >> gender;
@@ -207,7 +212,12 @@ void Presentation::newComputer()
             cout << "Name must only contain alphabet characters A-Z. \n Please enter a valid name." << endl;
             cin >> name;
         }
+        if(name == " ")
+        {
 
+               cout << "\n Name cannot be empty. \n Please enter a valid name: " << endl;
+               cin >> name;
+        }
         cout << "Enter the year the computer was built: ";
         cin >> yearOfBuild;
 
@@ -250,21 +260,9 @@ void Presentation::newComputer()
     cout << "Your input has been saved..." << endl;
     cout << endl;
 
-     //vector<Persons> getPerson;
-     //getPerson = _domain.getPersons();
-    //int databaseSize = getPerson.size();
-    // þurfum að hafa vector af computer klasa
-    //þurfum að búa titl fall inní domain sem sækir tölvur úr database
-    //þurfum að sækja stærð af computer klasa
-
-    /*cout << "You added these computers to the database: " << endl;
+    cout << "You added these computers to the database: " << endl;
+    cout << name << endl;
     cout << endl;
-    for(int i = 0; i < number; i++)
-    {
-        //cout << i+1 <<". " << //nafn af vector af computer kalsa[databaseSize-number+i].//get fall í computerklasa() << endl;
-    }
-    cout << endl;
-    */
 
     cout << "Going back to main screen..." << endl;
     cout << endl;
@@ -404,7 +402,7 @@ void Presentation::viewComputersDatabase()
     cout << "4. When built: Desc." << endl;
     cout << "5. When built: Asc." << endl;
     cout << "6. Type: Desc." << endl;
-    cout << "7. Type: Year: Asc." << endl;
+    cout << "7. Type: Asc." << endl;
     cout << "8. Build successful: Y" << endl;
     cout << "9. Build successful: N" << endl;
     cout << endl;
@@ -438,7 +436,8 @@ void Presentation::viewComputersDatabase()
     }
     else
     {
-        //displayComputersVector(_domain.);
+        displayComputersVector(_domain.sortComputers(viewInput));
+        inputToReturn();
     }
 
     // Kalla á fall í domain sem tekur inn val notenda(tölu) sem kallar á data & birtir einungis þær uppl.
@@ -564,7 +563,7 @@ void Presentation::searchComputersDatabase()
     cout << "1. Search by name" << endl;
     cout << "2. Search by built year" << endl;
     cout << "3. Search by type" << endl;
-    cout << "4. Search by if built was successful" << endl;
+    cout << "4. Search by successful built" << endl;
     cout << "5. Return to main menu" << endl;
     cout << endl;
     cout << "Enter your choice: ";
@@ -618,6 +617,19 @@ void Presentation::searchComputersDatabase()
     {
         cout << "Enter Y/N if computer was built: ";
         cin >> searchTerm;
+        if(_domain.yesOrNoCheck(searchTerm) == 2)
+        {
+                cout << "Wrong input! Please enter Y/N" << endl;
+                cin >> searchTerm;
+        }
+        else if(_domain.yesOrNoCheck(searchTerm) == 1)
+        {
+            searchTerm = "1";
+        }
+        else if(_domain.yesOrNoCheck(searchTerm) == 0)
+        {
+            searchTerm = "0";
+        }
 
         // þarf villutékk til að tékka hvort aðeins var stimplað inn "y eða n"
 
@@ -629,7 +641,7 @@ void Presentation::searchComputersDatabase()
         cout << endl;
         cout << "Going back to main menu..." << endl;
         cout << endl;
-        addScientist();
+        addComputer();
     }
     else
     {
@@ -726,7 +738,45 @@ void Presentation::addComputer()
         }
     }while (input != 5);
 }
+void Presentation::connectTables()
+{
+    int userInput;
+    int computerID;
+    int scientistID;
+    cout << "Please enter one of the following commands: " << endl;
+    cout << "1 - Connect a scientist to a computer" << endl;
+    cout << "2 - Connect a computer to a scientist" << endl;
+    cin >> userInput;
+    while(isdigit(userInput))
+    {
+        cout << "Wrong input! Please enter an integer: ";
+        cin >> userInput;
+    }
+    if(userInput == 1)
+    {
+        displayPersonsVector(_domain.getPersons());
+        cout << "Please enter the ID of the scientist you wish to connect: ";
+        cin >> scientistID;
+        displayComputersVector(_domain.getComputers());
+        cout << "Please enter the ID of the computer you wish to connect " << _domain.getSinglePerson(scientistID).getName() << " to :" << endl;
+        cin >> computerID;
+    }
+    else if(userInput == 2)
+    {
+        displayComputersVector(_domain.getComputers());
+        cout << "Please enter the ID of the computer you wish to connect to a scientist: ";
+        cin >> computerID;
+        displayPersonsVector(_domain.getPersons());
+        cout << "Please enter the ID of the scientist you wish to connect " << _domain.getSingleComputer(computerID).getCompName() << " to :" << endl;
+        cin >> scientistID;
+    }
+    else
+    {
+        cout << "Wrong input! Please enter a valid number: ";
+        cin >> userInput;
+    }
 
+}
 
 // Displays a table with file information.
 void Presentation::displayPersonsVector(vector<Persons> p)
@@ -755,7 +805,7 @@ void Presentation::displayPersonsVector(vector<Persons> p)
 void Presentation::displayComputersVector(vector<Computers> c)
 {
     cout << endl;
-    cout << "Nr.\t" << setw(34) << left << "Name"  << setw(15) << "Year of Building" << setw(15) << "Type" << setw(15) << "Was the built Successful" << endl;
+    cout << "Nr.\t" << setw(34) << left << "Name"  << setw(15) << "Year" << setw(15) << "Type" << setw(15) << "Successful" << endl;
     for(int i=0; i<80; i++)
     {
         cout << "-";

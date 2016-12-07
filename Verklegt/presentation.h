@@ -24,6 +24,7 @@ public:
     void startProgram();
     void addScientist();
     void addComputer();
+    void connectTables();
     void splashMessage();
 
 private:
@@ -33,23 +34,11 @@ private:
     void viewPersonsDatabase(); // View options for the file.
     void searchPersonDatabase(); // Searches the database for input.
 
-    // Functions for search options.
-    void searchByName();
-    void searchByGender();
-    void searchByBirthYear();
-    void searchByDeathYear();
-
     // Function for computer
     void removeComputer(); //Removes Computer from database.
     void searchComputersDatabase();
     void viewComputersDatabase();
     void newComputer();
-
-    // Search functionsn for computer
-    void searchByComputerName();
-    void searchByBuiltYear();
-    void searchByType();
-    void searchBySuccessfulBuilt();
 
     void displayPersonsVector(vector<Persons> p); // Displays a table from the file.
     void displayComputersVector(vector<Computers> c); //Displays a table from the file.
