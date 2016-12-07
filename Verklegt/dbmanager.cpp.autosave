@@ -8,7 +8,7 @@
 DbManager::DbManager()
 {
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("verkefni2.sqlite"); // spurning hvort það sé nóg að hafa bara nafnið á file-num
+    db.setDatabaseName("../verkefni2.sqlite"); // spurning hvort það sé nóg að hafa bara nafnið á file-num
     db.open();
 
     if (!db.open())
@@ -66,6 +66,45 @@ bool DbManager::addPersonToScientists(Persons person)
     }
 
 
+    return success;
+
+}
+
+bool DbManager::newComputer(Computers computer)
+{
+    bool success = false;
+    int id;
+    QSqlQuery query;
+
+    query.prepare("INSERT INTO Computers (name, YearBuilt, Type, Built) "
+                  "VALUES (:name, :YearBuilt, :Type, :Built)");
+
+    QString qCompName = QString::fromStdString(computer.getCompName());
+    QString qCompYearBuilt = QString::fromStdString(computer.getCompYearBuild());
+    QString qCompType = QString::fromStdString(computer.getCompType());
+    QString qCompBuilt= QString::fromStdString(computer.getCompBuilt());
+    //QString qCompMemory = QString::fromStdString(computer.getCompMemory());
+    //QString qCompClockSpeed = QString::fromStdString(computer.getCompClockSpeed());
+
+
+    //cout << person.getName() << "!!!" <<endl;
+
+    query.bindValue(":id", id);
+    query.bindValue(":name", qCompName);
+    query.bindValue(":YearBuilt", qCompYearBuilt);
+    query.bindValue(":Type", qCompType);
+    query.bindValue(":Built:", qCompBuilt);
+    //query.bindValue(":", id);
+
+    if(query.exec())
+    {
+        success = true;
+    }
+    else
+    {
+        qDebug() << "Error adding scientist: " << query.exec() <<endl;
+    }
+    
     return success;
 
 }

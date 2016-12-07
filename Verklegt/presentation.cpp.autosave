@@ -432,8 +432,11 @@ void Presentation::viewComputersDatabase()
     {
         displayComputersVector(_domain.getComputers());
     }
-
-    // Kalla á fall í domain sem tekur inn val notenda(tölu) sem kallar á data & birtir einungis þær uppl.
+    else
+    {
+        // Kalla á fall í domain sem tekur inn val notenda(tölu) sem kallar á data & birtir einungis þær uppl.
+        
+    }
 
     //displayPersonsVector(_domain.sortPersons(viewInput));
     //inputToReturn();

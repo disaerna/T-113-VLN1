@@ -8,7 +8,7 @@
 DbManager::DbManager()
 {
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("verkefni2.sqlite"); // spurning hvort það sé nóg að hafa bara nafnið á file-num
+    db.setDatabaseName("../verkefni2.sqlite"); // spurning hvort það sé nóg að hafa bara nafnið á file-num
     db.open();
 
     if (!db.open())
@@ -19,7 +19,6 @@ DbManager::DbManager()
     else
     {
         qDebug() << "Database: connection ok";
-
     }
 }
 
