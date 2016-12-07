@@ -15,8 +15,10 @@ void Presentation::startProgram()
     cout << "Please select one of the options below: " << endl;
     cout << "1. Scientists" << endl;
     cout << "2. Computers" << endl;
-    cout << "3. Scientists and computers" << endl;
+    cout << "3. Scientists and computers: ";
+
     cin >> input;
+
     if(input == 1)
     {
         addScientist();
@@ -448,6 +450,7 @@ void Presentation::viewComputersDatabase()
 void Presentation::searchPersonDatabase()
 {
     int userChoice = 0;
+    string searchTerm = "";
     cout << "Please enter one of the following commands: " << endl;
     cout << "1. Search by name" << endl;
     cout << "2. Search by gender" << endl;
@@ -457,11 +460,85 @@ void Presentation::searchPersonDatabase()
     cout << endl;
     cout << "Enter your choice: ";
     cin >> userChoice;
+    vector<Persons> searchResults;
 
-    if(userChoice > 0 && userChoice < 5)
+    if(userChoice == 1)
     {
-        // fara í fall í domain, sem tekur við inputi, sendir inní dbManager.
+        cout << "Enter a name to search for: ";
+        cin.ignore();
+        getline(cin, searchTerm); // tekur fullt nafn
+        // villutékk
+        while (_domain.validNameCheck(searchTerm))
+        {
+            cout << "Name must only contain alphabet characters A-Z. \n Please enter a valid name." << endl;
+            cin >> searchTerm;
+        }
 
+        string str = searchTerm;
+        transform(str.begin(), str.end(), str.begin(), ::tolower);
+        searchTerm = str;
+        searchResults = _domain.getPersonsSearch(searchTerm, userChoice);
+        displayPersonsVector(searchResults);
+
+    }
+    else if(userChoice == 2)
+    {
+        cout << "Enter either Male or Female: ";
+        cin >> searchTerm;
+        // villutékk
+        while(!_domain.validGenderCheck(searchTerm))
+        {
+            cout << "Please enter either 'M' for male or 'F' for female: ";
+            cin >> searchTerm;
+        }
+
+        searchTerm = _domain.setGender(searchTerm); // setur M/m = male & F/f = female
+
+
+        searchResults = _domain.getPersonsSearch(searchTerm, userChoice);
+        displayPersonsVector(searchResults);
+    }
+    else if(userChoice == 3)
+    {
+        cout << "Enter Birth year: ";
+        cin >> searchTerm;
+
+        // villutékk
+        while (_domain.validYearCheck(searchTerm))
+        {
+            cout << "Wrong input! Please enter 4 digits: ";
+            cin >> searchTerm;
+        }
+
+        searchResults = _domain.getPersonsSearch(searchTerm, userChoice);
+        displayPersonsVector(searchResults);
+    }
+    else if(userChoice == 4)
+    {
+        cout << "Is the person deceased? Y/N: ";
+        cin >> searchTerm;
+
+        // villutékk
+        while(_domain.yesOrNoCheck(searchTerm) == 2)
+        {
+            cout << "Wrong input! Please enter Y/N" << endl;
+            cin >> searchTerm;
+        }
+
+        if(_domain.yesOrNoCheck(searchTerm) == 1)
+        {
+            cout << "Enter year of death: ";
+            cin >> searchTerm;
+
+        }
+
+        else if(_domain.yesOrNoCheck(searchTerm) == 0)
+        {
+            searchTerm = '-'; // If not dead
+        }
+
+        searchResults = _domain.getPersonsSearch(searchTerm, userChoice);
+        displayPersonsVector(searchResults);
     }
     else if(userChoice == 5)
     {
@@ -481,9 +558,10 @@ void Presentation::searchPersonDatabase()
     }
 }
 
-void Presentation::searchComputerDatabase()
+void Presentation::searchComputersDatabase()
 {
     int userChoice = 0;
+    string searchTerm = "";
     cout << "Please enter one of the following commands: " << endl;
     cout << "1. Search by name" << endl;
     cout << "2. Search by built year" << endl;
@@ -493,10 +571,60 @@ void Presentation::searchComputerDatabase()
     cout << endl;
     cout << "Enter your choice: ";
     cin >> userChoice;
+    vector<Computers> searchResults;
 
-    if(userChoice > 0 && userChoice < 5)
+    if(userChoice == 1)
     {
-        // fall í domain sem tekur við inntaki frá notenda og fer inní dbManager
+        cout << "Enter name: ";
+        cin.ignore();
+        getline(cin, searchTerm); // tekur fullt nafn
+
+        string str = searchTerm;
+        transform(str.begin(), str.end(), str.begin(), ::tolower);
+        searchTerm = str;
+
+        searchResults = _domain.getComputersSearch(searchTerm, userChoice);
+        displayComputersVector(searchResults);
+
+    }
+    else if(userChoice == 2)
+    {
+        cout << "Enter built year: ";
+        cin >> searchTerm;
+
+        // villutékk
+        while (_domain.validYearCheck(searchTerm))
+        {
+            cout << "Wrong input! Please enter 4 digits: ";
+            cin >> searchTerm;
+        }
+
+        searchResults = _domain.getComputersSearch(searchTerm, userChoice);
+        displayComputersVector(searchResults);
+    }
+    else if(userChoice == 3)
+    {
+        cout << "Enter computer type: ";
+        cin >> searchTerm;
+
+        // þarf villutékk til að hægt sé aðeins að stimpla inn ákveðnar gerðir
+
+        string str = searchTerm;
+        transform(str.begin(), str.end(), str.begin(), ::tolower);
+        searchTerm = str;
+
+        searchResults = _domain.getComputersSearch(searchTerm, userChoice);
+        displayComputersVector(searchResults);
+    }
+    else if(userChoice == 4)
+    {
+        cout << "Enter Y/N if computer was built: ";
+        cin >> searchTerm;
+
+        // þarf villutékk til að tékka hvort aðeins var stimplað inn "y eða n"
+
+        searchResults = _domain.getComputersSearch(searchTerm, userChoice);
+        displayComputersVector(searchResults);
     }
     else if(userChoice == 5)
     {
@@ -512,7 +640,7 @@ void Presentation::searchComputerDatabase()
         cin.ignore(100, '\n');
         cout << "Wrong input!" << endl;
         cout << endl;
-        searchComputerDatabase();
+        searchPersonDatabase();
     }
 }
 
@@ -590,7 +718,7 @@ void Presentation::addComputer()
         }
         else if(input == 4)
         {
-            searchComputerDatabase();
+            searchComputersDatabase();
         }
         else if(cin.fail())
         {

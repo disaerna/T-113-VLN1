@@ -41,7 +41,7 @@ private:
 
     // Function for computer
     void removeComputer(); //Removes Computer from database.
-    void searchComputerDatabase();
+    void searchComputersDatabase();
     void viewComputersDatabase();
     void newComputer();
 

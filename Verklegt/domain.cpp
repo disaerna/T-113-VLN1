@@ -82,6 +82,16 @@ vector<Computers> Domain::getComputers()
     return _DbManager.printAllComputers();
 }
 
+vector<Persons> Domain::getPersonsSearch(string searchTerm, int userChoice)
+{
+    return _DbManager.printPersonsResults(searchTerm, userChoice);
+}
+
+vector<Computers> Domain::getComputersSearch(string searchTerm, int userChoice)
+{
+    return _DbManager.printComputersResults(searchTerm, userChoice);
+}
+
 vector<Persons> Domain::sortPersons(int viewInput)
 {
     vector<Persons> getPerson;

@@ -57,6 +57,9 @@ public:
     string setGender(string gender); // Sets input from user M/F to Male/Female
     string currentYear(); // Gets current year
 
+
+    vector<Persons> getPersonsSearch(string searchTerm, int userChoice);
+    vector<Computers> getComputersSearch(string searchTerm, int userChoice);
 private:
 
     Data _data;
