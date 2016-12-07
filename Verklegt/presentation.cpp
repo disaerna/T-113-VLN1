@@ -210,41 +210,41 @@ void Presentation::newComputer()
             cin >> yearOfBuild;
         }
 
-        /*while (_domain.type)
-        {
+
             cout << "What type of computer is this?: ";
             cin >> type;
-        }*/
+
 
         cout << "Was the build successful? Y/N: ";
         cin >> answer;
 
-        /*while(_domain.wasBuiltCheck(answer) == 2)
+        while(_domain.wasBuiltCheck(answer) == 2)
         {
             cout << "Wrong input! Please enter Y/N" << endl;
             cin >> answer;
-        }*/
+        }
 
-        /*if(_domain.wasBuiltCheck(answer) == 1)
+        if(_domain.wasBuiltCheck(answer) == 1)
         {
             cout << "What year was it built: ";
             cin >> yearOfBuild;
 
-            while( _domain.validBuiltCheck(yearOfBuild))
+            /*while( _domain.validBuiltCheck(yearOfBuild))
             {
                 cout << "Wrong input! Please enter 4 digits." << endl;
                 cout << "What year was it built: ";
                 cin >> yearOfBuild;
-            }
-        }*/
-        /*else if(_domain.wasBuiltCheck(answer) == 0)
+            }*/
+        }
+
+        else if(_domain.wasBuiltCheck(answer) == 0)
         {
-            yearOfBuild = NULL; // If not built.
-        }*/
+            yearOfBuild = '-'; // If not built.
+        }
 
         cout << endl;
 
-        //newComp.setComputers(name, yearOfBuild, type, didItWork);
+        newComp.setComputers(name, yearOfBuild, type, didItWork);
         _domain.addComputer(newComp);
     }
 
@@ -608,6 +608,29 @@ void Presentation::displayPersonsVector(vector<Persons> p)
         for(size_t i=0; i< p.size(); i++)
         {
             cout << p[i].getID() << ".\t" << setw(34) << left << p[i].getName() << setw(15) << p[i].getGender() << setw(15) << p[i].getYearOfBirth() << setw(15) << p[i].getYearOfDeath()<< endl;
+        }
+        cout << endl;
+    }else{
+        cout << "Operation returned no results!" << endl;
+        cout << endl;
+    }
+
+}
+
+void Presentation::displayComputersVector(vector<Computers> c)
+{
+    cout << endl;
+    cout << "Nr.\t" << setw(34) << left << "Name"  << setw(15) << "Year of Building" << setw(15) << "Type" << setw(15) << "Was the built Successful" << endl;
+    for(int i=0; i<80; i++)
+    {
+        cout << "-";
+    }
+    cout << endl;
+    if(c.size() > 0){
+
+        for(size_t i=0; i< c.size(); i++)
+        {
+            cout << c[i].getCompID() << ".\t" << setw(34) << left << c[i].getCompName() << setw(15) << c[i].getCompYearBuild() << setw(15) << c[i].getCompType() << setw(15) << c[i].getCompBuilt()<< endl;
         }
         cout << endl;
     }else{

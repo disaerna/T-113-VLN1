@@ -246,7 +246,7 @@ int Domain::yesOrNoCheck(string answer)
 }
 
 // Chekcs input for is input a digit, is it Y or N.
-/*int Domain::wasBuiltCheck(string answer)
+int Domain::wasBuiltCheck(string answer)
 {
     for(int i=0; i<answer.length(); i++)
     {
@@ -263,7 +263,7 @@ int Domain::yesOrNoCheck(string answer)
         }
     }
     return 2;
-}*/
+}
 
 // Checks if input is digits, if 4 digits, if death year is lower than birth year and if current year is lower than death year.
 bool Domain::validDeathYearCheck(string birth, string death)

@@ -52,6 +52,7 @@ private:
     void searchBySuccessfulBuilt();
 
     void displayPersonsVector(vector<Persons> p); // Displays a table from the file.
+    void displayComputersVector(vector<Computers> c); //Displays a table from the file.
 
     // Function that asks the user to return or quit.
     void inputToReturn();

@@ -15,8 +15,10 @@ public:
     string getCompYearBuild() const;
     string getCompType() const;
     string getCompBuilt() const;
-    //string getCompMemory() const;
-    //string getCompClockSpeed() const;
+    string getCompMemory() const;
+    string getCompClockSpeed() const;
+    int getCompID() const;
+
 
     // set fall
     void setComputers(string compName, string compYearBuild, string compType, string compBuilt);
@@ -27,6 +29,7 @@ private:
     string _compBuilt; // was the computer built?
     //string _compMemory; // size of memory on computer
     //string _compClockSpeed; // clock speed of computer
+    int _CompID;
 };
 
 #endif // COMPUTERS_H

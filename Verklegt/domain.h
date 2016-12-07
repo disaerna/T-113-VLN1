@@ -43,6 +43,7 @@ public:
     //Functions for computer
     bool validDeleteOfComputer(int number);
     string deleteComputerFromDatabase(int numberOfComputer);
+    int wasBuiltCheck (string answer);
 
     // Functions for error checking input
     bool validNameCheck(string name);

@@ -2,6 +2,7 @@
 #define DBMANAGER_H
 
 #include "persons.h"
+#include "computers.h"+
 #include <QtSql>
 #include <QSqlDatabase>
 #include <QVariant>
@@ -22,6 +23,10 @@ public:
     vector<Persons> sortScientistsByValue(string value, string order);
     bool removeScientist(int ID);
     vector<Persons> getSinglePerson(int ID);
+
+    //Computer Functions
+    bool newComputer (Computers computer);
+
 
 private:
     QSqlDatabase db;

@@ -36,6 +36,10 @@ string Computers::getCompClockSpeed () const
 {
     return _compClockSpeed;
 }*/
+int Computers::getCompID () const
+{
+    return _CompID;
+}
 
 // set fall
 void Computers::setComputers(string compName, string compYearBuild, string compType, string compBuilt)

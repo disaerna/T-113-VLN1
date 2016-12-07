@@ -71,6 +71,46 @@ bool DbManager::addPersonToScientists(Persons person)
 
 }
 
+bool DbManager::newComputer(Computers computer)
+{
+    bool success = false;
+    int id;
+    QSqlQuery query;
+
+    query.prepare("INSERT INTO Computers (name, YearBuilt, Type, Built) "
+                  "VALUES (:name, :YearBuilt, :Type, :Built)");
+
+    QString qCompName = QString::fromStdString(computer.getCompName());
+    QString qCompYearBuilt = QString::fromStdString(computer.getCompYearBuild());
+    QString qCompType = QString::fromStdString(computer.getCompType());
+    QString qCompBuilt= QString::fromStdString(computer.getCompBuilt());
+    //QString qCompMemory = QString::fromStdString(computer.getCompMemory());
+    //QString qCompClockSpeed = QString::fromStdString(computer.getCompClockSpeed());
+
+
+    //cout << person.getName() << "!!!" <<endl;
+
+    query.bindValue(":id", id);
+    query.bindValue(":Computer name", qCompName);
+    query.bindValue(":Year of building", qCompYearBuilt);
+    query.bindValue(":Type", qCompType);
+    query.bindValue(":Was is the build succsessfull", qCompBuilt);
+    //query.bindValue(":", id);
+
+    if(query.exec())
+    {
+        success = true;
+    }
+    else
+    {
+        qDebug() << "Error adding scientist: " << query.exec() <<endl;
+    }
+
+
+    return success;
+
+}
+
 bool DbManager::removeScientist(int ID)
 {
     QSqlQuery query(db);
