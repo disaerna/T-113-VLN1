@@ -21,7 +21,7 @@ class Presentation
 public:
 
     Presentation();
-
+    void startProgram();
     void addScientist();
     void addComputer();
     void splashMessage();

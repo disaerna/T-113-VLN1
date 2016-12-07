@@ -23,7 +23,6 @@ public:
     bool removeScientist(int ID);
     vector<Persons> getSinglePerson(int ID);
 
-
 private:
     QSqlDatabase db;
     QSqlQuery query;

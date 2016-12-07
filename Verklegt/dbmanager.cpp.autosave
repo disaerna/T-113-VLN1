@@ -19,7 +19,6 @@ DbManager::DbManager()
     else
     {
         qDebug() << "Database: connection ok";
-
     }
 }
 

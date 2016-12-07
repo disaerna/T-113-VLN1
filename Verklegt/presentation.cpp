@@ -8,6 +8,29 @@ Presentation::Presentation()
 
 }
 
+void Presentation::startProgram()
+{
+    int input;
+    cout << "Hello!" << endl;
+    cout << "Please select one of the options below: " << endl;
+    cout << "1. Scientists" << endl;
+    cout << "2. Computers" << endl;
+    cout << "3. Scientists and computers" << endl;
+    cin >> input;
+    if(input == 1)
+    {
+        addScientist();
+    }
+    else if(input == 2)
+    {
+        addComputer();
+    }
+    else if(input == 3)
+    {
+        // báðar töflur !
+    }
+
+}
 // Adds person to file.
 void Presentation::newPersonsInFile()
 {

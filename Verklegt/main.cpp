@@ -8,7 +8,7 @@ int main()
     Presentation pres;
 
     pres.splashMessage(); // Displays computer scientists message.
-    pres.addScientist(); // Runs program.
+    pres.startProgram(); // Runs program.
 
     return 0;
 }
