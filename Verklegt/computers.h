@@ -14,22 +14,22 @@ public:
     string getCompName() const;
     string getCompYearBuild() const;
     string getCompType() const;
-    string getCompBuilt() const;
+    bool getCompBuilt() const;
     string getCompMemory() const;
     string getCompClockSpeed() const;
     int getCompID() const;
 
 
     // set fall
-    void setComputers(string compName, string compYearBuild, string compType, string compBuilt);
+    void setComputers(int compID, string compName, string compYearBuild, string compType, bool compBuilt);
 private:
     string _compName; // name of computer
     string _compYearBuild; // year computer was built
     string _compType; // type of computer (mech, electronic etc.)
-    string _compBuilt; // was the computer built?
+    bool _compBuilt; // was the computer built?
     //string _compMemory; // size of memory on computer
     //string _compClockSpeed; // clock speed of computer
-    int _CompID;
+    int _compID;
 };
 
 #endif // COMPUTERS_H

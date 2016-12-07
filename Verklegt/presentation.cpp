@@ -164,6 +164,7 @@ void Presentation::newComputer()
     string currentYear;
     string userInput;
     string answer;
+    bool built = false;
     bool valid = false;
 
     currentYear = _domain.currentYear(); // sets currentYear to the current year
@@ -229,17 +230,17 @@ void Presentation::newComputer()
 
         if(_domain.yesOrNoCheck(answer) == 1)
         {
-            answer = "Yes";
+            built = true;
         }
 
         else if(_domain.yesOrNoCheck(answer) == 0)
         {
-            answer = "No";
+            built = false;
         }
 
         cout << endl;
 
-        newComp.setComputers(name, yearOfBuild, type, didItWork);
+        newComp.setComputers(3, name, yearOfBuild, type, built); // tjekka betur á ID inntaki
         _domain.addComputer(newComp);
     }
 
@@ -307,12 +308,12 @@ void Presentation::removePerson()
 // Removes computer
 void Presentation::removeComputer()
 {
-    //displayPersonsVector(_domain.//get fall úr computerkalsa());
+    displayComputersVector(_domain.getComputers());
 
-    int numberOfComputer = 0;
+    int ID = 0;
 
-    cout << "Enter the number of computer you wish to delete from the database: ";
-    cin >> numberOfComputer;
+    cout << "Enter the ID of the computer you wish to delete from the database: ";
+    cin >> ID;
     cout << endl;
 
     if(cin.fail())
@@ -321,18 +322,22 @@ void Presentation::removeComputer()
         cin.clear();
         cin.ignore(100, '\n');
     }
-    /*while(!_domain.validDeleteOfPerson(numberOfComputer))
-    {
-        cout << "Please enter a valid number from 1 - " << _domain.//get fall úr computer klasa().size() << ": ";
-        cin >> numberOfComputer;
-    }*/
 
-   /* string deletedComputer = _domain.deleteComputerFromDatabase(numberOfComputer);
-    cout << deleteComputer << " has been deleted from the database." << endl;
+   string deletedComputer = _domain.getSingleComputer(ID).getCompName();
+   bool success = _domain.deleteComputerFromDatabase(ID);
+   while(!success)
+   {
+       cout << "Please enter a valid ID: ";
+       cin >> ID;
+
+       deletedComputer = _domain.getSingleComputer(ID).getCompName();
+       success = _domain.deleteComputerFromDatabase(ID);
+   }
+    cout << deletedComputer << " has been deleted from the database." << endl;
     cout << endl;
 
-    displayPersonsVector(_domain. get computer fall());
-    inputToReturn();*/
+    displayComputersVector(_domain.getComputers());
+    inputToReturn();
 }
 
 
@@ -423,6 +428,14 @@ void Presentation::viewComputersDatabase()
             cin.clear();
             cin.ignore(100, '\n');
         }
+    }
+    if(viewInput == 1)
+    {
+        displayComputersVector(_domain.getComputers());
+    }
+    else
+    {
+        //displayComputersVector(_domain.);
     }
 
     // Kalla á fall í domain sem tekur inn val notenda(tölu) sem kallar á data & birtir einungis þær uppl.

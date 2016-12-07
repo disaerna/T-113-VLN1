@@ -22,7 +22,7 @@ string Computers::getCompType () const
     return _compType;
 }
 
-string Computers::getCompBuilt () const
+bool Computers::getCompBuilt() const
 {
     return _compBuilt;
 }
@@ -38,16 +38,17 @@ string Computers::getCompClockSpeed () const
 }*/
 int Computers::getCompID () const
 {
-    return _CompID;
+    return _compID;
 }
 
 // set fall
-void Computers::setComputers(string compName, string compYearBuild, string compType, string compBuilt)
+void Computers::setComputers(int compID, string compName, string compYearBuild, string compType, bool compBuilt)
 {
     _compName = compName;
     _compYearBuild = compYearBuild;
     _compType = compType;
     _compBuilt = compBuilt;
+    _compID = compID;
    // _compMemory = compMemory;
    // _compClockSpeed = compClockSpeed;
 }

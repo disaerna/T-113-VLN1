@@ -19,7 +19,6 @@ DbManager::DbManager()
     else
     {
         qDebug() << "Database: connection ok";
-
     }
 }
 
@@ -33,8 +32,7 @@ QSqlError DbManager::lastError()
 //QSqlQuery query;
 //query exec(//hvað á að gera?)
 
-
-bool DbManager::addPersonToScientists(Persons person)
+bool DbManager::addPerson(Persons person)
 {
     bool success = false;
     int id;
@@ -71,7 +69,7 @@ bool DbManager::addPersonToScientists(Persons person)
 
 }
 
-bool DbManager::newComputer(Computers computer)
+bool DbManager::addComputer(Computers computer)
 {
     bool success = false;
     int id;
@@ -83,7 +81,7 @@ bool DbManager::newComputer(Computers computer)
     QString qCompName = QString::fromStdString(computer.getCompName());
     QString qCompYearBuilt = QString::fromStdString(computer.getCompYearBuild());
     QString qCompType = QString::fromStdString(computer.getCompType());
-    QString qCompBuilt= QString::fromStdString(computer.getCompBuilt());
+    QString qCompBuilt= QString::number(computer.getCompBuilt()); // number fyrir bool breytu
     //QString qCompMemory = QString::fromStdString(computer.getCompMemory());
     //QString qCompClockSpeed = QString::fromStdString(computer.getCompClockSpeed());
 
@@ -91,10 +89,10 @@ bool DbManager::newComputer(Computers computer)
     //cout << person.getName() << "!!!" <<endl;
 
     query.bindValue(":id", id);
-    query.bindValue(":Computer name", qCompName);
-    query.bindValue(":Year of building", qCompYearBuilt);
+    query.bindValue(":name", qCompName);
+    query.bindValue(":YearBuilt", qCompYearBuilt);
     query.bindValue(":Type", qCompType);
-    query.bindValue(":Was is the build succsessfull", qCompBuilt);
+    query.bindValue(":Built", qCompBuilt);
     //query.bindValue(":", id);
 
     if(query.exec())
@@ -105,8 +103,6 @@ bool DbManager::newComputer(Computers computer)
     {
         qDebug() << "Error adding scientist: " << query.exec() <<endl;
     }
-
-
     return success;
 
 }
@@ -125,7 +121,20 @@ bool DbManager::removeScientist(int ID)
        return false;
     }
 }
-
+bool DbManager::removeComputer(int ID)
+{
+    QSqlQuery query(db);
+    query.prepare("DELETE FROM Computers WHERE ID = :ID");
+    query.bindValue(":ID", ID);
+    if(query.exec())
+    {
+       return true;
+    }
+    else
+    {
+       return false;
+    }
+}
 
 vector<Persons> DbManager::readPersons(QSqlQuery query)
 {
@@ -149,6 +158,28 @@ vector<Persons> DbManager::readPersons(QSqlQuery query)
 
     return printPersonsData;
 }
+vector<Computers> DbManager::readComputers(QSqlQuery query)
+{
+    Computers _computer;
+    vector<Computers> printComputersData;
+
+    while (query.next())
+    {
+        int id = query.value("id").toUInt();
+        string name = query.value("name").toString().toStdString();
+        string yearBuilt = query.value("yearBuilt").toString().toStdString();
+        string type = query.value("type").toString().toStdString();
+        bool built  = query.value("built").toBool();
+
+        //cout << "===" << id << name << "\t" << gender << "\t" << YearOfBirth << "\t" << YearOfDeath << "\t" << endl;
+        //printPersonsData.push_back();
+        _computer.setComputers(id, name, yearBuilt, type, built);
+
+        printComputersData.push_back(_computer);
+    }
+
+    return printComputersData;
+}
 
 vector<Persons>DbManager::getSinglePerson(int ID)
 {
@@ -167,6 +198,23 @@ vector<Persons>DbManager::getSinglePerson(int ID)
 
     return person;
 }
+vector<Computers>DbManager::getSingleComputer(int ID)
+{
+    QSqlQuery query(db);
+    query.prepare("SELECT * FROM Computers WHERE ID = :ID");
+    query.bindValue(":ID", ID);
+    if(query.exec())
+    {
+
+    }
+    else
+    {
+        qDebug() << db.lastError() << " in function getSingleComputer" << endl;
+    }
+    vector<Computers> computer = readComputers(query);
+
+    return computer;
+}
 
 vector<Persons> DbManager::printAllPersons()
 {
@@ -174,6 +222,13 @@ vector<Persons> DbManager::printAllPersons()
     query.exec("SELECT * FROM Scientists");
 
     return readPersons(query);
+}
+vector<Computers> DbManager::printAllComputers()
+{
+    QSqlQuery query(db);
+    query.exec("SELECT * FROM Computers");
+
+    return readComputers(query);
 }
 vector<Persons> DbManager::sortScientistsByValue(string value, string order)
 {
@@ -191,6 +246,23 @@ vector<Persons> DbManager::sortScientistsByValue(string value, string order)
         qDebug() << db.lastError() << endl;
     }
     return readPersons(query);
+}
+vector<Computers> DbManager::sortComputersByValue(string value, string order)
+{
+    QSqlQuery query(db);
+
+    QString qValue = QString::fromStdString(value);
+    QString qOrder = QString::fromStdString(order);
+
+    if(query.exec("SELECT * FROM Computers ORDER BY " + qValue + " " + qOrder))
+    {
+       cout << "Works!" << endl;
+    }
+    else
+    {
+        qDebug() << db.lastError() << endl;
+    }
+    return readComputers(query);
 }
 
 /*

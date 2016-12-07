@@ -2,7 +2,7 @@
 #define DBMANAGER_H
 
 #include "persons.h"
-#include "computers.h"+
+#include "computers.h"
 #include <QtSql>
 #include <QSqlDatabase>
 #include <QVariant>
@@ -17,7 +17,9 @@ class DbManager
 public:
     DbManager();
     QSqlError lastError();
-    bool addPersonToScientists(Persons person);
+
+    //Person Functions
+    bool addPerson(Persons person);
     vector<Persons> printAllPersons();
     vector<Persons> readPersons(QSqlQuery query);
     vector<Persons> sortScientistsByValue(string value, string order);
@@ -25,8 +27,12 @@ public:
     vector<Persons> getSinglePerson(int ID);
 
     //Computer Functions
-    bool newComputer (Computers computer);
-
+    bool addComputer(Computers computer);
+    vector<Computers> printAllComputers();
+    vector<Computers> readComputers(QSqlQuery query);
+    vector<Computers> sortComputersByValue(string value, string order);
+    bool removeComputer(int ID);
+    vector<Computers> getSingleComputer(int ID);
 
 private:
     QSqlDatabase db;

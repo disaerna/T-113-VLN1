@@ -25,13 +25,16 @@ public:
     // Functions for computers class
     vector<Computers> getComputers();
     void addComputer (Computers computer);
+    bool validDeleteOfComputer(int number);
+    bool deleteComputerFromDatabase(int ID);
+    int wasBuiltCheck (string answer);
+    Computers getSingleComputer(int ID);
 
     // Functions for persons class
     void addPersons(Persons person);
     bool deletePersonFromFile(int ID);
     vector<Persons> getPersons();
     vector<Persons> sortPersons(int viewInput);
-    void printPerson();
     Persons getSinglePerson(int ID);
 
     // Functions for search function
@@ -41,9 +44,7 @@ public:
     vector<Persons> searchDeathYear(string input);
 
     //Functions for computer
-    bool validDeleteOfComputer(int number);
-    string deleteComputerFromDatabase(int numberOfComputer);
-    int wasBuiltCheck (string answer);
+
 
     // Functions for error checking input
     bool validNameCheck(string name);

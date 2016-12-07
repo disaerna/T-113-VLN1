@@ -8,11 +8,6 @@
 
 using namespace std;
 
-void Domain::printPerson()
-{
-    _DbManager.printAllPersons();
-}
-
 Domain::Domain()
 {
 }
@@ -21,7 +16,7 @@ void Domain::addPersons(Persons person)
 {
     //_data.addPersonsToFile(person);
     cout << person.getName() << endl;
-    if(_DbManager.addPersonToScientists(person))
+    if(_DbManager.addPerson(person))
     {
         cout << "Add person to dbMan success" << endl;
     }
@@ -29,6 +24,10 @@ void Domain::addPersons(Persons person)
 void Domain::addComputer(Computers computer)
 {
     //_data.addComputerToDatabase(computer);
+    if(_DbManager.addComputer(computer))
+    {
+
+    }
 }
 
 // Gets all persons from file, deletes person that matches input from user then rewrites.
@@ -39,35 +38,10 @@ bool Domain::deletePersonFromFile(int ID)
 }
 
 // Gets all computers from file, deletes computer that matches input from user then rewrites.
-/*string Domain::deleteComputerFromDatabase(int numberOfComputer)
+bool Domain::deleteComputerFromDatabase(int ID)
 {
-    /*vector<Persons> getPersonFromFile;
-    getPersonFromFile = _data.readPersonsFromFile();
-
-    string deletedPerson = getPersonFromFile[numberOfPerson-1].getName();
-
-    getPersonFromFile.erase(getPersonFromFile.begin()+numberOfPerson - 1);
-
-    _data.addPersonsAfterDelete(getPersonFromFile);
-
-    return deletedPerson;*/
-
-/*vector<úr computer klasa> getComputerFromDatabase
-    getComputerFromDatabase = _data.lesa tölvur úr database
-
-    string deleteComputer = getComputerFromDatabase[numberOfComputer-1].get fall();
-
-    getComputerFromDatabase.erase(getComputerFromDatabase.begin()+numberOfComputer - 1);
-
-    _data. fall adda manneskju eftir hún var eydd(getComputerFromDatabase);
-
-    return deleteComputer
-
-    string tempRet;
-    return tempRet;
-
-}*/
-
+    return _DbManager.removeComputer(ID);
+}
 
 vector<Persons> Domain::getPersons()
 {
@@ -88,12 +62,24 @@ Persons Domain::getSinglePerson(int ID)
         return fakePerson;
     }
 }
+Computers Domain::getSingleComputer(int ID)
+{
+    vector<Computers> computer = _DbManager.getSingleComputer(ID);
+    if(computer.size() > 0)
+    {
+        return computer[0];
+    }
+    else
+    {
+        Computers fakeComputer;
+        fakeComputer.setComputers(0, " ", " ", " ", 0);
+        return fakeComputer;
+    }
+}
 
 vector<Computers> Domain::getComputers()
 {
-    // return _data.readComputersFromDatabase();
-    vector<Computers> tempRet;
-    return tempRet;
+    return _DbManager.printAllComputers();
 }
 
 vector<Persons> Domain::sortPersons(int viewInput)
@@ -246,6 +232,7 @@ int Domain::yesOrNoCheck(string answer)
     }
     return 2;
 }
+
 
 // Checks if input is digits, if 4 digits, if death year is lower than birth year and if current year is lower than death year.
 bool Domain::validDeathYearCheck(string birth, string death)
