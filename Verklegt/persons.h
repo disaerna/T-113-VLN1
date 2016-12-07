@@ -20,6 +20,7 @@ public:
     string getGender() const;
     string getYearOfBirth() const;
     string getYearOfDeath() const;
+    int getID() const;
     void setPersons(int id, string name, string gender, string birth, string death);
 
 private:

@@ -28,10 +28,11 @@ public:
 
     // Functions for persons class
     void addPersons(Persons person);
-    string deletePersonFromFile(int numberOfPerson);
+    bool deletePersonFromFile(int ID);
     vector<Persons> getPersons();
     vector<Persons> sortPersons(int viewInput);
     void printPerson();
+    Persons getSinglePerson(int ID);
 
     // Functions for search function
     vector<Persons> searchName(string input);
@@ -50,7 +51,6 @@ public:
     bool validYearCheck(string year);
     int yesOrNoCheck(string answer); // Three option for this function. Checks if input is digit, yes or no
     bool validDeathYearCheck(string birth, string death);
-    bool validDeleteOfPerson(int number);
 
     string setGender(string gender); // Sets input from user M/F to Male/Female
     string currentYear(); // Gets current year

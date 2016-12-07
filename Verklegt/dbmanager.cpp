@@ -11,13 +11,6 @@ DbManager::DbManager()
     db.setDatabaseName("verkefni2.sqlite"); // spurning hvort það sé nóg að hafa bara nafnið á file-num
     db.open();
 
-    /*QSqlQuery query;
-    query.exec("create table person"
-               "(id integer primary key, "
-               "firstname varchar(20), "
-               "lastname varchar(30), "
-               "age integer)");
-    */
     if (!db.open())
     {
         // qDebug() << db.lastError();
@@ -37,18 +30,11 @@ QSqlError DbManager::lastError()
 
 }
 
-void DbManager::setValues(string name, string gender, string birth, string death)
-{
-    _name = name;
-    _gender = gender;
-    _birth = birth;
-    _death = death;
-}
 //QSqlQuery query;
 //query exec(//hvað á að gera?)
 
 
-bool DbManager::addPersonToScientists()
+bool DbManager::addPersonToScientists(Persons person)
 {
     bool success = false;
     int id;
@@ -57,10 +43,12 @@ bool DbManager::addPersonToScientists()
     query.prepare("INSERT INTO Scientists (name, gender, YearOfBirth, YearOfDeath) "
                   "VALUES (:name, :gender, :YearOfBirth, :YearOfDeath)");
 
-    QString qName = QString::fromStdString(_name);
-    QString qGender = QString::fromStdString(_gender);
-    QString qBirth = QString::fromStdString(_birth);
-    QString qDeath = QString::fromStdString(_death);
+    QString qName = QString::fromStdString(person.getName());
+    QString qGender = QString::fromStdString(person.getGender());
+    QString qBirth = QString::fromStdString(person.getYearOfBirth());
+    QString qDeath = QString::fromStdString(person.getYearOfDeath());
+
+    //cout << person.getName() << "!!!" <<endl;
 
     query.bindValue(":id", id);
     query.bindValue(":name", qName);
@@ -85,19 +73,26 @@ bool DbManager::addPersonToScientists()
 
 
 
-/*void DbManager::removeFromScientist()
+bool DbManager::removeScientist(int ID)
 {
-
-}
-*/
-vector<Persons> DbManager::printAllPersons()
-{
-    vector<Persons> printPersonsData;
-    qDebug() << "Persons in database:";
     QSqlQuery query(db);
-    query.exec("SELECT * FROM Scientists");
+    query.prepare("DELETE FROM Scientists WHERE ID = :ID");
+    query.bindValue(":ID", ID);
+    if(query.exec())
+    {
+       return true;
+    }
+    else
+    {
+       return false;
+    }
+}
 
-    //int id = query.record().indexOf("name");
+
+vector<Persons> DbManager::readPersons(QSqlQuery query)
+{
+    Persons _persons;
+    vector<Persons> printPersonsData;
 
     while (query.next())
     {
@@ -117,10 +112,52 @@ vector<Persons> DbManager::printAllPersons()
     return printPersonsData;
 }
 
+vector<Persons>DbManager::getSinglePerson(int ID)
+{
+    QSqlQuery query(db);
+    query.prepare("SELECT * FROM Scientists WHERE ID = :ID");
+    query.bindValue(":ID", ID);
+    if(query.exec())
+    {
+
+    }
+    else
+    {
+        qDebug() << db.lastError() << " in function getSinglePerson" << endl;
+    }
+    vector<Persons> person = readPersons(query);
+
+    return person;
+}
+
+vector<Persons> DbManager::printAllPersons()
+{
+    QSqlQuery query(db);
+    query.exec("SELECT * FROM Scientists");
+
+    return readPersons(query);
+}
+vector<Persons> DbManager::sortScientistsByValue(string value, string order)
+{
+    QSqlQuery query(db);
+
+    QString qValue = QString::fromStdString(value);
+    QString qOrder = QString::fromStdString(order);
+
+    if(query.exec("SELECT * FROM Scientists ORDER BY " + qValue + " " + qOrder))
+    {
+       cout << "Works!" << endl;
+    }
+    else
+    {
+        qDebug() << db.lastError() << endl;
+    }
+    return readPersons(query);
+}
+
 /*
 void DbManager::ifExist()
 {
-
 }
 
 void DbManager::deleteAllPersons()

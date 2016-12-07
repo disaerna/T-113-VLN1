@@ -43,6 +43,7 @@ private:
     void removeComputer(); //Removes Computer from database.
     void searchComputerDatabase();
     void viewComputersDatabase();
+    void newComputer();
 
     // Search functionsn for computer
     void searchByComputerName();
@@ -56,6 +57,7 @@ private:
     void inputToReturn();
 
     Domain _domain;
+    Computers _computer;
 
 };
 

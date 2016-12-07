@@ -16,21 +16,17 @@ class DbManager
 public:
     DbManager();
     QSqlError lastError();
-    bool addPersonToScientists();
-    void setValues(string name, string gender, string birth, string death);
+    bool addPersonToScientists(Persons person);
     vector<Persons> printAllPersons();
+    vector<Persons> readPersons(QSqlQuery query);
+    vector<Persons> sortScientistsByValue(string value, string order);
+    bool removeScientist(int ID);
+    vector<Persons> getSinglePerson(int ID);
+
 
 private:
     QSqlDatabase db;
     QSqlQuery query;
-
-
-    Persons _persons;
-
-    string _name;
-    string _gender;
-    string _birth;
-    string _death;
 
 };
 
