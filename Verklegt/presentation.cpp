@@ -15,8 +15,9 @@ void Presentation::startProgram()
     cout << "Please select one of the options below: " << endl;
     cout << "1. Scientists" << endl;
     cout << "2. Computers" << endl;
-    cout << "3. Scientists and computers: ";
-
+    cout << "3. Scientists and computers: " << endl;
+    cout << "Any other key to quit" << endl;
+    cout << "Enter your command: ";
     cin >> input;
 
     if(input == 1)
@@ -491,9 +492,6 @@ void Presentation::searchPersonDatabase()
             cout << "Please enter either 'M' for male or 'F' for female: ";
             cin >> searchTerm;
         }
-
-        searchTerm = _domain.setGender(searchTerm); // setur M/m = male & F/f = female
-
 
         searchResults = _domain.getPersonsSearch(searchTerm, userChoice);
         displayPersonsVector(searchResults);

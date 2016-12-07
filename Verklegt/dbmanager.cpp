@@ -244,6 +244,12 @@ vector<Persons> DbManager::printPersonsResults(string searchTerm, int userChoice
     }
     else if(userChoice == 2) {
         text1 = "Gender";
+        if(searchTerm == "M" || searchTerm == "m") {
+            searchTerm = "Male";
+        }
+        else if(searchTerm == "F" || searchTerm == "f") {
+            searchTerm = "Female";
+        }
     }
     else if(userChoice == 3) {
         text1 = "YearOfBirth";
@@ -257,23 +263,12 @@ vector<Persons> DbManager::printPersonsResults(string searchTerm, int userChoice
     QString qSearchTerm = QString::fromStdString(searchTerm);
     qDebug() << "qSearch: " << qSearchTerm <<endl;
 
-    if(qSearchTerm == "Male  ") {
-        qSearchTerm == "Male";
-    }
-
-
     qDebug() << "qSearch2: " << qSearchTerm <<endl;
     qDebug() << "text1: " << text1 <<endl;
 
-    if(qSearchTerm == "Male  ") {
-        query.exec("SELECT * FROM Scientists WHERE " + text1 + " = 'Female'");
-    }
-    else if(qSearchTerm == "Female") {
-        query.exec("SELECT * FROM Scientists WHERE " + text1 + " = 'Male'");
-    }
-    else {
-        query.exec("SELECT * FROM Scientists WHERE " + text1 + " LIKE '%" + qSearchTerm + "%'");
-    }
+
+    query.exec("SELECT * FROM Scientists WHERE " + text1 + " LIKE '%" + qSearchTerm + "%'");
+
 
 
     return readPersons(query);
