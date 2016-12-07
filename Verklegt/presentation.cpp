@@ -204,42 +204,37 @@ void Presentation::newComputer()
             cin >> name;
         }
 
+        cout << "Enter the year the computer was built: ";
+        cin >> yearOfBuild;
+
         while (_domain.validYearCheck(yearOfBuild))
         {
             cout << "Wrong input! Please enter 4 digits: ";
             cin >> yearOfBuild;
         }
 
-
-            cout << "What type of computer is this?: ";
-            cin >> type;
-
+        cout << "What type of computer is this?: ";
+        cin >> type;
+        // villutjékk fyrir týpur
+        // sýna töflu með ´týpum & spurja notenda hvort týpan sé til staðar i töflunni annars gera notanda kleift að bæta við týpu
 
         cout << "Was the build successful? Y/N: ";
         cin >> answer;
 
-        while(_domain.wasBuiltCheck(answer) == 2)
+        while(_domain.yesOrNoCheck(answer) == 2)
         {
-            cout << "Wrong input! Please enter Y/N" << endl;
+            cout << "Wrong input! Please enter Y/N: " << endl;
             cin >> answer;
         }
 
-        if(_domain.wasBuiltCheck(answer) == 1)
+        if(_domain.yesOrNoCheck(answer) == 1)
         {
-            cout << "What year was it built: ";
-            cin >> yearOfBuild;
-
-            /*while( _domain.validBuiltCheck(yearOfBuild))
-            {
-                cout << "Wrong input! Please enter 4 digits." << endl;
-                cout << "What year was it built: ";
-                cin >> yearOfBuild;
-            }*/
+            answer = "Yes";
         }
 
-        else if(_domain.wasBuiltCheck(answer) == 0)
+        else if(_domain.yesOrNoCheck(answer) == 0)
         {
-            yearOfBuild = '-'; // If not built.
+            answer = "No";
         }
 
         cout << endl;
@@ -258,13 +253,14 @@ void Presentation::newComputer()
     //þurfum að búa titl fall inní domain sem sækir tölvur úr database
     //þurfum að sækja stærð af computer klasa
 
-    cout << "You added these computers to the database: " << endl;
+    /*cout << "You added these computers to the database: " << endl;
     cout << endl;
     for(int i = 0; i < number; i++)
     {
         //cout << i+1 <<". " << //nafn af vector af computer kalsa[databaseSize-number+i].//get fall í computerklasa() << endl;
     }
     cout << endl;
+    */
 
     cout << "Going back to main screen..." << endl;
     cout << endl;

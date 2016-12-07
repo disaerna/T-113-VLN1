@@ -188,6 +188,8 @@ bool Domain::validNameCheck(string name)
     return (name.find_first_not_of("qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM -") != std::string::npos);
 }
 
+
+
 // Checks if input is M/m or F/f.
 bool Domain::validGenderCheck(string gender)
 {
@@ -227,26 +229,6 @@ bool Domain::validYearCheck(string year)
 
 // Chekcs input for is input a digit, is it Y or N.
 int Domain::yesOrNoCheck(string answer)
-{
-    for(int i=0; i<answer.length(); i++)
-    {
-        if(isdigit(answer[i]) == false)
-        {
-            if(answer == "Y" || answer == "y")
-            {
-                return 1;
-            }
-            if(answer == "N" || answer == "n")
-            {
-                return 0;
-            }
-        }
-    }
-    return 2;
-}
-
-// Chekcs input for is input a digit, is it Y or N.
-int Domain::wasBuiltCheck(string answer)
 {
     for(int i=0; i<answer.length(); i++)
     {

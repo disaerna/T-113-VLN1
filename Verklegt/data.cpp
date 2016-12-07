@@ -102,7 +102,7 @@ vector<Persons> Data::readPersonsFromFile()
 void Data::addPersonsToFile(Persons person)
 {
     ofstream file;
-    file.open("data.txt", fstream::out | fstream::app); // Passar að yfirskrifa ekki í textafile.
+    //file.open("data.txt", fstream::out | fstream::app); // Passar að yfirskrifa ekki í textafile.
 
     file << person.getName() << endl;
     file << person.getGender() << endl;
@@ -112,6 +112,8 @@ void Data::addPersonsToFile(Persons person)
 
     file.close();
 }
+
+
 
 // Clears the file and add the remaining persons back
 void Data::addPersonsAfterDelete(vector<Persons> afterDeletePersons)
