@@ -146,7 +146,11 @@ vector<string> DbManager::readComputersAndPersons(int input)
     {
         vector<string> printComputersAndAllPersons;
 
-        query.prepare("SELECT c.Name AS cname, s.Name AS sname FROM ScientistsAndComputers sc INNER JOIN Scientists s ON s.ID = sc.ScientistID INNER JOIN Computers c ON c.ID = sc.ComputerID ORDER BY c.Name ASC");
+        query.prepare("SELECT c.Name AS cname, s.Name AS sname "
+                      "FROM ScientistsAndComputers sc "
+                      "INNER JOIN Scientists s ON s.ID = sc.ScientistID "
+                      "INNER JOIN Computers c ON c.ID = sc.ComputerID "
+                      "ORDER BY c.Name ASC");
         query.exec();
         while(query.next())
         {
@@ -163,7 +167,11 @@ vector<string> DbManager::readComputersAndPersons(int input)
     {
         vector<string> printPersonsAndAllComputers;
 \
-        query.prepare("SELECT s.Name AS sname, c.Name AS cname FROM ScientistsAndComputers sc INNER JOIN Scientists s ON s.ID = sc.ScientistID INNER JOIN Computers c ON c.ID = sc.ComputerID ORDER BY s.Name ASC");
+        query.prepare("SELECT s.Name AS sname, c.Name AS cname "
+                      "FROM ScientistsAndComputers sc "
+                      "INNER JOIN Scientists s ON s.ID = sc.ScientistID "
+                      "INNER JOIN Computers c ON c.ID = sc.ComputerID "
+                      "ORDER BY s.Name ASC");
         query.exec();
 
         while(query.next())
