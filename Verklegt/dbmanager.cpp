@@ -138,6 +138,10 @@ bool DbManager::removeComputer(int ID)
 
 vector<string> DbManager::readComputersAndPersons(int input)
 {
+    QSqlQuery query(db);
+    string cname;
+    string sname;
+
     if( input == 2 )
     {
         vector<string> printComputersAndAllPersons;
@@ -146,25 +150,25 @@ vector<string> DbManager::readComputersAndPersons(int input)
 
         while (query.next())
         {
-            string cname = query.value("c.Name").toString().toStdString();
-            string sname = query.value("s.Name").toString().toStdString();
+            cname = query.value("c.Name").toString().toStdString();
+            sname = query.value("s.Name").toString().toStdString();
 
             printComputersAndAllPersons.push_back(cname);
             printComputersAndAllPersons.push_back(sname);
         }
-
+        cout << "í DBMAN readComputersAndPersons - cname: " << cname << "sname: " << sname << endl;
         return printComputersAndAllPersons;
     }
     if( input == 1 )
     {
         vector<string> printPersonsAndAllComputers;
-\
+        \
         query.prepare("SELECT s.Name, c.Name FROM ScientistsAndComputers sc INNER JOIN Scientists s ON s.ID = sc.ScientistID INNER JOIN Computers c ON c.ID = sc.ComputerID ORDER BY s.Name ASC");
 
         while (query.next())
         {
-            string sname = query.value("s.Name").toString().toStdString();
-            string cname = query.value("c.Name").toString().toStdString();
+            sname = query.value("s.Name").toString().toStdString();
+            cname = query.value("c.Name").toString().toStdString();
 
             printPersonsAndAllComputers.push_back(sname);
             printPersonsAndAllComputers.push_back(cname);

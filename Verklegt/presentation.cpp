@@ -837,7 +837,9 @@ void Presentation::displayConnectVector()
     cout << "2 - Computers and the scientists that invented them" << endl;
     cin >> input;
     vector<string> displayTable = _domain.getComputerAndPersons(input);
+    cout << "displayTableSize: " << displayTable.size() << endl;
     for(int i=0; i<displayTable.size(); i++)
+
     cout << displayTable[i] << "\t" << displayTable[i+1] << endl;
 }
 // Asks user to return to main or quit the addScientist.
