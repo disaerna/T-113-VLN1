@@ -114,11 +114,11 @@ bool DbManager::removeScientist(int ID)
     query.bindValue(":ID", ID);
     if(query.exec())
     {
-       return true;
+        return true;
     }
     else
     {
-       return false;
+        return false;
     }
 }
 bool DbManager::removeComputer(int ID)
@@ -128,11 +128,57 @@ bool DbManager::removeComputer(int ID)
     query.bindValue(":ID", ID);
     if(query.exec())
     {
-       return true;
+        return true;
     }
     else
     {
-       return false;
+        return false;
+    }
+}
+
+vector<string> DbManager::readComputersAndPersons(int input)
+{
+    if( input == 1 )
+    {
+        vector<string> printComputersAndAllPersons;
+
+        query.prepare("SELECT c.Name, s.Name"
+                      "FROM ScientistsAndComputers sc"
+                      "INNER JOIN Scientists s ON s.ID = sc.ScientistID"
+                      "INNER JOIN Computers c ON c.ID = sc.ComputerID"
+                      "ORDER BY c.Name ASC")
+
+        while (query.next())
+        {
+            string cname = query.value("c.Name").toString().toStdString();
+            string sname = query.value("s.Name").toString().toStdString();
+
+            printComputersAndAllPersons.push_back(cname);
+            printComputersAndAllPersons.push_back(sname);
+        }
+
+        return printComputersAndAllPersons;
+    }
+    if( input == 2 )
+    {
+        vector<string> printPersonsAndAllComputers;
+
+        query.prepare("SELECT s.Name, c.Name"
+                      "FROM ScientistsAndComputers sc"
+                      "INNER JOIN Scientists s ON s.ID = sc.ScientistID"
+                      "INNER JOIN Computers c ON c.ID = sc.ComputerID"
+                      "ORDER BY s.Name ASC")
+
+        while (query.next())
+        {
+            string sname = query.value("s.Name").toString().toStdString();
+            string cname = query.value("c.Name").toString().toStdString();
+
+            printComputersAndAllPersons.push_back(sname);
+            printComputersAndAllPersons.push_back(cname);
+        }
+
+        return printComputersAndAllPersons;
     }
 }
 
@@ -285,7 +331,7 @@ vector<Computers> DbManager::printComputersResults(string searchTerm, int userCh
     }
     else if(userChoice == 4)
     {
-            text1 = "Built";
+        text1 = "Built";
     }
 
     QString qSearchTerm = QString::fromStdString(searchTerm);
@@ -311,7 +357,7 @@ vector<Persons> DbManager::sortScientistsByValue(string value, string order)
 
     if(query.exec("SELECT * FROM Scientists ORDER BY " + qValue + " " + qOrder))
     {
-       cout << "Works!" << endl;
+        cout << "Works!" << endl;
     }
     else
     {
@@ -328,7 +374,7 @@ vector<Computers> DbManager::sortComputersByValue(string value, string order)
 
     if(query.exec("SELECT * FROM Computers ORDER BY " + qValue + " " + qOrder))
     {
-       cout << "Works!" << endl;
+        cout << "Works!" << endl;
     }
     else
     {

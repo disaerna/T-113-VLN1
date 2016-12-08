@@ -35,7 +35,7 @@ public:
     bool removeComputer(int ID);
     vector<Computers> getSingleComputer(int ID);
     vector<Computers> printComputersResults(string searchTerm, int userChoice);
-
+    vector<string> readComputersAndPersons(int input);
 
 private:
     QSqlDatabase db;
