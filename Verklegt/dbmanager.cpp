@@ -142,7 +142,7 @@ vector<string> DbManager::readComputersAndPersons(int input)
     {
         vector<string> printComputersAndAllPersons;
 
-        query.prepare("SELECT c.Name, s.Name FROM ScientistsAndComputers sc INNER JOIN Scientists s ON s.ID = sc.ScientistID INNER JOIN Computers c ON c.ID = sc.ComputerID ORDER BY c.Name ASC")
+        query.prepare("SELECT c.Name, s.Name FROM ScientistsAndComputers sc INNER JOIN Scientists s ON s.ID = sc.ScientistID INNER JOIN Computers c ON c.ID = sc.ComputerID ORDER BY c.Name ASC");
 
         while (query.next())
         {
@@ -158,19 +158,19 @@ vector<string> DbManager::readComputersAndPersons(int input)
     if( input == 1 )
     {
         vector<string> printPersonsAndAllComputers;
-
-        query.prepare("SELECT s.Name, c.Name FROM ScientistsAndComputers sc INNER JOIN Scientists s ON s.ID = sc.ScientistID INNER JOIN Computers c ON c.ID = sc.ComputerID ORDER BY s.Name ASC")
+\
+        query.prepare("SELECT s.Name, c.Name FROM ScientistsAndComputers sc INNER JOIN Scientists s ON s.ID = sc.ScientistID INNER JOIN Computers c ON c.ID = sc.ComputerID ORDER BY s.Name ASC");
 
         while (query.next())
         {
             string sname = query.value("s.Name").toString().toStdString();
             string cname = query.value("c.Name").toString().toStdString();
 
-            printComputersAndAllPersons.push_back(sname);
-            printComputersAndAllPersons.push_back(cname);
+            printPersonsAndAllComputers.push_back(sname);
+            printPersonsAndAllComputers.push_back(cname);
         }
 
-        return printComputersAndAllPersons;
+        return printPersonsAndAllComputers;
     }
 }
 
