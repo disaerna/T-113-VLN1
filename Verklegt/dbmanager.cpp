@@ -138,7 +138,7 @@ bool DbManager::removeComputer(int ID)
 
 vector<string> DbManager::readComputersAndPersons(int input)
 {
-    if( input == 1 )
+    if( input == 2 )
     {
         vector<string> printComputersAndAllPersons;
 
@@ -159,7 +159,7 @@ vector<string> DbManager::readComputersAndPersons(int input)
 
         return printComputersAndAllPersons;
     }
-    if( input == 2 )
+    if( input == 1 )
     {
         vector<string> printPersonsAndAllComputers;
 
