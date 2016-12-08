@@ -31,7 +31,6 @@ public:
     Computers getSingleComputer(int ID);
     vector<Computers> sortComputers(int viewInput);
 
-
     // Functions for persons class
     void addPersons(Persons person);
     bool deletePersonFromFile(int ID);
@@ -39,14 +38,8 @@ public:
     vector<Persons> sortPersons(int viewInput);
     Persons getSinglePerson(int ID);
 
-    // Functions for search function
-    vector<Persons> searchName(string input);
-    vector<Persons> searchGender(string input);
-    vector<Persons> searchBirthYear(string input);
-    vector<Persons> searchDeathYear(string input);
-
-    //Functions for computer
-
+    // Functions for connecting
+    vector<string> getComputerAndPersons(int input);
 
     // Functions for error checking input
     bool validNameCheck(string name);

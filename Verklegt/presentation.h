@@ -40,6 +40,8 @@ private:
     void viewComputersDatabase();
     void newComputer();
 
+    // Functions for connection
+    void displayConnectVector();
     void displayPersonsVector(vector<Persons> p); // Displays a table from the file.
     void displayComputersVector(vector<Computers> c); //Displays a table from the file.
 

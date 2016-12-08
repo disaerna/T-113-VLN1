@@ -746,6 +746,7 @@ void Presentation::connectTables()
     cout << "Please enter one of the following commands: " << endl;
     cout << "1 - Connect a scientist to a computer" << endl;
     cout << "2 - Connect a computer to a scientist" << endl;
+    cout << "3 - View the database" << endl;
     cin >> userInput;
     while(isdigit(userInput))
     {
@@ -769,6 +770,10 @@ void Presentation::connectTables()
         displayPersonsVector(_domain.getPersons());
         cout << "Please enter the ID of the scientist you wish to connect " << _domain.getSingleComputer(computerID).getCompName() << " to :" << endl;
         cin >> scientistID;
+    }
+    else if(userInput == 3)
+    {
+        displayConnectVector();
     }
     else
     {
@@ -824,7 +829,17 @@ void Presentation::displayComputersVector(vector<Computers> c)
     }
 
 }
-
+void Presentation::displayConnectVector()
+{
+    int input;
+    cout << "Please enter one of the following commands: " << endl;
+    cout << "1 - Scientist and the computer they invented" << endl;
+    cout << "2 - Computers and the scientists that invented them" << endl;
+    cin >> input;
+    vector<string> displayTable = _domain.getComputerAndPersons(input);
+    for(int i=0; i<displayTable.size(); i++)
+    cout << displayTable[i] << "\t" << displayTable[i+1] << endl;
+}
 // Asks user to return to main or quit the addScientist.
 void Presentation::inputToReturn()
 {
