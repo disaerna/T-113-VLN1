@@ -30,6 +30,7 @@ public:
     int wasBuiltCheck (string answer);
     Computers getSingleComputer(int ID);
     vector<Computers> sortComputers(int viewInput);
+    vector<string> getComputersTypes();
 
     // Functions for persons class
     void addPersons(Persons person);

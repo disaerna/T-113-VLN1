@@ -267,6 +267,19 @@ vector<Computers>DbManager::getSingleComputer(int ID)
 
     return computer;
 }
+vector<string> DbManager::readComputersTypes()
+{
+   QSqlQuery query(db);
+   vector<string> types;
+   query.exec("SELECT DISTINCT Type FROM Computers");
+   while(query.next())
+   {
+       string type = query.value("Type").toString().toStdString();
+       types.push_back(type);
+   }
+
+   return types;
+}
 
 vector<Persons> DbManager::printAllPersons()
 {
@@ -283,13 +296,22 @@ vector<Computers> DbManager::printAllComputers()
     return readComputers(query);
 }
 
-vector<Persons> DbManager::printPersonsResults(string searchTerm, string text)
+
+
+vector<Persons> DbManager::printPersonsResults(string searchTerm, string text, int gender)
 {
     QSqlQuery query;
     QString qText = QString::fromStdString(text);
     QString qSearchTerm = QString::fromStdString(searchTerm);
 
-    query.exec("SELECT * FROM Scientists WHERE " + qText + " LIKE '%" + qSearchTerm + "%'");
+    if(gender != 1)
+    {
+        query.exec("SELECT * FROM Scientists WHERE " + qText + " LIKE '%" + qSearchTerm + "%'");
+    }
+    else
+    {
+        query.exec("SELECT * FROM Scientists WHERE " + qText + " LIKE '" + qSearchTerm + "'");
+    }
 
     return readPersons(query);
 }
