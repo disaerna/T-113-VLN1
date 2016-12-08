@@ -139,39 +139,41 @@ bool DbManager::removeComputer(int ID)
 vector<string> DbManager::readComputersAndPersons(int input)
 {
     QSqlQuery query(db);
-    string cname;
-    string sname;
+    string compName;
+    string scieName;
 
     if( input == 2 )
     {
         vector<string> printComputersAndAllPersons;
 
-        query.prepare("SELECT c.Name, s.Name FROM ScientistsAndComputers sc INNER JOIN Scientists s ON s.ID = sc.ScientistID INNER JOIN Computers c ON c.ID = sc.ComputerID ORDER BY c.Name ASC");
-
-        while (query.next())
+        query.prepare("SELECT c.Name AS cname, s.Name AS sname FROM ScientistsAndComputers sc INNER JOIN Scientists s ON s.ID = sc.ScientistID INNER JOIN Computers c ON c.ID = sc.ComputerID ORDER BY c.Name ASC");
+        query.exec();
+        while(query.next())
         {
-            cname = query.value("c.Name").toString().toStdString();
-            sname = query.value("s.Name").toString().toStdString();
 
-            printComputersAndAllPersons.push_back(cname);
-            printComputersAndAllPersons.push_back(sname);
+            compName = query.value("cname").toString().toStdString();
+            scieName = query.value("sname").toString().toStdString();
+
+            printComputersAndAllPersons.push_back(compName);
+            printComputersAndAllPersons.push_back(scieName);
         }
-        cout << "í DBMAN readComputersAndPersons - cname: " << cname << "sname: " << sname << endl;
         return printComputersAndAllPersons;
     }
     if( input == 1 )
     {
         vector<string> printPersonsAndAllComputers;
-        \
-        query.prepare("SELECT s.Name, c.Name FROM ScientistsAndComputers sc INNER JOIN Scientists s ON s.ID = sc.ScientistID INNER JOIN Computers c ON c.ID = sc.ComputerID ORDER BY s.Name ASC");
+\
+        query.prepare("SELECT s.Name AS sname, c.Name AS cname FROM ScientistsAndComputers sc INNER JOIN Scientists s ON s.ID = sc.ScientistID INNER JOIN Computers c ON c.ID = sc.ComputerID ORDER BY s.Name ASC");
+        query.exec();
 
-        while (query.next())
+        while(query.next())
         {
-            sname = query.value("s.Name").toString().toStdString();
-            cname = query.value("c.Name").toString().toStdString();
+            scieName = query.value("sname").toString().toStdString();
+            compName = query.value("cname").toString().toStdString();
 
-            printPersonsAndAllComputers.push_back(sname);
-            printPersonsAndAllComputers.push_back(cname);
+            printPersonsAndAllComputers.push_back(scieName);
+            printPersonsAndAllComputers.push_back(compName);
+
         }
 
         return printPersonsAndAllComputers;

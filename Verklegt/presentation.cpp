@@ -86,9 +86,9 @@ void Presentation::newPersonsInFile()
         }
         if(name == " ")
         {
-               cout << "\n Name cannot be empty. \n Please enter a valid name: " << endl;
-               cin >> name;
-    }
+            cout << "\n Name cannot be empty. \n Please enter a valid name: " << endl;
+            cin >> name;
+        }
 
         cout << "Enter gender M/F: ";
         cin >> gender;
@@ -215,8 +215,8 @@ void Presentation::newComputer()
         if(name == " ")
         {
 
-               cout << "\n Name cannot be empty. \n Please enter a valid name: " << endl;
-               cin >> name;
+            cout << "\n Name cannot be empty. \n Please enter a valid name: " << endl;
+            cin >> name;
         }
         cout << "Enter the year the computer was built: ";
         cin >> yearOfBuild;
@@ -324,16 +324,16 @@ void Presentation::removeComputer()
         cin.ignore(100, '\n');
     }
 
-   string deletedComputer = _domain.getSingleComputer(ID).getCompName();
-   bool success = _domain.deleteComputerFromDatabase(ID);
-   while(!success)
-   {
-       cout << "Please enter a valid ID: ";
-       cin >> ID;
+    string deletedComputer = _domain.getSingleComputer(ID).getCompName();
+    bool success = _domain.deleteComputerFromDatabase(ID);
+    while(!success)
+    {
+        cout << "Please enter a valid ID: ";
+        cin >> ID;
 
-       deletedComputer = _domain.getSingleComputer(ID).getCompName();
-       success = _domain.deleteComputerFromDatabase(ID);
-   }
+        deletedComputer = _domain.getSingleComputer(ID).getCompName();
+        success = _domain.deleteComputerFromDatabase(ID);
+    }
     cout << deletedComputer << " has been deleted from the database." << endl;
     cout << endl;
 
@@ -619,8 +619,8 @@ void Presentation::searchComputersDatabase()
         cin >> searchTerm;
         if(_domain.yesOrNoCheck(searchTerm) == 2)
         {
-                cout << "Wrong input! Please enter Y/N" << endl;
-                cin >> searchTerm;
+            cout << "Wrong input! Please enter Y/N" << endl;
+            cin >> searchTerm;
         }
         else if(_domain.yesOrNoCheck(searchTerm) == 1)
         {
@@ -839,8 +839,16 @@ void Presentation::displayConnectVector()
     vector<string> displayTable = _domain.getComputerAndPersons(input);
     cout << "displayTableSize: " << displayTable.size() << endl;
     for(int i=0; i<displayTable.size(); i++)
+    {
+        cout << setw(35) << left << displayTable[i] << setw(35);
 
-    cout << displayTable[i] << "\t" << displayTable[i+1] << endl;
+        if(i%2 != 0)
+        {
+            cout << endl;
+        }
+
+    }
+    cout << endl;
 }
 // Asks user to return to main or quit the addScientist.
 void Presentation::inputToReturn()
