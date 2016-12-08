@@ -10,33 +10,74 @@ Presentation::Presentation()
 
 void Presentation::startProgram()
 {
-    int input;
-    cout << "Hello!" << endl;
-    cout << "Please select one of the options below: " << endl;
-    cout << "1. Scientists" << endl;
-    cout << "2. Computers" << endl;
-    cout << "3. Scientists and computers: " << endl;
-    cout << "Any other key to quit" << endl;
+
+    int input = 0;
+    cout << "Verk Solutions v.2.0 -- Main menu:\n";
+    cout << "----------------------------------\n";
+    cout << "Please select one of the options below\n";
+    cout << "----------------------------------\n";
+    cout << "1. Scientists\n";
+    cout << "2. Computers\n";
+    cout << "3. Scientists and computers\n";
+    cout << "4. Quit the program\n";
+    cout << "----------------------------------\n";
     cout << "Enter your command: ";
     cin >> input;
 
+    while(input < 1 || input > 4)
+    {
+        cout << "Please enter a correct input: ";
+        cin >> input;
+    }
+
     if(input == 1)
     {
+        system("cls");
         addScientist();
     }
     else if(input == 2)
     {
+        system("cls");
         addComputer();
     }
     else if(input == 3)
     {
+        system("cls");
         connectTables();
+    }
+    else if(input == 4)
+    {
+        system("cls");
+        quitDoubt();
     }
 
 }
+
+void Presentation::quitDoubt()
+{
+    string quit = "";
+
+    cout << "Are you sure you want to quit?" << endl;
+    cout << "Enter 'n' to return to main menu, any other to quit: ";
+    cin >> quit;
+
+    if(quit == "N" || quit == "n")
+    {
+        system("cls");
+        cout << "Smart choice..\n\n";
+        startProgram();
+    }
+    else
+    {
+        cout << "Quitting program....\n" << endl;
+    }
+}
+
+
 // Adds person to file.
 void Presentation::newPersonsInFile()
 {
+    system("cls");
     Persons newPerson;
     int number = 0;
     string name;
@@ -55,7 +96,7 @@ void Presentation::newPersonsInFile()
         cout << "How many persons would you like to input: ";
         cin >> userInput;
 
-        for (int i = 0; i < userInput.length(); i++)
+        for (size_t i = 0; i < userInput.length(); i++)
         {
             if (isdigit(userInput[i]) == false)
             {
@@ -145,11 +186,12 @@ void Presentation::newPersonsInFile()
     cout << "Your input has been saved..." << endl;
     cout << endl;
 
+    /*
     vector<Persons> getPerson;
     getPerson = _domain.getPersons();
     int databaseSize = getPerson.size();
 
-    /*cout << "You added these people to the database: " << endl;
+    cout << "You added these people to the database: " << endl;
     cout << endl;
     for(int i = 0; i < number; i++)
     {
@@ -157,8 +199,8 @@ void Presentation::newPersonsInFile()
     }
     cout << endl;
     */
-    cout << "Going back to main screen..." << endl;
-    cout << endl;
+
+    inputToReturn();
 }
 
 void Presentation::newComputer()
@@ -182,7 +224,7 @@ void Presentation::newComputer()
         cout << "How many computers would you like to input: ";
         cin >> userInput;
 
-        for (int i = 0; i < userInput.length(); i++)
+        for (size_t i = 0; i < userInput.length(); i++)
         {
             if (isdigit(userInput[i]) == false)
             {
@@ -265,7 +307,8 @@ void Presentation::newComputer()
     cout << endl;
 
     cout << "Going back to main screen..." << endl;
-    cout << endl;
+
+    inputToReturn();
 }
 
 
@@ -385,6 +428,7 @@ void Presentation::viewPersonsDatabase()
     {
         vector<Persons> printPersons = _domain.getPersons();
         displayPersonsVector(printPersons);
+        inputToReturn();
     }
     else
     {
@@ -433,6 +477,7 @@ void Presentation::viewComputersDatabase()
     if(viewInput == 1)
     {
         displayComputersVector(_domain.getComputers());
+        inputToReturn();
     }
     else
     {
@@ -658,43 +703,55 @@ void Presentation::searchComputersDatabase()
 void Presentation::addScientist()
 {
     int input = 0;
-    do
-    {   // Displays a menu for user
+    // Displays a menu for user
 
-        cout << "Please enter one of the following commands: " << endl;
-        cout << "1 - Add a new scientist to the database" << endl;
-        cout << "2 - Delete a scientist from the database" << endl; // TODO - EXTRA
-        cout << "3 - View the scientist database" << endl;
-        cout << "4 - Search the scientist database" << endl;
-        cout << "5 - Quit" << endl;
-        cout << endl;
-        cout << "Enter your choice: ";
+    cout << "Please enter one of the following commands: \n";
+    cout << "1 - Add a new scientist to the database\n";
+    cout << "2 - Delete a scientist from the database\n"; // TODO - EXTRA
+    cout << "3 - View the scientist database\n";
+    cout << "4 - Search the scientist database\n";
+    cout << "5 - Return to main menu\n";
+    cout << "6 - Quit the program\n";
+    cout << endl;
+    cout << "Enter your choice: ";
+    cin >> input;
+
+    while(input < 1 || input > 6)
+    {
+        cout << "Please input a correct number: ";
         cin >> input;
-        cout << endl;
+    }
 
-        if(input == 1)
-        {
-            newPersonsInFile();
-        }
-        else if(input == 2)
-        {
-            removePerson();
-        }
-        else if(input == 3)
-        {
-            viewPersonsDatabase();
-        }
-        else if(input == 4)
-        {
-            searchPersonDatabase();
-        }
-        else if(cin.fail())
-        {
-            // clears the buffer
-            cin.clear();
-            cin.ignore(100, '\n');
-        }
-    }while (input != 5);
+    if(input == 1)
+    {
+        newPersonsInFile();
+    }
+    else if(input == 2)
+    {
+        removePerson();
+    }
+    else if(input == 3)
+    {
+        viewPersonsDatabase();
+    }
+    else if(input == 4)
+    {
+        searchPersonDatabase();
+    }
+    else if(input == 5)
+    {
+        inputToReturn();
+    }
+    else if(input == 6)
+    {
+        quitDoubt();
+    }
+    else if(cin.fail())
+    {
+        // clears the buffer
+        cin.clear();
+        cin.ignore(100, '\n');
+    }
 }
 
 void Presentation::addComputer()
@@ -838,7 +895,7 @@ void Presentation::displayConnectVector()
     cin >> input;
     vector<string> displayTable = _domain.getComputerAndPersons(input);
     cout << "displayTableSize: " << displayTable.size() << endl;
-    for(int i=0; i<displayTable.size(); i++)
+    for(size_t i=0; i<displayTable.size(); i++)
     {
         cout << setw(35) << left << displayTable[i] << setw(35);
 
@@ -857,30 +914,33 @@ void Presentation::inputToReturn()
     // the addScientist function will loop until user inputs the right command
     do
     {
-        cout << "Enter 'R' to return to main menu or 'Q' to quit the addScientist: ";
+        cout << "Enter one of the following commands:\n";
+        cout << "\n| 'm' - main menu | 's' - scientist menu | 'c' - computer menu | 'q' - quit the program |\n";
+        cout << "Your command: ";
         cin >> input;
     }
-    while(input != "r" && input != "R" && input != "q" && input != "Q");
+    while(input != "m" && input != "M" && input != "q" && input != "Q" && input != "s" && input != "S" && input != "c" && input != "C");
     cout << endl;
 
-    // asking user if he is sure he wants to quit the addScientist
-    if(input != "r" && input != "R")
+    if(input == "m" || input == "M")
     {
-        string userQuitting = "";
-        while(userQuitting != "N" && userQuitting != "n" && userQuitting != "Y" && userQuitting != "y") {
-            cout << "Are you sure that you want to quit the addScientist?" << endl;
-            cout << "Y/N: ";
-            cin >> userQuitting;
-        }
-        if(userQuitting != "N" && userQuitting != "n")
-        {
-            // exit = quitting the addScientist
-            exit(1);
-        }
+        startProgram();
     }
-    cout << endl;
+    else if(input == "s" || input == "S")
+    {
+        addScientist();
+    }
+    else if(input == "c" || input == "C")
+    {
+        addComputer();
+    }
+    else if(input == "q" || input == "Q")
+    {
+        quitDoubt();
+    }
 }
 
+/*
 // Message that prints out when addScientist begins.
 void Presentation::splashMessage()
 {
@@ -919,3 +979,4 @@ void Presentation::splashMessage()
     }
     cout << endl;
 }
+*/

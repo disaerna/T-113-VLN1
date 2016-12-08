@@ -26,6 +26,7 @@ public:
     void addComputer();
     void connectTables();
     void splashMessage();
+    void quitDoubt();
 
 private:
     // Functions for scientists
