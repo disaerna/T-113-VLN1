@@ -1,3 +1,4 @@
+
 #include "dbmanager.h"
 #include <iostream>
 #include <QSqlQuery>
@@ -107,6 +108,25 @@ bool DbManager::addComputer(Computers computer)
 
 }
 
+void DbManager::connectComputersAndScientists(int scientistID, int computerID)
+{
+    int id;
+    QSqlQuery query;
+
+    query.prepare("INSERT INTO ScientistsAndComputers (ScientistID, ComputerID) "
+                  "VALUES (:sID, :cID)");
+
+    query.bindValue(":sID", scientistID);
+    query.bindValue(":cID", computerID);
+
+    if(!query.exec())
+    {
+        qDebug() << db.lastError()<< " in connectComputersAndScientists " << endl;
+    }
+
+
+}
+
 bool DbManager::removeScientist(int ID)
 {
     QSqlQuery query(db);
@@ -146,7 +166,11 @@ vector<string> DbManager::readComputersAndPersons(int input)
     {
         vector<string> printComputersAndAllPersons;
 
-        query.prepare("SELECT c.Name AS cname, s.Name AS sname FROM ScientistsAndComputers sc INNER JOIN Scientists s ON s.ID = sc.ScientistID INNER JOIN Computers c ON c.ID = sc.ComputerID ORDER BY c.Name ASC");
+        query.prepare("SELECT c.Name AS cname, s.Name AS sname "
+                      "FROM ScientistsAndComputers sc "
+                      "INNER JOIN Scientists s ON s.ID = sc.ScientistID "
+                      "INNER JOIN Computers c ON c.ID = sc.ComputerID "
+                      "ORDER BY c.Name ASC");
         query.exec();
         while(query.next())
         {
@@ -163,7 +187,11 @@ vector<string> DbManager::readComputersAndPersons(int input)
     {
         vector<string> printPersonsAndAllComputers;
 \
-        query.prepare("SELECT s.Name AS sname, c.Name AS cname FROM ScientistsAndComputers sc INNER JOIN Scientists s ON s.ID = sc.ScientistID INNER JOIN Computers c ON c.ID = sc.ComputerID ORDER BY s.Name ASC");
+        query.prepare("SELECT s.Name AS sname, c.Name AS cname "
+                      "FROM ScientistsAndComputers sc "
+                      "INNER JOIN Scientists s ON s.ID = sc.ScientistID "
+                      "INNER JOIN Computers c ON c.ID = sc.ComputerID "
+                      "ORDER BY s.Name ASC");
         query.exec();
 
         while(query.next())
@@ -179,7 +207,44 @@ vector<string> DbManager::readComputersAndPersons(int input)
         return printPersonsAndAllComputers;
     }
 }
-
+vector<int> DbManager::getComputerToScientist(int ID)
+{
+    vector<int> scientistId;
+    QSqlQuery query(db);
+    query.prepare("SELECT ScientistID FROM ScientistsAndComputers WHERE ComputerID = :ID");
+    query.bindValue(":ID", ID);
+    if(query.exec())
+    {
+        while(query.next())
+        {
+            scientistId.push_back(query.value("ScientistID").toUInt());
+        }
+    }
+    else
+    {
+        qDebug() << db.lastError() << " in function getComputerToScientist" << endl;
+    }
+    return scientistId;
+}
+vector<int> DbManager::getScientistToComputer(int ID)
+{
+    vector<int> computerId;
+    QSqlQuery query(db);
+    query.prepare("SELECT ComputerID FROM ScientistsAndComputers WHERE ScientistID = :ID");
+    query.bindValue(":ID", ID);
+    if(query.exec())
+    {
+        while(query.next())
+        {
+            computerId.push_back(query.value("ComputerID").toUInt());
+        }
+    }
+    else
+    {
+        qDebug() << db.lastError() << " in function getScientistToComputer" << endl;
+    }
+    return computerId;
+}
 vector<Persons> DbManager::readPersons(QSqlQuery query)
 {
     Persons _persons;
@@ -225,7 +290,7 @@ vector<Computers> DbManager::readComputers(QSqlQuery query)
     return printComputersData;
 }
 
-vector<Persons>DbManager::getSinglePerson(int ID)
+vector<Persons> DbManager::getSinglePerson(int ID)
 {
     QSqlQuery query(db);
     query.prepare("SELECT * FROM Scientists WHERE ID = :ID");
@@ -242,7 +307,7 @@ vector<Persons>DbManager::getSinglePerson(int ID)
 
     return person;
 }
-vector<Computers>DbManager::getSingleComputer(int ID)
+vector<Computers> DbManager::getSingleComputer(int ID)
 {
     QSqlQuery query(db);
     query.prepare("SELECT * FROM Computers WHERE ID = :ID");
@@ -258,6 +323,19 @@ vector<Computers>DbManager::getSingleComputer(int ID)
     vector<Computers> computer = readComputers(query);
 
     return computer;
+}
+vector<string> DbManager::readComputersTypes()
+{
+   QSqlQuery query(db);
+   vector<string> types;
+   query.exec("SELECT DISTINCT Type FROM Computers");
+   while(query.next())
+   {
+       string type = query.value("Type").toString().toStdString();
+       types.push_back(type);
+   }
+
+   return types;
 }
 
 vector<Persons> DbManager::printAllPersons()
@@ -275,13 +353,22 @@ vector<Computers> DbManager::printAllComputers()
     return readComputers(query);
 }
 
-vector<Persons> DbManager::printPersonsResults(string searchTerm, string text)
+
+
+vector<Persons> DbManager::printPersonsResults(string searchTerm, string text, int gender)
 {
     QSqlQuery query;
     QString qText = QString::fromStdString(text);
     QString qSearchTerm = QString::fromStdString(searchTerm);
 
-    query.exec("SELECT * FROM Scientists WHERE " + qText + " LIKE '%" + qSearchTerm + "%'");
+    if(gender != 1)
+    {
+        query.exec("SELECT * FROM Scientists WHERE " + qText + " LIKE '%" + qSearchTerm + "%'");
+    }
+    else
+    {
+        query.exec("SELECT * FROM Scientists WHERE " + qText + " LIKE '" + qSearchTerm + "'");
+    }
 
     return readPersons(query);
 }

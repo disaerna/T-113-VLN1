@@ -30,6 +30,12 @@ void Domain::addComputer(Computers computer)
     }
 }
 
+void Domain::connectComputersAndScientists(int scientistID, int computerID)
+{
+    return _DbManager.connectComputersAndScientists(scientistID, computerID);
+}
+
+
 // Gets all persons from file, deletes person that matches input from user then rewrites.
 bool Domain::deletePersonFromFile(int ID)
 {
@@ -81,19 +87,25 @@ vector<Computers> Domain::getComputers()
 {
     return _DbManager.printAllComputers();
 }
+vector<string> Domain::getComputersTypes()
+{
+    return _DbManager.readComputersTypes();
+}
 
 vector<Persons> Domain::getPersonsSearch(string searchTerm, int userChoice)
 {
     string text = "";
+    int gender = 0;
     if(userChoice == 1) {
         text = "Name";
     }
     else if(userChoice == 2) {
         text = "Gender";
-        if(searchTerm == "M" || searchTerm == "m") {
+        gender = 1;
+        if(searchTerm == "m") {
             searchTerm = "Male";
         }
-        else if(searchTerm == "F" || searchTerm == "f") {
+        else if(searchTerm == "f") {
             searchTerm = "Female";
         }
     }
@@ -103,7 +115,7 @@ vector<Persons> Domain::getPersonsSearch(string searchTerm, int userChoice)
     else if(userChoice == 4) {
         text = "YearOfDeath";
     }
-    return _DbManager.printPersonsResults(searchTerm, text);
+    return _DbManager.printPersonsResults(searchTerm, text, gender);
 }
 
 vector<Computers> Domain::getComputersSearch(string searchTerm, int userChoice)
@@ -127,10 +139,36 @@ vector<Computers> Domain::getComputersSearch(string searchTerm, int userChoice)
     }
     return _DbManager.printComputersResults(searchTerm, text);
 }
+
 vector<string> Domain::getComputerAndPersons(int input)
 {
     return _DbManager.readComputersAndPersons(input);
 }
+
+vector<Computers> Domain::getScientistToComputer(int ID)
+{
+    vector<int> computerIDs = _DbManager.getScientistToComputer(ID);
+    vector<Computers> computer;
+    for(int i=0; i<computerIDs.size(); i++)
+    {
+        computer.push_back(_DbManager.getSingleComputer(computerIDs[i])[0]);
+    }
+
+    return computer;
+}
+
+vector<Persons> Domain::getComputerToScientist(int ID)
+{
+    vector<int> scientistIDs = _DbManager.getComputerToScientist(ID);
+    vector<Persons> person;
+    for(int i=0; i<scientistIDs.size(); i++)
+    {
+        person.push_back(_DbManager.getSinglePerson(scientistIDs[i])[0]);
+    }
+
+    return person;
+}
+
 vector<Persons> Domain::sortPersons(int viewInput)
 {
     vector<Persons> getPerson;
@@ -145,29 +183,29 @@ vector<Persons> Domain::sortPersons(int viewInput)
 
     case 2:
 
-        // Sort name descending
-        getPerson = _DbManager.sortScientistsByValue("Name","desc");
+        // Sort name descending // *Virðist eins og ascending virki
+        getPerson = _DbManager.sortScientistsByValue("Name","asc");
 
         break;
 
     case 3:
 
         // Sort name ascending
-        getPerson = _DbManager.sortScientistsByValue("Name","asc");
+        getPerson = _DbManager.sortScientistsByValue("Name","desc");
 
         break;
 
     case 4:
 
         // Sort gender descending
-        getPerson = _DbManager.sortScientistsByValue("Gender","desc");
+        getPerson = _DbManager.sortScientistsByValue("Gender","asc");
 
         break;
 
     case 5:
 
         // Sort gender ascending
-        getPerson = _DbManager.sortScientistsByValue("Gender","asc");
+        getPerson = _DbManager.sortScientistsByValue("Gender","desc");
 
         break;
 
@@ -221,28 +259,28 @@ vector<Computers> Domain::sortComputers(int viewInput)
     case 2:
 
         // Sort name descending
-        getComputer = _DbManager.sortComputersByValue("Name","desc");
+        getComputer = _DbManager.sortComputersByValue("Name","asc");
 
         break;
 
     case 3:
 
         // Sort name ascending
-        getComputer = _DbManager.sortComputersByValue("Name","asc");
+        getComputer = _DbManager.sortComputersByValue("Name","desc");
 
         break;
 
     case 4:
 
         // Sort by when built descending
-        getComputer = _DbManager.sortComputersByValue("YearBuilt","desc");
+        getComputer = _DbManager.sortComputersByValue("YearBuilt","asc");
 
         break;
 
     case 5:
 
         // Sort by when built ascending
-        getComputer = _DbManager.sortComputersByValue("YearBuilt","asc");
+        getComputer = _DbManager.sortComputersByValue("YearBuilt","desc");
 
         break;
 

@@ -30,6 +30,7 @@ public:
     int wasBuiltCheck (string answer);
     Computers getSingleComputer(int ID);
     vector<Computers> sortComputers(int viewInput);
+    vector<string> getComputersTypes();
 
     // Functions for persons class
     void addPersons(Persons person);
@@ -40,6 +41,10 @@ public:
 
     // Functions for connecting
     vector<string> getComputerAndPersons(int input);
+    vector<Computers> getScientistToComputer(int ID);
+    vector<Persons> getComputerToScientist(int ID);
+    void connectComputersAndScientists(int scientistID, int computerID);
+
 
     // Functions for error checking input
     bool validNameCheck(string name);

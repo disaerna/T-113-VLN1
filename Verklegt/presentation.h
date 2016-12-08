@@ -24,8 +24,8 @@ public:
     void startProgram();
     void addScientist();
     void addComputer();
-    void connectTables();
     void splashMessage();
+    void quitDoubt();
 
 private:
     // Functions for scientists
@@ -33,15 +33,18 @@ private:
     void removePerson(); // Removes person from the file.
     void viewPersonsDatabase(); // View options for the file.
     void searchPersonDatabase(); // Searches the database for input.
+    void viewScientistConnection();
+    void connectScientist();
 
     // Function for computer
     void removeComputer(); //Removes Computer from database.
     void searchComputersDatabase();
     void viewComputersDatabase();
     void newComputer();
+    void viewComputerConnection();
+    void connectComputer();
 
     // Functions for connection
-    void displayConnectVector();
     void displayPersonsVector(vector<Persons> p); // Displays a table from the file.
     void displayComputersVector(vector<Computers> c); //Displays a table from the file.
 
