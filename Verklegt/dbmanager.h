@@ -36,6 +36,7 @@ public:
     vector<Computers> getSingleComputer(int ID);
     vector<Computers> printComputersResults(string searchTerm, string text);
     vector<string> readComputersAndPersons(int input);
+    vector<string> readComputersTypes();
 
 private:
     QSqlDatabase db;

@@ -259,6 +259,19 @@ vector<Computers>DbManager::getSingleComputer(int ID)
 
     return computer;
 }
+vector<string> DbManager::readComputersTypes()
+{
+   QSqlQuery query(db);
+   vector<string> types;
+   query.exec("SELECT DISTINCT Type FROM Computers");
+   while(query.next())
+   {
+       string type = query.value("Type").toString().toStdString();
+       types.push_back(type);
+   }
+
+   return types;
+}
 
 vector<Persons> DbManager::printAllPersons()
 {

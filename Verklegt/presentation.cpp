@@ -263,8 +263,65 @@ void Presentation::newComputer()
             cin >> yearOfBuild;
         }
 
-        cout << "What type of computer is this?: ";
-        cin >> type;
+        vector<string> types = _domain.getComputersTypes();
+
+                string compType;
+                string answer;
+                string typeAnswer;
+                string newType;
+                int chooseType;
+
+                for(int i = 0; i<types.size(); i++)
+                {
+                    cout << i+1 << ". " << types[i]<<endl;
+                }
+                cout<<"Is the type of your computer in the list above? Please enter Y/N: "<<endl;
+
+                cin>>answer;
+                while(_domain.yesOrNoCheck(answer) == 2)
+                {
+                    cout << "Wrong input! Please enter Y/N: " << endl;
+                    cin >> answer;
+                }
+                if(_domain.yesOrNoCheck(answer) == 1)
+                {
+                    cout << " Please enter the number for the type of computer you wish to register: " << endl;
+                    cin >> chooseType;
+
+                    while(chooseType < 0 && chooseType > types.size())
+                    {
+                        cout << "Please enter a valid number from 1 - "<<types.size()<<" : "<< endl;
+                        cin>>chooseType;
+                    }
+                    type = types[chooseType -1];
+
+                    //Villutékk hvort týpan sé til
+                }
+                else if(_domain.yesOrNoCheck(answer) == 0)
+                {
+                    cout << "Would you like to add a type on the list? Please enter Y/N: " << endl;
+                    cin >> typeAnswer;
+                    while(_domain.yesOrNoCheck(typeAnswer) == 2)
+                    {
+                        cout << "Wrong input! Please enter Y/N: " << endl;
+                        cin >> typeAnswer;
+                    }
+                    if(_domain.yesOrNoCheck(typeAnswer) == 1)
+                    {
+
+                        cout << "Enter the name of the new type: " << endl;
+                        cin >> newType;
+
+                        type = newType;
+                    }
+                    else if(_domain.yesOrNoCheck(typeAnswer) == 0)
+                    {
+                        inputToReturn();
+                    }
+                     types.push_back(newType);
+
+                }
+
         // villutjékk fyrir týpur
         // sýna töflu með ´týpum & spurja notenda hvort týpan sé til staðar i töflunni annars gera notanda kleift að bæta við týpu
 
