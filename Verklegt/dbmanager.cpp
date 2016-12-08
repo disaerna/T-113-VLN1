@@ -142,12 +142,12 @@ vector<string> DbManager::readComputersAndPersons(int input)
     {
         vector<string> printComputersAndAllPersons;
 
-        query.prepare("SELECT c.Name, s.Name FROM ScientistsAndComputers sc INNER JOIN Scientists s ON s.ID = sc.ScientistID INNER JOIN Computers c ON c.ID = sc.ComputerID ORDER BY c.Name ASC");
+        query.prepare("SELECT c.Name AS cname, s.Name AS sname FROM ScientistsAndComputers sc INNER JOIN Scientists s ON s.ID = sc.ScientistID INNER JOIN Computers c ON c.ID = sc.ComputerID ORDER BY c.Name ASC");
 
         while (query.next())
         {
-            string cname = query.value("c.Name").toString().toStdString();
-            string sname = query.value("s.Name").toString().toStdString();
+            string cname = query.value("cname").toString().toStdString();
+            string sname = query.value("sname").toString().toStdString();
 
             printComputersAndAllPersons.push_back(cname);
             printComputersAndAllPersons.push_back(sname);
@@ -159,12 +159,12 @@ vector<string> DbManager::readComputersAndPersons(int input)
     {
         vector<string> printPersonsAndAllComputers;
 \
-        query.prepare("SELECT s.Name, c.Name FROM ScientistsAndComputers sc INNER JOIN Scientists s ON s.ID = sc.ScientistID INNER JOIN Computers c ON c.ID = sc.ComputerID ORDER BY s.Name ASC");
+        query.prepare("SELECT s.Name AS sname, c.Name AS cname FROM ScientistsAndComputers sc INNER JOIN Scientists s ON s.ID = sc.ScientistID INNER JOIN Computers c ON c.ID = sc.ComputerID ORDER BY s.Name ASC");
 
         while (query.next())
         {
-            string sname = query.value("s.Name").toString().toStdString();
-            string cname = query.value("c.Name").toString().toStdString();
+            string sname = query.value("sname").toString().toStdString();
+            string cname = query.value("cname").toString().toStdString();
 
             printPersonsAndAllComputers.push_back(sname);
             printPersonsAndAllComputers.push_back(cname);
