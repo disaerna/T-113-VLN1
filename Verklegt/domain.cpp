@@ -85,15 +85,17 @@ vector<Computers> Domain::getComputers()
 vector<Persons> Domain::getPersonsSearch(string searchTerm, int userChoice)
 {
     string text = "";
+    int gender = 0;
     if(userChoice == 1) {
         text = "Name";
     }
     else if(userChoice == 2) {
         text = "Gender";
-        if(searchTerm == "M" || searchTerm == "m") {
+        gender = 1;
+        if(searchTerm == "m") {
             searchTerm = "Male";
         }
-        else if(searchTerm == "F" || searchTerm == "f") {
+        else if(searchTerm == "f") {
             searchTerm = "Female";
         }
     }
@@ -103,7 +105,7 @@ vector<Persons> Domain::getPersonsSearch(string searchTerm, int userChoice)
     else if(userChoice == 4) {
         text = "YearOfDeath";
     }
-    return _DbManager.printPersonsResults(searchTerm, text);
+    return _DbManager.printPersonsResults(searchTerm, text, gender);
 }
 
 vector<Computers> Domain::getComputersSearch(string searchTerm, int userChoice)
@@ -145,29 +147,29 @@ vector<Persons> Domain::sortPersons(int viewInput)
 
     case 2:
 
-        // Sort name descending
-        getPerson = _DbManager.sortScientistsByValue("Name","desc");
+        // Sort name descending // *Virðist eins og ascending virki
+        getPerson = _DbManager.sortScientistsByValue("Name","asc");
 
         break;
 
     case 3:
 
         // Sort name ascending
-        getPerson = _DbManager.sortScientistsByValue("Name","asc");
+        getPerson = _DbManager.sortScientistsByValue("Name","desc");
 
         break;
 
     case 4:
 
         // Sort gender descending
-        getPerson = _DbManager.sortScientistsByValue("Gender","desc");
+        getPerson = _DbManager.sortScientistsByValue("Gender","asc");
 
         break;
 
     case 5:
 
         // Sort gender ascending
-        getPerson = _DbManager.sortScientistsByValue("Gender","asc");
+        getPerson = _DbManager.sortScientistsByValue("Gender","desc");
 
         break;
 
@@ -221,28 +223,28 @@ vector<Computers> Domain::sortComputers(int viewInput)
     case 2:
 
         // Sort name descending
-        getComputer = _DbManager.sortComputersByValue("Name","desc");
+        getComputer = _DbManager.sortComputersByValue("Name","asc");
 
         break;
 
     case 3:
 
         // Sort name ascending
-        getComputer = _DbManager.sortComputersByValue("Name","asc");
+        getComputer = _DbManager.sortComputersByValue("Name","desc");
 
         break;
 
     case 4:
 
         // Sort by when built descending
-        getComputer = _DbManager.sortComputersByValue("YearBuilt","desc");
+        getComputer = _DbManager.sortComputersByValue("YearBuilt","asc");
 
         break;
 
     case 5:
 
         // Sort by when built ascending
-        getComputer = _DbManager.sortComputersByValue("YearBuilt","asc");
+        getComputer = _DbManager.sortComputersByValue("YearBuilt","desc");
 
         break;
 

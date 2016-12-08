@@ -275,13 +275,22 @@ vector<Computers> DbManager::printAllComputers()
     return readComputers(query);
 }
 
-vector<Persons> DbManager::printPersonsResults(string searchTerm, string text)
+
+
+vector<Persons> DbManager::printPersonsResults(string searchTerm, string text, int gender)
 {
     QSqlQuery query;
     QString qText = QString::fromStdString(text);
     QString qSearchTerm = QString::fromStdString(searchTerm);
 
-    query.exec("SELECT * FROM Scientists WHERE " + qText + " LIKE '%" + qSearchTerm + "%'");
+    if(gender != 1)
+    {
+        query.exec("SELECT * FROM Scientists WHERE " + qText + " LIKE '%" + qSearchTerm + "%'");
+    }
+    else
+    {
+        query.exec("SELECT * FROM Scientists WHERE " + qText + " LIKE '" + qSearchTerm + "'");
+    }
 
     return readPersons(query);
 }

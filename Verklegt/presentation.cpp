@@ -32,22 +32,18 @@ void Presentation::startProgram()
 
     if(input == 1)
     {
-        system("cls");
         addScientist();
     }
     else if(input == 2)
     {
-        system("cls");
         addComputer();
     }
     else if(input == 3)
     {
-        system("cls");
         connectTables();
     }
     else if(input == 4)
     {
-        system("cls");
         quitDoubt();
     }
 
@@ -63,7 +59,6 @@ void Presentation::quitDoubt()
 
     if(quit == "N" || quit == "n")
     {
-        system("cls");
         cout << "Smart choice..\n\n";
         startProgram();
     }
@@ -77,7 +72,6 @@ void Presentation::quitDoubt()
 // Adds person to file.
 void Presentation::newPersonsInFile()
 {
-    system("cls");
     Persons newPerson;
     int number = 0;
     string name;
@@ -306,8 +300,6 @@ void Presentation::newComputer()
     cout << name << endl;
     cout << endl;
 
-    cout << "Going back to main screen..." << endl;
-
     inputToReturn();
 }
 
@@ -519,26 +511,25 @@ void Presentation::searchPersonDatabase()
             cin >> searchTerm;
         }
 
-        string str = searchTerm;
-        transform(str.begin(), str.end(), str.begin(), ::tolower);
-        searchTerm = str;
         searchResults = _domain.getPersonsSearch(searchTerm, userChoice);
         displayPersonsVector(searchResults);
+        inputToReturn();
 
     }
     else if(userChoice == 2)
     {
-        cout << "Enter either Male or Female: ";
+        cout << "Enter either 'm' or 'f': ";
         cin >> searchTerm;
         // villutékk
         while(!_domain.validGenderCheck(searchTerm))
         {
-            cout << "Please enter either 'M' for male or 'F' for female: ";
+            cout << "Please enter either 'm' for male or 'f' for female: ";
             cin >> searchTerm;
         }
 
         searchResults = _domain.getPersonsSearch(searchTerm, userChoice);
         displayPersonsVector(searchResults);
+        inputToReturn();
     }
     else if(userChoice == 3)
     {
@@ -554,6 +545,7 @@ void Presentation::searchPersonDatabase()
 
         searchResults = _domain.getPersonsSearch(searchTerm, userChoice);
         displayPersonsVector(searchResults);
+        inputToReturn();
     }
     else if(userChoice == 4)
     {
@@ -581,6 +573,7 @@ void Presentation::searchPersonDatabase()
 
         searchResults = _domain.getPersonsSearch(searchTerm, userChoice);
         displayPersonsVector(searchResults);
+        inputToReturn();
     }
     else if(userChoice == 5)
     {
@@ -609,7 +602,7 @@ void Presentation::searchComputersDatabase()
     cout << "2. Search by built year" << endl;
     cout << "3. Search by type" << endl;
     cout << "4. Search by successful built" << endl;
-    cout << "5. Return to main menu" << endl;
+    cout << "5. Return to computer menu" << endl;
     cout << endl;
     cout << "Enter your choice: ";
     cin >> userChoice;
@@ -621,12 +614,10 @@ void Presentation::searchComputersDatabase()
         cin.ignore();
         getline(cin, searchTerm); // tekur fullt nafn
 
-        string str = searchTerm;
-        transform(str.begin(), str.end(), str.begin(), ::tolower);
-        searchTerm = str;
 
         searchResults = _domain.getComputersSearch(searchTerm, userChoice);
         displayComputersVector(searchResults);
+        inputToReturn();
 
     }
     else if(userChoice == 2)
@@ -643,6 +634,7 @@ void Presentation::searchComputersDatabase()
 
         searchResults = _domain.getComputersSearch(searchTerm, userChoice);
         displayComputersVector(searchResults);
+        inputToReturn();
     }
     else if(userChoice == 3)
     {
@@ -657,6 +649,7 @@ void Presentation::searchComputersDatabase()
 
         searchResults = _domain.getComputersSearch(searchTerm, userChoice);
         displayComputersVector(searchResults);
+        inputToReturn();
     }
     else if(userChoice == 4)
     {
@@ -680,6 +673,7 @@ void Presentation::searchComputersDatabase()
 
         searchResults = _domain.getComputersSearch(searchTerm, userChoice);
         displayComputersVector(searchResults);
+        inputToReturn();
     }
     else if(userChoice == 5)
     {
@@ -740,7 +734,7 @@ void Presentation::addScientist()
     }
     else if(input == 5)
     {
-        inputToReturn();
+        startProgram();
     }
     else if(input == 6)
     {
@@ -765,11 +759,18 @@ void Presentation::addComputer()
         cout << "2 - Delete a computer from the database" << endl; // TODO - EXTRA
         cout << "3 - View the computer database" << endl;
         cout << "4 - Search the computer database" << endl;
-        cout << "5 - Quit" << endl;
+        cout << "5 - Return to main menu\n";
+        cout << "5 - Quit the program\n";
         cout << endl;
         cout << "Enter your choice: ";
         cin >> input;
         cout << endl;
+
+        while(input < 1 || input > 6)
+        {
+            cout << "Please input a correct number: ";
+            cin >> input;
+        }
 
         if(input == 1)
         {
@@ -786,6 +787,14 @@ void Presentation::addComputer()
         else if(input == 4)
         {
             searchComputersDatabase();
+        }
+        else if(input == 5)
+        {
+            startProgram();
+        }
+        else if(input == 6)
+        {
+            quitDoubt();
         }
         else if(cin.fail())
         {
@@ -915,7 +924,7 @@ void Presentation::inputToReturn()
     do
     {
         cout << "Enter one of the following commands:\n";
-        cout << "\n| 'm' - main menu | 's' - scientist menu | 'c' - computer menu | 'q' - quit the program |\n";
+        cout << "| 'm' - main menu | 's' - scientist menu | 'c' - computer menu | 'q' - quit the program |\n";
         cout << "Your command: ";
         cin >> input;
     }
