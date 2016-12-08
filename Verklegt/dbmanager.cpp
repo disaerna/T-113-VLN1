@@ -275,69 +275,24 @@ vector<Computers> DbManager::printAllComputers()
     return readComputers(query);
 }
 
-vector<Persons> DbManager::printPersonsResults(string searchTerm, int userChoice)
+vector<Persons> DbManager::printPersonsResults(string searchTerm, string text)
 {
     QSqlQuery query;
-    QString text1 = "";
-
-
-    if(userChoice == 1) {
-        text1 = "Name";
-    }
-    else if(userChoice == 2) {
-        text1 = "Gender";
-        if(searchTerm == "M" || searchTerm == "m") {
-            searchTerm = "Male";
-        }
-        else if(searchTerm == "F" || searchTerm == "f") {
-            searchTerm = "Female";
-        }
-    }
-    else if(userChoice == 3) {
-        text1 = "YearOfBirth";
-    }
-    else if(userChoice == 4) {
-        text1 = "YearOfDeath";
-    }
-
-
-
+    QString qText = QString::fromStdString(text);
     QString qSearchTerm = QString::fromStdString(searchTerm);
 
-    query.exec("SELECT * FROM Scientists WHERE " + text1 + " LIKE '%" + qSearchTerm + "%'");
+    query.exec("SELECT * FROM Scientists WHERE " + qText + " LIKE '%" + qSearchTerm + "%'");
 
     return readPersons(query);
 }
 
-vector<Computers> DbManager::printComputersResults(string searchTerm, int userChoice)
+vector<Computers> DbManager::printComputersResults(string searchTerm, string text)
 {
     QSqlQuery query;
-    QString text1 = "";
-
-
-    if(userChoice == 1)
-    {
-        text1 = "Name";
-    }
-    else if(userChoice == 2)
-    {
-        text1 = "YearBuilt";
-    }
-    else if(userChoice == 3)
-    {
-        text1 = "Type";
-    }
-    else if(userChoice == 4)
-    {
-        text1 = "Built";
-    }
-
+    QString qText = QString::fromStdString(text);
     QString qSearchTerm = QString::fromStdString(searchTerm);
 
-    qDebug() << "qSearch: " << qSearchTerm <<endl;
-    qDebug() << "text1: " << text1 <<endl;
-
-    query.exec("SELECT * FROM Computers WHERE " + text1 + " LIKE '%" + qSearchTerm + "%'");
+    query.exec("SELECT * FROM Computers WHERE " + qText + " LIKE '%" + qSearchTerm + "%'");
 
     return readComputers(query);
 }
