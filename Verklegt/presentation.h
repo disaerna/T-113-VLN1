@@ -38,14 +38,13 @@ private:
     void connectScientist();
     void updatePerson();
 
-    // Function for computer
-    void removeComputer(); //Removes Computer from database.
+    // Function for computers
+    void removeComputer();
     void searchComputersDatabase();
     void viewComputersDatabase();
     void newComputer();
     void viewComputerConnection();
     void connectComputer();
-
     void updateComputer();
 
     // Functions for connection

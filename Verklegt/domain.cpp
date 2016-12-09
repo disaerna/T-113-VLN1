@@ -170,57 +170,57 @@ vector<Persons> Domain::sortPersons(int viewInput)
 
     case 2:
 
-        // Sort name descending // *Virðist eins og ascending virki
+        // Sort name ascending
         getPerson = _DbManager.sortScientistsByValue("Name","asc");
 
         break;
 
     case 3:
 
-        // Sort name ascending
+        // Sort name descending
         getPerson = _DbManager.sortScientistsByValue("Name","desc");
 
         break;
 
     case 4:
 
-        // Sort gender descending
+        // Sort gender ascending
         getPerson = _DbManager.sortScientistsByValue("Gender","asc");
 
         break;
 
     case 5:
 
-        // Sort gender ascending
+        // Sort gender descending
         getPerson = _DbManager.sortScientistsByValue("Gender","desc");
 
         break;
 
     case 6:
 
-        // Sort birth year descending
-        getPerson = _DbManager.sortScientistsByValue("YearOfBirth","desc");
-
-        break;
-
-    case 7:
-
         // Sort birth year ascending
         getPerson = _DbManager.sortScientistsByValue("YearOfBirth","asc");
 
         break;
 
+    case 7:
+
+        // Sort birth year descending
+        getPerson = _DbManager.sortScientistsByValue("YearOfBirth","desc");
+
+        break;
+
     case 8:
 
-        // Sort death year descending
-        getPerson = _DbManager.sortScientistsByValue("YearOfDeath","desc");
+        // Sort death year ascending
+        getPerson = _DbManager.sortScientistsByValue("YearOfDeath","asc");
 
         break;
 
     case 9:
 
-        // sort death yearascending
-        getPerson = _DbManager.sortScientistsByValue("YearOfDeath","asc");
+        // sort death year descending
+        getPerson = _DbManager.sortScientistsByValue("YearOfDeath","desc");
 
         break;
 
@@ -381,6 +381,7 @@ int Domain::yesOrNoCheck(string answer)
     }
     return 2;
 }
+
 bool Domain::validID(int function, int inputID)
 {
     string table;
@@ -422,15 +423,6 @@ bool Domain::validDeathYearCheck(string birth, string death)
     return false;
 }
 
-// Checks input from user for delete function in presentation class.
-/*bool Domain::validDeleteOfComputer(int number)
-{
-    if(number > 0 && number <= //get fall frá computer klasa().size())
-    {
-        return true;
-    }
-    return false;
-}*/
 bool Domain::updatePerson(int ID, string updateChoice, string newRecord)
 {
     return _DbManager.updateScientist(ID, updateChoice, newRecord);

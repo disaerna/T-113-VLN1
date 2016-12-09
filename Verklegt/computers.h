@@ -2,7 +2,6 @@
 #define COMPUTERS_H
 
 #include <string>
-#include <iostream>
 
 using namespace std;
 
@@ -10,7 +9,7 @@ class Computers {
 public:
     Computers();
 
-    // get föll
+    // get functions
     string getCompName() const;
     string getCompYearBuild() const;
     string getCompType() const;
@@ -20,7 +19,7 @@ public:
     int getCompID() const;
 
 
-    // set fall
+    // set functions
     void setComputers(int compID, string compName, string compYearBuild, string compType, bool compBuilt);
 private:
     string _compName; // name of computer

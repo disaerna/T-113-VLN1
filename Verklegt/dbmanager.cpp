@@ -4,16 +4,12 @@
 DbManager::DbManager()
 {
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("../verkefni2.sqlite"); // spurning hvort það sé nóg að hafa bara nafnið á file-num
+    db.setDatabaseName("../verkefni2.sqlite");
     db.open();
 
-    if (!db.open())
+    if (!db.open()) //VILJUM VID HAFA EITTHVAD OUTCOME HERNA?
     {
-        qDebug() << "Error: connection with database fail";
-    }
-    else
-    {
-        qDebug() << "Database: connection ok";
+        //This is the cool place of the program
     }
 }
 
@@ -46,10 +42,6 @@ bool DbManager::addPerson(Persons person)
     {
         success = true;
     }
-    else
-    {
-        qDebug() << "Error adding scientist: " << query.exec() <<endl;
-    }
 
     return success;
 }
@@ -79,10 +71,6 @@ bool DbManager::addComputer(Computers computer)
     {
         success = true;
     }
-    else
-    {
-        qDebug() << "Error adding scientist: " << query.exec() <<endl;
-    }
     return success;
 
 }
@@ -98,9 +86,8 @@ void DbManager::connectComputersAndScientists(int scientistID, int computerID)
     query.bindValue(":sID", scientistID);
     query.bindValue(":cID", computerID);
 
-    if(!query.exec())
+    if(!query.exec())                                                       //HAFA EITTHVAD HERNA
     {
-        qDebug() << db.lastError() << " in connectComputersAndScientists " << endl;
     }
 
 }
@@ -200,10 +187,7 @@ vector<int> DbManager::getComputerToScientist(int ID)
             scientistId.push_back(query.value("ScientistID").toUInt());
         }
     }
-    else
-    {
-        qDebug() << db.lastError() << " in function getComputerToScientist" << endl;
-    }
+
     return scientistId;
 }
 vector<int> DbManager::getScientistToComputer(int ID)
@@ -219,10 +203,7 @@ vector<int> DbManager::getScientistToComputer(int ID)
             computerId.push_back(query.value("ComputerID").toUInt());
         }
     }
-    else
-    {
-        qDebug() << db.lastError() << " in function getScientistToComputer" << endl;
-    }
+
     return computerId;
 }
 vector<int> DbManager::getIDs(string table)
@@ -294,14 +275,11 @@ vector<Persons> DbManager::getSinglePerson(int ID)
     QSqlQuery query(db);
     query.prepare("SELECT * FROM Scientists WHERE ID = :ID");
     query.bindValue(":ID", ID);
-    if(query.exec())
+    if(query.exec())                                        //HERNA EITTHVAD
     {
 
     }
-    else
-    {
-        qDebug() << db.lastError() << " in function getSinglePerson" << endl;
-    }
+
     vector<Persons> person = readPersons(query);
 
     return person;
@@ -311,14 +289,11 @@ vector<Computers> DbManager::getSingleComputer(int ID)
     QSqlQuery query(db);
     query.prepare("SELECT * FROM Computers WHERE ID = :ID");
     query.bindValue(":ID", ID);
-    if(query.exec())
+    if(query.exec())                                        //HERNA EITTHVAD
     {
 
     }
-    else
-    {
-        qDebug() << db.lastError() << " in function getSingleComputer" << endl;
-    }
+
     vector<Computers> computer = readComputers(query);
 
     return computer;
@@ -414,10 +389,6 @@ bool DbManager::updateScientist(int ID, string updateChoice, string newRecord)
     QString qUpdateChoice = QString::fromStdString(updateChoice);
     QString qNewRecord = QString::fromStdString(newRecord);
 
-    qDebug() << qUpdateChoice << " update choice" << endl;
-    qDebug() << qNewRecord << " update record" << endl;
-    qDebug() << ID << " id" << endl;
-
     query.prepare("UPDATE Scientists SET " + qUpdateChoice + " = '" + qNewRecord + "' WHERE id = :ID");
     query.bindValue(":ID", ID);
 
@@ -435,10 +406,6 @@ bool DbManager::updateComputer(int ID, string updateChoice, string newRecord)
     QSqlQuery query(db);
     QString qUpdateChoice = QString::fromStdString(updateChoice);
     QString qNewRecord = QString::fromStdString(newRecord);
-
-    qDebug() << qUpdateChoice << " update choice" << endl;
-    qDebug() << qNewRecord << " update record" << endl;
-    qDebug() << ID << " id" << endl;
 
     query.prepare("UPDATE Computers SET " + qUpdateChoice + " = '" + qNewRecord + "' WHERE id = :ID");
     query.bindValue(":ID", ID);

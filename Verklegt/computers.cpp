@@ -6,7 +6,7 @@ Computers::Computers() {
     // constructor
 }
 
-// get föll
+// get functions
 string Computers::getCompName () const
 {
     return _compName;
@@ -41,7 +41,7 @@ int Computers::getCompID () const
     return _compID;
 }
 
-// set fall
+// set function
 void Computers::setComputers(int compID, string compName, string compYearBuild, string compType, bool compBuilt)
 {
     _compName = compName;

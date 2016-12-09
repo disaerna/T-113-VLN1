@@ -2,7 +2,6 @@
 #define PERSONS_H
 
 #include <string>
-#include <iostream>
 #include <vector>
 #include <fstream>
 #include <iterator>
