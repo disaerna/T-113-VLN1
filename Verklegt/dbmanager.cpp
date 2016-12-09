@@ -97,7 +97,7 @@ bool DbManager::removeScientist(int ID)
     query.bindValue(":ID", ID);
     if(query.exec())
     {
-        success = true;Athugasemdir
+        success = true;
     }
     else
     {

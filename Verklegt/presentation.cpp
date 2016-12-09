@@ -130,7 +130,9 @@ void Presentation::newPersonsInFile()
             cin >> name;
         }
 
+
         cout << "Enter gender M/F: ";
+        cin.clear();
         cin >> gender;
         while(!_domain.validGenderCheck(gender))
         {
@@ -141,6 +143,7 @@ void Presentation::newPersonsInFile()
         gender = _domain.setGender(gender);
 
         cout << "Enter year of birth: ";
+        cin.clear();
         cin >> yearOfBirth;
 
         while (_domain.validYearCheck(yearOfBirth))
@@ -365,7 +368,8 @@ void Presentation::removePerson()
         cin.ignore(100, '\n');
     }
 
-    while(!_domain.validIDTwo(ID, "1")){
+    while(!_domain.validIDTwo(ID, "1"))
+    {
         cout << "Error!\n";
         cout << "Enter correct ID: ";
         cin >> ID;
@@ -424,7 +428,8 @@ void Presentation::removeComputer()
         cin.ignore(100, '\n');
     }
 
-    while(!_domain.validIDTwo(ID, "2")){
+    while(!_domain.validIDTwo(ID, "2"))
+    {
         cout << "Error!\n";
         cout << "Enter correct ID: ";
         cin >> ID;
@@ -582,7 +587,8 @@ void Presentation::viewScientistConnection()
         cin.clear();
         cin.ignore(100, '\n');
     }
-    while(!_domain.validID(1, ID)){
+    while(!_domain.validID(1, ID))
+    {
         cout << "Error!\n";
         cout << "Enter correct ID: ";
         cin >> ID;
@@ -617,7 +623,8 @@ void Presentation::viewComputerConnection()
         cin.clear();
         cin.ignore(100, '\n');
     }
-    while(!_domain.validID(2, ID)){
+    while(!_domain.validID(2, ID))
+    {
         cout << "Error!\n";
         cout << "Enter correct ID: ";
         cin >> ID;
@@ -720,7 +727,6 @@ void Presentation::searchPersonDatabase()
         {
             cout << "Enter year of death: ";
             cin >> searchTerm;
-
         }
 
         else if(_domain.yesOrNoCheck(searchTerm) == 0)
@@ -1161,7 +1167,8 @@ void Presentation::displayPersonsVector(vector<Persons> p)
         cout << "-";
     }
     cout << endl;
-    if(p.size() > 0){
+    if(p.size() > 0)
+    {
 
         for(size_t i=0; i< p.size(); i++)
         {
@@ -1257,7 +1264,8 @@ void Presentation::updatePerson()
 
     cout << "Enter the ID of the scientist you wish to update: ";
     cin >> ID;
-    while(!_domain.validIDTwo(ID, "2")){
+    while(!_domain.validIDTwo(ID, "2"))
+    {
         cout << "Error!\n";
         cout << "Enter correct ID: ";
         cin >> ID;
@@ -1366,7 +1374,8 @@ void Presentation::updateComputer()
     cout << "Enter the ID of the computer you wish to update: ";
     cin >> ID;
 
-    while(!_domain.validIDTwo(ID, "2")){
+    while(!_domain.validIDTwo(ID, "2"))
+    {
         cout << "Error!\n";
         cout << "Enter correct ID: ";
         cin >> ID;

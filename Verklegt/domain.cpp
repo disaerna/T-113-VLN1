@@ -86,23 +86,29 @@ vector<Persons> Domain::getPersonsSearch(string searchTerm, int userChoice)
 {
     string text = "";
     int gender = 0;
-    if(userChoice == 1) {
+    if(userChoice == 1)
+    {
         text = "Name";
     }
-    else if(userChoice == 2) {
+    else if(userChoice == 2)
+    {
         text = "Gender";
         gender = 1;
-        if(searchTerm == "m") {
+        if(searchTerm == "m")
+        {
             searchTerm = "Male";
         }
-        else if(searchTerm == "f") {
+        else if(searchTerm == "f")
+        {
             searchTerm = "Female";
         }
     }
-    else if(userChoice == 3) {
+    else if(userChoice == 3)
+    {
         text = "YearOfBirth";
     }
-    else if(userChoice == 4) {
+    else if(userChoice == 4)
+    {
         text = "YearOfDeath";
     }
     return _DbManager.printPersonsResults(searchTerm, text, gender);
