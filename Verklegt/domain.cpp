@@ -523,19 +523,6 @@ bool Domain::emptyStringCheck(string x)
     return false;
 }
 
-bool Domain::validIDTwo(int x, string y)
-{
-    if(y == "1")
-    {
-        y = "Scientists";
-    }
-    else if(y == "2")
-    {
-        y = "Computers";
-    }
-    return _DbManager.validIDTwo(x,y);
-}
-
 bool Domain::typeCheck(string x)
 {
     if(x == "Micro" || x == "Mechatronic" || x == "Electronic" || x == "Analog")

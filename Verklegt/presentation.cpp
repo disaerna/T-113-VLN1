@@ -22,6 +22,7 @@ void Presentation::startProgram()
     cout << endl;
 
     cout << "Enter your command: ";
+    cin.clear();
     cin >> input;
     cout << endl;
 
@@ -36,6 +37,7 @@ void Presentation::startProgram()
     while(input < 1 || input > 3)
     {
         cout << "Please enter a correct input: ";
+        cin.clear();
         cin >> input;
 
         if(cin.fail())
@@ -66,6 +68,7 @@ void Presentation::quitDoubt()
 
     cout << "Are you sure you want to quit?" << endl;
     cout << "Enter 'n' to return to main menu, any other to quit: ";
+    cin.clear();
     cin >> quit;
 
     if(quit == "N" || quit == "n")
@@ -98,6 +101,7 @@ void Presentation::newPersonsInFile()
     do
     {
         cout << "How many Scientists would you like to input: ";
+        cin.clear();
         cin >> userInput;
 
         for (size_t i = 0; i < userInput.length(); i++)
@@ -136,6 +140,7 @@ void Presentation::newPersonsInFile()
         while(!_domain.validGenderCheck(gender))
         {
             cout << "Please enter either 'M' for male or 'F' for female: ";
+            cin.clear();
             cin >> gender;
         }
 
@@ -148,27 +153,32 @@ void Presentation::newPersonsInFile()
         while (_domain.validYearCheck(yearOfBirth))
         {
             cout << "Wrong input! Please enter 4 digits: ";
+            cin.clear();
             cin >> yearOfBirth;
         }
 
         cout << "Is the Scientists deceased? Y/N: ";
+        cin.clear();
         cin >> answer;
 
         while(_domain.yesOrNoCheck(answer) == 2)
         {
             cout << "Wrong input! Please enter Y/N";
+            cin.clear();
             cin >> answer;
         }
 
         if(_domain.yesOrNoCheck(answer) == 1)
         {
             cout << "Enter year of death: ";
+            cin.clear();
             cin >> yearOfDeath;
 
             while( _domain.validDeathYearCheck(yearOfBirth, yearOfDeath))
             {
                 cout << "Wrong input! Please enter 4 digits." << endl;
                 cout << "Enter year of death: ";
+                cin.clear();
                 cin >> yearOfDeath;
             }
         }
@@ -208,6 +218,7 @@ void Presentation::newComputer()
     do
     {
         cout << "How many computers would you like to input: ";
+        cin.clear();
         cin >> userInput;
 
         for (size_t i = 0; i < userInput.length(); i++)
@@ -239,15 +250,18 @@ void Presentation::newComputer()
         {
             cout << "Name cannot be empty." << endl;
             cout << "Please enter a valid name." << endl;
+            cin.clear();
             cin >> name;
         }
 
         cout << "Enter the year the computer was built: ";
+        cin.clear();
         cin >> yearOfBuild;
 
         while (_domain.validYearCheck(yearOfBuild))
         {
             cout << "Wrong input! Please enter 4 digits: ";
+            cin.clear();
             cin >> yearOfBuild;
         }
 
@@ -264,39 +278,46 @@ void Presentation::newComputer()
         {
             cout << i+1 << ". " << types[i]<<endl;
         }
-        cout << "Is the type of your computer in the list above? Please enter Y/N: " << endl;
+        cout << "Is the type of your computer in the list above? Please enter Y/N: ";
 
+        cin.clear();
         cin >> answer;
         while(_domain.yesOrNoCheck(answer) == 2)
         {
-            cout << "Wrong input! Please enter Y/N: " << endl;
+            cout << "Wrong input! Please enter Y/N: ";
+            cin.clear();
             cin >> answer;
         }
         if(_domain.yesOrNoCheck(answer) == 1)
         {
-            cout << "Please enter the number for the type of computer you wish to register: " << endl;
+            cout << "Please enter the number for the type of computer you wish to register: ";
+            cin.clear();
             cin >> chooseType;
 
             while(chooseType < 0 && chooseType > (signed)types.size())
             {
-                cout << "Please enter a valid number from 1 - "<<types.size()<<" : "<< endl;
+                cout << "Please enter a valid number from 1 - "<<types.size()<<" : ";
+                cin.clear();
                 cin>>chooseType;
             }
             type = types[chooseType -1];
         }
         else if(_domain.yesOrNoCheck(answer) == 0)
         {
-            cout << "Would you like to add a type on the list? Please enter Y/N: " << endl;
+            cout << "Would you like to add a type on the list? Please enter Y/N: ";
+            cin.clear();
             cin >> typeAnswer;
             while(_domain.yesOrNoCheck(typeAnswer) == 2)
             {
-                cout << "Wrong input! Please enter Y/N: " << endl;
+                cout << "Wrong input! Please enter Y/N: ";
+                cin.clear();
                 cin >> typeAnswer;
             }
             if(_domain.yesOrNoCheck(typeAnswer) == 1)
             {
 
-                cout << "Enter the name of the new type: " << endl;
+                cout << "Enter the name of the new type: ";
+                cin.clear();
                 cin >> newType;
 
                 type = newType;
@@ -310,11 +331,13 @@ void Presentation::newComputer()
         }
 
         cout << "Was the build successful? Y/N: ";
+        cin.clear();
         cin >> answer;
 
         while(_domain.yesOrNoCheck(answer) == 2)
         {
-            cout << "Wrong input! Please enter Y/N: " << endl;
+            cout << "Wrong input! Please enter Y/N: ";
+            cin.clear();
             cin >> answer;
         }
 
@@ -353,6 +376,7 @@ void Presentation::removePerson()
     int ID = 0;
 
     cout << "Enter the ID of the scientist you wish to delete from the database: ";
+    cin.clear();
     cin >> ID;
     cout << endl;
 
@@ -363,10 +387,11 @@ void Presentation::removePerson()
         cin.ignore(100, '\n');
     }
 
-    while(!_domain.validIDTwo(ID, "1"))
+    while(!_domain.validID(1, ID))
     {
         cout << "Error!\n";
         cout << "Enter correct ID: ";
+        cin.clear();
         cin >> ID;
 
         if(cin.fail())
@@ -382,6 +407,7 @@ void Presentation::removePerson()
     while(!_domain.deletePersonFromFile(ID))
     {
         cout << "Please enter a valid ID: ";
+        cin.clear();
         cin >> ID;
 
         if(cin.fail())
@@ -411,6 +437,7 @@ void Presentation::removeComputer()
     int ID = 0;
 
     cout << "Enter the ID of the computer you wish to delete from the database: ";
+    cin.clear();
     cin >> ID;
 
     if(cin.fail())
@@ -420,10 +447,11 @@ void Presentation::removeComputer()
         cin.ignore(100, '\n');
     }
 
-    while(!_domain.validIDTwo(ID, "2"))
+    while(!_domain.validID(2, ID))
     {
         cout << "Error!\n";
         cout << "Enter correct ID: ";
+        cin.clear();
         cin >> ID;
 
         if(cin.fail())
@@ -440,6 +468,7 @@ void Presentation::removeComputer()
     while(! _domain.deleteComputerFromDatabase(ID))
     {
         cout << "Please enter a valid ID: ";
+        cin.clear();
         cin >> ID;
 
         if(cin.fail())
@@ -480,6 +509,7 @@ void Presentation::viewPersonsDatabase()
 
     int viewInput = 0;
     cout << "Enter your choice: ";
+    cin.clear();
     cin >> viewInput;
 
     if(cin.fail())
@@ -492,6 +522,7 @@ void Presentation::viewPersonsDatabase()
     {
         cout << "Please enter a valid number!" << endl;
         cout << "Enter your choice: ";
+        cin.clear();
         cin >> viewInput;
 
         if(cin.fail())
@@ -531,6 +562,7 @@ void Presentation::viewComputersDatabase()
 
     int viewInput = 0;
     cout << "Enter your choice: ";
+    cin.clear();
     cin >> viewInput;
 
     if(cin.fail())
@@ -543,6 +575,7 @@ void Presentation::viewComputersDatabase()
     {
         cout << "Please enter a valid number!" << endl;
         cout << "Enter your choice: ";
+        cin.clear();
         cin >> viewInput;
 
         if(cin.fail())
@@ -571,6 +604,7 @@ void Presentation::viewScientistConnection()
     int ID;
     cout << endl;
     cout << "Enter ID for a scientist: ";
+    cin.clear();
     cin >> ID;
 
     if(cin.fail())
@@ -583,6 +617,7 @@ void Presentation::viewScientistConnection()
     {
         cout << "Error!\n";
         cout << "Enter correct ID: ";
+        cin.clear();
         cin >> ID;
 
         if(cin.fail())
@@ -607,6 +642,7 @@ void Presentation::viewComputerConnection()
     int ID;
     cout << endl;
     cout << "Enter ID for a computer: ";
+    cin.clear();
     cin >> ID;
 
     if(cin.fail())
@@ -619,6 +655,7 @@ void Presentation::viewComputerConnection()
     {
         cout << "Error!\n";
         cout << "Enter correct ID: ";
+        cin.clear();
         cin >> ID;
 
         if(cin.fail())
@@ -648,6 +685,7 @@ void Presentation::searchPersonDatabase()
     cout << "5. Return to main menu" << endl;
     cout << endl;
     cout << "Enter your choice: ";
+    cin.clear();
     cin >> userChoice;
 
     if(cin.fail())
@@ -667,6 +705,7 @@ void Presentation::searchPersonDatabase()
         while (_domain.validNameCheck(searchTerm) || !_domain.emptyStringCheck(searchTerm))
         {
             cout << "Name must only contain alphabet characters A-Z. \nPlease enter a valid name." << endl;
+            cin.clear();
             cin >> searchTerm;
         }
 
@@ -678,10 +717,12 @@ void Presentation::searchPersonDatabase()
     else if(userChoice == 2)
     {
         cout << "Enter either 'm' or 'f': ";
+        cin.clear();
         cin >> searchTerm;
         while(!_domain.validGenderCheck(searchTerm))
         {
             cout << "Please enter either 'm' for male or 'f' for female: ";
+            cin.clear();
             cin >> searchTerm;
         }
 
@@ -692,11 +733,13 @@ void Presentation::searchPersonDatabase()
     else if(userChoice == 3)
     {
         cout << "Enter Birth year: ";
+        cin.clear();
         cin >> searchTerm;
 
         while (_domain.validYearCheck(searchTerm))
         {
             cout << "Wrong input! Please enter 4 digits: ";
+            cin.clear();
             cin >> searchTerm;
         }
 
@@ -707,17 +750,20 @@ void Presentation::searchPersonDatabase()
     else if(userChoice == 4)
     {
         cout << "Is the person deceased? Y/N: ";
+        cin.clear();
         cin >> searchTerm;
 
         while(_domain.yesOrNoCheck(searchTerm) == 2)
         {
             cout << "Wrong input! Please enter Y/N: ";
+            cin.clear();
             cin >> searchTerm;
         }
 
         if(_domain.yesOrNoCheck(searchTerm) == 1)
         {
             cout << "Enter year of death: ";
+            cin.clear();
             cin >> searchTerm;
         }
 
@@ -760,6 +806,7 @@ void Presentation::searchComputersDatabase()
     cout << "5. Return to computer menu" << endl;
     cout << endl;
     cout << "Enter your choice: ";
+    cin.clear();
     cin >> userChoice;
 
     if(cin.fail())
@@ -779,6 +826,7 @@ void Presentation::searchComputersDatabase()
         {
             cout << "Name cannot be empty." << endl;
             cout << "Please enter a valid name." << endl;
+            cin.clear();
             cin >> searchTerm;
         }
 
@@ -790,11 +838,13 @@ void Presentation::searchComputersDatabase()
     else if(userChoice == 2)
     {
         cout << "Enter built year: ";
+        cin.clear();
         cin >> searchTerm;
 
         while (_domain.validYearCheck(searchTerm))
         {
             cout << "Wrong input! Please enter 4 digits: ";
+            cin.clear();
             cin >> searchTerm;
         }
 
@@ -805,6 +855,7 @@ void Presentation::searchComputersDatabase()
     else if(userChoice == 3)
     {
         cout << "Enter computer type: ";
+        cin.clear();
         cin >> searchTerm;
 
         // þarf villutékk til að hægt sé aðeins að stimpla inn ákveðnar gerðir
@@ -820,10 +871,12 @@ void Presentation::searchComputersDatabase()
     else if(userChoice == 4)
     {
         cout << "Enter Y/N if computer was built: ";
+        cin.clear();
         cin >> searchTerm;
         if(_domain.yesOrNoCheck(searchTerm) == 2)
         {
             cout << "Wrong input! Please enter Y/N: ";
+            cin.clear();
             cin >> searchTerm;
         }
         else if(_domain.yesOrNoCheck(searchTerm) == 1)
@@ -875,11 +928,13 @@ void Presentation::addScientist()
     cout << "9 - Quit the program " << endl;
     cout << endl;
     cout << "Enter your choice: ";
+    cin.clear();
     cin >> input;
 
     while(input < 1 || input > 8)
     {
         cout << "Please input a correct number: ";
+        cin.clear();
         cin >> input;
 
         if(cin.fail())
@@ -955,12 +1010,14 @@ void Presentation::addComputer()
 
         cout << endl;
         cout << "Enter your choice: ";
+        cin.clear();
         cin >> input;
         cout << endl;
 
         while(input < 1 || input > 8)
         {
             cout << "Please input a correct number: ";
+            cin.clear();
             cin >> input;
 
             if(cin.fail())
@@ -1063,6 +1120,7 @@ void Presentation::connectComputer()
             cout << "This computer already has this connection." << endl;
             cout << "Press '0' to go back to main menu." << endl;
             cout << "Select an ID for a scientist: " << endl;
+            cin.clear();
             cin >> scientistID;
 
             if(cin.fail())
@@ -1130,6 +1188,7 @@ void Presentation::connectScientist()
             cout << "This scientist already has this connection." << endl;
             cout << "Press '0' to go back to main menu." <<endl;
             cout << "Select an ID for a computer: ";
+            cin.clear();
             cin >> computerID;
 
             if(cin.fail())
@@ -1161,13 +1220,14 @@ void Presentation::displayPersonsVector(vector<Persons> p)
     cout << endl;
     if(p.size() > 0)
     {
-
         for(size_t i=0; i< p.size(); i++)
         {
             cout << p[i].getID() << ".\t" << setw(34) << left << p[i].getName() << setw(15) << p[i].getGender() << setw(15) << p[i].getYearOfBirth() << setw(15) << p[i].getYearOfDeath()<< endl;
         }
         cout << endl;
-    }else{
+    }
+    else
+    {
         cout << "Operation returned no results!" << endl;
         cout << endl;
     }
@@ -1200,7 +1260,8 @@ void Presentation::displayComputersVector(vector<Computers> c)
             cout << c[i].getCompID() << ".\t" << setw(34) << left << c[i].getCompName() << setw(15) << c[i].getCompYearBuild() << setw(15) << c[i].getCompType() << setw(15) << built << endl;
         }
         cout << endl;
-    }else
+    }
+    else
     {
         cout << "Operation returned no results!" << endl;
         cout << endl;
@@ -1223,6 +1284,7 @@ void Presentation::inputToReturn()
                 " q - quit the program " << endl;;
         cout << endl;
         cout << "Your command: ";
+        cin.clear();
         cin >> input;
     }
     while(input != "m" && input != "M" && input != "q" && input != "Q" && input != "s" && input != "S" && input != "c" && input != "C");
@@ -1255,11 +1317,13 @@ void Presentation::updatePerson()
     string newRecord = "";
 
     cout << "Enter the ID of the scientist you wish to update: ";
+    cin.clear();
     cin >> ID;
-    while(!_domain.validIDTwo(ID, "2"))
+    while(!_domain.validID(1, ID))
     {
         cout << "Error!\n";
         cout << "Enter correct ID: ";
+        cin.clear();
         cin >> ID;
 
         if(cin.fail())
@@ -1284,12 +1348,14 @@ void Presentation::updatePerson()
 
     cout << "Enter what you would like to update:\n";
     cout << "n: name | g: gender | b: birth year | d: death year: ";
+    cin.clear();
     cin >> updateChoice;
 
     while(!_domain.validPersonUpdateChoice(updateChoice))
     {
         cout << "Invalid input!\n";
         cout << "n: name | g: gender | b: birth year | d: death year: ";
+        cin.clear();
         cin >> updateChoice;
     }
 
@@ -1306,41 +1372,49 @@ void Presentation::updatePerson()
         while (_domain.validNameCheck(newRecord))
         {
             cout << "Name must only contain alphabet characters A-Z. \n Please enter a valid name: ";
+            cin.clear();
             cin >> newRecord;
         }
     }
     else if(updateChoice == "Gender")
     {
+        cin.clear();
         cin >> newRecord;
         while(!_domain.validUpdateGender(newRecord))
         {
             cout << "Please enter either 'Male' or 'Female': ";
+            cin.clear();
             cin >> newRecord;
         }
     }
     else if(updateChoice == "YearOfBirth")
     {
+        cin.clear();
         cin >> newRecord;
         while (_domain.validYearCheck(newRecord))
         {
             cout << "Wrong input! Please enter 4 digits: ";
+            cin.clear();
             cin >> newRecord;
         }
     }
     else if(updateChoice == "YearOfDeath")
     {
         cout << "Is the person deceased? Y/N: ";
+        cin.clear();
         cin >> newRecord;
 
         while(_domain.yesOrNoCheck(newRecord) == 2)
         {
             cout << "Wrong input! Please enter Y/N: ";
+            cin.clear();
             cin >> newRecord;
         }
 
         if(_domain.yesOrNoCheck(newRecord) == 1)
         {
             cout << "Enter year of death: ";
+            cin.clear();
             cin >> newRecord;
 
             // þarf check if year death is correct
@@ -1364,12 +1438,14 @@ void Presentation::updateComputer()
     string newRecord = "";
 
     cout << "Enter the ID of the computer you wish to update: ";
+    cin.clear();
     cin >> ID;
 
-    while(!_domain.validIDTwo(ID, "2"))
+    while(!_domain.validID(2, ID))
     {
         cout << "Error!\n";
         cout << "Enter correct ID: ";
+        cin.clear();
         cin >> ID;
 
         if(cin.fail())
@@ -1390,12 +1466,14 @@ void Presentation::updateComputer()
 
     cout << "Enter what you would like to update:\n";
     cout << "n: name | y: year built | t: type | b: build successful: ";
+    cin.clear();
     cin >> updateChoice;
 
     while(!_domain.validComputerUpdateChoice(updateChoice))
     {
         cout << "Invalid input!\n";
         cout << "n: name | y: year built | t: type | b: was built: ";
+        cin.clear();
         cin >> updateChoice;
     }
 
@@ -1420,10 +1498,12 @@ void Presentation::updateComputer()
     }
     else if(updateChoice == "YearBuilt")
     {
+        cin.clear();
         cin >> newRecord;
         while (_domain.validYearCheck(newRecord))
         {
             cout << "Wrong input! Please enter 4 digits: ";
+            cin.clear();
             cin >> newRecord;
         }
     }
@@ -1437,9 +1517,10 @@ void Presentation::updateComputer()
         cin.ignore();
         getline(cin, newRecord); // TODO ! Passa að ekki sé leyfilegt að slá inn tómt nafn !
 
-        while(stoi(newRecord) < 0 && stoi(newRecord) > types.size())
+        while(stoi(newRecord) < 0 && stoi(newRecord) > (signed)types.size())
         {
             cout << "Please enter a valid number from 1 - " << types.size() << " : " << endl;
+            cin.clear();
             cin >> newRecord;
         }
 

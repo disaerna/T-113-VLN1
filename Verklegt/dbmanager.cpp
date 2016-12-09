@@ -181,14 +181,16 @@ vector<int> DbManager::getIDs(string table)
 
     QString qTable = QString::fromStdString(table);
 
-    query.prepare("SELECT ID FROM " + qTable);
+    query.prepare("SELECT ID FROM " + qTable + "");
+
+    int i;
 
     if(query.exec())
     {
         while(query.next())
         {
-
-            IDs.push_back(query.value("ID").toUInt());
+            i = query.value(0).toInt();
+            IDs.push_back(i);
         }
     }
     return IDs;
@@ -383,18 +385,4 @@ bool DbManager::updateComputer(int ID, string updateChoice, string newRecord)
     {
         return false;
     }
-}
-
-bool DbManager::validIDTwo(int x, string choice)
-{
-    QSqlQuery query;
-    QString qChoice = QString::fromStdString(choice);
-
-    query.prepare("SELECT * FROM " + qChoice + " WHERE id = :ID");
-    query.bindValue(":ID", x);
-    if(query.exec())
-    {
-        return true;
-    }
-    return false;
 }

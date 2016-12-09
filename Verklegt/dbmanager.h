@@ -52,7 +52,6 @@ public:
 
     bool updateScientist(int ID, string updateChoice, string newRecord);
     bool updateComputer(int ID, string updateChoice, string newRecord);
-    bool validIDTwo(int x, string choice);
 
 
 

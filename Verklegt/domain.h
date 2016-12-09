@@ -66,7 +66,6 @@ public:
     bool validUpdateGender(string x);
     bool validComputerUpdateChoice(string x);
     bool emptyStringCheck(string x);
-    bool validIDTwo(int x, string choice);
     bool typeCheck(string x);
 
 private:
