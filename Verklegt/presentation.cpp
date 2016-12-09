@@ -1,5 +1,4 @@
 #include "presentation.h"
-#include "persons.h"
 
 using namespace std;
 

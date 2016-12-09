@@ -1,6 +1,5 @@
 #include "data.h"
-#include "persons.h"
-#include <QStringList>
+
 
 
 using namespace std;

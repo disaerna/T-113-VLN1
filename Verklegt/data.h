@@ -8,6 +8,7 @@
 #include <iterator>
 #include <sstream>
 #include <QSqlDatabase>
+#include <QStringList>
 #include "persons.h"
 #include "computers.h"
 

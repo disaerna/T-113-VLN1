@@ -1,8 +1,4 @@
 #include "domain.h"
-#include "persons.h"
-#include "computers.h"
-#include "dbmanager.h"
-#include <iostream>
 
 // Structs used for sorting
 
