@@ -59,7 +59,7 @@ void Presentation::startProgram()
         quitDoubt();
     }
 }
-//Quit the program or go to main menu
+//Gives the user a chance to return to main menu or quit the program
 void Presentation::quitDoubt()
 {
     string quit = "";
@@ -79,8 +79,7 @@ void Presentation::quitDoubt()
     }
 }
 
-
-// Adds person to database(file)
+// Adds new Scientists to the scientists database
 void Presentation::newPersonsInFile()
 {
     Persons newPerson;
@@ -189,7 +188,7 @@ void Presentation::newPersonsInFile()
 
     inputToReturn();
 }
-// Adds new computer to the database(file)
+//Adds new Computer to the Computers database
 void Presentation::newComputer()
 {
     Computers newComp;
@@ -350,7 +349,7 @@ void Presentation::newComputer()
 }
 
 
-// Removes person
+// Allows the user to remove Scientists from the Scientists database and displays the Scientists table
 void Presentation::removePerson()
 {
     displayPersonsVector(_domain.getPersons());
@@ -411,7 +410,7 @@ void Presentation::removePerson()
     inputToReturn();
 }
 
-// Removes computer
+// Allows the user to remove Computer from the Computers database and display Computers table
 void Presentation::removeComputer()
 {
     displayComputersVector(_domain.getComputers());
@@ -471,7 +470,7 @@ void Presentation::removeComputer()
 
 
 
-// View menu
+// The main menu options when the user choose to view the Scientists database
 void Presentation::viewPersonsDatabase()
 {
     cout << "How would you like view the database? " << endl;
@@ -522,7 +521,7 @@ void Presentation::viewPersonsDatabase()
     }
 
 }
-//view menu
+//The main menu options when the user choose to view the Computers database
 void Presentation::viewComputersDatabase()
 {
     cout << "How would you like view the database? " << endl;
@@ -607,7 +606,7 @@ void Presentation::viewScientistConnection()
 
     inputToReturn();
 }
-//views the connection between certain computer and the scientists linked to this computer and prints out in table
+//The user can view the connection between the Scientist and the computers he is linked to
 void Presentation::viewComputerConnection()
 {
     displayComputersVector(_domain.getComputers());
@@ -643,7 +642,7 @@ void Presentation::viewComputerConnection()
     inputToReturn();
 
 }
-// Searches the database(file).
+// Main menu when the user wants to search for Scientist by multiple options
 void Presentation::searchPersonDatabase()
 {
     int userChoice = 0;
@@ -755,7 +754,7 @@ void Presentation::searchPersonDatabase()
         searchPersonDatabase();
     }
 }
-//Searches the database(file)
+//Main menu when the user wants to search for Computer by different options
 void Presentation::searchComputersDatabase()
 {
     int userChoice = 0;
@@ -1023,7 +1022,7 @@ void Presentation::addComputer()
         }
     }while (input != 7);
 }
-//Connects Computer to a Scientists
+// Connects certain computer to a scientist from the database
 void Presentation::connectComputer()
 {
     int computerID;
@@ -1090,7 +1089,7 @@ void Presentation::connectComputer()
     cout << endl;
     inputToReturn();
 }
-//Connects a Scientist to a computer.
+//Connects a Scientist to a computer in the database.
 void Presentation::connectScientist()
 {
     int computerID;
@@ -1362,7 +1361,7 @@ void Presentation::updatePerson()
     displayPersonsVector(_domain.getPersons());
     inputToReturn();
 }
-//Able to rename the variables  that you chhose from the Computers database
+//Allows the user to edit information in the Computers database
 void Presentation::updateComputer()
 {
     displayComputersVector(_domain.getComputers());
