@@ -65,6 +65,7 @@ public:
     bool updateComputer(int ID, string updateChoice, string newRecord);
     bool validComputerUpdateChoice(string x);
     string changeComputerUpdateChoice(string x);
+    bool emptyStringCheck(string x);
 
 private:
 

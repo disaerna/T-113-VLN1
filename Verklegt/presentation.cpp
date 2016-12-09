@@ -9,7 +9,6 @@ Presentation::Presentation()
 
 void Presentation::startProgram()
 {
-
     int input = 0;
     cout << endl;
     cout << "Verk Solutions v.2.0 -- Main menu: " << endl;
@@ -27,7 +26,6 @@ void Presentation::startProgram()
     cout << endl;
 
     while(input < 1 || input > 3)
-
     {
         cout << "Please enter a correct input: ";
         cin >> input;
@@ -45,8 +43,6 @@ void Presentation::startProgram()
     {
         quitDoubt();
     }
-
-
 }
 
 void Presentation::quitDoubt()
@@ -103,7 +99,6 @@ void Presentation::newPersonsInFile()
                 number = stoi(userInput);
             }
         }
-
     }while(!valid);
 
     for(int i=0; i<number; i++)
@@ -114,14 +109,9 @@ void Presentation::newPersonsInFile()
         cout << "Enter name: ";
         cin.ignore();
         getline(cin, name); // TODO ! Passa að ekki sé leyfilegt að slá inn tómt nafn !
-        while (_domain.validNameCheck(name))
+        while (_domain.validNameCheck(name) || !_domain.emptyStringCheck(name))
         {
-            cout << "Name must only contain alphabet characters A-Z. \n Please enter a valid name: " << endl;
-            cin >> name;
-        }
-        if(name == " ")
-        {
-            cout << "\n Name cannot be empty. \n Please enter a valid name: " << endl;
+            cout << "Name must only contain alphabet characters A-Z. \nPlease enter a valid name: ";
             cin >> name;
         }
 
@@ -174,7 +164,6 @@ void Presentation::newPersonsInFile()
 
         newPerson.setPersons(3, name, gender, yearOfBirth, yearOfDeath);
         _domain.addPersons(newPerson);
-
     }
 
     cout << "Your input has been saved..." << endl;
@@ -243,17 +232,12 @@ void Presentation::newComputer()
         cin.ignore();
         getline(cin, name); // tekur fullt nafn
 
-        while (_domain.validNameCheck(name))
+        while (_domain.validNameCheck(name) || !_domain.emptyStringCheck(name))
         {
-            cout << "Name must only contain alphabet characters A-Z. \n Please enter a valid name." << endl;
+            cout << "Name must only contain alphabet characters A-Z. \nPlease enter a valid name: ";
             cin >> name;
         }
-        if(name == " ")
-        {
 
-            cout << "\n Name cannot be empty. \n Please enter a valid name: " << endl;
-            cin >> name;
-        }
         cout << "Enter the year the computer was built: ";
         cin >> yearOfBuild;
 
@@ -592,9 +576,9 @@ void Presentation::searchPersonDatabase()
         cin.ignore();
         getline(cin, searchTerm); // tekur fullt nafn
         // villutékk
-        while (_domain.validNameCheck(searchTerm))
+        while (_domain.validNameCheck(searchTerm) || !_domain.emptyStringCheck(searchTerm))
         {
-            cout << "Name must only contain alphabet characters A-Z. \n Please enter a valid name." << endl;
+            cout << "Name must only contain alphabet characters A-Z. \nPlease enter a valid name." << endl;
             cin >> searchTerm;
         }
 
@@ -701,6 +685,11 @@ void Presentation::searchComputersDatabase()
         cin.ignore();
         getline(cin, searchTerm); // tekur fullt nafn
 
+        while (_domain.validNameCheck(searchTerm) || !_domain.emptyStringCheck(searchTerm))
+        {
+            cout << "Name must only contain alphabet characters A-Z. \nPlease enter a valid name." << endl;
+            cin >> searchTerm;
+        }
 
         searchResults = _domain.getComputersSearch(searchTerm, userChoice);
         displayComputersVector(searchResults);

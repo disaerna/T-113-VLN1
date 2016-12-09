@@ -482,3 +482,12 @@ string Domain::changeComputerUpdateChoice(string x)
     }
     return y;
 }
+
+bool Domain::emptyStringCheck(string x)
+{
+    if(x != " ")
+    {
+        return true;
+    }
+    return false;
+}
