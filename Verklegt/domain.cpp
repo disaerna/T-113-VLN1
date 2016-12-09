@@ -1,17 +1,17 @@
 #include "domain.h"
 
+// Structs used for sorting
+
 using namespace std;
 
 Domain::Domain()
 {
-
 }
 
 void Domain::addPersons(Persons person)
 {
     _DbManager.addPerson(person);
 }
-
 void Domain::addComputer(Computers computer)
 {
     _DbManager.addComputer(computer);
@@ -21,6 +21,7 @@ void Domain::connectComputersAndScientists(int scientistID, int computerID)
 {
     return _DbManager.connectComputersAndScientists(scientistID, computerID);
 }
+
 
 // Gets all persons from file, deletes person that matches input from user then rewrites.
 bool Domain::deletePersonFromFile(int ID)
@@ -33,7 +34,6 @@ bool Domain::deleteComputerFromDatabase(int ID)
 {
     return _DbManager.removeComputer(ID);
 }
-
 bool Domain::deleteConnections(string column, int ID)
 {
     return _DbManager.removeConnections(column, ID);
@@ -58,7 +58,6 @@ Persons Domain::getSinglePerson(int ID)
         return fakePerson;
     }
 }
-
 Computers Domain::getSingleComputer(int ID)
 {
     vector<Computers> computer = _DbManager.getSingleComputer(ID);
@@ -78,7 +77,6 @@ vector<Computers> Domain::getComputers()
 {
     return _DbManager.printAllComputers();
 }
-
 vector<string> Domain::getComputersTypes()
 {
     return _DbManager.readComputersTypes();
@@ -88,29 +86,23 @@ vector<Persons> Domain::getPersonsSearch(string searchTerm, int userChoice)
 {
     string text = "";
     int gender = 0;
-    if(userChoice == 1)
-    {
+    if(userChoice == 1) {
         text = "Name";
     }
-    else if(userChoice == 2)
-    {
+    else if(userChoice == 2) {
         text = "Gender";
         gender = 1;
-        if(searchTerm == "m")
-        {
+        if(searchTerm == "m") {
             searchTerm = "Male";
         }
-        else if(searchTerm == "f")
-        {
+        else if(searchTerm == "f") {
             searchTerm = "Female";
         }
     }
-    else if(userChoice == 3)
-    {
+    else if(userChoice == 3) {
         text = "YearOfBirth";
     }
-    else if(userChoice == 4)
-    {
+    else if(userChoice == 4) {
         text = "YearOfDeath";
     }
     return _DbManager.printPersonsResults(searchTerm, text, gender);
@@ -146,6 +138,7 @@ vector<Computers> Domain::getScientistToComputer(int ID)
     {
         computer.push_back(_DbManager.getSingleComputer(computerIDs[i])[0]);
     }
+
     return computer;
 }
 
@@ -157,6 +150,7 @@ vector<Persons> Domain::getComputerToScientist(int ID)
     {
         person.push_back(_DbManager.getSinglePerson(scientistIDs[i])[0]);
     }
+
     return person;
 }
 
@@ -232,9 +226,9 @@ vector<Persons> Domain::sortPersons(int viewInput)
 
         getPerson = _DbManager.printAllPersons(); // returns the whole database
     }
+
     return getPerson;
 }
-
 vector<Computers> Domain::sortComputers(int viewInput)
 {
     vector<Computers> getComputer;
@@ -307,6 +301,7 @@ vector<Computers> Domain::sortComputers(int viewInput)
 
         getComputer = _DbManager.printAllComputers(); // returns the whole database
     }
+
     return getComputer;
 }
 
@@ -326,6 +321,8 @@ bool Domain::validNameCheck(string name)
     return (name.find_first_not_of("qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM -.") != std::string::npos);
 }
 
+
+
 // Checks if input is M/m or F/f.
 bool Domain::validGenderCheck(string gender)
 {
@@ -337,6 +334,7 @@ bool Domain::validGenderCheck(string gender)
     {
         return  true;
     }
+
     return false;
 }
 
@@ -409,9 +407,10 @@ bool Domain::validID(int function, int inputID)
 
         }
     }
-    return legalID;
-}
 
+    return legalID;
+
+}
 // Checks if input is digits, if 4 digits, if death year is lower than birth year and if current year is lower than death year.
 bool Domain::validDeathYearCheck(string birth, string death)
 {
