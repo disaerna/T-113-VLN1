@@ -138,7 +138,7 @@ void Presentation::newPersonsInFile()
             cin >> gender;
         }
 
-        gender = _domain.setGender(gender); // setur M/m = male & F/f = female
+        gender = _domain.setGender(gender);
 
         cout << "Enter year of birth: ";
         cin >> yearOfBirth;
@@ -154,7 +154,7 @@ void Presentation::newPersonsInFile()
 
         while(_domain.yesOrNoCheck(answer) == 2)
         {
-            cout << "Wrong input! Please enter Y/N" << endl;
+            cout << "Wrong input! Please enter Y/N";
             cin >> answer;
         }
 
