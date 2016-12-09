@@ -54,9 +54,6 @@ private:
     // Function that asks the user to return or quit.
     void inputToReturn();
 
-
-
-
     Domain _domain;
     Computers _computer;
 

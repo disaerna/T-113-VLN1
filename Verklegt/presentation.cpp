@@ -283,9 +283,6 @@ void Presentation::newComputer()
                 cin>>chooseType;
             }
             type = types[chooseType -1];
-            //===================================================================================================================================================================================
-            //Villutékk hvort týpan sé til
-            //===================================================================================================================================================================================
         }
         else if(_domain.yesOrNoCheck(answer) == 0)
         {
@@ -332,9 +329,9 @@ void Presentation::newComputer()
         }
 
         cout << endl;
-        //===================================================================================================================================================================================
-        newComp.setComputers(3, name, yearOfBuild, type, built); // tjekka betur á ID inntaki
-        //===================================================================================================================================================================================
+
+        newComp.setComputers(3, name, yearOfBuild, type, built);
+
         _domain.addComputer(newComp);
     }
 
@@ -381,10 +378,7 @@ void Presentation::removePerson()
         }
     }
 
-
-
-    //===================================================================================================================================================================================
-    string personDeleted = _domain.getSinglePerson(ID).getName(); // TODO: Make sure to check if user inputs valid ID
+    string personDeleted = _domain.getSinglePerson(ID).getName();
 
     while(!_domain.deletePersonFromFile(ID))
     {

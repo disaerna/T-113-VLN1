@@ -2,8 +2,10 @@
 
 using namespace std;
 
-Computers::Computers() {
-    // constructor
+// constructor
+Computers::Computers()
+{
+
 }
 
 // get functions

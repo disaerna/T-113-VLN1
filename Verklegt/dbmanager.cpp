@@ -1,4 +1,3 @@
-
 #include "dbmanager.h"
 
 DbManager::DbManager()
@@ -8,16 +7,16 @@ DbManager::DbManager()
     db.open();
     if (!db.open())
     {
-       //Used to be a Qdebug statement here, removed for grading.
+        //Used to be a Qdebug statement here, removed for grading.
     }
 }
+
 //Returns error code
 QSqlError DbManager::lastError()
 {
-
     return db.lastError();
-
 }
+
 //Adds new Scientists to the database
 bool DbManager::addPerson(Persons person)
 {
@@ -41,9 +40,9 @@ bool DbManager::addPerson(Persons person)
     {
         success = true;
     }
-
     return success;
 }
+
 //Adds new Computer to the database
 bool DbManager::addComputer(Computers computer)
 {
@@ -68,7 +67,6 @@ bool DbManager::addComputer(Computers computer)
         success = true;
     }
     return success;
-
 }
 
 void DbManager::connectComputersAndScientists(int scientistID, int computerID)
@@ -102,9 +100,9 @@ bool DbManager::removeScientist(int ID)
     {
         success = false;
     }
-
     return success;
 }
+
 bool DbManager::removeComputer(int ID)
 {
     QSqlQuery query(db);
@@ -119,6 +117,7 @@ bool DbManager::removeComputer(int ID)
         return false;
     }
 }
+
 bool DbManager::removeConnections(string column, int removeID)
 {
     QSqlQuery query;
@@ -139,7 +138,6 @@ bool DbManager::removeConnections(string column, int removeID)
     {
         return false;
     }
-
     return false;
 }
 
@@ -156,9 +154,9 @@ vector<int> DbManager::getComputerToScientist(int ID)
             scientistId.push_back(query.value("ScientistID").toUInt());
         }
     }
-
     return scientistId;
 }
+
 vector<int> DbManager::getScientistToComputer(int ID)
 {
     vector<int> computerId;
@@ -172,9 +170,9 @@ vector<int> DbManager::getScientistToComputer(int ID)
             computerId.push_back(query.value("ComputerID").toUInt());
         }
     }
-
     return computerId;
 }
+
 vector<int> DbManager::getIDs(string table)
 {
     vector<int> IDs;
@@ -192,11 +190,10 @@ vector<int> DbManager::getIDs(string table)
 
             IDs.push_back(query.value("ID").toUInt());
         }
-
     }
-
     return IDs;
 }
+
 vector<Persons> DbManager::readPersons(QSqlQuery query)
 {
     Persons _persons;
@@ -214,7 +211,6 @@ vector<Persons> DbManager::readPersons(QSqlQuery query)
 
         printPersonsData.push_back(_persons);
     }
-
     return printPersonsData;
 }
 
@@ -235,7 +231,6 @@ vector<Computers> DbManager::readComputers(QSqlQuery query)
 
         printComputersData.push_back(_computer);
     }
-
     return printComputersData;
 }
 
@@ -247,7 +242,7 @@ vector<Persons> DbManager::getSinglePerson(int ID)
 
     if(query.exec())
     {
-       //Used to be a Qdebug statement here, removed for grading.
+        //Used to be a Qdebug statement here, removed for grading.
     }
 
     vector<Persons> person = readPersons(query);
@@ -272,16 +267,15 @@ vector<Computers> DbManager::getSingleComputer(int ID)
 
 vector<string> DbManager::readComputersTypes()
 {
-   QSqlQuery query(db);
-   vector<string> types;
-   query.exec("SELECT DISTINCT Type FROM Computers");
-   while(query.next())
-   {
-       string type = query.value("Type").toString().toStdString();
-       types.push_back(type);
-   }
-
-   return types;
+    QSqlQuery query(db);
+    vector<string> types;
+    query.exec("SELECT DISTINCT Type FROM Computers");
+    while(query.next())
+    {
+        string type = query.value("Type").toString().toStdString();
+        types.push_back(type);
+    }
+    return types;
 }
 
 vector<Persons> DbManager::printAllPersons()
@@ -299,8 +293,6 @@ vector<Computers> DbManager::printAllComputers()
 
     return readComputers(query);
 }
-
-
 
 vector<Persons> DbManager::printPersonsResults(string searchTerm, string text, int gender)
 {
@@ -354,6 +346,7 @@ vector<Computers> DbManager::sortComputersByValue(string value, string order)
 
     return readComputers(query);
 }
+
 bool DbManager::updateScientist(int ID, string updateChoice, string newRecord)
 {
     QSqlQuery query(db);
@@ -372,6 +365,7 @@ bool DbManager::updateScientist(int ID, string updateChoice, string newRecord)
         return false;
     }
 }
+
 bool DbManager::updateComputer(int ID, string updateChoice, string newRecord)
 {
     QSqlQuery query(db);
