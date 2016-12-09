@@ -904,6 +904,7 @@ void Presentation::connectComputer()
     displayComputersVector(_domain.getComputers());
 
     cout << "Select an ID for a computer: " << endl;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cin >> computerID;
     while(!_domain.validID(2, computerID))
     {
@@ -913,12 +914,14 @@ void Presentation::connectComputer()
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
         cout << "Please enter a valid input: ";
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cin >> computerID;
     }
 
     displayPersonsVector(_domain.getPersons());
 
     cout << "Select an ID for a scientist: " << endl;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cin >> scientistID;
     while(!_domain.validID(1, scientistID))
     {
@@ -928,6 +931,7 @@ void Presentation::connectComputer()
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
         cout << "Please enter a valid input: ";
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cin >> scientistID;
     }
 
@@ -957,6 +961,7 @@ void Presentation::connectScientist()
     displayPersonsVector(_domain.getPersons());
 
     cout << "Select an ID for a scientist: " << endl;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cin >> scientistID;
     while(!_domain.validID(1, scientistID))
     {
@@ -966,12 +971,14 @@ void Presentation::connectScientist()
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
         cout << "Please enter a valid input: ";
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cin >> scientistID;
     }
 
     displayComputersVector(_domain.getComputers());
 
     cout << "Select an ID for a computer: " << endl;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cin >> computerID;
     while(!_domain.validID(2, computerID))
     {
@@ -981,6 +988,7 @@ void Presentation::connectScientist()
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
         cout << "Please enter a valid input: ";
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cin >> computerID;
     }
 
