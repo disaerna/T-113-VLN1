@@ -31,6 +31,7 @@ public:
     vector<Persons> printPersonsResults(string searchTerm, string text, int gender);
     vector<int> getScientistToComputer(int ID);
 
+
     //Computer Functions
     bool addComputer(Computers computer);
     vector<Computers> printAllComputers();
@@ -44,7 +45,12 @@ public:
     vector<int> getComputerToScientist(int ID);
 
     void connectComputersAndScientists(int scientistID, int computerID);
+
     vector<int> getIDs(string table);
+
+    bool updateScientist(int ID, string updateChoice, string newRecord);
+    bool updateComputer(int ID, string updateChoice, string newRecord);
+
 
 
 private:

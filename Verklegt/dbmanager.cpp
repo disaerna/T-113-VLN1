@@ -100,8 +100,9 @@ void DbManager::connectComputersAndScientists(int scientistID, int computerID)
 
     if(!query.exec())
     {
-        qDebug() << db.lastError()<< " in connectComputersAndScientists " << endl;
+        qDebug() << db.lastError() << " in connectComputersAndScientists " << endl;
     }
+
 }
 
 bool DbManager::removeScientist(int ID)
@@ -391,14 +392,8 @@ vector<Persons> DbManager::sortScientistsByValue(string value, string order)
     QString qValue = QString::fromStdString(value);
     QString qOrder = QString::fromStdString(order);
 
-    if(query.exec("SELECT * FROM Scientists ORDER BY " + qValue + " " + qOrder))
-    {
-        cout << "Works!" << endl;
-    }
-    else
-    {
-        qDebug() << db.lastError() << endl;
-    }
+    query.exec("SELECT * FROM Scientists ORDER BY " + qValue + " " + qOrder);
+
     return readPersons(query);
 }
 
@@ -409,13 +404,51 @@ vector<Computers> DbManager::sortComputersByValue(string value, string order)
     QString qValue = QString::fromStdString(value);
     QString qOrder = QString::fromStdString(order);
 
-    if(query.exec("SELECT * FROM Computers ORDER BY " + qValue + " " + qOrder))
+    query.exec("SELECT * FROM Computers ORDER BY " + qValue + " " + qOrder);
+
+    return readComputers(query);
+}
+bool DbManager::updateScientist(int ID, string updateChoice, string newRecord)
+{
+    QSqlQuery query(db);
+    QString qUpdateChoice = QString::fromStdString(updateChoice);
+    QString qNewRecord = QString::fromStdString(newRecord);
+
+    qDebug() << qUpdateChoice << " update choice" << endl;
+    qDebug() << qNewRecord << " update record" << endl;
+    qDebug() << ID << " id" << endl;
+
+    query.prepare("UPDATE Scientists SET " + qUpdateChoice + " = '" + qNewRecord + "' WHERE id = :ID");
+    query.bindValue(":ID", ID);
+
+    if(query.exec())
     {
-        cout << "Works!" << endl;
+        return true;
     }
     else
     {
-        qDebug() << db.lastError() << endl;
+        return false;
     }
-    return readComputers(query);
+}
+bool DbManager::updateComputer(int ID, string updateChoice, string newRecord)
+{
+    QSqlQuery query(db);
+    QString qUpdateChoice = QString::fromStdString(updateChoice);
+    QString qNewRecord = QString::fromStdString(newRecord);
+
+    qDebug() << qUpdateChoice << " update choice" << endl;
+    qDebug() << qNewRecord << " update record" << endl;
+    qDebug() << ID << " id" << endl;
+
+    query.prepare("UPDATE Computers SET " + qUpdateChoice + " = '" + qNewRecord + "' WHERE id = :ID");
+    query.bindValue(":ID", ID);
+
+    if(query.exec())
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }

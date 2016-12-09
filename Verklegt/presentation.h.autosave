@@ -8,7 +8,6 @@
 #include <iterator>
 #include <string>
 #include <iomanip>
-#include <limits>
 
 #include "domain.h"
 #include "persons.h"
@@ -54,8 +53,6 @@ private:
 
     // Function that asks the user to return or quit.
     void inputToReturn();
-
-
 
 
     Domain _domain;
