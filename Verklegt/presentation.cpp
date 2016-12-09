@@ -59,7 +59,7 @@ void Presentation::startProgram()
         quitDoubt();
     }
 }
-
+//Quit the program or go to main menu
 void Presentation::quitDoubt()
 {
     string quit = "";
@@ -80,7 +80,7 @@ void Presentation::quitDoubt()
 }
 
 
-// Adds person to file.
+// Adds person to database(file)
 void Presentation::newPersonsInFile()
 {
     Persons newPerson;
@@ -186,7 +186,7 @@ void Presentation::newPersonsInFile()
 
     inputToReturn();
 }
-
+// Adds new computer to the database(file)
 void Presentation::newComputer()
 {
     Computers newComp;
@@ -501,6 +501,7 @@ void Presentation::viewPersonsDatabase()
     }
 
 }
+//view menu
 void Presentation::viewComputersDatabase()
 {
     cout << "How would you like view the database? " << endl;
@@ -549,6 +550,7 @@ void Presentation::viewComputersDatabase()
     inputToReturn();
 
 }
+//views the connection between certain Scientists and the computers he is linked to and prints out in table
 void Presentation::viewScientistConnection()
 {
     displayPersonsVector(_domain.getPersons());
@@ -583,6 +585,7 @@ void Presentation::viewScientistConnection()
 
     inputToReturn();
 }
+//views the connection between certain computer and the scientists linked to this computer and prints out in table
 void Presentation::viewComputerConnection()
 {
     displayComputersVector(_domain.getComputers());
@@ -730,7 +733,7 @@ void Presentation::searchPersonDatabase()
         searchPersonDatabase();
     }
 }
-
+//Searches the database(file)
 void Presentation::searchComputersDatabase()
 {
     int userChoice = 0;
@@ -918,7 +921,7 @@ void Presentation::addScientist()
         cin.ignore(100, '\n');
     }
 }
-
+// Main addComputers that gets called from main
 void Presentation::addComputer()
 {
     int input = 0;
@@ -998,6 +1001,7 @@ void Presentation::addComputer()
         }
     }while (input != 7);
 }
+//Connects Computer to a Scientists
 void Presentation::connectComputer()
 {
     int computerID;
@@ -1060,8 +1064,11 @@ void Presentation::connectComputer()
         }
     }
     _domain.connectComputersAndScientists(scientistID, computerID);
+    cout << "Connection successful! " << endl;
+    cout << endl;
     inputToReturn();
 }
+//Connects a Scientist to a computer.
 void Presentation::connectScientist()
 {
     int computerID;
@@ -1124,9 +1131,8 @@ void Presentation::connectScientist()
         }
     }
     _domain.connectComputersAndScientists(scientistID, computerID);
+    cout << "Connection successful! " << endl;
     inputToReturn();
-
-
 }
 
 // Displays a table with file information.
@@ -1152,7 +1158,7 @@ void Presentation::displayPersonsVector(vector<Persons> p)
     }
 
 }
-
+// Prints out the computers vector into a table
 void Presentation::displayComputersVector(vector<Computers> c)
 {
     string built = "";
@@ -1224,6 +1230,7 @@ void Presentation::inputToReturn()
         quitDoubt();
     }
 }
+//Able to rename the variable you choose from the Scientists database
 void Presentation::updatePerson()
 {
     displayPersonsVector(_domain.getPersons());
@@ -1331,6 +1338,7 @@ void Presentation::updatePerson()
     displayPersonsVector(_domain.getPersons());
     inputToReturn();
 }
+//Able to rename the variables  that you chhose from the Computers database
 void Presentation::updateComputer()
 {
     displayComputersVector(_domain.getComputers());
