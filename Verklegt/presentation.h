@@ -25,7 +25,6 @@ public:
     void startProgram();
     void addScientist();
     void addComputer();
-    void splashMessage();
     void quitDoubt();
 
 private:

@@ -331,7 +331,6 @@ void Presentation::newComputer()
         cout << endl;
 
         newComp.setComputers(3, name, yearOfBuild, type, built);
-
         _domain.addComputer(newComp);
     }
 

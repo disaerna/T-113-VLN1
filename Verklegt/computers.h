@@ -26,8 +26,6 @@ private:
     string _compYearBuild; // year computer was built
     string _compType; // type of computer (mech, electronic etc.)
     bool _compBuilt; // was the computer built?
-    //string _compMemory; // size of memory on computer
-    //string _compClockSpeed; // clock speed of computer
     int _compID;
 };
 
