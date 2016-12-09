@@ -1101,3 +1101,167 @@ void Presentation::inputToReturn()
         quitDoubt();
     }
 }
+void Presentation::updatePerson()
+{
+    displayPersonsVector(_domain.getPersons());
+
+    int ID = 0;
+    string updateChoice = "";
+    string newRecord = "";
+
+    cout << "Enter the ID of the scientist you wish to update: ";
+    cin >> ID;
+    cout << endl;
+
+    if(cin.fail())
+    {
+        // clears the buffer
+        cin.clear();
+        cin.ignore(100, '\n');
+    }
+
+    // needs a check if ID exists
+
+    //
+
+    cout << "Enter what you would like to update:\n";
+    cout << "n: name | g: gender | b: birth year | d: death year: ";
+    cin >> updateChoice;
+
+    while(!_domain.validPersonUpdateChoice(updateChoice))
+    {
+        cout << "Invalid input!\n";
+        cout << "n: name | g: gender | b: birth year | d: death year: ";
+        cin >> updateChoice;
+    }
+
+    updateChoice = _domain.changePersonUpdateChoice(updateChoice);
+
+    cout << endl;
+
+    cout << "Enter your updated " << updateChoice << ": ";
+
+    if(updateChoice == "Name")
+    {
+        cin.ignore();
+        getline(cin, newRecord); // TODO ! Passa að ekki sé leyfilegt að slá inn tómt nafn !
+        while (_domain.validNameCheck(newRecord))
+        {
+            cout << "Name must only contain alphabet characters A-Z. \n Please enter a valid name: " << endl;
+            cin >> newRecord;
+        }
+    }
+    else if(updateChoice == "Gender")
+    {
+        cin >> newRecord;
+        while(!_domain.validUpdateGender(newRecord))
+        {
+            cout << "Please enter either 'Male' or 'Female': ";
+            cin >> newRecord;
+        }
+    }
+    else if(updateChoice == "YearOfBirth")
+    {
+        cin >> newRecord;
+        while (_domain.validYearCheck(newRecord))
+        {
+            cout << "Wrong input! Please enter 4 digits: ";
+            cin >> newRecord;
+        }
+    }
+    else if(updateChoice == "YearOfDeath")
+    {
+        cout << "Is the person deceased? Y/N: ";
+        cin >> newRecord;
+
+        while(_domain.yesOrNoCheck(newRecord) == 2)
+        {
+            cout << "Wrong input! Please enter Y/N: ";
+            cin >> newRecord;
+        }
+
+        if(_domain.yesOrNoCheck(newRecord) == 1)
+        {
+            cout << "Enter year of death: ";
+            cin >> newRecord;
+
+            // þarf check if year death is correct
+        }
+        else if(_domain.yesOrNoCheck(newRecord) == 0)
+        {
+            newRecord = '-'; // If not dead
+        }
+    }
+    _domain.updatePerson(ID, updateChoice, newRecord);
+    displayPersonsVector(_domain.getPersons());
+    inputToReturn();
+}
+void Presentation::updateComputer()
+{
+    displayComputersVector(_domain.getComputers());
+
+    int ID = 0;
+    string updateChoice = "";
+    string newRecord = "";
+
+    cout << "Enter the ID of the computer you wish to update: ";
+    cin >> ID;
+    cout << endl;
+
+    if(cin.fail())
+    {
+        // clears the buffer
+        cin.clear();
+        cin.ignore(100, '\n');
+    }
+
+    // needs a check if ID exists
+
+    //
+
+    cout << "Enter what you would like to update:\n";
+    cout << "n: name | y: year built | t: type | b: was built: ";
+    cin >> updateChoice;
+
+    while(!_domain.validComputerUpdateChoice(updateChoice))
+    {
+        cout << "Invalid input!\n";
+        cout << "n: name | y: year built | t: type | b: was built: ";
+        cin >> updateChoice;
+    }
+
+    updateChoice = _domain.changeComputerUpdateChoice(updateChoice);
+
+    cout << endl;
+
+    cout << "Enter your updated " << updateChoice << ": ";
+
+    if(updateChoice == "Name")
+    {
+        cin.ignore();
+        getline(cin, newRecord); // TODO ! Passa að ekki sé leyfilegt að slá inn tómt nafn !
+    }
+    else if(updateChoice == "YearBuilt")
+    {
+        cin >> newRecord;
+        while (_domain.validYearCheck(newRecord))
+        {
+            cout << "Wrong input! Please enter 4 digits: ";
+            cin >> newRecord;
+        }
+    }
+    else if(updateChoice == "Type")
+    {
+        cin.ignore();
+        getline(cin, newRecord); // TODO ! Passa að ekki sé leyfilegt að slá inn tómt nafn !
+
+        // þarf check hvort type sé rétt
+    }
+    else if(updateChoice == "Built")
+    {
+        // eftir að gera fyrir built
+    }
+    _domain.updateComputer(ID, updateChoice, newRecord);
+    displayComputersVector(_domain.getComputers());
+    inputToReturn();
+}
