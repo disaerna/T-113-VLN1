@@ -1,5 +1,4 @@
 #include "presentation.h"
-#include "persons.h"
 
 using namespace std;
 
@@ -22,11 +21,13 @@ void Presentation::startProgram()
     cout << "3. Quit the program" << endl;
     cout << "---------------------------------------" << endl;
     cout << endl;
+
     cout << "Enter your command: ";
     cin >> input;
     cout << endl;
 
     while(input < 1 || input > 3)
+
     {
         cout << "Please enter a correct input: ";
         cin >> input;
@@ -44,6 +45,7 @@ void Presentation::startProgram()
     {
         quitDoubt();
     }
+
 
 }
 
@@ -566,6 +568,7 @@ void Presentation::viewComputerConnection()
     cout << endl;
     displayPersonsVector(_domain.getComputerToScientist(ID));
     inputToReturn();
+
 }
 // Searches the database(file).
 void Presentation::searchPersonDatabase()
@@ -834,6 +837,7 @@ void Presentation::addScientist()
     {
          quitDoubt();
     }
+
     else if(cin.fail())
     {
         // clears the buffer
@@ -857,6 +861,7 @@ void Presentation::addComputer()
         cout << "6 - Search the computer database" << endl;
         cout << "7 - Return to main menu\n";
         cout << "8 - Quit the program\n";
+
         cout << endl;
         cout << "Enter your choice: ";
         cin >> input;
@@ -916,12 +921,12 @@ void Presentation::connectComputer()
     cout << "Select an ID for a computer: " << endl;
     cin >> computerID;
     // villutjékk fyrir lögleg input - vector<int> bla = _domain.getSingleComputer(computerID);
+
     displayPersonsVector(_domain.getPersons());
     cout << "Select an ID for a scientist: " << endl;
     cin >> scientistID;
     _domain.connectComputersAndScientists(scientistID, computerID);
     inputToReturn();
-
 }
 void Presentation::connectScientist()
 {
@@ -935,6 +940,7 @@ void Presentation::connectScientist()
     cin >> computerID;
     _domain.connectComputersAndScientists(scientistID, computerID);
     inputToReturn();
+
 
 }
 
