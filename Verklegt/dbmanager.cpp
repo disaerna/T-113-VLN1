@@ -136,58 +136,6 @@ bool DbManager::removeComputer(int ID)
     }
 }
 
-vector<string> DbManager::readComputersAndPersons(int input)
-{
-    QSqlQuery query(db);
-    string compName;
-    string scieName;
-
-    if( input == 2 )
-    {
-        vector<string> printComputersAndAllPersons;
-
-        query.prepare("SELECT c.Name AS cname, s.Name AS sname "
-                      "FROM ScientistsAndComputers sc "
-                      "INNER JOIN Scientists s ON s.ID = sc.ScientistID "
-                      "INNER JOIN Computers c ON c.ID = sc.ComputerID "
-                      "ORDER BY c.Name ASC");
-        query.exec();
-        while(query.next())
-        {
-
-            compName = query.value("cname").toString().toStdString();
-            scieName = query.value("sname").toString().toStdString();
-
-            printComputersAndAllPersons.push_back(compName);
-            printComputersAndAllPersons.push_back(scieName);
-        }
-        return printComputersAndAllPersons;
-    }
-    if( input == 1 )
-    {
-        vector<string> printPersonsAndAllComputers;
-\
-        query.prepare("SELECT s.Name AS sname, c.Name AS cname "
-                      "FROM ScientistsAndComputers sc "
-                      "INNER JOIN Scientists s ON s.ID = sc.ScientistID "
-                      "INNER JOIN Computers c ON c.ID = sc.ComputerID "
-                      "ORDER BY s.Name ASC");
-        query.exec();
-
-        while(query.next())
-        {
-            scieName = query.value("sname").toString().toStdString();
-            compName = query.value("cname").toString().toStdString();
-
-            printPersonsAndAllComputers.push_back(scieName);
-            printPersonsAndAllComputers.push_back(compName);
-
-        }
-
-        return printPersonsAndAllComputers;
-    }
-}
-
 vector<Persons> DbManager::readPersons(QSqlQuery query)
 {
     Persons _persons;
