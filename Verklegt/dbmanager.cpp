@@ -1,10 +1,5 @@
 
 #include "dbmanager.h"
-#include <iostream>
-#include <QSqlQuery>
-#include <iostream>
-#include "persons.h"
-#include <QVariant>
 
 DbManager::DbManager()
 {
@@ -14,7 +9,6 @@ DbManager::DbManager()
 
     if (!db.open())
     {
-        // qDebug() << db.lastError();
         qDebug() << "Error: connection with database fail";
     }
     else
@@ -30,13 +24,9 @@ QSqlError DbManager::lastError()
 
 }
 
-//QSqlQuery query;
-//query exec(//hvað á að gera?)
-
 bool DbManager::addPerson(Persons person)
 {
     bool success = false;
-    int id;
     QSqlQuery query;
 
     query.prepare("INSERT INTO Scientists (name, gender, YearOfBirth, YearOfDeath) "
@@ -47,9 +37,6 @@ bool DbManager::addPerson(Persons person)
     QString qBirth = QString::fromStdString(person.getYearOfBirth());
     QString qDeath = QString::fromStdString(person.getYearOfDeath());
 
-    //cout << person.getName() << "!!!" <<endl;
-
-    query.bindValue(":id", id);
     query.bindValue(":name", qName);
     query.bindValue(":gender", qGender);
     query.bindValue(":YearOfBirth", qBirth);
@@ -73,7 +60,6 @@ bool DbManager::addPerson(Persons person)
 bool DbManager::addComputer(Computers computer)
 {
     bool success = false;
-    int id;
     QSqlQuery query;
 
     query.prepare("INSERT INTO Computers (name, YearBuilt, Type, Built) "
@@ -86,15 +72,10 @@ bool DbManager::addComputer(Computers computer)
     //QString qCompMemory = QString::fromStdString(computer.getCompMemory());
     //QString qCompClockSpeed = QString::fromStdString(computer.getCompClockSpeed());
 
-
-    //cout << person.getName() << "!!!" <<endl;
-
-    query.bindValue(":id", id);
     query.bindValue(":name", qCompName);
     query.bindValue(":YearBuilt", qCompYearBuilt);
     query.bindValue(":Type", qCompType);
     query.bindValue(":Built", qCompBuilt);
-    //query.bindValue(":", id);
 
     if(query.exec())
     {
@@ -129,17 +110,20 @@ void DbManager::connectComputersAndScientists(int scientistID, int computerID)
 
 bool DbManager::removeScientist(int ID)
 {
+    bool success = false;
     QSqlQuery query(db);
     query.prepare("DELETE FROM Scientists WHERE ID = :ID");
     query.bindValue(":ID", ID);
     if(query.exec())
     {
-        return true;
+        success = true;
     }
     else
     {
-        return false;
+        success = false;
     }
+
+    return success;
 }
 bool DbManager::removeComputer(int ID)
 {
@@ -155,7 +139,6 @@ bool DbManager::removeComputer(int ID)
         return false;
     }
 }
-
 vector<string> DbManager::readComputersAndPersons(int input)
 {
     QSqlQuery query(db);
@@ -258,8 +241,6 @@ vector<Persons> DbManager::readPersons(QSqlQuery query)
         string YearOfBirth = query.value("YearOfBirth").toString().toStdString();
         string YearOfDeath = query.value("YearOfDeath").toString().toStdString();
 
-        //cout << "===" << id << name << "\t" << gender << "\t" << YearOfBirth << "\t" << YearOfDeath << "\t" << endl;
-        //printPersonsData.push_back();
         _persons.setPersons(id, name, gender, YearOfBirth, YearOfDeath);
 
         printPersonsData.push_back(_persons);
@@ -267,6 +248,7 @@ vector<Persons> DbManager::readPersons(QSqlQuery query)
 
     return printPersonsData;
 }
+
 vector<Computers> DbManager::readComputers(QSqlQuery query)
 {
     Computers _computer;
@@ -280,8 +262,6 @@ vector<Computers> DbManager::readComputers(QSqlQuery query)
         string type = query.value("type").toString().toStdString();
         bool built  = query.value("built").toBool();
 
-        //cout << "===" << id << name << "\t" << gender << "\t" << YearOfBirth << "\t" << YearOfDeath << "\t" << endl;
-        //printPersonsData.push_back();
         _computer.setComputers(id, name, yearBuilt, type, built);
 
         printComputersData.push_back(_computer);
@@ -307,7 +287,8 @@ vector<Persons> DbManager::getSinglePerson(int ID)
 
     return person;
 }
-vector<Computers> DbManager::getSingleComputer(int ID)
+
+vector<Computers>DbManager::getSingleComputer(int ID)
 {
     QSqlQuery query(db);
     query.prepare("SELECT * FROM Computers WHERE ID = :ID");
@@ -324,6 +305,7 @@ vector<Computers> DbManager::getSingleComputer(int ID)
 
     return computer;
 }
+
 vector<string> DbManager::readComputersTypes()
 {
    QSqlQuery query(db);
@@ -345,6 +327,7 @@ vector<Persons> DbManager::printAllPersons()
 
     return readPersons(query);
 }
+
 vector<Computers> DbManager::printAllComputers()
 {
     QSqlQuery query(db);
@@ -384,10 +367,6 @@ vector<Computers> DbManager::printComputersResults(string searchTerm, string tex
     return readComputers(query);
 }
 
-
-
-
-
 vector<Persons> DbManager::sortScientistsByValue(string value, string order)
 {
     QSqlQuery query(db);
@@ -405,6 +384,7 @@ vector<Persons> DbManager::sortScientistsByValue(string value, string order)
     }
     return readPersons(query);
 }
+
 vector<Computers> DbManager::sortComputersByValue(string value, string order)
 {
     QSqlQuery query(db);
@@ -422,14 +402,3 @@ vector<Computers> DbManager::sortComputersByValue(string value, string order)
     }
     return readComputers(query);
 }
-
-/*
-void DbManager::ifExist()
-{
-}
-
-void DbManager::deleteAllPersons()
-{
-
-}
-*/

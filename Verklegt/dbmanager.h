@@ -8,6 +8,9 @@
 #include <QVariant>
 #include <QDebug>
 #include <QSqlError>
+#include <iostream>
+#include <QSqlQuery>
+#include <vector>
 
 using namespace std;
 
