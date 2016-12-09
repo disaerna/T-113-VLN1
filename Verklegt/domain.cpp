@@ -397,7 +397,7 @@ bool Domain::validID(int function, int inputID)
 
         for(int i=0; i<IDs.size(); i++)
         {
-            if( IDs[i-1] == inputID)
+            if( IDs[i] == inputID)
             {
                 legalID = true;
             }
