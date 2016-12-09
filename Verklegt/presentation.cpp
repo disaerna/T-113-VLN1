@@ -25,10 +25,25 @@ void Presentation::startProgram()
     cin >> input;
     cout << endl;
 
+
+    if(cin.fail())
+    {
+        // clears the buffer
+        cin.clear();
+        cin.ignore(100, '\n');
+    }
+
     while(input < 1 || input > 3)
     {
         cout << "Please enter a correct input: ";
         cin >> input;
+
+        if(cin.fail())
+        {
+            // clears the buffer
+            cin.clear();
+            cin.ignore(100, '\n');
+        }
     }
 
     if(input == 1)
@@ -359,6 +374,12 @@ void Presentation::removePerson()
         cout << "Please enter a valid ID: ";
         cin >> ID;
 
+        if(cin.fail())
+        {
+            // clears the buffer
+            cin.clear();
+            cin.ignore(100, '\n');
+        }
         personDeleted = _domain.getSinglePerson(ID).getName();
     }
 
@@ -379,13 +400,6 @@ void Presentation::removeComputer()
     cout << "Enter the ID of the computer you wish to delete from the database: ";
     cin >> ID;
 
-    while(!_domain.validID(2, ID)){
-        cout << "Error!\n";
-        cout << "Enter correct ID: ";
-        cin >> ID;
-    }
-    cout << endl;
-
     if(cin.fail())
     {
         // clears the buffer
@@ -393,12 +407,33 @@ void Presentation::removeComputer()
         cin.ignore(100, '\n');
     }
 
+    while(!_domain.validID(2, ID)){
+        cout << "Error!\n";
+        cout << "Enter correct ID: ";
+        cin >> ID;
+
+        if(cin.fail())
+        {
+            // clears the buffer
+            cin.clear();
+            cin.ignore(100, '\n');
+        }
+    }
+    cout << endl;
+
     string deletedComputer = _domain.getSingleComputer(ID).getCompName();
 
     while(! _domain.deleteComputerFromDatabase(ID))
     {
         cout << "Please enter a valid ID: ";
         cin >> ID;
+
+        if(cin.fail())
+        {
+            // clears the buffer
+            cin.clear();
+            cin.ignore(100, '\n');
+        }
 
         deletedComputer = _domain.getSingleComputer(ID).getCompName();
     }
@@ -518,10 +553,24 @@ void Presentation::viewScientistConnection()
     cout << endl;
     cout << "Enter ID for a scientist: " << endl;
     cin >> ID;
+
+    if(cin.fail())
+    {
+        // clears the buffer
+        cin.clear();
+        cin.ignore(100, '\n');
+    }
     while(!_domain.validID(1, ID)){
         cout << "Error!\n";
         cout << "Enter correct ID: ";
         cin >> ID;
+
+        if(cin.fail())
+        {
+            // clears the buffer
+            cin.clear();
+            cin.ignore(100, '\n');
+        }
     }
     cout << endl;
     cout << "These are the computers connected to the scientist: "<< endl;
@@ -538,10 +587,24 @@ void Presentation::viewComputerConnection()
     cout << endl;
     cout << "Enter ID for a computer: " << endl;
     cin >> ID;
+
+    if(cin.fail())
+    {
+        // clears the buffer
+        cin.clear();
+        cin.ignore(100, '\n');
+    }
     while(!_domain.validID(2, ID)){
         cout << "Error!\n";
         cout << "Enter correct ID: ";
         cin >> ID;
+
+        if(cin.fail())
+        {
+            // clears the buffer
+            cin.clear();
+            cin.ignore(100, '\n');
+        }
     }
     cout << endl;
     cout << "These are the scientists connected to the computer: "<< endl;
@@ -564,6 +627,13 @@ void Presentation::searchPersonDatabase()
     cout << endl;
     cout << "Enter your choice: ";
     cin >> userChoice;
+
+    if(cin.fail())
+    {
+        // clears the buffer
+        cin.clear();
+        cin.ignore(100, '\n');
+    }
     vector<Persons> searchResults;
 
     if(userChoice == 1)
@@ -587,7 +657,6 @@ void Presentation::searchPersonDatabase()
     {
         cout << "Enter either 'm' or 'f': ";
         cin >> searchTerm;
-        // villutékk
         while(!_domain.validGenderCheck(searchTerm))
         {
             cout << "Please enter either 'm' for male or 'f' for female: ";
@@ -671,6 +740,13 @@ void Presentation::searchComputersDatabase()
     cout << endl;
     cout << "Enter your choice: ";
     cin >> userChoice;
+
+    if(cin.fail())
+    {
+        // clears the buffer
+        cin.clear();
+        cin.ignore(100, '\n');
+    }
     vector<Computers> searchResults;
 
     if(userChoice == 1)
@@ -783,6 +859,13 @@ void Presentation::addScientist()
     {
         cout << "Please input a correct number: ";
         cin >> input;
+
+        if(cin.fail())
+        {
+            // clears the buffer
+            cin.clear();
+            cin.ignore(100, '\n');
+        }
     }
 
     if(input == 1)
@@ -857,6 +940,13 @@ void Presentation::addComputer()
         {
             cout << "Please input a correct number: ";
             cin >> input;
+
+            if(cin.fail())
+            {
+                // clears the buffer
+                cin.clear();
+                cin.ignore(100, '\n');
+            }
         }
 
         if(input == 1)
@@ -951,6 +1041,13 @@ void Presentation::connectComputer()
             cout << "Press '0' to go back to main menu." << endl;
             cout << "Select an ID for a scientist: " << endl;
             cin >> scientistID;
+
+            if(cin.fail())
+            {
+                // clears the buffer
+                cin.clear();
+                cin.ignore(100, '\n');
+            }
             if(scientistID == 0)
             {
                 inputToReturn();
@@ -1008,6 +1105,13 @@ void Presentation::connectScientist()
             cout << "Press '0' to go back to main menu." << endl;
             cout << "Select an ID for a computer: " << endl;
             cin >> computerID;
+
+            if(cin.fail())
+            {
+                // clears the buffer
+                cin.clear();
+                cin.ignore(100, '\n');
+            }
             if(scientistID == 0)
             {
                 inputToReturn();
@@ -1120,6 +1224,13 @@ void Presentation::updatePerson()
         cout << "Error!\n";
         cout << "Enter correct ID: ";
         cin >> ID;
+
+        if(cin.fail())
+        {
+            // clears the buffer
+            cin.clear();
+            cin.ignore(100, '\n');
+        }
     }
     cout << endl;
 
@@ -1216,10 +1327,18 @@ void Presentation::updateComputer()
 
     cout << "Enter the ID of the computer you wish to update: ";
     cin >> ID;
+
     while(!_domain.validID(2, ID)){
         cout << "Error!\n";
         cout << "Enter correct ID: ";
         cin >> ID;
+
+        if(cin.fail())
+        {
+            // clears the buffer
+            cin.clear();
+            cin.ignore(100, '\n');
+        }
     }
     cout << endl;
 
