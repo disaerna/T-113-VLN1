@@ -366,6 +366,22 @@ void Presentation::removePerson()
         cin.clear();
         cin.ignore(100, '\n');
     }
+
+    while(!_domain.validIDTwo(ID, "1")){
+        cout << "Error!\n";
+        cout << "Enter correct ID: ";
+        cin >> ID;
+
+        if(cin.fail())
+        {
+            // clears the buffer
+            cin.clear();
+            cin.ignore(100, '\n');
+        }
+    }
+
+
+
 //===================================================================================================================================================================================
     string personDeleted = _domain.getSinglePerson(ID).getName(); // TODO: Make sure to check if user inputs valid ID
 //===================================================================================================================================================================================
@@ -407,7 +423,7 @@ void Presentation::removeComputer()
         cin.ignore(100, '\n');
     }
 
-    while(!_domain.validID(2, ID)){
+    while(!_domain.validIDTwo(ID, "2")){
         cout << "Error!\n";
         cout << "Enter correct ID: ";
         cin >> ID;
@@ -1097,7 +1113,7 @@ void Presentation::connectScientist()
 
     vector<Computers> legalID = _domain.getScientistToComputer(scientistID);
 
-    for(int i=0; i<legalID.size(); i++)
+    for(size_t i=0; i<legalID.size(); i++)
     {
         while(computerID == legalID[i].getCompID())
         {
@@ -1220,7 +1236,7 @@ void Presentation::updatePerson()
 
     cout << "Enter the ID of the scientist you wish to update: ";
     cin >> ID;
-    while(!_domain.validID(2, ID)){
+    while(!_domain.validIDTwo(ID, "2")){
         cout << "Error!\n";
         cout << "Enter correct ID: ";
         cin >> ID;
@@ -1328,7 +1344,7 @@ void Presentation::updateComputer()
     cout << "Enter the ID of the computer you wish to update: ";
     cin >> ID;
 
-    while(!_domain.validID(2, ID)){
+    while(!_domain.validIDTwo(ID, "2")){
         cout << "Error!\n";
         cout << "Enter correct ID: ";
         cin >> ID;
@@ -1386,10 +1402,16 @@ void Presentation::updateComputer()
     }
     else if(updateChoice == "Type")
     {
-        cin.ignore();
-        getline(cin, newRecord); // TODO ! Passa að ekki sé leyfilegt að slá inn tómt nafn !
+       cout << "Micro | Mechatronic | Electronic | Analog: ";
+       cin.ignore();
+       getline(cin, newRecord); // TODO ! Passa að ekki sé leyfilegt að slá inn tómt nafn !
 
-        // þarf check hvort type sé rétt
+       while(!_domain.typeCheck(newRecord))
+       {
+           cout << "Not valid input! Enter one of the choice below\n";
+           cout << "Micro | Mechatronic | Electronic | Analog: ";
+           getline(cin, newRecord);
+       }
     }
     else if(updateChoice == "Built")
     {

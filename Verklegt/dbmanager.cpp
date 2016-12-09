@@ -372,4 +372,16 @@ bool DbManager::updateComputer(int ID, string updateChoice, string newRecord)
     }
 }
 
+bool DbManager::validIDTwo(int x, string choice)
+{
+    QSqlQuery query;
+    QString qChoice = QString::fromStdString(choice);
 
+    query.prepare("SELECT * FROM " + qChoice + " WHERE id = :ID");
+    query.bindValue(":ID", x);
+    if(query.exec())
+    {
+        return true;
+    }
+    return false;
+}

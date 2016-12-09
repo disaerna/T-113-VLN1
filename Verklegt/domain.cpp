@@ -131,7 +131,7 @@ vector<Computers> Domain::getScientistToComputer(int ID)
 {
     vector<int> computerIDs = _DbManager.getScientistToComputer(ID);
     vector<Computers> computer;
-    for(int i=0; i<computerIDs.size(); i++)
+    for(size_t i=0; i<computerIDs.size(); i++)
     {
         computer.push_back(_DbManager.getSingleComputer(computerIDs[i])[0]);
     }
@@ -143,7 +143,7 @@ vector<Persons> Domain::getComputerToScientist(int ID)
 {
     vector<int> scientistIDs = _DbManager.getComputerToScientist(ID);
     vector<Persons> person;
-    for(int i=0; i<scientistIDs.size(); i++)
+    for(size_t i=0; i<scientistIDs.size(); i++)
     {
         person.push_back(_DbManager.getSinglePerson(scientistIDs[i])[0]);
     }
@@ -360,7 +360,7 @@ bool Domain::validYearCheck(string year)
 // Chekcs input for is input a digit, is it Y or N.
 int Domain::yesOrNoCheck(string answer)
 {
-    for(int i=0; i<answer.length(); i++)
+    for(size_t i=0; i<answer.length(); i++)
     {
         if(isdigit(answer[i]) == false)
         {
@@ -395,7 +395,7 @@ bool Domain::validID(int function, int inputID)
     if(!legalID)
     {
 
-        for(int i=0; i<IDs.size(); i++)
+        for(size_t i=0; i<IDs.size(); i++)
         {
             if( IDs[i] == inputID)
             {
@@ -501,6 +501,29 @@ string Domain::changeComputerUpdateChoice(string x)
 bool Domain::emptyStringCheck(string x)
 {
     if(x != " ")
+    {
+        return true;
+    }
+    return false;
+}
+
+bool Domain::validIDTwo(int x, string y)
+{
+    if(y == "1")
+    {
+        y = "Scientists";
+    }
+    else if(y == "2")
+    {
+        y = "Computers";
+    }
+
+    return _DbManager.validIDTwo(x,y);
+}
+
+bool Domain::typeCheck(string x)
+{
+    if(x == "Micro" || x == "Mechatronic" || x == "Electronic" || x == "Analog")
     {
         return true;
     }
