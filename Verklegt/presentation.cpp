@@ -551,7 +551,7 @@ void Presentation::viewScientistConnection()
 
     int ID;
     cout << endl;
-    cout << "Enter ID for a scientist: " << endl;
+    cout << "Enter ID for a scientist: ";
     cin >> ID;
 
     if(cin.fail())
@@ -585,7 +585,7 @@ void Presentation::viewComputerConnection()
 
     int ID;
     cout << endl;
-    cout << "Enter ID for a computer: " << endl;
+    cout << "Enter ID for a computer: ";
     cin >> ID;
 
     if(cin.fail())
@@ -689,7 +689,7 @@ void Presentation::searchPersonDatabase()
 
         while(_domain.yesOrNoCheck(searchTerm) == 2)
         {
-            cout << "Wrong input! Please enter Y/N" << endl;
+            cout << "Wrong input! Please enter Y/N: ";
             cin >> searchTerm;
         }
 
@@ -801,7 +801,7 @@ void Presentation::searchComputersDatabase()
         cin >> searchTerm;
         if(_domain.yesOrNoCheck(searchTerm) == 2)
         {
-            cout << "Wrong input! Please enter Y/N" << endl;
+            cout << "Wrong input! Please enter Y/N: ";
             cin >> searchTerm;
         }
         else if(_domain.yesOrNoCheck(searchTerm) == 1)
@@ -999,7 +999,7 @@ void Presentation::connectComputer()
     int scientistID;
     displayComputersVector(_domain.getComputers());
 
-    cout << "Select an ID for a computer: " << endl;
+    cout << "Select an ID for a computer: ";
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cin >> computerID;
     while(!_domain.validID(2, computerID))
@@ -1016,7 +1016,7 @@ void Presentation::connectComputer()
 
     displayPersonsVector(_domain.getPersons());
 
-    cout << "Select an ID for a scientist: " << endl;
+    cout << "Select an ID for a scientist: ";
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cin >> scientistID;
     while(!_domain.validID(1, scientistID))
@@ -1063,7 +1063,7 @@ void Presentation::connectScientist()
     int scientistID;
     displayPersonsVector(_domain.getPersons());
 
-    cout << "Select an ID for a scientist: " << endl;
+    cout << "Select an ID for a scientist: ";
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cin >> scientistID;
     while(!_domain.validID(1, scientistID))
@@ -1080,7 +1080,7 @@ void Presentation::connectScientist()
 
     displayComputersVector(_domain.getComputers());
 
-    cout << "Select an ID for a computer: " << endl;
+    cout << "Select an ID for a computer: ";
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cin >> computerID;
     while(!_domain.validID(2, computerID))
@@ -1102,8 +1102,8 @@ void Presentation::connectScientist()
         while(computerID == legalID[i].getCompID())
         {
             cout << "This scientist already has this connection." << endl;
-            cout << "Press '0' to go back to main menu." << endl;
-            cout << "Select an ID for a computer: " << endl;
+            cout << "Press '0' to go back to main menu." <<endl;
+            cout << "Select an ID for a computer: ";
             cin >> computerID;
 
             if(cin.fail())
@@ -1180,7 +1180,7 @@ void Presentation::inputToReturn()
     // the addScientist function will loop until user inputs the right command
     do
     {
-        cout << "Enter one of the following commands: " << endl;
+        cout << "Enter one of the following commands: " <<endl;
         cout << endl;
         cout << " m - main menu \n"
                 " s - scientist menu \n"
@@ -1268,7 +1268,7 @@ void Presentation::updatePerson()
         getline(cin, newRecord); // TODO ! Passa að ekki sé leyfilegt að slá inn tómt nafn !
         while (_domain.validNameCheck(newRecord))
         {
-            cout << "Name must only contain alphabet characters A-Z. \n Please enter a valid name: " << endl;
+            cout << "Name must only contain alphabet characters A-Z. \n Please enter a valid name: ";
             cin >> newRecord;
         }
     }
