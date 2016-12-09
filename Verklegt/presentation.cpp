@@ -565,9 +565,7 @@ void Presentation::searchPersonDatabase()
         cout << "Enter a name to search for: ";
         cin.ignore();
         getline(cin, searchTerm);
-//===================================================================================================================================================================================
-        // villutékk
-//===================================================================================================================================================================================
+
         while (_domain.validNameCheck(searchTerm) || !_domain.emptyStringCheck(searchTerm))
         {
             cout << "Name must only contain alphabet characters A-Z. \nPlease enter a valid name." << endl;
@@ -599,7 +597,6 @@ void Presentation::searchPersonDatabase()
         cout << "Enter Birth year: ";
         cin >> searchTerm;
 
-        // villutékk
         while (_domain.validYearCheck(searchTerm))
         {
             cout << "Wrong input! Please enter 4 digits: ";
@@ -614,9 +611,7 @@ void Presentation::searchPersonDatabase()
     {
         cout << "Is the person deceased? Y/N: ";
         cin >> searchTerm;
-//===================================================================================================================================================================================
-        // villutékk
-//===================================================================================================================================================================================
+
         while(_domain.yesOrNoCheck(searchTerm) == 2)
         {
             cout << "Wrong input! Please enter Y/N" << endl;
@@ -692,9 +687,7 @@ void Presentation::searchComputersDatabase()
     {
         cout << "Enter built year: ";
         cin >> searchTerm;
-//===================================================================================================================================================================================
-                // villutékk
-//===================================================================================================================================================================================
+
         while (_domain.validYearCheck(searchTerm))
         {
             cout << "Wrong input! Please enter 4 digits: ";
@@ -737,9 +730,7 @@ void Presentation::searchComputersDatabase()
         {
             searchTerm = "0";
         }
-//===================================================================================================================================================================================
-        // þarf villutékk til að tékka hvort aðeins var stimplað inn "y eða n"
-//===================================================================================================================================================================================
+
         searchResults = _domain.getComputersSearch(searchTerm, userChoice);
         displayComputersVector(searchResults);
         inputToReturn();

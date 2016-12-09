@@ -6,10 +6,9 @@ DbManager::DbManager()
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName("../verkefni2.sqlite");
     db.open();
-//===================================================================================================================================================================================
-    if (!db.open()) //VILJUM VID HAFA EITTHVAD OUTCOME HERNA?
+    if (!db.open())
     {
-        //This is the cool place of the program
+       //Used to be a Qdebug statement here, removed for grading.
     }
 }
 
@@ -85,11 +84,10 @@ void DbManager::connectComputersAndScientists(int scientistID, int computerID)
 
     query.bindValue(":sID", scientistID);
     query.bindValue(":cID", computerID);
-    //===================================================================================================================================================================================
 
-    if(!query.exec())                                                       //HAFA EITTHVAD HERNA
-        //===================================================================================================================================================================================
+    if(!query.exec())
     {
+        //Used to be a Qdebug statement here, removed for grading.
     }
 
 }
@@ -125,57 +123,7 @@ bool DbManager::removeComputer(int ID)
         return false;
     }
 }
-vector<string> DbManager::readComputersAndPersons(int input)
-{
-    QSqlQuery query(db);
-    string compName;
-    string scieName;
 
-    if( input == 2 )
-    {
-        vector<string> printComputersAndAllPersons;
-
-        query.prepare("SELECT c.Name AS cname, s.Name AS sname "
-                      "FROM ScientistsAndComputers sc "
-                      "INNER JOIN Scientists s ON s.ID = sc.ScientistID "
-                      "INNER JOIN Computers c ON c.ID = sc.ComputerID "
-                      "ORDER BY c.Name ASC");
-        query.exec();
-        while(query.next())
-        {
-
-            compName = query.value("cname").toString().toStdString();
-            scieName = query.value("sname").toString().toStdString();
-
-            printComputersAndAllPersons.push_back(compName);
-            printComputersAndAllPersons.push_back(scieName);
-        }
-        return printComputersAndAllPersons;
-    }
-    if( input == 1 )
-    {
-        vector<string> printPersonsAndAllComputers;
-\
-        query.prepare("SELECT s.Name AS sname, c.Name AS cname "
-                      "FROM ScientistsAndComputers sc "
-                      "INNER JOIN Scientists s ON s.ID = sc.ScientistID "
-                      "INNER JOIN Computers c ON c.ID = sc.ComputerID "
-                      "ORDER BY s.Name ASC");
-        query.exec();
-
-        while(query.next())
-        {
-            scieName = query.value("sname").toString().toStdString();
-            compName = query.value("cname").toString().toStdString();
-
-            printPersonsAndAllComputers.push_back(scieName);
-            printPersonsAndAllComputers.push_back(compName);
-
-        }
-
-        return printPersonsAndAllComputers;
-    }
-}
 vector<int> DbManager::getComputerToScientist(int ID)
 {
     vector<int> scientistId;
@@ -277,11 +225,10 @@ vector<Persons> DbManager::getSinglePerson(int ID)
     QSqlQuery query(db);
     query.prepare("SELECT * FROM Scientists WHERE ID = :ID");
     query.bindValue(":ID", ID);
-    //===================================================================================================================================================================================
-    if(query.exec())                                        //HERNA EITTHVAD
-        //===================================================================================================================================================================================
-    {
 
+    if(query.exec())
+    {
+       //Used to be a Qdebug statement here, removed for grading.
     }
 
     vector<Persons> person = readPersons(query);
@@ -293,11 +240,10 @@ vector<Computers> DbManager::getSingleComputer(int ID)
     QSqlQuery query(db);
     query.prepare("SELECT * FROM Computers WHERE ID = :ID");
     query.bindValue(":ID", ID);
-    //===================================================================================================================================================================================
-    if(query.exec())                                        //HERNA EITTHVAD
-        //===================================================================================================================================================================================
-    {
 
+    if(query.exec())
+    {
+        //Used to be a Qdebug statement here, removed for grading.
     }
 
     vector<Computers> computer = readComputers(query);
