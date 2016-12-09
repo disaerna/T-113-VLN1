@@ -271,7 +271,7 @@ void Presentation::newComputer()
                 string newType;
                 int chooseType;
 
-                for(int i = 0; i<types.size(); i++)
+                for(size_t i = 0; i<types.size(); i++)
                 {
                     cout << i+1 << ". " << types[i]<<endl;
                 }
@@ -288,7 +288,7 @@ void Presentation::newComputer()
                     cout << " Please enter the number for the type of computer you wish to register: " << endl;
                     cin >> chooseType;
 
-                    while(chooseType < 0 && chooseType > types.size())
+                    while(chooseType < 0 && chooseType > (signed)types.size())
                     {
                         cout << "Please enter a valid number from 1 - "<<types.size()<<" : "<< endl;
                         cin>>chooseType;
@@ -788,13 +788,14 @@ void Presentation::addScientist()
 
     cout << "Please enter one of the following commands: " << endl;
     cout << "1 - Add a new scientist to the database " << endl;
-    cout << "2 - Delete a scientist from the database " << endl;
-    cout << "3 - View the scientist database " << endl;
-    cout << "4 - View computer for a scientist " << endl;
-    cout << "5 - Connect a scientist to a computer " << endl;
-    cout << "6 - Search the scientist database " << endl;
-    cout << "7 - Return to main menu " << endl;
-    cout << "8 - Quit the program " << endl;
+    cout << "2 - Edit records for scientist in database" << endl;
+    cout << "3 - Delete a scientist from the database " << endl;
+    cout << "4 - View the scientist database " << endl;
+    cout << "5 - View computer for a scientist " << endl;
+    cout << "6 - Connect a scientist to a computer " << endl;
+    cout << "7 - Search the scientist database " << endl;
+    cout << "8 - Return to main menu " << endl;
+    cout << "9 - Quit the program " << endl;
     cout << endl;
     cout << "Enter your choice: ";
     cin >> input;
@@ -811,29 +812,33 @@ void Presentation::addScientist()
     }
     else if(input == 2)
     {
-        removePerson();
+        updatePerson();
     }
     else if(input == 3)
     {
-        viewPersonsDatabase();
+        removePerson();
     }
     else if(input == 4)
     {
-        viewScientistConnection();
+        viewPersonsDatabase();
     }
     else if(input == 5)
     {
-        connectScientist();
+        viewScientistConnection();
     }
     else if(input == 6)
     {
-       searchPersonDatabase();
+        connectScientist();
     }
     else if(input == 7)
     {
-        startProgram();
+       searchPersonDatabase();
     }
     else if(input == 8)
+    {
+        startProgram();
+    }
+    else if(input == 9)
     {
          quitDoubt();
     }
@@ -854,13 +859,14 @@ void Presentation::addComputer()
 
         cout << "Please enter one of the following commands: " << endl;
         cout << "1 - Add a new computer to the database" << endl;
-        cout << "2 - Delete a computer from the database" << endl; // TODO - EXTRA
-        cout << "3 - View the computer database" << endl;
-        cout << "4 - View scientists for a computer" << endl;
-        cout << "5 - Connect a computer to a scientist" << endl;
-        cout << "6 - Search the computer database" << endl;
-        cout << "7 - Return to main menu\n";
-        cout << "8 - Quit the program\n";
+        cout << "2 - Update records for computer in database" << endl;
+        cout << "3 - Delete a computer from the database" << endl; // TODO - EXTRA
+        cout << "4 - View the computer database" << endl;
+        cout << "5 - View scientists for a computer" << endl;
+        cout << "6 - Connect a computer to a scientist" << endl;
+        cout << "7 - Search the computer database" << endl;
+        cout << "8 - Return to main menu\n";
+        cout << "9 - Quit the program\n";
 
         cout << endl;
         cout << "Enter your choice: ";
@@ -879,29 +885,33 @@ void Presentation::addComputer()
         }
         else if(input == 2)
         {
-            removeComputer();
+            updateComputer();
         }
         else if(input == 3)
         {
-            viewComputersDatabase();
+            removeComputer();
         }
         else if(input == 4)
         {
-            viewComputerConnection();
+            viewComputersDatabase();
         }
         else if(input == 5)
         {
-            connectComputer();
+            viewComputerConnection();
         }
         else if(input == 6)
         {
-            searchComputersDatabase();
+            connectComputer();
         }
         else if(input == 7)
         {
+            searchComputersDatabase();
+        }
+        else if(input == 8)
+        {
             startProgram();
         }
-        else if (input == 8)
+        else if (input == 9)
         {
             quitDoubt();
         }
