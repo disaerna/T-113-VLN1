@@ -8,6 +8,7 @@
 #include <iterator>
 #include <string>
 #include <iomanip>
+#include <limits>
 
 #include "domain.h"
 #include "persons.h"

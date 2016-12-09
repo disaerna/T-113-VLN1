@@ -42,7 +42,6 @@ bool DbManager::addPerson(Persons person)
     query.bindValue(":YearOfBirth", qBirth);
     query.bindValue(":YearOfDeath", qDeath);
 
-
     if(query.exec())
     {
         success = true;
@@ -52,9 +51,7 @@ bool DbManager::addPerson(Persons person)
         qDebug() << "Error adding scientist: " << query.exec() <<endl;
     }
 
-
     return success;
-
 }
 
 bool DbManager::addComputer(Computers computer)
@@ -226,6 +223,28 @@ vector<int> DbManager::getScientistToComputer(int ID)
         qDebug() << db.lastError() << " in function getScientistToComputer" << endl;
     }
     return computerId;
+}
+vector<int> DbManager::getIDs(string table)
+{
+    vector<int> IDs;
+
+    QSqlQuery query(db);
+
+    QString qTable = QString::fromStdString(table);
+
+    query.prepare("SELECT ID FROM " + qTable);
+
+    if(query.exec())
+    {
+        while(query.next())
+        {
+
+            IDs.push_back(query.value("ID").toUInt());
+        }
+
+    }
+
+    return IDs;
 }
 vector<Persons> DbManager::readPersons(QSqlQuery query)
 {

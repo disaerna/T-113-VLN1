@@ -51,7 +51,7 @@ public:
     bool validYearCheck(string year);
     int yesOrNoCheck(string answer); // Three option for this function. Checks if input is digit, yes or no
     bool validDeathYearCheck(string birth, string death);
-
+    bool validID(int function, int inputID);
     string setGender(string gender); // Sets input from user M/F to Male/Female
     string currentYear(); // Gets current year
 

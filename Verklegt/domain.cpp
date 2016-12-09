@@ -329,7 +329,7 @@ string Domain::currentYear()
 // Checks if input is all characters, space or -.
 bool Domain::validNameCheck(string name)
 {
-    return (name.find_first_not_of("qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM -") != std::string::npos);
+    return (name.find_first_not_of("qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM -.") != std::string::npos);
 }
 
 
@@ -390,8 +390,37 @@ int Domain::yesOrNoCheck(string answer)
     }
     return 2;
 }
+bool Domain::validID(int function, int inputID)
+{
+    string table;
+    bool legalID = false;
+    if(function == 1)
+    {
+        table = "Scientists";
+    }
+    if(function == 2)
+    {
+        table = "Computers";
+    }
 
+    vector<int> IDs = _DbManager.getIDs(table);
 
+    if(!legalID)
+    {
+
+        for(int i=0; i<IDs.size(); i++)
+        {
+            if( IDs[i] == inputID)
+            {
+                legalID = true;
+            }
+
+        }
+    }
+
+    return legalID;
+
+}
 // Checks if input is digits, if 4 digits, if death year is lower than birth year and if current year is lower than death year.
 bool Domain::validDeathYearCheck(string birth, string death)
 {
@@ -401,7 +430,6 @@ bool Domain::validDeathYearCheck(string birth, string death)
     }
     return false;
 }
-
 
 // Checks input from user for delete function in presentation class.
 /*bool Domain::validDeleteOfComputer(int number)

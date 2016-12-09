@@ -265,62 +265,62 @@ void Presentation::newComputer()
 
         vector<string> types = _domain.getComputersTypes();
 
-                string compType;
-                string answer;
-                string typeAnswer;
-                string newType;
-                int chooseType;
+        string compType;
+        string answer;
+        string typeAnswer;
+        string newType;
+        int chooseType;
 
-                for(int i = 0; i<types.size(); i++)
-                {
-                    cout << i+1 << ". " << types[i]<<endl;
-                }
-                cout<<"Is the type of your computer in the list above? Please enter Y/N: "<<endl;
+        for(int i = 0; i<types.size(); i++)
+        {
+            cout << i+1 << ". " << types[i]<<endl;
+        }
+        cout<<"Is the type of your computer in the list above? Please enter Y/N: "<<endl;
 
-                cin>>answer;
-                while(_domain.yesOrNoCheck(answer) == 2)
-                {
-                    cout << "Wrong input! Please enter Y/N: " << endl;
-                    cin >> answer;
-                }
-                if(_domain.yesOrNoCheck(answer) == 1)
-                {
-                    cout << " Please enter the number for the type of computer you wish to register: " << endl;
-                    cin >> chooseType;
+        cin>>answer;
+        while(_domain.yesOrNoCheck(answer) == 2)
+        {
+            cout << "Wrong input! Please enter Y/N: " << endl;
+            cin >> answer;
+        }
+        if(_domain.yesOrNoCheck(answer) == 1)
+        {
+            cout << " Please enter the number for the type of computer you wish to register: " << endl;
+            cin >> chooseType;
 
-                    while(chooseType < 0 && chooseType > types.size())
-                    {
-                        cout << "Please enter a valid number from 1 - "<<types.size()<<" : "<< endl;
-                        cin>>chooseType;
-                    }
-                    type = types[chooseType -1];
+            while(chooseType < 0 && chooseType > types.size())
+            {
+                cout << "Please enter a valid number from 1 - "<<types.size()<<" : "<< endl;
+                cin>>chooseType;
+            }
+            type = types[chooseType -1];
 
-                    //Villutékk hvort týpan sé til
-                }
-                else if(_domain.yesOrNoCheck(answer) == 0)
-                {
-                    cout << "Would you like to add a type on the list? Please enter Y/N: " << endl;
-                    cin >> typeAnswer;
-                    while(_domain.yesOrNoCheck(typeAnswer) == 2)
-                    {
-                        cout << "Wrong input! Please enter Y/N: " << endl;
-                        cin >> typeAnswer;
-                    }
-                    if(_domain.yesOrNoCheck(typeAnswer) == 1)
-                    {
+            //Villutékk hvort týpan sé til
+        }
+        else if(_domain.yesOrNoCheck(answer) == 0)
+        {
+            cout << "Would you like to add a type on the list? Please enter Y/N: " << endl;
+            cin >> typeAnswer;
+            while(_domain.yesOrNoCheck(typeAnswer) == 2)
+            {
+                cout << "Wrong input! Please enter Y/N: " << endl;
+                cin >> typeAnswer;
+            }
+            if(_domain.yesOrNoCheck(typeAnswer) == 1)
+            {
 
-                        cout << "Enter the name of the new type: " << endl;
-                        cin >> newType;
+                cout << "Enter the name of the new type: " << endl;
+                cin >> newType;
 
-                        type = newType;
-                    }
-                    else if(_domain.yesOrNoCheck(typeAnswer) == 0)
-                    {
-                        inputToReturn();
-                    }
-                     types.push_back(newType);
+                type = newType;
+            }
+            else if(_domain.yesOrNoCheck(typeAnswer) == 0)
+            {
+                inputToReturn();
+            }
+            types.push_back(newType);
 
-                }
+        }
 
         // villutjékk fyrir týpur
         // sýna töflu með ´týpum & spurja notenda hvort týpan sé til staðar i töflunni annars gera notanda kleift að bæta við týpu
@@ -592,9 +592,9 @@ void Presentation::searchPersonDatabase()
         cin.ignore();
         getline(cin, searchTerm); // tekur fullt nafn
         // villutékk
-        while (_domain.validNameCheck(searchTerm))
+        while (_domain.validNameCheck(searchTerm) || searchTerm == " ")
         {
-            cout << "Name must only contain alphabet characters A-Z. \n Please enter a valid name." << endl;
+            cout << "Name must only contain alphabet characters A-Z. Please enter a valid name." << endl;
             cin >> searchTerm;
         }
 
@@ -700,7 +700,11 @@ void Presentation::searchComputersDatabase()
         cout << "Enter name: ";
         cin.ignore();
         getline(cin, searchTerm); // tekur fullt nafn
-
+        while (_domain.validNameCheck(searchTerm) || searchTerm == " ")
+        {
+            cout << "Name must only contain alphabet characters A-Z. Please enter a valid name." << endl;
+            cin >> searchTerm;
+        }
 
         searchResults = _domain.getComputersSearch(searchTerm, userChoice);
         displayComputersVector(searchResults);
@@ -827,7 +831,7 @@ void Presentation::addScientist()
     }
     else if(input == 6)
     {
-       searchPersonDatabase();
+        searchPersonDatabase();
     }
     else if(input == 7)
     {
@@ -835,7 +839,7 @@ void Presentation::addScientist()
     }
     else if(input == 8)
     {
-         quitDoubt();
+        quitDoubt();
     }
 
     else if(cin.fail())
@@ -918,13 +922,51 @@ void Presentation::connectComputer()
     int computerID;
     int scientistID;
     displayComputersVector(_domain.getComputers());
+
     cout << "Select an ID for a computer: " << endl;
     cin >> computerID;
-    // villutjékk fyrir lögleg input - vector<int> bla = _domain.getSingleComputer(computerID);
+    while(!_domain.validID(2, computerID))
+    {
+        if(cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+        cout << "Please enter a valid input: ";
+        cin >> computerID;
+    }
 
     displayPersonsVector(_domain.getPersons());
+
     cout << "Select an ID for a scientist: " << endl;
     cin >> scientistID;
+    while(!_domain.validID(1, scientistID))
+    {
+        if(cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+        cout << "Please enter a valid input: ";
+        cin >> computerID;
+    }
+
+    vector<Persons> legalID = _domain.getComputerToScientist(computerID);
+
+    for(int i=0; i<legalID.size(); i++)
+    {
+        while(scientistID == legalID[i].getID())
+        {
+            cout << "This computer already has this connection." << endl;
+            cout << "Press '0' to go back to main menu." << endl;
+            cout << "Select an ID for a scientist: " << endl;
+            cin >> scientistID;
+            if(scientistID == 0)
+            {
+                inputToReturn();
+            }
+        }
+    }
     _domain.connectComputersAndScientists(scientistID, computerID);
     inputToReturn();
 }
@@ -933,11 +975,51 @@ void Presentation::connectScientist()
     int computerID;
     int scientistID;
     displayPersonsVector(_domain.getPersons());
+
     cout << "Select an ID for a scientist: " << endl;
     cin >> scientistID;
+    while(!_domain.validID(1, scientistID))
+    {
+        if(cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+        cout << "Please enter a valid input: ";
+        cin >> computerID;
+    }
+
     displayComputersVector(_domain.getComputers());
+
     cout << "Select an ID for a computer: " << endl;
     cin >> computerID;
+    while(!_domain.validID(2, computerID))
+    {
+        if(cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+        cout << "Please enter a valid input: ";
+        cin >> computerID;
+    }
+
+    vector<Computers> legalID = _domain.getScientistToComputer(scientistID);
+
+    for(int i=0; i<legalID.size(); i++)
+    {
+        while(computerID == legalID[i].getCompID())
+        {
+            cout << "This scientist already has this connection." << endl;
+            cout << "Press '0' to go back to main menu." << endl;
+            cout << "Select an ID for a computer: " << endl;
+            cin >> computerID;
+            if(scientistID == 0)
+            {
+                inputToReturn();
+            }
+        }
+    }
     _domain.connectComputersAndScientists(scientistID, computerID);
     inputToReturn();
 
@@ -977,14 +1059,16 @@ void Presentation::displayComputersVector(vector<Computers> c)
         cout << "-";
     }
     cout << endl;
-    if(c.size() > 0){
+    if(c.size() > 0)
+    {
 
         for(size_t i=0; i< c.size(); i++)
         {
             cout << c[i].getCompID() << ".\t" << setw(34) << left << c[i].getCompName() << setw(15) << c[i].getCompYearBuild() << setw(15) << c[i].getCompType() << setw(15) << c[i].getCompBuilt()<< endl;
         }
         cout << endl;
-    }else{
+    }else
+    {
         cout << "Operation returned no results!" << endl;
         cout << endl;
     }
