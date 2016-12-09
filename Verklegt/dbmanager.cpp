@@ -57,9 +57,6 @@ bool DbManager::addComputer(Computers computer)
     QString qCompYearBuilt = QString::fromStdString(computer.getCompYearBuild());
     QString qCompType = QString::fromStdString(computer.getCompType());
     QString qCompBuilt= QString::number(computer.getCompBuilt()); // number fyrir bool breytu
-    //QString qCompMemory = QString::fromStdString(computer.getCompMemory());
-    //QString qCompClockSpeed = QString::fromStdString(computer.getCompClockSpeed());
-
 
     query.bindValue(":name", qCompName);
     query.bindValue(":YearBuilt", qCompYearBuilt);
@@ -122,6 +119,28 @@ bool DbManager::removeComputer(int ID)
     {
         return false;
     }
+}
+bool DbManager::removeConnections(string column, int removeID)
+{
+    QSqlQuery query;
+    QString qColumn = QString::fromStdString(column);
+
+    query.prepare("DELETE FROM ScientistsAndComputers WHERE " + qColumn + " = :removeID");
+    query.bindValue(":removeID", removeID);
+
+    if(query.exec())
+    {
+        //Used to be a Qdebug statement here, removed for grading.
+        while(query.next())
+        {
+            return true;
+        }
+    }
+    else
+    {
+        return false;
+    }
+
 }
 
 vector<int> DbManager::getComputerToScientist(int ID)
