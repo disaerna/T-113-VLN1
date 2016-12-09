@@ -30,6 +30,12 @@ void Domain::addComputer(Computers computer)
     }
 }
 
+void Domain::connectComputersAndScientists(int scientistID, int computerID)
+{
+    return _DbManager.connectComputersAndScientists(scientistID, computerID);
+}
+
+
 // Gets all persons from file, deletes person that matches input from user then rewrites.
 bool Domain::deletePersonFromFile(int ID)
 {
@@ -133,10 +139,36 @@ vector<Computers> Domain::getComputersSearch(string searchTerm, int userChoice)
     }
     return _DbManager.printComputersResults(searchTerm, text);
 }
+
 vector<string> Domain::getComputerAndPersons(int input)
 {
     return _DbManager.readComputersAndPersons(input);
 }
+
+vector<Computers> Domain::getScientistToComputer(int ID)
+{
+    vector<int> computerIDs = _DbManager.getScientistToComputer(ID);
+    vector<Computers> computer;
+    for(int i=0; i<computerIDs.size(); i++)
+    {
+        computer.push_back(_DbManager.getSingleComputer(computerIDs[i])[0]);
+    }
+
+    return computer;
+}
+
+vector<Persons> Domain::getComputerToScientist(int ID)
+{
+    vector<int> scientistIDs = _DbManager.getComputerToScientist(ID);
+    vector<Persons> person;
+    for(int i=0; i<scientistIDs.size(); i++)
+    {
+        person.push_back(_DbManager.getSinglePerson(scientistIDs[i])[0]);
+    }
+
+    return person;
+}
+
 vector<Persons> Domain::sortPersons(int viewInput)
 {
     vector<Persons> getPerson;

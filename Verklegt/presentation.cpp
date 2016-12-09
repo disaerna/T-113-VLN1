@@ -12,19 +12,21 @@ void Presentation::startProgram()
 {
 
     int input = 0;
-    cout << "Verk Solutions v.2.0 -- Main menu:\n";
-    cout << "----------------------------------\n";
-    cout << "Please select one of the options below\n";
-    cout << "----------------------------------\n";
-    cout << "1. Scientists\n";
-    cout << "2. Computers\n";
-    cout << "3. Scientists and computers\n";
-    cout << "4. Quit the program\n";
-    cout << "----------------------------------\n";
+    cout << endl;
+    cout << "Verk Solutions v.2.0 -- Main menu: " << endl;
+    cout << "---------------------------------------" << endl;
+    cout << "Please select one of the options below" << endl;
+    cout << "---------------------------------------" << endl;
+    cout << "1. Scientists" << endl;
+    cout << "2. Computers" << endl;
+    cout << "3. Quit the program" << endl;
+    cout << "---------------------------------------" << endl;
+    cout << endl;
     cout << "Enter your command: ";
     cin >> input;
+    cout << endl;
 
-    while(input < 1 || input > 4)
+    while(input < 1 || input > 3)
     {
         cout << "Please enter a correct input: ";
         cin >> input;
@@ -39,10 +41,6 @@ void Presentation::startProgram()
         addComputer();
     }
     else if(input == 3)
-    {
-        connectTables();
-    }
-    else if(input == 4)
     {
         quitDoubt();
     }
@@ -380,17 +378,14 @@ void Presentation::removePerson()
     }
 
     string personDeleted = _domain.getSinglePerson(ID).getName(); // TODO: Make sure to check if user inputs valid ID
-    bool success =_domain.deletePersonFromFile(ID);
-    while(!success)
+    while(!_domain.deletePersonFromFile(ID))
     {
         cout << "Please enter a valid ID: ";
         cin >> ID;
 
         personDeleted = _domain.getSinglePerson(ID).getName();
-        success = _domain.deletePersonFromFile(ID);
     }
 
-    // string deletedName = _domain.deletePersonFromFile(numberOfPerson);
     cout << personDeleted << " has been deleted from the database." << endl;
     cout << endl;
 
@@ -417,14 +412,13 @@ void Presentation::removeComputer()
     }
 
     string deletedComputer = _domain.getSingleComputer(ID).getCompName();
-    bool success = _domain.deleteComputerFromDatabase(ID);
-    while(!success)
+
+    while(! _domain.deleteComputerFromDatabase(ID))
     {
         cout << "Please enter a valid ID: ";
         cin >> ID;
 
         deletedComputer = _domain.getSingleComputer(ID).getCompName();
-        success = _domain.deleteComputerFromDatabase(ID);
     }
     cout << deletedComputer << " has been deleted from the database." << endl;
     cout << endl;
@@ -526,20 +520,53 @@ void Presentation::viewComputersDatabase()
     if(viewInput == 1)
     {
         displayComputersVector(_domain.getComputers());
-        inputToReturn();
     }
     else
     {
         displayComputersVector(_domain.sortComputers(viewInput));
-        inputToReturn();
     }
+    inputToReturn();
 
-    // Kalla á fall í domain sem tekur inn val notenda(tölu) sem kallar á data & birtir einungis þær uppl.
-
-    //displayPersonsVector(_domain.sortPersons(viewInput));
-    //inputToReturn();
 }
+void Presentation::viewScientistConnection()
+{
+    displayPersonsVector(_domain.getPersons());
 
+    int ID;
+    cout << endl;
+    cout << "Enter ID for a scientist: " << endl;
+    cin >> ID;
+    while(_domain.getSinglePerson(ID).getName() == " ")
+    {
+        cout << "Please enter a valid ID: ";
+        cin >> ID;
+    }
+    cout << endl;
+    cout << "These are the computers connected to the scientist: "<< endl;
+    cout << endl;
+    displayComputersVector(_domain.getScientistToComputer(ID));
+
+    inputToReturn();
+}
+void Presentation::viewComputerConnection()
+{
+    displayComputersVector(_domain.getComputers());
+
+    int ID;
+    cout << endl;
+    cout << "Enter ID for a computer: " << endl;
+    cin >> ID;
+    while(_domain.getSingleComputer(ID).getCompName() == " ")
+    {
+        cout << "Please enter a valid ID: ";
+        cin >> ID;
+    }
+    cout << endl;
+    cout << "These are the scientists connected to the computer: "<< endl;
+    cout << endl;
+    displayPersonsVector(_domain.getComputerToScientist(ID));
+    inputToReturn();
+}
 // Searches the database(file).
 void Presentation::searchPersonDatabase()
 {
@@ -756,18 +783,20 @@ void Presentation::addScientist()
     int input = 0;
     // Displays a menu for user
 
-    cout << "Please enter one of the following commands: \n";
-    cout << "1 - Add a new scientist to the database\n";
-    cout << "2 - Delete a scientist from the database\n"; // TODO - EXTRA
-    cout << "3 - View the scientist database\n";
-    cout << "4 - Search the scientist database\n";
-    cout << "5 - Return to main menu\n";
-    cout << "6 - Quit the program\n";
+    cout << "Please enter one of the following commands: " << endl;
+    cout << "1 - Add a new scientist to the database " << endl;
+    cout << "2 - Delete a scientist from the database " << endl;
+    cout << "3 - View the scientist database " << endl;
+    cout << "4 - View computer for a scientist " << endl;
+    cout << "5 - Connect a scientist to a computer " << endl;
+    cout << "6 - Search the scientist database " << endl;
+    cout << "7 - Return to main menu " << endl;
+    cout << "8 - Quit the program " << endl;
     cout << endl;
     cout << "Enter your choice: ";
     cin >> input;
 
-    while(input < 1 || input > 6)
+    while(input < 1 || input > 8)
     {
         cout << "Please input a correct number: ";
         cin >> input;
@@ -787,15 +816,23 @@ void Presentation::addScientist()
     }
     else if(input == 4)
     {
-        searchPersonDatabase();
+        viewScientistConnection();
     }
     else if(input == 5)
     {
-        startProgram();
+        connectScientist();
     }
     else if(input == 6)
     {
-        quitDoubt();
+       searchPersonDatabase();
+    }
+    else if(input == 7)
+    {
+        startProgram();
+    }
+    else if(input == 8)
+    {
+         quitDoubt();
     }
     else if(cin.fail())
     {
@@ -815,15 +852,17 @@ void Presentation::addComputer()
         cout << "1 - Add a new computer to the database" << endl;
         cout << "2 - Delete a computer from the database" << endl; // TODO - EXTRA
         cout << "3 - View the computer database" << endl;
-        cout << "4 - Search the computer database" << endl;
-        cout << "5 - Return to main menu\n";
-        cout << "5 - Quit the program\n";
+        cout << "4 - View scientists for a computer" << endl;
+        cout << "5 - Connect a computer to a scientist" << endl;
+        cout << "6 - Search the computer database" << endl;
+        cout << "7 - Return to main menu\n";
+        cout << "8 - Quit the program\n";
         cout << endl;
         cout << "Enter your choice: ";
         cin >> input;
         cout << endl;
 
-        while(input < 1 || input > 6)
+        while(input < 1 || input > 8)
         {
             cout << "Please input a correct number: ";
             cin >> input;
@@ -843,13 +882,21 @@ void Presentation::addComputer()
         }
         else if(input == 4)
         {
-            searchComputersDatabase();
+            viewComputerConnection();
         }
         else if(input == 5)
         {
-            startProgram();
+            connectComputer();
         }
         else if(input == 6)
+        {
+            searchComputersDatabase();
+        }
+        else if(input == 7)
+        {
+            startProgram();
+        }
+        else if (input == 8)
         {
             quitDoubt();
         }
@@ -859,50 +906,35 @@ void Presentation::addComputer()
             cin.clear();
             cin.ignore(100, '\n');
         }
-    }while (input != 5);
+    }while (input != 7);
 }
-void Presentation::connectTables()
+void Presentation::connectComputer()
 {
-    int userInput;
     int computerID;
     int scientistID;
-    cout << "Please enter one of the following commands: " << endl;
-    cout << "1 - Connect a scientist to a computer" << endl;
-    cout << "2 - Connect a computer to a scientist" << endl;
-    cout << "3 - View the database" << endl;
-    cin >> userInput;
-    while(isdigit(userInput))
-    {
-        cout << "Wrong input! Please enter an integer: ";
-        cin >> userInput;
-    }
-    if(userInput == 1)
-    {
-        displayPersonsVector(_domain.getPersons());
-        cout << "Please enter the ID of the scientist you wish to connect: ";
-        cin >> scientistID;
-        displayComputersVector(_domain.getComputers());
-        cout << "Please enter the ID of the computer you wish to connect " << _domain.getSinglePerson(scientistID).getName() << " to :" << endl;
-        cin >> computerID;
-    }
-    else if(userInput == 2)
-    {
-        displayComputersVector(_domain.getComputers());
-        cout << "Please enter the ID of the computer you wish to connect to a scientist: ";
-        cin >> computerID;
-        displayPersonsVector(_domain.getPersons());
-        cout << "Please enter the ID of the scientist you wish to connect " << _domain.getSingleComputer(computerID).getCompName() << " to :" << endl;
-        cin >> scientistID;
-    }
-    else if(userInput == 3)
-    {
-        displayConnectVector();
-    }
-    else
-    {
-        cout << "Wrong input! Please enter a valid number: ";
-        cin >> userInput;
-    }
+    displayComputersVector(_domain.getComputers());
+    cout << "Select an ID for a computer: " << endl;
+    cin >> computerID;
+    // villutjékk fyrir lögleg input - vector<int> bla = _domain.getSingleComputer(computerID);
+    displayPersonsVector(_domain.getPersons());
+    cout << "Select an ID for a scientist: " << endl;
+    cin >> scientistID;
+    _domain.connectComputersAndScientists(scientistID, computerID);
+    inputToReturn();
+
+}
+void Presentation::connectScientist()
+{
+    int computerID;
+    int scientistID;
+    displayPersonsVector(_domain.getPersons());
+    cout << "Select an ID for a scientist: " << endl;
+    cin >> scientistID;
+    displayComputersVector(_domain.getComputers());
+    cout << "Select an ID for a computer: " << endl;
+    cin >> computerID;
+    _domain.connectComputersAndScientists(scientistID, computerID);
+    inputToReturn();
 
 }
 
@@ -952,27 +984,7 @@ void Presentation::displayComputersVector(vector<Computers> c)
     }
 
 }
-void Presentation::displayConnectVector()
-{
-    int input;
-    cout << "Please enter one of the following commands: " << endl;
-    cout << "1 - Scientist and the computer they invented" << endl;
-    cout << "2 - Computers and the scientists that invented them" << endl;
-    cin >> input;
-    vector<string> displayTable = _domain.getComputerAndPersons(input);
-    cout << "displayTableSize: " << displayTable.size() << endl;
-    for(size_t i=0; i<displayTable.size(); i++)
-    {
-        cout << setw(35) << left << displayTable[i] << setw(35);
 
-        if(i%2 != 0)
-        {
-            cout << endl;
-        }
-
-    }
-    cout << endl;
-}
 // Asks user to return to main or quit the addScientist.
 void Presentation::inputToReturn()
 {
@@ -980,8 +992,13 @@ void Presentation::inputToReturn()
     // the addScientist function will loop until user inputs the right command
     do
     {
-        cout << "Enter one of the following commands:\n";
-        cout << "| 'm' - main menu | 's' - scientist menu | 'c' - computer menu | 'q' - quit the program |\n";
+        cout << "Enter one of the following commands: " << endl;
+        cout << endl;
+        cout << " m - main menu \n"
+                " s - scientist menu \n"
+                " c - computer menu \n"
+                " q - quit the program " << endl;;
+        cout << endl;
         cout << "Your command: ";
         cin >> input;
     }

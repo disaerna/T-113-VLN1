@@ -9,7 +9,6 @@
 #include <algorithm>
 #include <ctime>
 
-#include "data.h"
 #include "persons.h"
 #include "computers.h"
 #include "dbmanager.h"
@@ -41,6 +40,10 @@ public:
 
     // Functions for connecting
     vector<string> getComputerAndPersons(int input);
+    vector<Computers> getScientistToComputer(int ID);
+    vector<Persons> getComputerToScientist(int ID);
+    void connectComputersAndScientists(int scientistID, int computerID);
+
 
     // Functions for error checking input
     bool validNameCheck(string name);
@@ -58,7 +61,6 @@ public:
     vector<Computers> getComputersSearch(string searchTerm, int userChoice);
 private:
 
-    Data _data;
     DbManager _DbManager;
     Persons person;
 

@@ -88,7 +88,7 @@ bool DbManager::addComputer(Computers computer)
 
     //cout << person.getName() << "!!!" <<endl;
 
-    query.bindValue(":id", id);
+    //query.bindValue(":id", id);
     query.bindValue(":name", qCompName);
     query.bindValue(":YearBuilt", qCompYearBuilt);
     query.bindValue(":Type", qCompType);
@@ -105,6 +105,23 @@ bool DbManager::addComputer(Computers computer)
     }
     return success;
 
+}
+
+void DbManager::connectComputersAndScientists(int scientistID, int computerID)
+{
+    int id;
+    QSqlQuery query;
+
+    query.prepare("INSERT INTO ScientistsAndComputers (ScientistID, ComputerID) "
+                  "VALUES (:sID, :cID)");
+
+    query.bindValue(":sID", scientistID);
+    query.bindValue(":cID", computerID);
+
+    if(!query.exec())
+    {
+        qDebug() << db.lastError()<< " in connectComputersAndScientists " << endl;
+    }
 }
 
 bool DbManager::removeScientist(int ID)
@@ -187,7 +204,44 @@ vector<string> DbManager::readComputersAndPersons(int input)
         return printPersonsAndAllComputers;
     }
 }
-
+vector<int> DbManager::getComputerToScientist(int ID)
+{
+    vector<int> scientistId;
+    QSqlQuery query(db);
+    query.prepare("SELECT ScientistID FROM ScientistsAndComputers WHERE ComputerID = :ID");
+    query.bindValue(":ID", ID);
+    if(query.exec())
+    {
+        while(query.next())
+        {
+            scientistId.push_back(query.value("ScientistID").toUInt());
+        }
+    }
+    else
+    {
+        qDebug() << db.lastError() << " in function getComputerToScientist" << endl;
+    }
+    return scientistId;
+}
+vector<int> DbManager::getScientistToComputer(int ID)
+{
+    vector<int> computerId;
+    QSqlQuery query(db);
+    query.prepare("SELECT ComputerID FROM ScientistsAndComputers WHERE ScientistID = :ID");
+    query.bindValue(":ID", ID);
+    if(query.exec())
+    {
+        while(query.next())
+        {
+            computerId.push_back(query.value("ComputerID").toUInt());
+        }
+    }
+    else
+    {
+        qDebug() << db.lastError() << " in function getScientistToComputer" << endl;
+    }
+    return computerId;
+}
 vector<Persons> DbManager::readPersons(QSqlQuery query)
 {
     Persons _persons;
@@ -233,7 +287,7 @@ vector<Computers> DbManager::readComputers(QSqlQuery query)
     return printComputersData;
 }
 
-vector<Persons>DbManager::getSinglePerson(int ID)
+vector<Persons> DbManager::getSinglePerson(int ID)
 {
     QSqlQuery query(db);
     query.prepare("SELECT * FROM Scientists WHERE ID = :ID");
@@ -250,7 +304,7 @@ vector<Persons>DbManager::getSinglePerson(int ID)
 
     return person;
 }
-vector<Computers>DbManager::getSingleComputer(int ID)
+vector<Computers> DbManager::getSingleComputer(int ID)
 {
     QSqlQuery query(db);
     query.prepare("SELECT * FROM Computers WHERE ID = :ID");
