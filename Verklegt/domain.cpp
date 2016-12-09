@@ -10,20 +10,11 @@ Domain::Domain()
 
 void Domain::addPersons(Persons person)
 {
-    //_data.addPersonsToFile(person);
-    cout << person.getName() << endl;
-    if(_DbManager.addPerson(person))
-    {
-        cout << "Add person to dbMan success" << endl;
-    }
+    _DbManager.addPerson(person);
 }
 void Domain::addComputer(Computers computer)
 {
-    //_data.addComputerToDatabase(computer);
-    if(_DbManager.addComputer(computer))
-    {
-
-    }
+    _DbManager.addComputer(computer);
 }
 
 void Domain::connectComputersAndScientists(int scientistID, int computerID)

@@ -373,14 +373,8 @@ vector<Persons> DbManager::sortScientistsByValue(string value, string order)
     QString qValue = QString::fromStdString(value);
     QString qOrder = QString::fromStdString(order);
 
-    if(query.exec("SELECT * FROM Scientists ORDER BY " + qValue + " " + qOrder))
-    {
-        cout << "Works!" << endl;
-    }
-    else
-    {
-        qDebug() << db.lastError() << endl;
-    }
+    query.exec("SELECT * FROM Scientists ORDER BY " + qValue + " " + qOrder);
+
     return readPersons(query);
 }
 
@@ -391,14 +385,8 @@ vector<Computers> DbManager::sortComputersByValue(string value, string order)
     QString qValue = QString::fromStdString(value);
     QString qOrder = QString::fromStdString(order);
 
-    if(query.exec("SELECT * FROM Computers ORDER BY " + qValue + " " + qOrder))
-    {
-        cout << "Works!" << endl;
-    }
-    else
-    {
-        qDebug() << db.lastError() << endl;
-    }
+    query.exec("SELECT * FROM Computers ORDER BY " + qValue + " " + qOrder);
+
     return readComputers(query);
 }
 bool DbManager::updateScientist(int ID, string updateChoice, string newRecord)
