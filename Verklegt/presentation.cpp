@@ -25,10 +25,25 @@ void Presentation::startProgram()
     cin >> input;
     cout << endl;
 
+
+    if(cin.fail())
+    {
+        // clears the buffer
+        cin.clear();
+        cin.ignore(100, '\n');
+    }
+
     while(input < 1 || input > 3)
     {
         cout << "Please enter a correct input: ";
         cin >> input;
+
+        if(cin.fail())
+        {
+            // clears the buffer
+            cin.clear();
+            cin.ignore(100, '\n');
+        }
     }
 
     if(input == 1)
@@ -123,7 +138,7 @@ void Presentation::newPersonsInFile()
             cin >> gender;
         }
 
-        gender = _domain.setGender(gender); // setur M/m = male & F/f = female
+        gender = _domain.setGender(gender);
 
         cout << "Enter year of birth: ";
         cin >> yearOfBirth;
@@ -139,7 +154,7 @@ void Presentation::newPersonsInFile()
 
         while(_domain.yesOrNoCheck(answer) == 2)
         {
-            cout << "Wrong input! Please enter Y/N" << endl;
+            cout << "Wrong input! Please enter Y/N";
             cin >> answer;
         }
 
@@ -357,6 +372,12 @@ void Presentation::removePerson()
         cout << "Please enter a valid ID: ";
         cin >> ID;
 
+        if(cin.fail())
+        {
+            // clears the buffer
+            cin.clear();
+            cin.ignore(100, '\n');
+        }
         personDeleted = _domain.getSinglePerson(ID).getName();
     }
 
@@ -379,7 +400,6 @@ void Presentation::removeComputer()
 
     cout << "Enter the ID of the computer you wish to delete from the database: ";
     cin >> ID;
-    cout << endl;
 
     if(cin.fail())
     {
@@ -388,12 +408,33 @@ void Presentation::removeComputer()
         cin.ignore(100, '\n');
     }
 
+    while(!_domain.validID(2, ID)){
+        cout << "Error!\n";
+        cout << "Enter correct ID: ";
+        cin >> ID;
+
+        if(cin.fail())
+        {
+            // clears the buffer
+            cin.clear();
+            cin.ignore(100, '\n');
+        }
+    }
+    cout << endl;
+
     string deletedComputer = _domain.getSingleComputer(ID).getCompName();
 
     while(! _domain.deleteComputerFromDatabase(ID))
     {
         cout << "Please enter a valid ID: ";
         cin >> ID;
+
+        if(cin.fail())
+        {
+            // clears the buffer
+            cin.clear();
+            cin.ignore(100, '\n');
+        }
 
         deletedComputer = _domain.getSingleComputer(ID).getCompName();
     }
@@ -514,12 +555,26 @@ void Presentation::viewScientistConnection()
 
     int ID;
     cout << endl;
-    cout << "Enter ID for a scientist: " << endl;
+    cout << "Enter ID for a scientist: ";
     cin >> ID;
-    while(_domain.getSinglePerson(ID).getName() == " ")
+
+    if(cin.fail())
     {
-        cout << "Please enter a valid ID: ";
+        // clears the buffer
+        cin.clear();
+        cin.ignore(100, '\n');
+    }
+    while(!_domain.validID(1, ID)){
+        cout << "Error!\n";
+        cout << "Enter correct ID: ";
         cin >> ID;
+
+        if(cin.fail())
+        {
+            // clears the buffer
+            cin.clear();
+            cin.ignore(100, '\n');
+        }
     }
     cout << endl;
     cout << "These are the computers connected to the scientist: "<< endl;
@@ -534,12 +589,26 @@ void Presentation::viewComputerConnection()
 
     int ID;
     cout << endl;
-    cout << "Enter ID for a computer: " << endl;
+    cout << "Enter ID for a computer: ";
     cin >> ID;
-    while(_domain.getSingleComputer(ID).getCompName() == " ")
+
+    if(cin.fail())
     {
-        cout << "Please enter a valid ID: ";
+        // clears the buffer
+        cin.clear();
+        cin.ignore(100, '\n');
+    }
+    while(!_domain.validID(2, ID)){
+        cout << "Error!\n";
+        cout << "Enter correct ID: ";
         cin >> ID;
+
+        if(cin.fail())
+        {
+            // clears the buffer
+            cin.clear();
+            cin.ignore(100, '\n');
+        }
     }
     cout << endl;
     cout << "These are the scientists connected to the computer: "<< endl;
@@ -562,6 +631,13 @@ void Presentation::searchPersonDatabase()
     cout << endl;
     cout << "Enter your choice: ";
     cin >> userChoice;
+
+    if(cin.fail())
+    {
+        // clears the buffer
+        cin.clear();
+        cin.ignore(100, '\n');
+    }
     vector<Persons> searchResults;
 
     if(userChoice == 1)
@@ -585,7 +661,6 @@ void Presentation::searchPersonDatabase()
     {
         cout << "Enter either 'm' or 'f': ";
         cin >> searchTerm;
-        // villutékk
         while(!_domain.validGenderCheck(searchTerm))
         {
             cout << "Please enter either 'm' for male or 'f' for female: ";
@@ -618,7 +693,7 @@ void Presentation::searchPersonDatabase()
 
         while(_domain.yesOrNoCheck(searchTerm) == 2)
         {
-            cout << "Wrong input! Please enter Y/N" << endl;
+            cout << "Wrong input! Please enter Y/N: ";
             cin >> searchTerm;
         }
 
@@ -669,6 +744,13 @@ void Presentation::searchComputersDatabase()
     cout << endl;
     cout << "Enter your choice: ";
     cin >> userChoice;
+
+    if(cin.fail())
+    {
+        // clears the buffer
+        cin.clear();
+        cin.ignore(100, '\n');
+    }
     vector<Computers> searchResults;
 
     if(userChoice == 1)
@@ -724,7 +806,7 @@ void Presentation::searchComputersDatabase()
         cin >> searchTerm;
         if(_domain.yesOrNoCheck(searchTerm) == 2)
         {
-            cout << "Wrong input! Please enter Y/N" << endl;
+            cout << "Wrong input! Please enter Y/N: ";
             cin >> searchTerm;
         }
         else if(_domain.yesOrNoCheck(searchTerm) == 1)
@@ -782,6 +864,13 @@ void Presentation::addScientist()
     {
         cout << "Please input a correct number: ";
         cin >> input;
+
+        if(cin.fail())
+        {
+            // clears the buffer
+            cin.clear();
+            cin.ignore(100, '\n');
+        }
     }
 
     if(input == 1)
@@ -856,6 +945,13 @@ void Presentation::addComputer()
         {
             cout << "Please input a correct number: ";
             cin >> input;
+
+            if(cin.fail())
+            {
+                // clears the buffer
+                cin.clear();
+                cin.ignore(100, '\n');
+            }
         }
 
         if(input == 1)
@@ -908,7 +1004,8 @@ void Presentation::connectComputer()
     int scientistID;
     displayComputersVector(_domain.getComputers());
 
-    cout << "Select an ID for a computer: " << endl;
+    cout << "Select an ID for a computer: ";
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cin >> computerID;
     while(!_domain.validID(2, computerID))
     {
@@ -918,12 +1015,14 @@ void Presentation::connectComputer()
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
         cout << "Please enter a valid input: ";
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cin >> computerID;
     }
 
     displayPersonsVector(_domain.getPersons());
 
-    cout << "Select an ID for a scientist: " << endl;
+    cout << "Select an ID for a scientist: ";
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cin >> scientistID;
     while(!_domain.validID(1, scientistID))
     {
@@ -933,12 +1032,13 @@ void Presentation::connectComputer()
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
         cout << "Please enter a valid input: ";
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cin >> scientistID;
     }
 
     vector<Persons> legalID = _domain.getComputerToScientist(computerID);
 
-    for(int i=0; i<legalID.size(); i++)
+    for(size_t i=0; i<legalID.size(); i++)
     {
         while(scientistID == legalID[i].getID())
         {
@@ -946,6 +1046,13 @@ void Presentation::connectComputer()
             cout << "Press '0' to go back to main menu." << endl;
             cout << "Select an ID for a scientist: " << endl;
             cin >> scientistID;
+
+            if(cin.fail())
+            {
+                // clears the buffer
+                cin.clear();
+                cin.ignore(100, '\n');
+            }
             if(scientistID == 0)
             {
                 inputToReturn();
@@ -961,7 +1068,8 @@ void Presentation::connectScientist()
     int scientistID;
     displayPersonsVector(_domain.getPersons());
 
-    cout << "Select an ID for a scientist: " << endl;
+    cout << "Select an ID for a scientist: ";
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cin >> scientistID;
     while(!_domain.validID(1, scientistID))
     {
@@ -971,12 +1079,14 @@ void Presentation::connectScientist()
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
         cout << "Please enter a valid input: ";
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cin >> scientistID;
     }
 
     displayComputersVector(_domain.getComputers());
 
-    cout << "Select an ID for a computer: " << endl;
+    cout << "Select an ID for a computer: ";
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cin >> computerID;
     while(!_domain.validID(2, computerID))
     {
@@ -986,6 +1096,7 @@ void Presentation::connectScientist()
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
         cout << "Please enter a valid input: ";
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cin >> computerID;
     }
 
@@ -996,9 +1107,16 @@ void Presentation::connectScientist()
         while(computerID == legalID[i].getCompID())
         {
             cout << "This scientist already has this connection." << endl;
-            cout << "Press '0' to go back to main menu." << endl;
-            cout << "Select an ID for a computer: " << endl;
+            cout << "Press '0' to go back to main menu." <<endl;
+            cout << "Select an ID for a computer: ";
             cin >> computerID;
+
+            if(cin.fail())
+            {
+                // clears the buffer
+                cin.clear();
+                cin.ignore(100, '\n');
+            }
             if(scientistID == 0)
             {
                 inputToReturn();
@@ -1076,7 +1194,7 @@ void Presentation::inputToReturn()
     // the addScientist function will loop until user inputs the right command
     do
     {
-        cout << "Enter one of the following commands: " << endl;
+        cout << "Enter one of the following commands: " <<endl;
         cout << endl;
         cout << " m - main menu \n"
                 " s - scientist menu \n"
@@ -1116,6 +1234,18 @@ void Presentation::updatePerson()
 
     cout << "Enter the ID of the scientist you wish to update: ";
     cin >> ID;
+    while(!_domain.validID(2, ID)){
+        cout << "Error!\n";
+        cout << "Enter correct ID: ";
+        cin >> ID;
+
+        if(cin.fail())
+        {
+            // clears the buffer
+            cin.clear();
+            cin.ignore(100, '\n');
+        }
+    }
     cout << endl;
 
     if(cin.fail())
@@ -1152,7 +1282,7 @@ void Presentation::updatePerson()
         getline(cin, newRecord); // TODO ! Passa að ekki sé leyfilegt að slá inn tómt nafn !
         while (_domain.validNameCheck(newRecord))
         {
-            cout << "Name must only contain alphabet characters A-Z. \n Please enter a valid name: " << endl;
+            cout << "Name must only contain alphabet characters A-Z. \n Please enter a valid name: ";
             cin >> newRecord;
         }
     }
@@ -1211,6 +1341,19 @@ void Presentation::updateComputer()
 
     cout << "Enter the ID of the computer you wish to update: ";
     cin >> ID;
+
+    while(!_domain.validID(2, ID)){
+        cout << "Error!\n";
+        cout << "Enter correct ID: ";
+        cin >> ID;
+
+        if(cin.fail())
+        {
+            // clears the buffer
+            cin.clear();
+            cin.ignore(100, '\n');
+        }
+    }
     cout << endl;
 
     if(cin.fail())
