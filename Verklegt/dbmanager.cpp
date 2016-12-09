@@ -11,14 +11,14 @@ DbManager::DbManager()
        //Used to be a Qdebug statement here, removed for grading.
     }
 }
-
+//Returns error code
 QSqlError DbManager::lastError()
 {
 
     return db.lastError();
 
 }
-
+//Adds new Scientists to the database
 bool DbManager::addPerson(Persons person)
 {
     bool success = false;
@@ -44,7 +44,7 @@ bool DbManager::addPerson(Persons person)
 
     return success;
 }
-
+//Adds new Computer to the database
 bool DbManager::addComputer(Computers computer)
 {
     bool success = false;
@@ -97,7 +97,7 @@ bool DbManager::removeScientist(int ID)
     query.bindValue(":ID", ID);
     if(query.exec())
     {
-        success = true;
+        success = true;Athugasemdir
     }
     else
     {
