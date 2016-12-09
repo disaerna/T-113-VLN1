@@ -378,6 +378,12 @@ void Presentation::removeComputer()
 
     cout << "Enter the ID of the computer you wish to delete from the database: ";
     cin >> ID;
+
+    while(!_domain.validID(2, ID)){
+        cout << "Error!\n";
+        cout << "Enter correct ID: ";
+        cin >> ID;
+    }
     cout << endl;
 
     if(cin.fail())
@@ -512,9 +518,9 @@ void Presentation::viewScientistConnection()
     cout << endl;
     cout << "Enter ID for a scientist: " << endl;
     cin >> ID;
-    while(_domain.getSinglePerson(ID).getName() == " ")
-    {
-        cout << "Please enter a valid ID: ";
+    while(!_domain.validID(1, ID)){
+        cout << "Error!\n";
+        cout << "Enter correct ID: ";
         cin >> ID;
     }
     cout << endl;
@@ -532,9 +538,9 @@ void Presentation::viewComputerConnection()
     cout << endl;
     cout << "Enter ID for a computer: " << endl;
     cin >> ID;
-    while(_domain.getSingleComputer(ID).getCompName() == " ")
-    {
-        cout << "Please enter a valid ID: ";
+    while(!_domain.validID(2, ID)){
+        cout << "Error!\n";
+        cout << "Enter correct ID: ";
         cin >> ID;
     }
     cout << endl;
@@ -937,7 +943,7 @@ void Presentation::connectComputer()
 
     vector<Persons> legalID = _domain.getComputerToScientist(computerID);
 
-    for(int i=0; i<legalID.size(); i++)
+    for(size_t i=0; i<legalID.size(); i++)
     {
         while(scientistID == legalID[i].getID())
         {
@@ -1110,6 +1116,11 @@ void Presentation::updatePerson()
 
     cout << "Enter the ID of the scientist you wish to update: ";
     cin >> ID;
+    while(!_domain.validID(2, ID)){
+        cout << "Error!\n";
+        cout << "Enter correct ID: ";
+        cin >> ID;
+    }
     cout << endl;
 
     if(cin.fail())
@@ -1205,6 +1216,11 @@ void Presentation::updateComputer()
 
     cout << "Enter the ID of the computer you wish to update: ";
     cin >> ID;
+    while(!_domain.validID(2, ID)){
+        cout << "Error!\n";
+        cout << "Enter correct ID: ";
+        cin >> ID;
+    }
     cout << endl;
 
     if(cin.fail())
