@@ -945,7 +945,7 @@ void Presentation::connectComputer()
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
         cout << "Please enter a valid input: ";
-        cin >> computerID;
+        cin >> scientistID;
     }
 
     vector<Persons> legalID = _domain.getComputerToScientist(computerID);
@@ -983,7 +983,7 @@ void Presentation::connectScientist()
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
         cout << "Please enter a valid input: ";
-        cin >> computerID;
+        cin >> scientistID;
     }
 
     displayComputersVector(_domain.getComputers());
