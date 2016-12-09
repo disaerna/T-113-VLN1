@@ -73,7 +73,6 @@ bool DbManager::addComputer(Computers computer)
 
 void DbManager::connectComputersAndScientists(int scientistID, int computerID)
 {
-    int id;
     QSqlQuery query;
 
     query.prepare("INSERT INTO ScientistsAndComputers (ScientistID, ComputerID) "
@@ -97,7 +96,7 @@ bool DbManager::removeScientist(int ID)
     query.bindValue(":ID", ID);
     if(query.exec())
     {
-        success = true;Athugasemdir
+        success = true;
     }
     else
     {
@@ -141,6 +140,7 @@ bool DbManager::removeConnections(string column, int removeID)
         return false;
     }
 
+    return false;
 }
 
 vector<int> DbManager::getComputerToScientist(int ID)

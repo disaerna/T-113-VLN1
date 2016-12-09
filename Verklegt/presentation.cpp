@@ -380,7 +380,7 @@ void Presentation::removePerson()
 
 
 
-//===================================================================================================================================================================================
+    //===================================================================================================================================================================================
     string personDeleted = _domain.getSinglePerson(ID).getName(); // TODO: Make sure to check if user inputs valid ID
 
     while(!_domain.deletePersonFromFile(ID))
@@ -1155,7 +1155,7 @@ void Presentation::connectScientist()
 void Presentation::displayPersonsVector(vector<Persons> p)
 {
     cout << endl;
-    cout << "Nr.\t" << setw(34) << left << "Name"  << setw(15) << "Gender" << setw(15) << "Born" << setw(15) << "Died" << endl;
+    cout << "ID \t" << setw(34) << left << "Name"  << setw(15) << "Gender" << setw(15) << "Born" << setw(15) << "Died" << endl;
     for(int i=0; i<80; i++)
     {
         cout << "-";
@@ -1179,7 +1179,7 @@ void Presentation::displayComputersVector(vector<Computers> c)
 {
     string built = "";
     cout << endl;
-    cout << "Nr.\t" << setw(34) << left << "Name"  << setw(15) << "Year" << setw(15) << "Type" << setw(15) << "Successful" << endl;
+    cout << "ID \t" << setw(34) << left << "Name"  << setw(15) << "Year" << setw(15) << "Type" << setw(15) << "Successful" << endl;
     for(int i=0; i<82; i++)
     {
         cout << "-";
@@ -1387,12 +1387,8 @@ void Presentation::updateComputer()
         cin.ignore(100, '\n');
     }
 
-    // needs a check if ID exists
-
-    //
-
     cout << "Enter what you would like to update:\n";
-    cout << "n: name | y: year built | t: type | b: was built: ";
+    cout << "n: name | y: year built | t: type | b: build successful: ";
     cin >> updateChoice;
 
     while(!_domain.validComputerUpdateChoice(updateChoice))
@@ -1405,13 +1401,21 @@ void Presentation::updateComputer()
     updateChoice = _domain.changeComputerUpdateChoice(updateChoice);
 
     cout << endl;
-
-    cout << "Enter your updated " << updateChoice << ": ";
+    if(updateChoice != "Built")
+    {
+        cout << "Enter your updated " << updateChoice << ": ";
+    }
 
     if(updateChoice == "Name")
     {
         cin.ignore();
-        getline(cin, newRecord); // TODO ! Passa að ekki sé leyfilegt að slá inn tómt nafn !
+        getline(cin, newRecord);
+        while (!_domain.emptyStringCheck(newRecord))
+        {
+            cout << "Name cannot be empty. "<< endl;
+            cout << "Please enter a valid name: ";
+            cin >> newRecord;
+        }
     }
     else if(updateChoice == "YearBuilt")
     {
@@ -1424,20 +1428,25 @@ void Presentation::updateComputer()
     }
     else if(updateChoice == "Type")
     {
-       cout << "Micro | Mechatronic | Electronic | Analog: ";
-       cin.ignore();
-       getline(cin, newRecord); // TODO ! Passa að ekki sé leyfilegt að slá inn tómt nafn !
+        vector<string> types =_domain.getComputersTypes();
+        for(size_t i = 0; i<types.size(); i++)
+        {
+            cout << i+1 << ". " << types[i]<<endl;
+        }
+        cin.ignore();
+        getline(cin, newRecord); // TODO ! Passa að ekki sé leyfilegt að slá inn tómt nafn !
 
-       while(!_domain.typeCheck(newRecord))
-       {
-           cout << "Not valid input! Enter one of the choice below\n";
-           cout << "Micro | Mechatronic | Electronic | Analog: ";
-           getline(cin, newRecord);
-       }
+        while(stoi(newRecord) < 0 && stoi(newRecord) > types.size())
+        {
+            cout << "Please enter a valid number from 1 - " << types.size() << " : " << endl;
+            cin >> newRecord;
+        }
+
+        newRecord = types[stoi(newRecord) -1];
     }
     else if(updateChoice == "Built")
     {
-        // eftir að gera fyrir built
+
     }
     _domain.updateComputer(ID, updateChoice, newRecord);
     displayComputersVector(_domain.getComputers());
