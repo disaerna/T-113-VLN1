@@ -14,7 +14,6 @@ SOURCES += main.cpp \
     persons.cpp \
     presentation.cpp \
     domain.cpp \
-    data.cpp \
     computers.cpp \
     dbmanager.cpp
 
@@ -22,6 +21,5 @@ HEADERS += \
     persons.h \
     presentation.h \
     domain.h \
-    data.h \
     computers.h \
     dbmanager.h

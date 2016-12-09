@@ -55,8 +55,6 @@ private:
     void inputToReturn();
 
 
-
-
     Domain _domain;
     Computers _computer;
 

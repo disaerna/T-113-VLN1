@@ -412,3 +412,82 @@ bool Domain::validDeathYearCheck(string birth, string death)
     }
     return false;
 }*/
+bool Domain::updatePerson(int ID, string updateChoice, string newRecord)
+{
+    return _DbManager.updateScientist(ID, updateChoice, newRecord);
+}
+
+bool Domain::validPersonUpdateChoice(string x)
+{
+    if(x == "n" || x == "N" || x == "g" || x == "G" || x == "b" || x == "B" || x == "d" || x == "D")
+    {
+        return true;
+    }
+    return false;
+}
+
+string Domain::changePersonUpdateChoice(string x)
+{
+    string y = "";
+    if(x == "n" || x == "N")
+    {
+        y = "Name";
+    }
+    else if(x == "g" || x == "G")
+    {
+        y = "Gender";
+    }
+    else if(x == "b" || x == "B")
+    {
+        y = "YearOfBirth";
+    }
+    else if(x == "d" || x == "D")
+    {
+        y = "YearOfDeath";
+    }
+    return y;
+}
+
+bool Domain::validUpdateGender(string x)
+{
+    if(x == "Female" || x == "Male")
+    {
+        return true;
+    }
+    return false;
+}
+bool Domain::updateComputer(int ID, string updateChoice, string newRecord)
+{
+    return _DbManager.updateComputer(ID, updateChoice, newRecord);
+}
+
+bool Domain::validComputerUpdateChoice(string x)
+{
+    if(x == "n" || x == "N" || x == "y" || x == "Y" || x == "t" || x == "T" || x == "b" || x == "B")
+    {
+        return true;
+    }
+    return false;
+}
+
+string Domain::changeComputerUpdateChoice(string x)
+{
+    string y = "";
+    if(x == "n" || x == "N")
+    {
+        y = "Name";
+    }
+    else if(x == "y" || x == "Y")
+    {
+        y = "YearBuilt";
+    }
+    else if(x == "t" || x == "T")
+    {
+        y = "Type";
+    }
+    else if(x == "b" || x == "B")
+    {
+        y = "Built";
+    }
+    return y;
+}

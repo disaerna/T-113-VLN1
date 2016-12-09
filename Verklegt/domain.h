@@ -58,6 +58,14 @@ public:
 
     vector<Persons> getPersonsSearch(string searchTerm, int userChoice);
     vector<Computers> getComputersSearch(string searchTerm, int userChoice);
+    bool updatePerson(int ID, string updateChoice, string newRecord);
+    bool validPersonUpdateChoice(string x);
+    string changePersonUpdateChoice(string x);
+    bool validUpdateGender(string x);
+    bool updateComputer(int ID, string updateChoice, string newRecord);
+    bool validComputerUpdateChoice(string x);
+    string changeComputerUpdateChoice(string x);
+
 private:
 
     DbManager _DbManager;
