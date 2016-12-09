@@ -26,7 +26,10 @@ public:
     bool removeScientist(int ID);
     vector<Persons> getSinglePerson(int ID);
     vector<Persons> printPersonsResults(string searchTerm, string text, int gender);
+
     vector<int> getScientistToComputer(int ID);
+
+
 
     //Computer Functions
     bool addComputer(Computers computer);
@@ -38,9 +41,11 @@ public:
     vector<Computers> printComputersResults(string searchTerm, string text);
     vector<string> readComputersAndPersons(int input);
     vector<string> readComputersTypes();
+
     vector<int> getComputerToScientist(int ID);
 
     void connectComputersAndScientists(int scientistID, int computerID);
+
 
 private:
     QSqlDatabase db;

@@ -18,12 +18,18 @@ void Presentation::startProgram()
     cout << "----------------------------------\n";
     cout << "1. Scientists\n";
     cout << "2. Computers\n";
-    cout << "3. Quit the program\n";
+    cout << "3. Scientists and computers\n";
+    cout << "4. Quit the program\n";
+
     cout << "----------------------------------\n";
     cout << "Enter your command: ";
     cin >> input;
 
+
+
+
     while(input < 1 || input > 3)
+
     {
         cout << "Please enter a correct input: ";
         cin >> input;
@@ -41,6 +47,7 @@ void Presentation::startProgram()
     {
         quitDoubt();
     }
+
 
 }
 
@@ -815,6 +822,7 @@ void Presentation::addScientist()
     }
     else if(input == 4)
     {
+
         viewScientistConnection();
     }
     else if(input == 5)
@@ -832,7 +840,10 @@ void Presentation::addScientist()
     else if(input == 8)
     {
          quitDoubt();
+
+
     }
+
     else if(cin.fail())
     {
         // clears the buffer
@@ -856,10 +867,12 @@ void Presentation::addComputer()
         cout << "6 - Search the computer database" << endl;
         cout << "7 - Return to main menu\n";
         cout << "8 - Quit the program\n";
+
         cout << endl;
         cout << "Enter your choice: ";
         cin >> input;
         cout << endl;
+
 
         while(input < 1 || input > 8)
         {
@@ -891,6 +904,7 @@ void Presentation::addComputer()
         {
             searchComputersDatabase();
         }
+
         else if(input == 7)
         {
             startProgram();
@@ -980,7 +994,6 @@ void Presentation::displayComputersVector(vector<Computers> c)
     }
 
 }
-
 // Asks user to return to main or quit the addScientist.
 void Presentation::inputToReturn()
 {
