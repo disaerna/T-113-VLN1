@@ -26,7 +26,6 @@ QSqlError DbManager::lastError()
 bool DbManager::addPerson(Persons person)
 {
     bool success = false;
-    int id;
     QSqlQuery query;
 
     query.prepare("INSERT INTO Scientists (name, gender, YearOfBirth, YearOfDeath) "
@@ -60,7 +59,6 @@ bool DbManager::addPerson(Persons person)
 bool DbManager::addComputer(Computers computer)
 {
     bool success = false;
-    int id;
     QSqlQuery query;
 
     query.prepare("INSERT INTO Computers (name, YearBuilt, Type, Built) "
@@ -72,9 +70,6 @@ bool DbManager::addComputer(Computers computer)
     QString qCompBuilt= QString::number(computer.getCompBuilt()); // number fyrir bool breytu
     //QString qCompMemory = QString::fromStdString(computer.getCompMemory());
     //QString qCompClockSpeed = QString::fromStdString(computer.getCompClockSpeed());
-
-
-    //cout << person.getName() << "!!!" <<endl;
 
     query.bindValue(":name", qCompName);
     query.bindValue(":YearBuilt", qCompYearBuilt);
@@ -95,17 +90,20 @@ bool DbManager::addComputer(Computers computer)
 
 bool DbManager::removeScientist(int ID)
 {
+    bool success = false;
     QSqlQuery query(db);
     query.prepare("DELETE FROM Scientists WHERE ID = :ID");
     query.bindValue(":ID", ID);
     if(query.exec())
     {
-        return true;
+        success = true;
     }
     else
     {
-        return false;
+        success = false;
     }
+
+    return success;
 }
 bool DbManager::removeComputer(int ID)
 {
