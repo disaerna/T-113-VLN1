@@ -233,9 +233,10 @@ void Presentation::newComputer()
         cin.ignore();
         getline(cin, name);
 
-        while (_domain.validNameCheck(name) || !_domain.emptyStringCheck(name))
+        while (!_domain.emptyStringCheck(name))
         {
-            cout << "Name must only contain alphabet characters A-Z. \nPlease enter a valid name: ";
+            cout << "Name cannot be empty." << endl;
+            cout << "Please enter a valid name." << endl;
             cin >> name;
         }
 
@@ -251,67 +252,64 @@ void Presentation::newComputer()
         vector<string> types = _domain.getComputersTypes();
 
 
-                string compType;
-                string answer;
-                string typeAnswer;
-                string newType;
-                int chooseType;
+        string compType;
+        string answer;
+        string typeAnswer;
+        string newType;
+        int chooseType;
 
-                for(size_t i = 0; i<types.size(); i++)
-                {
-                    cout << i+1 << ". " << types[i]<<endl;
-                }
-                cout<<"Is the type of your computer in the list above? Please enter Y/N: "<<endl;
+        for(size_t i = 0; i<types.size(); i++)
+        {
+            cout << i+1 << ". " << types[i]<<endl;
+        }
+        cout << "Is the type of your computer in the list above? Please enter Y/N: " << endl;
 
-                cin>>answer;
-                while(_domain.yesOrNoCheck(answer) == 2)
-                {
-                    cout << "Wrong input! Please enter Y/N: " << endl;
-                    cin >> answer;
-                }
-                if(_domain.yesOrNoCheck(answer) == 1)
-                {
-                    cout << " Please enter the number for the type of computer you wish to register: " << endl;
-                    cin >> chooseType;
+        cin >> answer;
+        while(_domain.yesOrNoCheck(answer) == 2)
+        {
+            cout << "Wrong input! Please enter Y/N: " << endl;
+            cin >> answer;
+        }
+        if(_domain.yesOrNoCheck(answer) == 1)
+        {
+            cout << "Please enter the number for the type of computer you wish to register: " << endl;
+            cin >> chooseType;
 
-                    while(chooseType < 0 && chooseType > (signed)types.size())
-                    {
-                        cout << "Please enter a valid number from 1 - "<<types.size()<<" : "<< endl;
-                        cin>>chooseType;
-                    }
-                    type = types[chooseType -1];
-//===================================================================================================================================================================================
-                    //Villutékk hvort týpan sé til
-//===================================================================================================================================================================================
-                }
-                else if(_domain.yesOrNoCheck(answer) == 0)
-                {
-                    cout << "Would you like to add a type on the list? Please enter Y/N: " << endl;
-                    cin >> typeAnswer;
-                    while(_domain.yesOrNoCheck(typeAnswer) == 2)
-                    {
-                        cout << "Wrong input! Please enter Y/N: " << endl;
-                        cin >> typeAnswer;
-                    }
-                    if(_domain.yesOrNoCheck(typeAnswer) == 1)
-                    {
+            while(chooseType < 0 && chooseType > (signed)types.size())
+            {
+                cout << "Please enter a valid number from 1 - "<<types.size()<<" : "<< endl;
+                cin>>chooseType;
+            }
+            type = types[chooseType -1];
+            //===================================================================================================================================================================================
+            //Villutékk hvort týpan sé til
+            //===================================================================================================================================================================================
+        }
+        else if(_domain.yesOrNoCheck(answer) == 0)
+        {
+            cout << "Would you like to add a type on the list? Please enter Y/N: " << endl;
+            cin >> typeAnswer;
+            while(_domain.yesOrNoCheck(typeAnswer) == 2)
+            {
+                cout << "Wrong input! Please enter Y/N: " << endl;
+                cin >> typeAnswer;
+            }
+            if(_domain.yesOrNoCheck(typeAnswer) == 1)
+            {
 
-                        cout << "Enter the name of the new type: " << endl;
-                        cin >> newType;
+                cout << "Enter the name of the new type: " << endl;
+                cin >> newType;
 
-                        type = newType;
-                    }
-                    else if(_domain.yesOrNoCheck(typeAnswer) == 0)
-                    {
-                        inputToReturn();
-                    }
-                     types.push_back(newType);
+                type = newType;
+            }
+            else if(_domain.yesOrNoCheck(typeAnswer) == 0)
+            {
+                inputToReturn();
+            }
+            types.push_back(newType);
 
-                }
-//===================================================================================================================================================================================
-        // villutjékk fyrir týpur
-        // sýna töflu með ´týpum & spurja notenda hvort týpan sé til staðar i töflunni annars gera notanda kleift að bæta við týpu
-//===================================================================================================================================================================================
+        }
+
         cout << "Was the build successful? Y/N: ";
         cin >> answer;
 
@@ -332,9 +330,9 @@ void Presentation::newComputer()
         }
 
         cout << endl;
-//===================================================================================================================================================================================
+        //===================================================================================================================================================================================
         newComp.setComputers(3, name, yearOfBuild, type, built); // tjekka betur á ID inntaki
-//===================================================================================================================================================================================
+        //===================================================================================================================================================================================
         _domain.addComputer(newComp);
     }
 
@@ -384,7 +382,7 @@ void Presentation::removePerson()
 
 //===================================================================================================================================================================================
     string personDeleted = _domain.getSinglePerson(ID).getName(); // TODO: Make sure to check if user inputs valid ID
-//===================================================================================================================================================================================
+
     while(!_domain.deletePersonFromFile(ID))
     {
         cout << "Please enter a valid ID: ";
@@ -398,6 +396,9 @@ void Presentation::removePerson()
         }
         personDeleted = _domain.getSinglePerson(ID).getName();
     }
+
+    _domain.deleteConnections("ScientistID", ID);
+
 
     cout << personDeleted << " has been deleted from the database." << endl;
     cout << endl;
@@ -453,6 +454,9 @@ void Presentation::removeComputer()
 
         deletedComputer = _domain.getSingleComputer(ID).getCompName();
     }
+
+    _domain.deleteConnections("ComputerID", ID);
+
     cout << deletedComputer << " has been deleted from the database." << endl;
     cout << endl;
 
@@ -770,9 +774,10 @@ void Presentation::searchComputersDatabase()
         cout << "Enter name: ";
         cin.ignore();
         getline(cin, searchTerm); // tekur fullt nafn
-        while (_domain.validNameCheck(searchTerm) || !_domain.emptyStringCheck(searchTerm))
+        while (!_domain.emptyStringCheck(searchTerm))
         {
-            cout << "Name must only contain alphabet characters A-Z. \nPlease enter a valid name." << endl;
+            cout << "Name cannot be empty." << endl;
+            cout << "Please enter a valid name." << endl;
             cin >> searchTerm;
         }
 
@@ -911,7 +916,7 @@ void Presentation::addScientist()
     }
     else if(input == 7)
     {
-       searchPersonDatabase();
+        searchPersonDatabase();
     }
     else if(input == 8)
     {
@@ -919,7 +924,7 @@ void Presentation::addScientist()
     }
     else if(input == 9)
     {
-         quitDoubt();
+        quitDoubt();
     }
 
     else if(cin.fail())
@@ -1166,9 +1171,10 @@ void Presentation::displayPersonsVector(vector<Persons> p)
 
 void Presentation::displayComputersVector(vector<Computers> c)
 {
+    string built = "";
     cout << endl;
     cout << "Nr.\t" << setw(34) << left << "Name"  << setw(15) << "Year" << setw(15) << "Type" << setw(15) << "Successful" << endl;
-    for(int i=0; i<80; i++)
+    for(int i=0; i<82; i++)
     {
         cout << "-";
     }
@@ -1178,7 +1184,15 @@ void Presentation::displayComputersVector(vector<Computers> c)
 
         for(size_t i=0; i< c.size(); i++)
         {
-            cout << c[i].getCompID() << ".\t" << setw(34) << left << c[i].getCompName() << setw(15) << c[i].getCompYearBuild() << setw(15) << c[i].getCompType() << setw(15) << c[i].getCompBuilt()<< endl;
+            if(c[i].getCompBuilt())
+            {
+                built = "Yes";
+            }
+            else if(!c[i].getCompBuilt())
+            {
+                built = "No";
+            }
+            cout << c[i].getCompID() << ".\t" << setw(34) << left << c[i].getCompName() << setw(15) << c[i].getCompYearBuild() << setw(15) << c[i].getCompType() << setw(15) << built << endl;
         }
         cout << endl;
     }else

@@ -45,6 +45,8 @@ public:
     vector<int> getComputerToScientist(int ID);
 
     void connectComputersAndScientists(int scientistID, int computerID);
+    bool removeConnections(string column, int removeID);
+
 
     vector<int> getIDs(string table);
 

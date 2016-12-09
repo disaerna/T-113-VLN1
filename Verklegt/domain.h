@@ -42,6 +42,7 @@ public:
     vector<Computers> getScientistToComputer(int ID);
     vector<Persons> getComputerToScientist(int ID);
     void connectComputersAndScientists(int scientistID, int computerID);
+    bool deleteConnections(string column, int ID);
 
 
     // Functions for error checking input

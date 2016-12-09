@@ -35,6 +35,10 @@ bool Domain::deleteComputerFromDatabase(int ID)
 {
     return _DbManager.removeComputer(ID);
 }
+bool Domain::deleteConnections(string column, int ID)
+{
+    return _DbManager.removeConnections(column, ID);
+}
 
 vector<Persons> Domain::getPersons()
 {
