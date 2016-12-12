@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>PersonsMenu</class>
- <widget class="QWidget" name="PersonsMenu">
+ <class>ComputersMenu</class>
+ <widget class="QWidget" name="ComputersMenu">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>430</width>
+    <height>281</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,37 +18,37 @@
     <widget class="QListWidget" name="listWidget">
      <item>
       <property name="text">
-       <string>Add a new scientist</string>
+       <string>Add a new computer</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>Update an existing scientist</string>
+       <string>Update an existing computer</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>Delete a scientist from the database</string>
+       <string>Delete a computer from the database</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>View the scientists database</string>
+       <string>View the computers database</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>View computers for a scientist</string>
+       <string>View scientists for a computer</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>Connect a scientist to a computer</string>
+       <string>Connect a computer to a scientist</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>Search the scientists database</string>
+       <string>Search the computers database</string>
       </property>
      </item>
     </widget>

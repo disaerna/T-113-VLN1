@@ -1,6 +1,7 @@
 #include "presentation.h"
 #include "mainmenu.h"
 #include <QApplication>
+#include <QtGui>
 
 using namespace std;
 

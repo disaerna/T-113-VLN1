@@ -1,8 +1,12 @@
 #ifndef COMPUTERSMENU_H
 #define COMPUTERSMENU_H
 
+#include <QDialog>
+#include <QStackedWidget>
+#include <QStackedLayout>
+#include <string>
 #include "domain.h"
-#include <QWidget>
+//#include <QWidget>
 // DFDFS
 namespace Ui {
 class ComputersMenu;
