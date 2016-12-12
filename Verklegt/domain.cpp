@@ -22,7 +22,6 @@ void Domain::connectComputersAndScientists(int scientistID, int computerID)
     return _DbManager.connectComputersAndScientists(scientistID, computerID);
 }
 
-
 // Gets all persons from file, deletes person that matches input from user then rewrites.
 bool Domain::deletePersonFromFile(int ID)
 {
