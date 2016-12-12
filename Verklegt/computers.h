@@ -6,6 +6,7 @@
 using namespace std;
 
 class Computers {
+
 public:
     Computers();
 
@@ -18,9 +19,10 @@ public:
     string getCompClockSpeed() const;
     int getCompID() const;
 
-
     // set functions
+
     void setComputers(int compID, string compName, string compYearBuild, string compType, bool compBuilt);
+
 private:
     string _compName; // name of computer
     string _compYearBuild; // year computer was built
