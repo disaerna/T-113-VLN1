@@ -1,12 +1,18 @@
 #include "presentation.h"
+#include "mainmenu.h"
+#include <QApplication>
 
 using namespace std;
 
-int main()
+int main(int argc, char *argv[])
 {
-    Presentation pres;
+    QApplication application(argc, argv);
+    //Presentation pres;
 
-    pres.startProgram(); // Runs program.
+    MainMenu mm;
+    mm.show();
 
-    return 0;
+    //pres.startProgram(); // Runs program.
+
+    return application.exec();
 }
