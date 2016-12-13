@@ -37,7 +37,7 @@ void MainMenu::GetAllPersons()
 
 void MainMenu::DisplayScientists()
 {
-    ui->table_Scientists->clear();
+    //ui->table_Scientists->clear();
 
     ui->table_Scientists->setRowCount(Person.size());
 
