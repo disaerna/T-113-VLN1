@@ -40,6 +40,10 @@ private slots:
 
 private:
 
+    void GetAllPersons();
+    void DisplayScientists();
+
+
     std::vector<Persons> Person;
     std::vector<Persons> PersonDisplay;
 

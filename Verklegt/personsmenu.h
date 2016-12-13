@@ -2,7 +2,6 @@
 #define PERSONSMENU_H
 
 #include "domain.h"
-#include <QDialog>
 #include <QStackedWidget>
 #include <QStackedLayout>
 #include <string>

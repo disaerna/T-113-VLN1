@@ -12,7 +12,6 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     persons.cpp \
-    presentation.cpp \
     domain.cpp \
     computers.cpp \
     dbmanager.cpp \

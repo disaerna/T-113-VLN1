@@ -69,4 +69,3 @@ void PersonsMenu::displayScientist(vector<Persons> person)
     }
 
 }
-

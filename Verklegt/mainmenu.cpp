@@ -3,6 +3,8 @@
 
 #include "personsmenu.h"
 #include "computersmenu.h"
+#include "iostream"
+#include <QDebug>
 
 #include <QDialog>
 
@@ -13,11 +15,24 @@ MainMenu::MainMenu(QWidget *parent) :
     ui(new Ui::MainMenu)
 {
     ui->setupUi(this);
+    GetAllPersons();
 }
 
 MainMenu::~MainMenu()
 {
     delete ui;
+}
+
+void MainMenu::GetAllPersons()
+{
+    Person = _domain.getPersons();
+    qDebug() << "SIZE" << Person.size();
+    for(int i=0; i<Person.size(); i++)
+    {
+        string check =  Person[i].getName();
+    }
+
+    DisplayScientists();
 }
 
 void MainMenu::DisplayScientists()
@@ -28,18 +43,18 @@ void MainMenu::DisplayScientists()
 
     PersonDisplay.clear();
 
-    for ( unsigned int i = 0; i < Person; i++ )
+    for ( unsigned int i = 0; i < Person.size(); i++ )
     {
-        Persons Personrow = Person[i];
+        Persons PersonRow = Person[i];
 
-        std::string searchString = ui->Input_Search_Person->text().toStdString();
+        string searchString = ui->Input_Search_Person->text().toStdString();
 
-        if(Personrow.contains(searchString))
+        if(1)
         {
-            QString ScientistName = QString::fromStdString(Personrow.getName());
-            QString ScientistGender = QString::fromStdString(Personrow.getGender());
-            QString ScientistYoB = QString::fromStdString(Personrow.getYearOfBirth());
-            QString ScientistYoD = QString::fromStdString(Personrow.getYearOfDeath());
+            QString ScientistName = QString::fromStdString(PersonRow.getName());
+            QString ScientistGender = QString::fromStdString(PersonRow.getGender());
+            QString ScientistYoB = QString::fromStdString(PersonRow.getYearOfBirth());
+            QString ScientistYoD = QString::fromStdString(PersonRow.getYearOfDeath());
 
             int currentRow = PersonDisplay.size();
 
@@ -48,19 +63,12 @@ void MainMenu::DisplayScientists()
             ui->table_Scientists->setItem(currentRow, 2, new QTableWidgetItem(ScientistYoB));
             ui->table_Scientists->setItem(currentRow, 3, new QTableWidgetItem(ScientistYoD));
 
-            Personrow.push_back(currentCar);
+            PersonDisplay.push_back(PersonRow);
         }
     }
 
     ui->table_Scientists->setRowCount(PersonDisplay.size());
 
-}
-
-void MainMenu::GetAllPersons()
-{
-    Person = _domain.getPersons();
-
-    DisplayScientists();
 }
 
 //void MainMenu::on_ButtonQuit_clicked()
@@ -83,3 +91,9 @@ void MainMenu::GetAllPersons()
 //    computersMenu->setModal(true);
 //    computersMenu->exec();
 //}
+
+
+void MainMenu::on_Input_Search_Person_textChanged(const QString &arg1)
+{
+    DisplayScientists();
+}
