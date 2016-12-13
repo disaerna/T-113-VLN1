@@ -6,7 +6,9 @@
 #include <QStackedWidget>
 #include <QStackedLayout>
 #include <string>
+#include <QWidget>
 #include <QDialog>
+#include <vector>
 
 namespace Ui {
 class PersonsMenu;
@@ -21,13 +23,20 @@ public:
     ~PersonsMenu();
 
 private slots:
-    void on_listWidget_activated(const QModelIndex &index);
+    void on_Scientists_mainmenu_activated(const QModelIndex &index);
 
-    void on_button_OK_Cancel_accepted();
+    void on_list_scientists_clicked(const QModelIndex &index);
+
+    void on_Button_remove_scientist_clicked();
 
 private:
+    void displayScientist(std::vector<Persons> person);
+    void displayAllScientists();
+
     Ui::PersonsMenu *ui;
     Domain _domain;
+
+    std::vector<Persons> currentlyDisplayedScientists;
 };
 
 #endif // PERSONSMENU_H

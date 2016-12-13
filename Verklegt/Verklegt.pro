@@ -34,3 +34,4 @@ FORMS += \
     mainmenu.ui \
     personsmenu.ui \
     computersmenu.ui
+
