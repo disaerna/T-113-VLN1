@@ -21,6 +21,9 @@ public:
     explicit MainMenu(QWidget *parent = 0);
     ~MainMenu();
 
+private slots:
+    void on_ButtonScientists_clicked();
+
 private:
     Ui::MainMenu *ui;
     PersonsMenu *personsMenu;

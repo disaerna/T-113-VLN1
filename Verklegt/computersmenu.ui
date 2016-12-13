@@ -13,6 +13,54 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QListWidget" name="listWidget">
+     <item>
+      <property name="text">
+       <string>Add a new computer</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Update an existing computer</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Delete a computer from the database</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>View the computers database</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>View scientists for a computer</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Connect a computer to a scientist</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Search the computers database</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections/>
