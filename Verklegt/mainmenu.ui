@@ -6,17 +6,29 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>424</width>
-    <height>403</height>
+    <width>611</width>
+    <height>680</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>611</width>
+    <height>680</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout">
-    <item>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="1" column="0">
      <widget class="QTabWidget" name="Mainmenu_tabs">
+      <property name="minimumSize">
+       <size>
+        <width>530</width>
+        <height>633</height>
+       </size>
+      </property>
       <property name="focusPolicy">
        <enum>Qt::WheelFocus</enum>
       </property>
@@ -33,78 +45,87 @@
        <attribute name="title">
         <string>Scientists</string>
        </attribute>
-       <widget class="QTableWidget" name="table_Scientists">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>30</y>
-          <width>411</width>
-          <height>251</height>
-         </rect>
-        </property>
-        <property name="autoFillBackground">
-         <bool>false</bool>
-        </property>
-        <column>
-         <property name="text">
-          <string>Name</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Gender</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Year of Birth</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Year of Death</string>
-         </property>
-        </column>
-       </widget>
-       <widget class="QPushButton" name="pushButton_RemovePerson">
-        <property name="geometry">
-         <rect>
-          <x>300</x>
-          <y>300</y>
-          <width>91</width>
-          <height>23</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Remove</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton_AddPerson">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>300</y>
-          <width>91</width>
-          <height>23</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Add Person</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="Input_Search_Person">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>391</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="placeholderText">
-         <string>Filter Scientists</string>
-        </property>
-       </widget>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QLineEdit" name="Input_Search_Person">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="placeholderText">
+           <string>Search</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="table_Scientists">
+          <property name="minimumSize">
+           <size>
+            <width>561</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="contextMenuPolicy">
+           <enum>Qt::CustomContextMenu</enum>
+          </property>
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="alternatingRowColors">
+           <bool>true</bool>
+          </property>
+          <property name="selectionMode">
+           <enum>QAbstractItemView::SingleSelection</enum>
+          </property>
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
+          </property>
+          <property name="showGrid">
+           <bool>false</bool>
+          </property>
+          <column>
+           <property name="text">
+            <string>Name</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Gender</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Year of Birth</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Year of Death</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_AddPerson">
+          <property name="text">
+           <string>Add a new scientist</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton">
+          <property name="text">
+           <string>Edit selected scientist</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_RemovePerson">
+          <property name="text">
+           <string>Remove selected scientist</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </widget>
       <widget class="QWidget" name="Tab_Computers">
        <attribute name="title">
