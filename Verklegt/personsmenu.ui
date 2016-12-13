@@ -15,7 +15,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QListWidget" name="listWidget">
+    <widget class="QListWidget" name="Scientists_mainmenu">
      <item>
       <property name="text">
        <string>Add a new scientist</string>
@@ -52,6 +52,19 @@
       </property>
      </item>
     </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="Button_remove_scientist">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="text">
+      <string>Remove selected Scientist</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QListWidget" name="list_scientists"/>
    </item>
    <item>
     <widget class="QDialogButtonBox" name="buttonBox">

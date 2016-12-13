@@ -16,10 +16,9 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QPlainTextEdit" name="TextMainMenu">
-      <property name="plainText">
-       <string>Welcome to our program ! 
-This program allows you to ....</string>
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>Welcome user ! Please press one of the commands below </string>
       </property>
      </widget>
     </item>

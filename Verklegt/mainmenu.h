@@ -8,6 +8,10 @@
 #include "computersmenu.h"
 
 #include <QMainWindow>
+#include <QWidget>
+#include <QDialog>
+
+#include "ui_mainMenu.h"
 
 namespace Ui {
 class MainMenu;
@@ -20,6 +24,13 @@ class MainMenu : public QMainWindow
 public:
     explicit MainMenu(QWidget *parent = 0);
     ~MainMenu();
+
+private slots:
+    void on_ButtonQuit_clicked();
+
+    void on_ButtonScientists_clicked();
+
+    void on_ButtonComputers_clicked();
 
 private:
     Ui::MainMenu *ui;
