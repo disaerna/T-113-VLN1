@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>423</width>
-    <height>352</height>
+    <width>424</width>
+    <height>403</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,31 +16,167 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QLabel" name="label">
-      <property name="text">
-       <string>Welcome user ! Please press one of the commands below </string>
+     <widget class="QTabWidget" name="Mainmenu_tabs">
+      <property name="focusPolicy">
+       <enum>Qt::WheelFocus</enum>
       </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="ButtonScientists">
-      <property name="text">
-       <string>Scientists</string>
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="ButtonComputers">
-      <property name="text">
-       <string>Computers</string>
+      <property name="currentIndex">
+       <number>0</number>
       </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="ButtonQuit">
-      <property name="text">
-       <string>Quit</string>
+      <property name="usesScrollButtons">
+       <bool>true</bool>
       </property>
+      <widget class="QWidget" name="Tab_Scientists">
+       <attribute name="title">
+        <string>Scientists</string>
+       </attribute>
+       <widget class="QTableWidget" name="table_Scientists">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>30</y>
+          <width>411</width>
+          <height>251</height>
+         </rect>
+        </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
+        <column>
+         <property name="text">
+          <string>Name</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Gender</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Year of Birth</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Year of Death</string>
+         </property>
+        </column>
+       </widget>
+       <widget class="QPushButton" name="pushButton_RemovePerson">
+        <property name="geometry">
+         <rect>
+          <x>300</x>
+          <y>300</y>
+          <width>91</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Remove</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_AddPerson">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>300</y>
+          <width>91</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Add Person</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="Input_Search_Person">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>391</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="placeholderText">
+         <string>Filter Scientists</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="Tab_Computers">
+       <attribute name="title">
+        <string>Computers</string>
+       </attribute>
+       <widget class="QPushButton" name="pushButton_AddComputer">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>260</y>
+          <width>91</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Add Computer</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_RemoveComputer">
+        <property name="geometry">
+         <rect>
+          <x>300</x>
+          <y>260</y>
+          <width>91</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Remove</string>
+        </property>
+       </widget>
+       <widget class="QTableWidget" name="table_Computers">
+        <property name="geometry">
+         <rect>
+          <x>-10</x>
+          <y>0</y>
+          <width>421</width>
+          <height>251</height>
+         </rect>
+        </property>
+        <column>
+         <property name="text">
+          <string>Name</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Year Built</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Type</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Built</string>
+         </property>
+         <property name="font">
+          <font>
+           <strikeout>false</strikeout>
+          </font>
+         </property>
+        </column>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="Tab_Relations">
+       <attribute name="title">
+        <string>Relation</string>
+       </attribute>
+      </widget>
      </widget>
     </item>
    </layout>
