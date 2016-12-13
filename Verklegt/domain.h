@@ -30,7 +30,7 @@ public:
     Computers getSingleComputer(int ID);
     vector<Computers> sortComputers(int viewInput);
     vector<string> getComputersTypes();
-    vector<Computers> getComputersSearch(string searchTerm, int userChoice);
+    vector<Computers> getComputersSearch(string searchTerm, string x);
     bool updateComputer(int ID, string updateChoice, string newRecord);
     string changeComputerUpdateChoice(string x);
 
@@ -40,7 +40,7 @@ public:
     vector<Persons> getPersons();
     vector<Persons> sortPersons(int viewInput);
     Persons getSinglePerson(int ID);
-    vector<Persons> getPersonsSearch(string searchTerm, int userChoice);
+    vector<Persons> getPersonsSearch(string searchTerm);
     bool updatePerson(int ID, string updateChoice, string newRecord);
     string changePersonUpdateChoice(string x);
 

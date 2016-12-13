@@ -1,12 +1,11 @@
 #include "mainmenu.h"
 #include "ui_mainmenu.h"
-
+#include "addscientist.h"
 #include "personsmenu.h"
 #include "computersmenu.h"
 #include "iostream"
-#include <QDebug>
-
 #include <QDialog>
+#include <QDebug>
 
 using namespace std;
 
@@ -15,7 +14,8 @@ MainMenu::MainMenu(QWidget *parent) :
     ui(new Ui::MainMenu)
 {
     ui->setupUi(this);
-    GetAllPersons();
+
+    displayScientists();
 }
 
 MainMenu::~MainMenu()
@@ -23,54 +23,37 @@ MainMenu::~MainMenu()
     delete ui;
 }
 
-void MainMenu::GetAllPersons()
+void MainMenu::displayScientists()
 {
-    Person = _domain.getPersons();
-    qDebug() << "SIZE" << Person.size();
-    for(int i=0; i<Person.size(); i++)
+    string personSearch = "";
+    personSearch = ui->Input_Search_Person->text().toStdString();
+
+    scientistsDisplay = _domain.getPersonsSearch(personSearch);
+
+
+    ui->table_Scientists->setSortingEnabled(false);
+    ui->table_Scientists->clearContents();
+    ui->table_Scientists->setRowCount(scientistsDisplay.size());
+
+    qDebug() << scientistsDisplay.size();
+
+    for(size_t i = 0; i < scientistsDisplay.size(); i++)
     {
-        string check =  Person[i].getName();
+        Persons person_ = scientistsDisplay.at(i);
+
+        QString ScientistName = QString::fromStdString(person_.getName());
+        QString ScientistGender = QString::fromStdString(person_.getGender());
+        QString ScientistYoB = QString::fromStdString(person_.getYearOfBirth());
+        QString ScientistYoD = QString::fromStdString(person_.getYearOfDeath());
+
+
+        ui->table_Scientists->setItem(i, 0, new QTableWidgetItem(ScientistName));
+        ui->table_Scientists->setItem(i, 1, new QTableWidgetItem(ScientistGender));
+        ui->table_Scientists->setItem(i, 2, new QTableWidgetItem(ScientistYoB));
+        ui->table_Scientists->setItem(i, 3, new QTableWidgetItem(ScientistYoD));
     }
 
-    DisplayScientists();
 }
-
-void MainMenu::DisplayScientists()
-{
-    //ui->table_Scientists->clear();
-
-    ui->table_Scientists->setRowCount(Person.size());
-
-    PersonDisplay.clear();
-
-    for ( unsigned int i = 0; i < Person.size(); i++ )
-    {
-        Persons PersonRow = Person[i];
-
-        string searchString = ui->Input_Search_Person->text().toStdString();
-
-        if(1)
-        {
-            QString ScientistName = QString::fromStdString(PersonRow.getName());
-            QString ScientistGender = QString::fromStdString(PersonRow.getGender());
-            QString ScientistYoB = QString::fromStdString(PersonRow.getYearOfBirth());
-            QString ScientistYoD = QString::fromStdString(PersonRow.getYearOfDeath());
-
-            int currentRow = PersonDisplay.size();
-
-            ui->table_Scientists->setItem(currentRow, 0, new QTableWidgetItem(ScientistName));
-            ui->table_Scientists->setItem(currentRow, 1, new QTableWidgetItem(ScientistGender));
-            ui->table_Scientists->setItem(currentRow, 2, new QTableWidgetItem(ScientistYoB));
-            ui->table_Scientists->setItem(currentRow, 3, new QTableWidgetItem(ScientistYoD));
-
-            PersonDisplay.push_back(PersonRow);
-        }
-    }
-
-    ui->table_Scientists->setRowCount(PersonDisplay.size());
-
-}
-
 //void MainMenu::on_ButtonQuit_clicked()
 //{
 //    close();
@@ -93,7 +76,27 @@ void MainMenu::DisplayScientists()
 //}
 
 
-void MainMenu::on_Input_Search_Person_textChanged(const QString &arg1)
+void MainMenu::on_Mainmenu_tabs_currentChanged(int index)
 {
-    DisplayScientists();
+    if (index == 0)
+        {
+            //displayScientists();
+        }
+        else if (index == 1)
+        {
+            //();
+        }
+}
+
+void MainMenu::on_Input_Search_Person_textChanged()
+{
+    displayScientists();
+}
+
+void MainMenu::on_pushButton_AddPerson_clicked()
+{
+    addScientist _addScientist;
+    _addScientist.exec();
+
+    displayScientists();
 }

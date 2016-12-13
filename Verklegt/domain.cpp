@@ -82,52 +82,14 @@ vector<string> Domain::getComputersTypes()
     return _DbManager.readComputersTypes();
 }
 
-vector<Persons> Domain::getPersonsSearch(string searchTerm, int userChoice)
+vector<Persons> Domain::getPersonsSearch(string searchTerm)
 {
-    string text = "";
-    int gender = 0;
-    if(userChoice == 1) {
-        text = "Name";
-    }
-    else if(userChoice == 2) {
-        text = "Gender";
-        gender = 1;
-        if(searchTerm == "m") {
-            searchTerm = "Male";
-        }
-        else if(searchTerm == "f") {
-            searchTerm = "Female";
-        }
-    }
-    else if(userChoice == 3) {
-        text = "YearOfBirth";
-    }
-    else if(userChoice == 4) {
-        text = "YearOfDeath";
-    }
-    return _DbManager.printPersonsResults(searchTerm, text, gender);
+    return _DbManager.printPersonsResults(searchTerm);
 }
 
-vector<Computers> Domain::getComputersSearch(string searchTerm, int userChoice)
+vector<Computers> Domain::getComputersSearch(string searchTerm, string x)
 {
-    string text = "";
-    if(userChoice == 1)
-    {
-        text = "Name";
-    }
-    else if(userChoice == 2)
-    {
-        text = "YearBuilt";
-    }
-    else if(userChoice == 3)
-    {
-        text = "Type";
-    }
-    else if(userChoice == 4)
-    {
-        text = "Built";
-    }
-    return _DbManager.printComputersResults(searchTerm, text);
+    return _DbManager.printComputersResults(searchTerm, x);
 }
 
 vector<Computers> Domain::getScientistToComputer(int ID)

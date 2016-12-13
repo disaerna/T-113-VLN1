@@ -25,7 +25,6 @@ class MainMenu : public QMainWindow
 
 public:
     explicit MainMenu(QWidget *parent = 0);
-    void MainMenu::DisplayScientists(vector<Persons> Person);
     ~MainMenu();
 
 private slots:
@@ -36,16 +35,13 @@ private slots:
 
 //    void on_ButtonComputers_clicked();
 
-    void on_Input_Search_Person_textChanged(const QString &arg1);
+    void on_Mainmenu_tabs_currentChanged(int index);
+    void on_Input_Search_Person_textChanged();
+    void on_pushButton_AddPerson_clicked();
 
 private:
-
-    void GetAllPersons();
-    void DisplayScientists();
-
-
-    std::vector<Persons> Person;
-    std::vector<Persons> PersonDisplay;
+    void displayScientists();
+    std::vector<Persons> scientistsDisplay;
 
     Ui::MainMenu *ui;
     PersonsMenu *personsMenu;
