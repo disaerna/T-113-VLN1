@@ -154,7 +154,7 @@
     <string>Add person</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -183,7 +183,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -194,19 +194,22 @@
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout_2">
     <item>
-     <widget class="QRadioButton" name="aliveButton">
+     <widget class="QRadioButton" name="deadButton">
       <property name="text">
        <string>Yes</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QRadioButton" name="deadButton">
+     <widget class="QRadioButton" name="aliveButton">
       <property name="text">
        <string>No</string>
       </property>
       <property name="checked">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
     </item>
