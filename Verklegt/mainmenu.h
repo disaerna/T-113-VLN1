@@ -49,12 +49,16 @@ private slots:
     void on_pushButton_RemovePerson_clicked();
 
     void on_pushButton_AddComputer_clicked();
+    void on_Input_Search_Computer_textChanged();
 
 private:
+
     void displayScientists();
     void displayComputers();
-    std::vector<Persons> scientistsDisplay;
-    std::vector<Computers> computersDisplay;
+
+    std::vector<Persons> ScientistsDisplay;
+    std::vector<Computers> ComputersDisplay;
+
 
     Ui::MainMenu *ui;
     PersonsMenu *personsMenu;
