@@ -66,7 +66,7 @@ void addComputer::on_submitButton_clicked()
     computer.setComputers(1, addName, addDOB, type, success);
     _domain.addComputer(computer);
 
-    QString prompt = "Do you wish to add another person? ";
+    QString prompt = "Do you wish to add another Computer? ";
 
     int askingUser = QMessageBox::question(this, "Add another computer", prompt);
     if (askingUser == QMessageBox::No)
