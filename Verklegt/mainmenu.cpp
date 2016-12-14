@@ -200,3 +200,31 @@ void MainMenu::on_pushButton_AddComputer_clicked()
 
 
 }
+
+void MainMenu::on_table_Computers_cellPressed(int row)
+{
+    _row = row + 1;
+}
+
+void MainMenu::on_pushButton_RemoveComputer_clicked()
+{
+    int row = _row;
+
+    Computers RemoveComputer;
+    RemoveComputer = _domain.getSingleComputer(row);
+    string ComputerName = RemoveComputer.getCompName();
+    QString RemovedComputer = QString::fromStdString(ComputerName);
+
+    QString Removal = "About to remove\n" + RemovedComputer + "\nAre you sure?";
+    int ConfirmRemoval = QMessageBox::question(this, "Confirm", Removal);
+    if (ConfirmRemoval == QMessageBox::No)
+    {
+        return;
+    }
+
+    _domain.deleteComputerFromDatabase(row);
+
+    displayScientists();
+}
+
+

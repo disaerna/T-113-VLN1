@@ -48,6 +48,10 @@ private slots:
     void on_pushButton_AddComputer_clicked();
     void on_Input_Search_Computer_textChanged();
 
+    void on_pushButton_RemoveComputer_clicked();
+
+    void on_table_Computers_cellPressed(int row);
+
 private:
 
     void displayScientists();
