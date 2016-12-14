@@ -39,6 +39,15 @@ private slots:
     void on_Input_Search_Person_textChanged();
     void on_pushButton_AddPerson_clicked();
 
+    void on_table_Scientists_cellPressed(int row);
+
+    void on_pushButton_clicked();
+
+    int getRow();
+
+
+    void on_pushButton_RemovePerson_clicked();
+
 private:
     void displayScientists();
     std::vector<Persons> scientistsDisplay;
@@ -48,6 +57,10 @@ private:
     ComputersMenu *computersMenu;
 
     Domain _domain;
+
+
+
+    int _row;
 };
 
 #endif // MAINMENU_H

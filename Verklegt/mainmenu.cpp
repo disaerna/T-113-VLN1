@@ -3,9 +3,11 @@
 #include "addscientist.h"
 #include "personsmenu.h"
 #include "computersmenu.h"
+#include "editperson.h"
 #include "iostream"
 #include <QDialog>
 #include <QDebug>
+#include <QMessageBox>
 
 using namespace std;
 
@@ -97,6 +99,50 @@ void MainMenu::on_pushButton_AddPerson_clicked()
 {
     addScientist _addScientist;
     _addScientist.exec();
+
+    displayScientists();
+}
+
+
+
+void MainMenu::on_table_Scientists_cellPressed(int row)
+{
+    _row = row + 1;
+}
+
+void MainMenu::on_pushButton_clicked()
+{
+    editPerson _editPerson;
+    int row = getRow();
+    qDebug() << row;
+    _editPerson.setPath(row);
+    _editPerson.exec();
+
+    displayScientists();
+}
+
+int MainMenu::getRow()
+{
+    return _row;
+}
+
+void MainMenu::on_pushButton_RemovePerson_clicked()
+{
+    int row = _row;
+
+    Persons removePerson;
+    removePerson = _domain.getSinglePerson(row);
+    string personName = removePerson.getName();
+    QString removedPerson = QString::fromStdString(personName);
+
+    QString removal = "About to remove\n" + removedPerson + "\nAre you sure?";
+    int confirmRemoval = QMessageBox::question(this, "Confirm", removal);
+    if (confirmRemoval == QMessageBox::No)
+    {
+        return;
+    }
+
+    _domain.deletePersonFromFile(row);
 
     displayScientists();
 }
