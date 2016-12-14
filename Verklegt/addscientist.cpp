@@ -19,9 +19,24 @@ addScientist::~addScientist()
 
 void addScientist::on_okButton_clicked()
 {
-    string addName = ui->nameInput->text().toStdString();
+    QMessageBox messageBox;
+    bool valid = true;
 
+    string addName = ui->nameInput->text().toStdString();
+    if(ui->nameInput->text().isEmpty())
+    {
+        messageBox.critical(0,"Error", "Name cannot be empty!");
+        messageBox.setFixedSize(500,200);
+        valid = false;
+    }
+    else if(_domain.validNameCheck(addName))
+    {
+        messageBox.critical(0,"Error", "Name must be alphabetical characters!");
+        messageBox.setFixedSize(500,200);
+        valid = false;
+    }
     string addGender = "";
+
     if(ui->maleButton->isChecked())
     {
         addGender = "Male";
@@ -32,18 +47,47 @@ void addScientist::on_okButton_clicked()
     }
 
     string addDOB = ui->yobInput->text().toStdString();
+    if(ui->yobInput->text().isEmpty())
+    {
+        messageBox.critical(0,"Error", "Birth year cannot be empty!");
+        messageBox.setFixedSize(500,200);
+        valid = false;
+    }
+    else if(_domain.validYearCheck(addDOB))
+    {
+        messageBox.critical(0,"Error", "Birth year must be four integers!");
+        messageBox.setFixedSize(500,200);
+        valid = false;
+    }
 
     string addDOD = "";
+
+
     if(ui->aliveButton->isChecked())
-    {
-        addDOD = ui->yodInput->text().toStdString();
-    }
-    else if(ui->deadButton->isChecked())
     {
         addDOD = "-";
     }
+    else if(ui->deadButton->isChecked())
+    {
+        addDOD = ui->yodInput->text().toStdString();
+        if(ui->yodInput->text().isEmpty())
+        {
+            messageBox.critical(0,"Error", "Death year cannot be empty!");
+            messageBox.setFixedSize(500,200);
+            valid = false;
+        }
+        else if (_domain.validDeathYearCheck((addDOB), (addDOD))) {
+            messageBox.critical(0,"Error","Death year must be four integers!");
+            messageBox.setFixedSize(500,200);
+            valid = false;
 
-    Persons person;
+        }
+    }
+
+
+    if(valid == true)
+    {
+        Persons person;
     person.setPersons(1, addName, addGender, addDOB, addDOD);
     _domain.addPersons(person);
 
@@ -54,7 +98,10 @@ void addScientist::on_okButton_clicked()
     {
         this->done(0);
     }
+
+    }
 }
+
 
 void addScientist::on_cancelButton_clicked()
 {
@@ -82,3 +129,13 @@ void addScientist::on_chooseImage_clicked()
     }
 }
 */
+
+void addScientist::on_aliveButton_clicked()
+{
+    ui->yodInput->setDisabled(1);
+}
+
+void addScientist::on_deadButton_clicked()
+{
+    ui->yodInput->setDisabled(0);
+}

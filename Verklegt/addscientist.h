@@ -29,6 +29,10 @@ private slots:
 
     //void on_chooseImage_clicked();
 
+    void on_aliveButton_clicked();
+
+    void on_deadButton_clicked();
+
 private:
     Ui::addScientist *ui;
 
