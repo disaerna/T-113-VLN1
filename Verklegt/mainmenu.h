@@ -52,6 +52,8 @@ private slots:
 
     void on_table_Computers_cellPressed(int row);
 
+    void on_pushButton_EditComputer_clicked();
+
 private:
 
     void displayScientists();

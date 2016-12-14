@@ -3,6 +3,7 @@
 #include "addscientist.h"
 #include "addcomputer.h"
 #include "editperson.h"
+#include "editcomputer.h"
 #include "iostream"
 #include <QDialog>
 #include <QDebug>
@@ -168,6 +169,21 @@ void MainMenu::on_pushButton_EditPerson_clicked()
     displayScientists();
 }
 
+
+
+void MainMenu::on_pushButton_EditComputer_clicked()
+{
+    editComputer _editComputer;
+
+    int index = _row;
+    _editComputer.setPath(index);
+    _editComputer.initializeFields();
+
+    _editComputer.exec();
+
+    displayComputers();
+}
+
 int MainMenu::getRow()
 {
     return _row;
@@ -231,5 +247,7 @@ void MainMenu::on_pushButton_RemoveComputer_clicked()
 
     displayComputers();
 }
+
+
 
 
