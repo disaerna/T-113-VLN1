@@ -166,6 +166,9 @@
         </item>
         <item>
          <widget class="QPushButton" name="pushButton_EditPerson">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="text">
            <string>Edit selected scientist</string>
           </property>
@@ -173,6 +176,9 @@
         </item>
         <item>
          <widget class="QPushButton" name="pushButton_RemovePerson">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="text">
            <string>Remove selected scientist</string>
           </property>
@@ -286,6 +292,9 @@
         </item>
         <item>
          <widget class="QPushButton" name="pushButton_EditComputer">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="text">
            <string>Edit selected computer</string>
           </property>
@@ -293,6 +302,9 @@
         </item>
         <item>
          <widget class="QPushButton" name="pushButton_RemoveComputer">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="text">
            <string>Remove selected computer</string>
           </property>

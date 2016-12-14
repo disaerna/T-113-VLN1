@@ -11,11 +11,14 @@
 
 using namespace std;
 
+
+
 MainMenu::MainMenu(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainMenu)
 {
     ui->setupUi(this);
+    ui->statusbar->showMessage("Steelbeams can't melt jet fuel", 1000);
 
     displayScientists();
     displayComputers();
@@ -153,6 +156,8 @@ void MainMenu::on_pushButton_AddPerson_clicked()
 
 void MainMenu::on_table_Scientists_cellPressed(int row)
 {
+    ui->pushButton_RemovePerson->setEnabled(true);
+    ui->pushButton_EditPerson->setEnabled(true);
     _row = row + 1;
 }
 
@@ -224,6 +229,8 @@ void MainMenu::on_pushButton_AddComputer_clicked()
 
 void MainMenu::on_table_Computers_cellPressed(int row)
 {
+    ui->pushButton_RemoveComputer->setEnabled(true);
+    ui->pushButton_EditComputer->setEnabled(true);
     _row = row + 1;
 }
 
