@@ -38,6 +38,7 @@ void MainMenu::displayScientists()
 
 
     ui->table_Scientists->setSortingEnabled(false);
+    ui->table_Scientists->setSortingEnabled(true);
     ui->table_Scientists->clearContents();
     ui->table_Scientists->setRowCount(ScientistsDisplay.size());
 
@@ -73,6 +74,7 @@ void MainMenu::displayComputers()
 
 
     ui->table_Computers->setSortingEnabled(false);
+    ui->table_Computers->setSortingEnabled(true);
     ui->table_Computers->clearContents();
     ui->table_Computers->setRowCount(ComputersDisplay.size());
 
@@ -87,7 +89,6 @@ void MainMenu::displayComputers()
         QString ComputerType = QString::fromStdString(computer_.getCompType());
         bool ComputerBuiltTF = computer_.getCompBuilt();
 
-
         if ( ComputerBuiltTF )
         {
             ComputerBuilt = QString::fromStdString("True");
@@ -95,7 +96,6 @@ void MainMenu::displayComputers()
         {
             ComputerBuilt = QString::fromStdString("False");
         }
-
 
         ui->table_Computers->setItem(i, 0, new QTableWidgetItem(ComputerName));
         ui->table_Computers->setItem(i, 1, new QTableWidgetItem(ComputerYear));
