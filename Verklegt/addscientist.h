@@ -5,8 +5,6 @@
 #include <string>
 #include "persons.h"
 #include "domain.h"
-#include "personsmenu.h"
-#include "computersmenu.h"
 #include <QWidget>
 
 

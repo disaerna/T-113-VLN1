@@ -87,9 +87,9 @@ vector<Persons> Domain::getPersonsSearch(string searchTerm)
     return _DbManager.printPersonsResults(searchTerm);
 }
 
-vector<Computers> Domain::getComputersSearch(string searchTerm, string x)
+vector<Computers> Domain::getComputersSearch(string searchTerm)
 {
-    return _DbManager.printComputersResults(searchTerm, x);
+    return _DbManager.printComputersResults(searchTerm);
 }
 
 vector<Computers> Domain::getScientistToComputer(int ID)

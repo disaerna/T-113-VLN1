@@ -301,18 +301,23 @@ vector<Persons> DbManager::printPersonsResults(string searchTerm)
     QSqlQuery query;
     QString qSearchTerm = QString::fromStdString(searchTerm);
 
-    query.exec("SELECT * FROM Scientists WHERE name LIKE '%" + qSearchTerm + "%' OR gender LIKE '%" + qSearchTerm + "%' OR YearOfBirth LIKE '%" + qSearchTerm + "%' OR YearOfDeath LIKE '%" + qSearchTerm + "%'");
+    query.exec("SELECT * FROM Scientists WHERE name LIKE '%" + qSearchTerm + "%' "
+               "OR gender LIKE '%" + qSearchTerm + "%' "
+               "OR YearOfBirth LIKE '%" + qSearchTerm + "%' "
+               "OR YearOfDeath LIKE '%" + qSearchTerm + "%'");
 
     return readPersons(query);
 }
 
-vector<Computers> DbManager::printComputersResults(string searchTerm, string text)
+vector<Computers> DbManager::printComputersResults(string searchTerm)
 {
     QSqlQuery query;
-    QString qText = QString::fromStdString(text);
     QString qSearchTerm = QString::fromStdString(searchTerm);
 
-    query.exec("SELECT * FROM Computers WHERE " + qText + " LIKE '%" + qSearchTerm + "%'");
+    query.exec("SELECT * FROM Computers WHERE name LIKE '%" + qSearchTerm + "%' "
+               "OR YearBuilt LIKE '%" + qSearchTerm + "%' "
+               "OR Type LIKE '%" + qSearchTerm + "%' "
+               "OR Built LIKE '%" + qSearchTerm + "%'");
 
     return readComputers(query);
 }

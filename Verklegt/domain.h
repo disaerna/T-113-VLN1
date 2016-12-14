@@ -30,7 +30,7 @@ public:
     Computers getSingleComputer(int ID);
     vector<Computers> sortComputers(int viewInput);
     vector<string> getComputersTypes();
-    vector<Computers> getComputersSearch(string searchTerm, string x);
+    vector<Computers> getComputersSearch(string searchTerm);
     bool updateComputer(int ID, string updateChoice, string newRecord);
     string changeComputerUpdateChoice(string x);
 

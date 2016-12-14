@@ -48,9 +48,13 @@ private slots:
 
     void on_pushButton_RemovePerson_clicked();
 
+    void on_pushButton_AddComputer_clicked();
+
 private:
     void displayScientists();
+    void displayComputers();
     std::vector<Persons> scientistsDisplay;
+    std::vector<Computers> computersDisplay;
 
     Ui::MainMenu *ui;
     PersonsMenu *personsMenu;

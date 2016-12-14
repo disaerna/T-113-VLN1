@@ -39,7 +39,7 @@ public:
     vector<Computers> sortComputersByValue(string value, string order);
     bool removeComputer(int ID);
     vector<Computers> getSingleComputer(int ID);
-    vector<Computers> printComputersResults(string searchTerm, string text);
+    vector<Computers> printComputersResults(string searchTerm);
     vector<string> readComputersAndPersons(int input);
     vector<string> readComputersTypes();
     vector<int> getComputerToScientist(int ID);

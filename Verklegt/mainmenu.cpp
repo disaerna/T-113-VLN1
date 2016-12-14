@@ -1,6 +1,7 @@
 #include "mainmenu.h"
 #include "ui_mainmenu.h"
 #include "addscientist.h"
+#include "addcomputer.h"
 #include "personsmenu.h"
 #include "computersmenu.h"
 #include "editperson.h"
@@ -18,6 +19,7 @@ MainMenu::MainMenu(QWidget *parent) :
     ui->setupUi(this);
 
     displayScientists();
+    displayComputers();
 }
 
 MainMenu::~MainMenu()
@@ -56,6 +58,34 @@ void MainMenu::displayScientists()
     }
 
 }
+void MainMenu::displayComputers()
+{
+    string computerSearch = "";
+    computerSearch = ui->Input_Search_Computer->text().toStdString();
+
+    computersDisplay = _domain.getComputersSearch(computerSearch);
+
+    ui->table_Computers->setSortingEnabled(false);
+    ui->table_Computers->clearContents();
+    ui->table_Computers->setRowCount(computersDisplay.size());
+
+    for(size_t i = 0; i < computersDisplay.size(); i++)
+    {
+        Computers computer_ = computersDisplay.at(i);
+
+        QString ComputerName = QString::fromStdString(computer_.getCompName());
+        QString ComputerYearBuilt = QString::fromStdString(computer_.getCompYearBuild());
+        QString ComputerType = QString::fromStdString(computer_.getCompType());
+        QString ComputerSuccessful = QString::number(computer_.getCompBuilt());
+
+
+        ui->table_Computers->setItem(i, 0, new QTableWidgetItem(ComputerName));
+        ui->table_Computers->setItem(i, 1, new QTableWidgetItem(ComputerYearBuilt));
+        ui->table_Computers->setItem(i, 2, new QTableWidgetItem(ComputerType));
+        ui->table_Computers->setItem(i, 3, new QTableWidgetItem(ComputerSuccessful));
+    }
+
+}
 //void MainMenu::on_ButtonQuit_clicked()
 //{
 //    close();
@@ -81,13 +111,13 @@ void MainMenu::displayScientists()
 void MainMenu::on_Mainmenu_tabs_currentChanged(int index)
 {
     if (index == 0)
-        {
-            //displayScientists();
-        }
-        else if (index == 1)
-        {
-            //();
-        }
+    {
+        //displayScientists();
+    }
+    else if (index == 1)
+    {
+        //();
+    }
 }
 
 void MainMenu::on_Input_Search_Person_textChanged()
@@ -147,4 +177,16 @@ void MainMenu::on_pushButton_RemovePerson_clicked()
     _domain.deletePersonFromFile(row);
 
     displayScientists();
+}
+
+void MainMenu::on_pushButton_AddComputer_clicked()
+{
+    addComputer _addComputer;
+    _addComputer.typeList();
+
+    _addComputer.exec();
+
+    displayComputers();
+
+
 }
