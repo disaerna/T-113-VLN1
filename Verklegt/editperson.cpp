@@ -76,7 +76,7 @@ void editPerson::initializeFields()
 }
 
 
-/*void editPerson::on_submitButton_clicked()
+void editPerson::on_submitButton_clicked()
 {
     int index = getPath();
 
@@ -105,7 +105,7 @@ void editPerson::initializeFields()
     }
 
     QString qName = QString::fromStdString(editName);
-    QString prompt = "Are you sure you want to edit" + qName + "?";
+    QString prompt = "Are you sure you want to edit " + qName + "?";
     int askingUser = QMessageBox::question(this, "Edit person", prompt);
     if (askingUser == QMessageBox::No)
     {
@@ -115,10 +115,9 @@ void editPerson::initializeFields()
     _domain.updatePerson(index, editName, editGender, editDOB, editDOD);
 
     this->done(0);
-}*/
+}
 
-/*void editPerson::on_cancelButton_clicked()
+void editPerson::on_cancelButton_clicked()
 {
     this->done(0);
 }
-*/

@@ -50,7 +50,7 @@ public:
 
     vector<int> getIDs(string table);
 
-    bool updateScientist(int ID, string updateChoice, string newRecord);
+    bool updateScientist(int ID, string name, string gender, string yob, string yod);
     bool updateComputer(int ID, string updateChoice, string newRecord);
 
 

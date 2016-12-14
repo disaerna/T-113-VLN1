@@ -341,13 +341,17 @@ vector<Computers> DbManager::sortComputersByValue(string value, string order)
     return readComputers(query);
 }
 
-bool DbManager::updateScientist(int ID, string updateChoice, string newRecord)
+bool DbManager::updateScientist(int ID, string name, string gender, string yob, string yod)
 {
     QSqlQuery query(db);
-    QString qUpdateChoice = QString::fromStdString(updateChoice);
-    QString qNewRecord = QString::fromStdString(newRecord);
+    QString qName = QString::fromStdString(name);
+    QString qGender = QString::fromStdString(gender);
+    QString qYob = QString::fromStdString(yob);
+    QString qYod = QString::fromStdString(yod);
 
-    query.prepare("UPDATE Scientists SET " + qUpdateChoice + " = '" + qNewRecord + "' WHERE id = :ID");
+
+
+    query.prepare("UPDATE Scientists SET name = '" + qName + "', gender = '" + qGender + "', YearOfBirth = '" + qYob + "', YearOfDeath = '" + qYod + "' WHERE id = :ID");
     query.bindValue(":ID", ID);
 
     if(query.exec())

@@ -113,9 +113,11 @@ void MainMenu::on_table_Scientists_cellPressed(int row)
 void MainMenu::on_pushButton_clicked()
 {
     editPerson _editPerson;
-    int row = getRow();
-    qDebug() << row;
-    _editPerson.setPath(row);
+
+    int index = _row;
+    _editPerson.setPath(index);
+    _editPerson.initializeFields();
+
     _editPerson.exec();
 
     displayScientists();

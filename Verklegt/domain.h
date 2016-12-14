@@ -41,7 +41,7 @@ public:
     vector<Persons> sortPersons(int viewInput);
     Persons getSinglePerson(int ID);
     vector<Persons> getPersonsSearch(string searchTerm);
-    bool updatePerson(int ID, string updateChoice, string newRecord);
+    bool updatePerson(int id, string name, string gender, string yob, string yod);
     string changePersonUpdateChoice(string x);
 
 

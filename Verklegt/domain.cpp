@@ -383,9 +383,9 @@ bool Domain::validDeathYearCheck(string birth, string death)
     return false;
 }
 
-bool Domain::updatePerson(int ID, string updateChoice, string newRecord)
+bool Domain::updatePerson(int id, string name, string gender, string yob, string yod)
 {
-    return _DbManager.updateScientist(ID, updateChoice, newRecord);
+    return _DbManager.updateScientist(id, name, gender, yob, yod);
 }
 
 bool Domain::validPersonUpdateChoice(string x)
