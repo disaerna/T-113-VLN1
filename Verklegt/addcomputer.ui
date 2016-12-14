@@ -164,7 +164,7 @@
     <string>Was the build successful ?</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -191,6 +191,16 @@
    </layout>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>nameInput</tabstop>
+  <tabstop>yobInput</tabstop>
+  <tabstop>typeDropDown</tabstop>
+  <tabstop>newTypeInput</tabstop>
+  <tabstop>yesButton</tabstop>
+  <tabstop>noButton</tabstop>
+  <tabstop>submitButton</tabstop>
+  <tabstop>cancelButton</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

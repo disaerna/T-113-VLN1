@@ -181,6 +181,16 @@
    </property>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>nameEdit</tabstop>
+  <tabstop>lineEdit</tabstop>
+  <tabstop>typeSelection</tabstop>
+  <tabstop>yesButton</tabstop>
+  <tabstop>noButton</tabstop>
+  <tabstop>submitButton</tabstop>
+  <tabstop>cancelButton</tabstop>
+  <tabstop>successfulView</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

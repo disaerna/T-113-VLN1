@@ -167,7 +167,7 @@
     <string>Deceased: </string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>120</x>
@@ -193,7 +193,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>120</x>
@@ -220,6 +220,18 @@
    </layout>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>nameEdit</tabstop>
+  <tabstop>maleButton</tabstop>
+  <tabstop>femaleButton</tabstop>
+  <tabstop>dobEdit</tabstop>
+  <tabstop>aliveButton</tabstop>
+  <tabstop>deadButton</tabstop>
+  <tabstop>dodEdit</tabstop>
+  <tabstop>submitButton</tabstop>
+  <tabstop>cancelButton</tabstop>
+  <tabstop>listView</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
