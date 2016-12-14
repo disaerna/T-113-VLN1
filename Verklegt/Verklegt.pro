@@ -20,7 +20,8 @@ SOURCES += main.cpp \
     computersmenu.cpp \
     addscientist.cpp \
     editperson.cpp \
-    addcomputer.cpp
+    addcomputer.cpp \
+    editcomputer.cpp
 
 HEADERS += \
     persons.h \
@@ -33,7 +34,8 @@ HEADERS += \
     computersmenu.h \
     addscientist.h \
     editperson.h \
-    addcomputer.h
+    addcomputer.h \
+    editcomputer.h
 
 FORMS += \
     mainmenu.ui \
@@ -41,5 +43,6 @@ FORMS += \
     computersmenu.ui \
     addscientist.ui \
     editperson.ui \
-    addcomputer.ui
+    addcomputer.ui \
+    editcomputer.ui
 
