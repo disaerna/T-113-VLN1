@@ -189,7 +189,7 @@ void MainMenu::on_pushButton_RemovePerson_clicked()
 
     _domain.deletePersonFromFile(row);
 
-    displayComputers();
+    displayScientists();
 }
 
 void MainMenu::on_pushButton_AddComputer_clicked()
@@ -227,7 +227,7 @@ void MainMenu::on_pushButton_RemoveComputer_clicked()
 
     _domain.deleteComputerFromDatabase(row);
 
-    displayScientists();
+    displayComputers();
 }
 
 
