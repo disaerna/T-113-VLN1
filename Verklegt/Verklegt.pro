@@ -16,8 +16,6 @@ SOURCES += main.cpp \
     computers.cpp \
     dbmanager.cpp \
     mainmenu.cpp \
-    personsmenu.cpp \
-    computersmenu.cpp \
     addscientist.cpp \
     editperson.cpp \
     addcomputer.cpp \
@@ -30,8 +28,6 @@ HEADERS += \
     computers.h \
     dbmanager.h \
     mainmenu.h \
-    personsmenu.h \
-    computersmenu.h \
     addscientist.h \
     editperson.h \
     addcomputer.h \
@@ -39,8 +35,6 @@ HEADERS += \
 
 FORMS += \
     mainmenu.ui \
-    personsmenu.ui \
-    computersmenu.ui \
     addscientist.ui \
     editperson.ui \
     addcomputer.ui \

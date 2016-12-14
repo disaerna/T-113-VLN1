@@ -1,14 +1,14 @@
 #include "editcomputer.h"
 #include "ui_editcomputer.h"
 
-editcomputer::editcomputer(QWidget *parent) :
+editComputer::editComputer(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::editcomputer)
+    ui(new Ui::editComputer)
 {
     ui->setupUi(this);
 }
 
-editcomputer::~editcomputer()
+editComputer::~editComputer()
 {
     delete ui;
 }

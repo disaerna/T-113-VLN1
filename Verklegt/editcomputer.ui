@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>editPerson</class>
- <widget class="QDialog" name="editPerson">
+ <class>editComputer</class>
+ <widget class="QDialog" name="editComputer">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QListView" name="listView">
+  <widget class="QListView" name="successfulView">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -36,7 +36,7 @@
     <string>Name:</string>
    </property>
   </widget>
-  <widget class="QLabel" name="genderText">
+  <widget class="QLabel" name="buildYearText">
    <property name="geometry">
     <rect>
      <x>40</x>
@@ -49,7 +49,7 @@
     <string>Build Year:</string>
    </property>
   </widget>
-  <widget class="QLabel" name="dobText">
+  <widget class="QLabel" name="typeText">
    <property name="geometry">
     <rect>
      <x>40</x>
@@ -121,7 +121,7 @@
     <string>Edit computer</string>
    </property>
   </widget>
-  <widget class="QLabel" name="deceasedText">
+  <widget class="QLabel" name="successfulText">
    <property name="geometry">
     <rect>
      <x>40</x>
@@ -140,19 +140,19 @@
      <x>120</x>
      <y>180</y>
      <width>199</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
-     <widget class="QRadioButton" name="aliveButton">
+     <widget class="QRadioButton" name="yesButton">
       <property name="text">
        <string>Yes</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QRadioButton" name="deadButton">
+     <widget class="QRadioButton" name="noButton">
       <property name="text">
        <string>No</string>
       </property>
@@ -170,7 +170,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QComboBox" name="comboBox">
+  <widget class="QComboBox" name="typeSelection">
    <property name="geometry">
     <rect>
      <x>120</x>

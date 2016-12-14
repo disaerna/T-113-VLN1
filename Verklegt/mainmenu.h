@@ -5,9 +5,6 @@
 #include "computers.h"
 #include "domain.h"
 
-#include "personsmenu.h"
-#include "computersmenu.h"
-
 #include <QMainWindow>
 #include <QWidget>
 #include <QDialog>
@@ -61,8 +58,6 @@ private:
 
 
     Ui::MainMenu *ui;
-    PersonsMenu *personsMenu;
-    ComputersMenu *computersMenu;
 
     Domain _domain;
 

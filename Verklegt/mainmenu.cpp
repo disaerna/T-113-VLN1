@@ -2,8 +2,6 @@
 #include "ui_mainmenu.h"
 #include "addscientist.h"
 #include "addcomputer.h"
-#include "personsmenu.h"
-#include "computersmenu.h"
 #include "editperson.h"
 #include "iostream"
 #include <QDialog>
