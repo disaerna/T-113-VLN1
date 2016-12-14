@@ -76,7 +76,7 @@ void editPerson::initializeFields()
 }
 
 
-void editPerson::on_submitButton_clicked()
+/*void editPerson::on_submitButton_clicked()
 {
     int index = getPath();
 
@@ -115,9 +115,10 @@ void editPerson::on_submitButton_clicked()
     _domain.updatePerson(index, editName, editGender, editDOB, editDOD);
 
     this->done(0);
-}
+}*/
 
-void editPerson::on_cancelButton_clicked()
+/*void editPerson::on_cancelButton_clicked()
 {
     this->done(0);
 }
+*/

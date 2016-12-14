@@ -20,7 +20,8 @@ public:
     void initializeFields();
 
 private slots:
-    void on_submitButton_clicked();
+
+    //void on_submitButton_clicked();
 
 private:
     Ui::editPerson *ui;
