@@ -155,7 +155,7 @@ void MainMenu::on_table_Scientists_cellPressed(int row)
     _row = row + 1;
 }
 
-void MainMenu::on_pushButton_clicked()
+void MainMenu::on_pushButton_EditPerson_clicked()
 {
     editPerson _editPerson;
 

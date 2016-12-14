@@ -36,7 +36,7 @@
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <property name="usesScrollButtons">
        <bool>true</bool>
@@ -105,13 +105,13 @@
            <bool>false</bool>
           </attribute>
           <attribute name="horizontalHeaderHighlightSections">
-           <bool>false</bool>
+           <bool>true</bool>
           </attribute>
           <attribute name="verticalHeaderVisible">
            <bool>false</bool>
           </attribute>
           <attribute name="verticalHeaderHighlightSections">
-           <bool>false</bool>
+           <bool>true</bool>
           </attribute>
           <column>
            <property name="text">
@@ -156,7 +156,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QPushButton" name="pushButton_EditPerson">
           <property name="text">
            <string>Edit selected scientist</string>
           </property>
@@ -185,20 +185,20 @@
          </rect>
         </property>
         <property name="text">
-         <string>Add Computer</string>
+         <string>Add a new computer</string>
         </property>
        </widget>
        <widget class="QPushButton" name="pushButton_RemoveComputer">
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>560</y>
+          <y>590</y>
           <width>571</width>
           <height>23</height>
          </rect>
         </property>
         <property name="text">
-         <string>Remove</string>
+         <string>Remove selected computer</string>
         </property>
        </widget>
        <widget class="QTableWidget" name="table_Computers">
@@ -256,6 +256,19 @@
           <width>581</width>
           <height>20</height>
          </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_EditComputer">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>560</y>
+          <width>571</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Edit selected computer</string>
         </property>
        </widget>
       </widget>

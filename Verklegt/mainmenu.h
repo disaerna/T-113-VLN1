@@ -38,7 +38,7 @@ private slots:
 
     void on_table_Scientists_cellPressed(int row);
 
-    void on_pushButton_clicked();
+    void on_pushButton_EditPerson_clicked();
 
     int getRow();
 
