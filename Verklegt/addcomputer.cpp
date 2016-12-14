@@ -79,7 +79,7 @@ void addComputer::on_submitButton_clicked()
 
 }
 
-void addComputer::on_typeDropDown_activated(const QString &arg1)
+void addComputer::on_typeDropDown_activated()
 {
     ui->typeDropDown->activateWindow();
 
@@ -91,7 +91,7 @@ void addComputer::typeList()
     ui->typeDropDown->activateWindow();
     vector<string> types = _domain.getComputersTypes();
     qDebug() << types.size();
-    for(int i=0; i<types.size(); i++)
+    for(unsigned int i=0; i<types.size(); i++)
     {
         QString Qtype = QString::fromStdString(types[i]);
         ui->typeDropDown->addItem(Qtype);

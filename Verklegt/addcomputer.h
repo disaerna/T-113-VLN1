@@ -22,7 +22,7 @@ public:
 private slots:
     void on_submitButton_clicked();
 
-    void on_typeDropDown_activated(const QString &arg1);
+    void on_typeDropDown_activated();
 
     void on_typeDropDown_currentIndexChanged(const QString &arg1);
 

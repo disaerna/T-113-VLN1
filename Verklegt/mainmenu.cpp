@@ -122,7 +122,10 @@ void MainMenu::displayComputers()
 
 void MainMenu::on_Mainmenu_tabs_currentChanged(int index)
 {
-    if (index == 0);
+    if (index == 0)
+    {
+
+    }
 }
 
 void MainMenu::on_Input_Search_Person_textChanged()
@@ -186,7 +189,7 @@ void MainMenu::on_pushButton_RemovePerson_clicked()
 
     _domain.deletePersonFromFile(row);
 
-    displayScientists();
+    displayComputers();
 }
 
 void MainMenu::on_pushButton_AddComputer_clicked()
