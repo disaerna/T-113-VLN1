@@ -41,6 +41,8 @@ void MainMenu::displayScientists()
     ui->table_Scientists->setSortingEnabled(true);
     ui->table_Scientists->clearContents();
     ui->table_Scientists->setRowCount(ScientistsDisplay.size());
+    ui->table_Scientists->horizontalHeader()->setVisible(true);
+    ui->table_Scientists->verticalHeader()->setVisible(false);
 
     qDebug() << ScientistsDisplay.size();
 
@@ -77,6 +79,8 @@ void MainMenu::displayComputers()
     ui->table_Computers->setSortingEnabled(true);
     ui->table_Computers->clearContents();
     ui->table_Computers->setRowCount(ComputersDisplay.size());
+    ui->table_Computers->horizontalHeader()->setVisible(true);
+    ui->table_Computers->verticalHeader()->setVisible(false);
 
     qDebug() << ComputersDisplay.size();
 
