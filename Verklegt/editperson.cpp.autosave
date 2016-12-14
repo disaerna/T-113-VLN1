@@ -105,7 +105,7 @@ void editPerson::on_submitButton_clicked()
     }
 
     QString qName = QString::fromStdString(editName);
-    QString prompt = "Are you sure you want to edit" + qName + "?";
+    QString prompt = "Are you sure you want to edit " + qName + "?";
     int askingUser = QMessageBox::question(this, "Edit person", prompt);
     if (askingUser == QMessageBox::No)
     {
