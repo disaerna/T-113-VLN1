@@ -79,6 +79,7 @@ void MainMenu::displayComputers()
         Computers computer_ = ComputersDisplay.at(i);
 
         QString ComputerName = QString::fromStdString(computer_.getCompName());
+        QString ComputerYear = QString::fromStdString(computer_.getCompYearBuild());
         QString ComputerType = QString::fromStdString(computer_.getCompType());
         bool ComputerBuiltTF = computer_.getCompBuilt();
 
@@ -93,6 +94,7 @@ void MainMenu::displayComputers()
 
 
         ui->table_Computers->setItem(i, 0, new QTableWidgetItem(ComputerName));
+        ui->table_Computers->setItem(i, 1, new QTableWidgetItem(ComputerYear));
         ui->table_Computers->setItem(i, 2, new QTableWidgetItem(ComputerType));
         ui->table_Computers->setItem(i, 3, new QTableWidgetItem(ComputerBuilt));
     }
