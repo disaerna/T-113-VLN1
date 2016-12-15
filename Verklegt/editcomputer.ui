@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>375</width>
-    <height>300</height>
+    <height>341</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -22,7 +22,7 @@
      <x>20</x>
      <y>40</y>
      <width>331</width>
-     <height>191</height>
+     <height>231</height>
     </rect>
    </property>
    <property name="toolTipDuration">
@@ -97,7 +97,7 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>250</y>
+     <y>290</y>
      <width>161</width>
      <height>28</height>
     </rect>
@@ -113,7 +113,7 @@
    <property name="geometry">
     <rect>
      <x>190</x>
-     <y>250</y>
+     <y>290</y>
      <width>161</width>
      <height>28</height>
     </rect>
@@ -152,7 +152,7 @@
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>180</y>
+     <y>220</y>
      <width>71</width>
      <height>21</height>
     </rect>
@@ -168,33 +168,12 @@
    <property name="geometry">
     <rect>
      <x>120</x>
-     <y>180</y>
+     <y>220</y>
      <width>199</width>
      <height>22</height>
     </rect>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout">
-    <item>
-     <widget class="QRadioButton" name="yesButton">
-      <property name="toolTipDuration">
-       <number>0</number>
-      </property>
-      <property name="text">
-       <string>Yes</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QRadioButton" name="noButton">
-      <property name="toolTipDuration">
-       <number>0</number>
-      </property>
-      <property name="text">
-       <string>No</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
+   <layout class="QHBoxLayout" name="horizontalLayout"/>
   </widget>
   <widget class="QLineEdit" name="buildEdit">
    <property name="geometry">
@@ -221,34 +200,91 @@
    <property name="toolTipDuration">
     <number>0</number>
    </property>
-   <item>
-    <property name="text">
-     <string>Analog</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Electronic</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Mechatronic</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Micro</string>
-    </property>
-   </item>
   </widget>
+  <widget class="QRadioButton" name="noButton">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>220</y>
+     <width>95</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="toolTipDuration">
+    <number>0</number>
+   </property>
+   <property name="text">
+    <string>No</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="yesButton">
+   <property name="geometry">
+    <rect>
+     <x>128</x>
+     <y>220</y>
+     <width>95</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="toolTipDuration">
+    <number>0</number>
+   </property>
+   <property name="text">
+    <string>Yes</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="newTypeInput">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>180</y>
+     <width>201</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="toolTipDuration">
+    <number>0</number>
+   </property>
+  </widget>
+  <widget class="QLabel" name="editNewTypeText">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>180</y>
+     <width>91</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="toolTipDuration">
+    <number>0</number>
+   </property>
+   <property name="text">
+    <string>New type: </string>
+   </property>
+  </widget>
+  <zorder>successfulView</zorder>
+  <zorder>nameText</zorder>
+  <zorder>buildYearText</zorder>
+  <zorder>typeText</zorder>
+  <zorder>nameEdit</zorder>
+  <zorder>submitButton</zorder>
+  <zorder>cancelButton</zorder>
+  <zorder>editText</zorder>
+  <zorder>successfulText</zorder>
+  <zorder>layoutWidget</zorder>
+  <zorder>buildEdit</zorder>
+  <zorder>typeSelection</zorder>
+  <zorder>noButton</zorder>
+  <zorder>yesButton</zorder>
+  <zorder>noButton</zorder>
+  <zorder>yesButton</zorder>
+  <zorder>newTypeInput</zorder>
+  <zorder>editNewTypeText</zorder>
  </widget>
  <tabstops>
   <tabstop>nameEdit</tabstop>
   <tabstop>buildEdit</tabstop>
   <tabstop>typeSelection</tabstop>
-  <tabstop>yesButton</tabstop>
-  <tabstop>noButton</tabstop>
   <tabstop>submitButton</tabstop>
   <tabstop>cancelButton</tabstop>
   <tabstop>successfulView</tabstop>

@@ -22,7 +22,7 @@ public:
     QSqlError lastError();
 
     //Person Functions
-    bool addPerson(Persons person);
+    int addPerson(Persons person);
     vector<Persons> printAllPersons();
     vector<Persons> readPersons(QSqlQuery query);
     vector<Persons> sortScientistsByValue(string value, string order);
@@ -33,7 +33,7 @@ public:
 
 
     //Computer Functions
-    bool addComputer(Computers computer);
+    int addComputer(Computers computer);
     vector<Computers> printAllComputers();
     vector<Computers> readComputers(QSqlQuery query);
     vector<Computers> sortComputersByValue(string value, string order);

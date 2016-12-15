@@ -89,14 +89,14 @@ void addScientist::on_okButton_clicked()
     {
         Persons person;
     person.setPersons(1, addName, addGender, addDOB, addDOD);
-    _domain.addPersons(person);
+    int returnedId = _domain.addPersons(person);
 
     QString prompt = "Do you wish to add another person? ";
 
     int askingUser = QMessageBox::question(this, "Add another person", prompt);
     if (askingUser == QMessageBox::No)
     {
-        this->done(0);
+        this->done(returnedId);
     }
 
     }

@@ -42,7 +42,6 @@ private slots:
 
     int getRow();
 
-
     void on_pushButton_RemovePerson_clicked();
 
     void on_pushButton_AddComputer_clicked();

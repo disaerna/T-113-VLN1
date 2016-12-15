@@ -45,6 +45,8 @@ void editComputer::initializeFields()
     ui->nameEdit->setText(qName);
     ui->buildEdit->setText(qYearBuilt);
 
+    typeList();
+
     QString textToFind = qType;
     int typeIndex = ui->typeSelection->findText(qType);
     ui->typeSelection->setCurrentIndex(typeIndex);
@@ -59,6 +61,20 @@ void editComputer::initializeFields()
     }
 }
 
+void editComputer::typeList()
+{
+    ui->typeSelection->activateWindow();
+    vector<string> types = _domain.getComputersTypes();
+    ui->typeSelection->clear();
+    for(unsigned int i=0; i<types.size(); i++)
+    {
+        QString Qtype = QString::fromStdString(types[i]);
+        ui->typeSelection->addItem(Qtype);
+    }
+
+    ui->typeSelection->addItem("Other");
+}
+
 void editComputer::on_submitButton_clicked()
 {
     int index = getPath();
@@ -67,27 +83,10 @@ void editComputer::on_submitButton_clicked()
 
     string editYearBuilt = ui->buildEdit->text().toStdString();
 
-    string editType;
-    QString qAnalog = "Analog";
-    QString qElectronic = "Electronic";
-    QString qMechatronic = "Mechatronic";
-    QString qMicro = "Micro";
-
-    if(ui->typeSelection->currentText() == qAnalog)
+    string editType = ui->typeSelection->currentText().toStdString();
+    if(ui->typeSelection->currentText().toStdString() == "Other")
     {
-        editType = "Analog";
-    }
-    else if(ui->typeSelection->currentText() == qElectronic)
-    {
-        editType = "Electronic";
-    }
-    else if(ui->typeSelection->currentText() == qMechatronic)
-    {
-        editType = "Mechatronic";
-    }
-    else if(ui->typeSelection->currentText() == qMicro)
-    {
-        editType = "Micro";
+        editType = ui->newTypeInput->text().toStdString();
     }
 
     bool editBuilt;
@@ -118,4 +117,17 @@ void editComputer::on_submitButton_clicked()
 void editComputer::on_cancelButton_clicked()
 {
     this->done(0);
+}
+
+void editComputer::on_typeSelection_currentIndexChanged(const QString &arg1)
+{
+    if(arg1 == "Other")
+    {
+        ui->newTypeInput->setDisabled(0);
+    }
+    else
+    {
+        ui->newTypeInput->setDisabled(1);
+    }
+
 }

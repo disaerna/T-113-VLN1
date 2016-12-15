@@ -18,7 +18,7 @@ QSqlError DbManager::lastError()
 }
 
 //Adds new Scientists to the database
-bool DbManager::addPerson(Persons person)
+int DbManager::addPerson(Persons person)
 {
     bool success = false;
     QSqlQuery query;
@@ -38,13 +38,14 @@ bool DbManager::addPerson(Persons person)
 
     if(query.exec())
     {
-        success = true;
+        //success = true;
+        return query.lastInsertId().toUInt();
     }
-    return success;
+    return -1;
 }
 
 //Adds new Computer to the database
-bool DbManager::addComputer(Computers computer)
+int DbManager::addComputer(Computers computer)
 {
     bool success = false;
     QSqlQuery query;
@@ -64,9 +65,10 @@ bool DbManager::addComputer(Computers computer)
 
     if(query.exec())
     {
-        success = true;
+        //success = true;
+        return query.lastInsertId().toUInt();
     }
-    return success;
+    return -1;
 }
 
 void DbManager::connectComputersAndScientists(int scientistID, int computerID)

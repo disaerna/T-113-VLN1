@@ -17,10 +17,11 @@ MainMenu::MainMenu(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    displayScientists();
     displayComputers();
     displayScientistRelations();
     displayComputersRelations();
+    displayScientists();
+    ui->Mainmenu_tabs->setTabEnabled(0, true);
 }
 
 MainMenu::~MainMenu()
@@ -71,7 +72,6 @@ void MainMenu::displayComputers()
     ComputerSearch = ui->Input_Search_Computer->text().toStdString();
 
     ComputersDisplay = _domain.getComputersSearch(ComputerSearch);
-
 
     ui->table_Computers->setSortingEnabled(false);
     ui->table_Computers->setSortingEnabled(true);
@@ -212,7 +212,11 @@ void MainMenu::on_Input_Search_Computer_textChanged()
 void MainMenu::on_pushButton_AddPerson_clicked()
 {
     addScientist _addScientist;
-    _addScientist.exec();
+    int id = _addScientist.exec();
+    if(id != 0)
+    {
+        ScientistIDs.push_back(id);
+    }
 
     displayScientists();
 }
@@ -239,7 +243,6 @@ void MainMenu::on_pushButton_EditPerson_clicked()
 
     displayScientists();
 }
-
 
 
 void MainMenu::on_pushButton_EditComputer_clicked()
@@ -287,7 +290,11 @@ void MainMenu::on_pushButton_AddComputer_clicked()
     addComputer _addComputer;
     _addComputer.typeList();
 
-    _addComputer.exec();
+    int id = _addComputer.exec();
+    if(id != 0)
+    {
+       ComputerIDs.push_back(id);
+    }
 
     displayComputers();
 }
@@ -333,10 +340,14 @@ void MainMenu::on_RelationCompSearch_textChanged(const QString &arg1)
 
 void MainMenu::on_RelationComputers_cellPressed(int row, int column)
 {
-
+    ui->pushButton_editCompRelation->setEnabled(true);
+    ui->pushButton_removeCompRelation->setEnabled(true);
+    _row = row;
 }
 
 void MainMenu::on_RelationScientists_cellPressed(int row, int column)
 {
-
+    ui->pushButton_editSciRelation->setEnabled(true);
+    ui->pushButton_removeSciRelation->setEnabled(true);
+    _row = row;
 }

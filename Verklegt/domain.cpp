@@ -8,13 +8,15 @@ Domain::Domain()
 {
 }
 
-void Domain::addPersons(Persons person)
+int Domain::addPersons(Persons person)
 {
-    _DbManager.addPerson(person);
+
+    return _DbManager.addPerson(person);
+
 }
-void Domain::addComputer(Computers computer)
+int Domain::addComputer(Computers computer)
 {
-    _DbManager.addComputer(computer);
+    return _DbManager.addComputer(computer);
 }
 
 void Domain::connectComputersAndScientists(int scientistID, int computerID)

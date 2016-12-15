@@ -19,7 +19,9 @@ SOURCES += main.cpp \
     addscientist.cpp \
     editperson.cpp \
     addcomputer.cpp \
-    editcomputer.cpp
+    editcomputer.cpp \
+    editrelation.cpp \
+    removerelation.cpp
 
 HEADERS += \
     persons.h \
@@ -30,12 +32,16 @@ HEADERS += \
     addscientist.h \
     editperson.h \
     addcomputer.h \
-    editcomputer.h
+    editcomputer.h \
+    editrelation.h \
+    removerelation.h
 
 FORMS += \
     mainmenu.ui \
     addscientist.ui \
     editperson.ui \
     addcomputer.ui \
-    editcomputer.ui
+    editcomputer.ui \
+    editrelation.ui \
+    removerelation.ui
 

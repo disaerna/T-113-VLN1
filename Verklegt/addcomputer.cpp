@@ -47,7 +47,12 @@ void addComputer::on_submitButton_clicked()
         messageBox.setFixedSize(500,200);
         valid = false;
     }
+
     string type = ui->typeDropDown->currentText().toStdString();
+    if(ui->typeDropDown->currentText().toStdString() == "Other")
+    {
+        type = ui->newTypeInput->text().toStdString();
+    }
 
     bool success;
 
@@ -63,16 +68,16 @@ void addComputer::on_submitButton_clicked()
     if(valid == true)
     {
         Computers computer;
-    computer.setComputers(1, addName, addDOB, type, success);
-    _domain.addComputer(computer);
+        computer.setComputers(1, addName, addDOB, type, success);
+       int returnedId = _domain.addComputer(computer);
 
-    QString prompt = "Do you wish to add another Computer? ";
+        QString prompt = "Do you wish to add another Computer? ";
 
-    int askingUser = QMessageBox::question(this, "Add another computer", prompt);
-    if (askingUser == QMessageBox::No)
-    {
-        this->done(0);
-    }
+        int askingUser = QMessageBox::question(this, "Add another computer", prompt);
+        if (askingUser == QMessageBox::No)
+        {
+            this->done(returnedId);
+        }
 
     }
 
@@ -91,11 +96,13 @@ void addComputer::typeList()
     ui->typeDropDown->activateWindow();
     vector<string> types = _domain.getComputersTypes();
     qDebug() << types.size();
+    ui->typeDropDown->clear();
     for(unsigned int i=0; i<types.size(); i++)
     {
         QString Qtype = QString::fromStdString(types[i]);
         ui->typeDropDown->addItem(Qtype);
     }
+
     ui->typeDropDown->addItem("Other");
 }
 
@@ -103,7 +110,7 @@ void addComputer::on_typeDropDown_currentIndexChanged(const QString &arg1)
 {
     if(arg1 == "Other")
     {
-     ui->newTypeInput->setDisabled(0);
+        ui->newTypeInput->setDisabled(0);
     }
     else
     {

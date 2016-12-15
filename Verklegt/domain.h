@@ -23,7 +23,7 @@ public:
 
     // Functions for computers class
     vector<Computers> getComputers();
-    void addComputer (Computers computer);
+    int addComputer (Computers computer);
     bool validDeleteOfComputer(int number);
     bool deleteComputerFromDatabase(int ID);
     int wasBuiltCheck (string answer);
@@ -35,7 +35,7 @@ public:
     string changeComputerUpdateChoice(string x);
 
     // Functions for persons class
-    void addPersons(Persons person);
+    int addPersons(Persons person);
     bool deletePersonFromFile(int ID);
     vector<Persons> getPersons();
     vector<Persons> sortPersons(int viewInput);
