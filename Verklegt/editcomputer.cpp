@@ -1,6 +1,8 @@
 #include "editcomputer.h"
 #include "ui_editcomputer.h"
 
+#include <QMessageBox>
+
 editComputer::editComputer(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::editComputer)

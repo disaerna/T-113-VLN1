@@ -117,7 +117,7 @@ void MainMenu::displayComputers()
 void MainMenu::displayScientistRelations()
 {
    // vector<Computers>
-    // ui->ScientistTab->
+   // ui->ScientistTab->
 }
 
 void MainMenu::displayComputersRelations()
