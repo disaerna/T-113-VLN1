@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="toolTipDuration">
+   <number>0</number>
+  </property>
   <widget class="QListView" name="listView">
    <property name="geometry">
     <rect>
@@ -21,6 +24,9 @@
      <width>331</width>
      <height>221</height>
     </rect>
+   </property>
+   <property name="toolTipDuration">
+    <number>0</number>
    </property>
   </widget>
   <widget class="QLabel" name="nameText">
@@ -31,6 +37,9 @@
      <width>55</width>
      <height>16</height>
     </rect>
+   </property>
+   <property name="toolTipDuration">
+    <number>0</number>
    </property>
    <property name="text">
     <string>Name:</string>
@@ -45,6 +54,9 @@
      <height>16</height>
     </rect>
    </property>
+   <property name="toolTipDuration">
+    <number>0</number>
+   </property>
    <property name="text">
     <string>Gender: </string>
    </property>
@@ -57,6 +69,9 @@
      <width>55</width>
      <height>16</height>
     </rect>
+   </property>
+   <property name="toolTipDuration">
+    <number>0</number>
    </property>
    <property name="text">
     <string>DOB:</string>
@@ -71,6 +86,9 @@
      <height>16</height>
     </rect>
    </property>
+   <property name="toolTipDuration">
+    <number>0</number>
+   </property>
    <property name="text">
     <string>DOD:</string>
    </property>
@@ -83,6 +101,9 @@
      <width>201</width>
      <height>22</height>
     </rect>
+   </property>
+   <property name="toolTipDuration">
+    <number>0</number>
    </property>
    <property name="text">
     <string/>
@@ -97,6 +118,9 @@
      <height>22</height>
     </rect>
    </property>
+   <property name="toolTipDuration">
+    <number>0</number>
+   </property>
   </widget>
   <widget class="QLineEdit" name="dodEdit">
    <property name="geometry">
@@ -107,6 +131,9 @@
      <height>22</height>
     </rect>
    </property>
+   <property name="toolTipDuration">
+    <number>0</number>
+   </property>
   </widget>
   <widget class="QPushButton" name="submitButton">
    <property name="geometry">
@@ -116,6 +143,9 @@
      <width>161</width>
      <height>28</height>
     </rect>
+   </property>
+   <property name="toolTipDuration">
+    <number>0</number>
    </property>
    <property name="text">
     <string>Submit</string>
@@ -129,6 +159,9 @@
      <width>161</width>
      <height>28</height>
     </rect>
+   </property>
+   <property name="toolTipDuration">
+    <number>0</number>
    </property>
    <property name="text">
     <string>Cancel</string>
@@ -150,6 +183,9 @@
      <bold>true</bold>
     </font>
    </property>
+   <property name="toolTipDuration">
+    <number>0</number>
+   </property>
    <property name="text">
     <string>Edit person</string>
    </property>
@@ -162,6 +198,9 @@
      <width>61</width>
      <height>16</height>
     </rect>
+   </property>
+   <property name="toolTipDuration">
+    <number>0</number>
    </property>
    <property name="text">
     <string>Deceased: </string>
@@ -179,6 +218,9 @@
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
      <widget class="QRadioButton" name="aliveButton">
+      <property name="toolTipDuration">
+       <number>0</number>
+      </property>
       <property name="text">
        <string>Yes</string>
       </property>
@@ -186,6 +228,9 @@
     </item>
     <item>
      <widget class="QRadioButton" name="deadButton">
+      <property name="toolTipDuration">
+       <number>0</number>
+      </property>
       <property name="text">
        <string>No</string>
       </property>
@@ -205,6 +250,9 @@
    <layout class="QHBoxLayout" name="horizontalLayout_2">
     <item>
      <widget class="QRadioButton" name="maleButton">
+      <property name="toolTipDuration">
+       <number>0</number>
+      </property>
       <property name="text">
        <string>Male</string>
       </property>
@@ -212,6 +260,9 @@
     </item>
     <item>
      <widget class="QRadioButton" name="femaleButton">
+      <property name="toolTipDuration">
+       <number>0</number>
+      </property>
       <property name="text">
        <string>Female</string>
       </property>

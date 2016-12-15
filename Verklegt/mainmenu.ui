@@ -19,6 +19,9 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="toolTipDuration">
+   <number>0</number>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_3">
     <item>
@@ -39,7 +42,7 @@
        <number>0</number>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <property name="usesScrollButtons">
        <bool>true</bool>
@@ -51,6 +54,9 @@
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
          <widget class="QLineEdit" name="Input_Search_Person">
+          <property name="toolTipDuration">
+           <number>0</number>
+          </property>
           <property name="text">
            <string/>
           </property>
@@ -82,6 +88,9 @@
           </property>
           <property name="contextMenuPolicy">
            <enum>Qt::PreventContextMenu</enum>
+          </property>
+          <property name="toolTipDuration">
+           <number>0</number>
           </property>
           <property name="autoFillBackground">
            <bool>false</bool>
@@ -174,6 +183,9 @@
         </item>
         <item>
          <widget class="QPushButton" name="pushButton_AddPerson">
+          <property name="toolTipDuration">
+           <number>0</number>
+          </property>
           <property name="text">
            <string>Add a new scientist</string>
           </property>
@@ -184,6 +196,9 @@
           <property name="enabled">
            <bool>false</bool>
           </property>
+          <property name="toolTipDuration">
+           <number>0</number>
+          </property>
           <property name="text">
            <string>Edit selected scientist</string>
           </property>
@@ -193,6 +208,9 @@
          <widget class="QPushButton" name="pushButton_RemovePerson">
           <property name="enabled">
            <bool>false</bool>
+          </property>
+          <property name="toolTipDuration">
+           <number>0</number>
           </property>
           <property name="text">
            <string>Remove selected scientist</string>
@@ -208,6 +226,9 @@
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
          <widget class="QLineEdit" name="Input_Search_Computer">
+          <property name="toolTipDuration">
+           <number>0</number>
+          </property>
           <property name="placeholderText">
            <string>Search</string>
           </property>
@@ -233,6 +254,9 @@
           </property>
           <property name="toolTip">
            <string notr="true">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="toolTipDuration">
+           <number>0</number>
           </property>
           <property name="whatsThis">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -315,6 +339,9 @@
         </item>
         <item>
          <widget class="QPushButton" name="pushButton_AddComputer">
+          <property name="toolTipDuration">
+           <number>0</number>
+          </property>
           <property name="text">
            <string>Add a new computer</string>
           </property>
@@ -325,6 +352,9 @@
           <property name="enabled">
            <bool>false</bool>
           </property>
+          <property name="toolTipDuration">
+           <number>0</number>
+          </property>
           <property name="text">
            <string>Edit selected computer</string>
           </property>
@@ -334,6 +364,9 @@
          <widget class="QPushButton" name="pushButton_RemoveComputer">
           <property name="enabled">
            <bool>false</bool>
+          </property>
+          <property name="toolTipDuration">
+           <number>0</number>
           </property>
           <property name="text">
            <string>Remove selected computer</string>
@@ -355,8 +388,11 @@
           <height>581</height>
          </rect>
         </property>
-        <property name="currentIndex">
+        <property name="toolTipDuration">
          <number>0</number>
+        </property>
+        <property name="currentIndex">
+         <number>1</number>
         </property>
         <widget class="QWidget" name="tab">
          <attribute name="title">
@@ -371,6 +407,12 @@
             <height>481</height>
            </rect>
           </property>
+          <property name="toolTipDuration">
+           <number>0</number>
+          </property>
+          <attribute name="horizontalHeaderStretchLastSection">
+           <bool>true</bool>
+          </attribute>
           <column>
            <property name="text">
             <string>Name</string>
@@ -399,6 +441,12 @@
             <height>271</height>
            </rect>
           </property>
+          <property name="toolTipDuration">
+           <number>0</number>
+          </property>
+          <attribute name="horizontalHeaderStretchLastSection">
+           <bool>true</bool>
+          </attribute>
           <column>
            <property name="text">
             <string>Name</string>
@@ -413,6 +461,9 @@
             <width>251</width>
             <height>21</height>
            </rect>
+          </property>
+          <property name="toolTipDuration">
+           <number>0</number>
           </property>
           <property name="text">
            <string>Please select a scientist to see relations</string>
@@ -432,6 +483,9 @@
             <height>21</height>
            </rect>
           </property>
+          <property name="toolTipDuration">
+           <number>0</number>
+          </property>
           <property name="text">
            <string>Please select a computer to see relations</string>
           </property>
@@ -445,6 +499,12 @@
             <height>481</height>
            </rect>
           </property>
+          <property name="toolTipDuration">
+           <number>0</number>
+          </property>
+          <attribute name="horizontalHeaderStretchLastSection">
+           <bool>true</bool>
+          </attribute>
           <column>
            <property name="text">
             <string>Name</string>
@@ -473,6 +533,12 @@
             <height>271</height>
            </rect>
           </property>
+          <property name="toolTipDuration">
+           <number>0</number>
+          </property>
+          <attribute name="horizontalHeaderStretchLastSection">
+           <bool>true</bool>
+          </attribute>
           <column>
            <property name="text">
             <string>Name</string>

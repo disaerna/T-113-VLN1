@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="toolTipDuration">
+   <number>0</number>
+  </property>
   <widget class="QLabel" name="nameText">
    <property name="geometry">
     <rect>
@@ -21,6 +24,9 @@
      <width>55</width>
      <height>16</height>
     </rect>
+   </property>
+   <property name="toolTipDuration">
+    <number>0</number>
    </property>
    <property name="text">
     <string>Name: </string>
@@ -35,6 +41,9 @@
      <height>16</height>
     </rect>
    </property>
+   <property name="toolTipDuration">
+    <number>0</number>
+   </property>
    <property name="text">
     <string>Gender: </string>
    </property>
@@ -47,6 +56,9 @@
      <width>81</width>
      <height>16</height>
     </rect>
+   </property>
+   <property name="toolTipDuration">
+    <number>0</number>
    </property>
    <property name="text">
     <string>Year of birth:</string>
@@ -61,6 +73,9 @@
      <height>16</height>
     </rect>
    </property>
+   <property name="toolTipDuration">
+    <number>0</number>
+   </property>
    <property name="text">
     <string>Deceased: </string>
    </property>
@@ -73,6 +88,9 @@
      <width>101</width>
      <height>16</height>
     </rect>
+   </property>
+   <property name="toolTipDuration">
+    <number>0</number>
    </property>
    <property name="text">
     <string>Year of death:</string>
@@ -87,6 +105,9 @@
      <height>22</height>
     </rect>
    </property>
+   <property name="toolTipDuration">
+    <number>0</number>
+   </property>
   </widget>
   <widget class="QLineEdit" name="yobInput">
    <property name="geometry">
@@ -96,6 +117,9 @@
      <width>201</width>
      <height>22</height>
     </rect>
+   </property>
+   <property name="toolTipDuration">
+    <number>0</number>
    </property>
   </widget>
   <widget class="QLineEdit" name="yodInput">
@@ -107,6 +131,9 @@
      <height>22</height>
     </rect>
    </property>
+   <property name="toolTipDuration">
+    <number>0</number>
+   </property>
   </widget>
   <widget class="QPushButton" name="okButton">
    <property name="geometry">
@@ -116,6 +143,9 @@
      <width>93</width>
      <height>28</height>
     </rect>
+   </property>
+   <property name="toolTipDuration">
+    <number>0</number>
    </property>
    <property name="text">
     <string>Submit</string>
@@ -129,6 +159,9 @@
      <width>93</width>
      <height>28</height>
     </rect>
+   </property>
+   <property name="toolTipDuration">
+    <number>0</number>
    </property>
    <property name="text">
     <string>Cancel</string>
@@ -150,6 +183,9 @@
      <bold>true</bold>
     </font>
    </property>
+   <property name="toolTipDuration">
+    <number>0</number>
+   </property>
    <property name="text">
     <string>Add person</string>
    </property>
@@ -166,6 +202,9 @@
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
      <widget class="QRadioButton" name="maleButton">
+      <property name="toolTipDuration">
+       <number>0</number>
+      </property>
       <property name="text">
        <string>Male</string>
       </property>
@@ -176,6 +215,9 @@
     </item>
     <item>
      <widget class="QRadioButton" name="femaleButton">
+      <property name="toolTipDuration">
+       <number>0</number>
+      </property>
       <property name="text">
        <string>Female</string>
       </property>
@@ -195,6 +237,9 @@
    <layout class="QHBoxLayout" name="horizontalLayout_2">
     <item>
      <widget class="QRadioButton" name="deadButton">
+      <property name="toolTipDuration">
+       <number>0</number>
+      </property>
       <property name="text">
        <string>Yes</string>
       </property>
@@ -205,6 +250,9 @@
     </item>
     <item>
      <widget class="QRadioButton" name="aliveButton">
+      <property name="toolTipDuration">
+       <number>0</number>
+      </property>
       <property name="text">
        <string>No</string>
       </property>
