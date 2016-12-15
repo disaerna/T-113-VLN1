@@ -441,7 +441,7 @@ bool Domain::updateComputer(int ID,string name, string yearbuilt, string type, b
             newRecord = "1";
         }
     }
-    return _DbManager.updateComputer(ID, updateChoice, newRecord);
+    return _DbManager.updateComputer(int ID,string name, string yearbuilt, string type, bool built);
 }
 
 bool Domain::validComputerUpdateChoice(string x)
