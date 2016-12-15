@@ -23,7 +23,6 @@ SOURCES += main.cpp \
 
 HEADERS += \
     persons.h \
-    presentation.h \
     domain.h \
     computers.h \
     dbmanager.h \

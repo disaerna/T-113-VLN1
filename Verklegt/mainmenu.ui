@@ -343,6 +343,141 @@
        <attribute name="title">
         <string>Relation</string>
        </attribute>
+       <widget class="QTabWidget" name="tabWidget">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>561</width>
+          <height>581</height>
+         </rect>
+        </property>
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
+        <widget class="QWidget" name="tab">
+         <attribute name="title">
+          <string>Scientist</string>
+         </attribute>
+         <widget class="QTableWidget" name="RelationScientists">
+          <property name="geometry">
+           <rect>
+            <x>15</x>
+            <y>51</y>
+            <width>261</width>
+            <height>481</height>
+           </rect>
+          </property>
+          <column>
+           <property name="text">
+            <string>Name</string>
+           </property>
+          </column>
+         </widget>
+         <widget class="QLabel" name="imageScientist">
+          <property name="geometry">
+           <rect>
+            <x>350</x>
+            <y>50</y>
+            <width>161</width>
+            <height>151</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QTableWidget" name="RelationsScientistComputers">
+          <property name="geometry">
+           <rect>
+            <x>300</x>
+            <y>260</y>
+            <width>241</width>
+            <height>271</height>
+           </rect>
+          </property>
+          <column>
+           <property name="text">
+            <string>Name</string>
+           </property>
+          </column>
+         </widget>
+         <widget class="QLabel" name="RelationScientistText">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>20</y>
+            <width>251</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Please select a scientist to see relations</string>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="tab_2">
+         <attribute name="title">
+          <string>Computers</string>
+         </attribute>
+         <widget class="QLabel" name="RelationComputerText">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>20</y>
+            <width>251</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Please select a computer to see relations</string>
+          </property>
+         </widget>
+         <widget class="QTableWidget" name="RelationComputers">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>50</y>
+            <width>261</width>
+            <height>481</height>
+           </rect>
+          </property>
+          <column>
+           <property name="text">
+            <string>Name</string>
+           </property>
+          </column>
+         </widget>
+         <widget class="QLabel" name="imageComputer">
+          <property name="geometry">
+           <rect>
+            <x>370</x>
+            <y>50</y>
+            <width>161</width>
+            <height>151</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QTableWidget" name="RelationsComputerScientists">
+          <property name="geometry">
+           <rect>
+            <x>300</x>
+            <y>260</y>
+            <width>241</width>
+            <height>271</height>
+           </rect>
+          </property>
+          <column>
+           <property name="text">
+            <string>Name</string>
+           </property>
+          </column>
+         </widget>
+        </widget>
+       </widget>
       </widget>
      </widget>
     </item>
