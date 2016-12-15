@@ -39,7 +39,7 @@
        <number>0</number>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <property name="usesScrollButtons">
        <bool>true</bool>
@@ -346,7 +346,7 @@
        <attribute name="title">
         <string>Relation</string>
        </attribute>
-       <widget class="QTabWidget" name="tabWidget">
+       <widget class="QTabWidget" name="RelationTabs">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -356,9 +356,9 @@
          </rect>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
-        <widget class="QWidget" name="tab">
+        <widget class="QWidget" name="ScientistTab">
          <attribute name="title">
           <string>Scientist</string>
          </attribute>
@@ -368,7 +368,7 @@
             <x>15</x>
             <y>51</y>
             <width>261</width>
-            <height>481</height>
+            <height>391</height>
            </rect>
           </property>
           <column>
@@ -380,7 +380,7 @@
          <widget class="QLabel" name="imageScientist">
           <property name="geometry">
            <rect>
-            <x>350</x>
+            <x>370</x>
             <y>50</y>
             <width>161</width>
             <height>151</height>
@@ -396,7 +396,7 @@
             <x>300</x>
             <y>260</y>
             <width>241</width>
-            <height>271</height>
+            <height>181</height>
            </rect>
           </property>
           <column>
@@ -418,8 +418,47 @@
            <string>Please select a scientist to see relations</string>
           </property>
          </widget>
+         <widget class="QPushButton" name="pushButton">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>460</y>
+            <width>531</width>
+            <height>28</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Add new relations</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="pushButton_2">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>490</y>
+            <width>531</width>
+            <height>28</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Edit selected relations</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="pushButton_3">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>520</y>
+            <width>531</width>
+            <height>28</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Remove selected relations</string>
+          </property>
+         </widget>
         </widget>
-        <widget class="QWidget" name="tab_2">
+        <widget class="QWidget" name="ComputerTab">
          <attribute name="title">
           <string>Computers</string>
          </attribute>
@@ -442,7 +481,7 @@
             <x>20</x>
             <y>50</y>
             <width>261</width>
-            <height>481</height>
+            <height>391</height>
            </rect>
           </property>
           <column>
@@ -470,7 +509,7 @@
             <x>300</x>
             <y>260</y>
             <width>241</width>
-            <height>271</height>
+            <height>181</height>
            </rect>
           </property>
           <column>
@@ -478,6 +517,45 @@
             <string>Name</string>
            </property>
           </column>
+         </widget>
+         <widget class="QPushButton" name="pushButton_4">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>460</y>
+            <width>531</width>
+            <height>28</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Add new relations</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="pushButton_5">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>490</y>
+            <width>531</width>
+            <height>28</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Edit selected relations</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="pushButton_6">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>520</y>
+            <width>531</width>
+            <height>28</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Remove selected relations</string>
+          </property>
          </widget>
         </widget>
        </widget>
