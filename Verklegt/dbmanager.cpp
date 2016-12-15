@@ -312,15 +312,22 @@ vector<Persons> DbManager::printPersonsResults(string searchTerm, int gender)
     return readPersons(query);
 }
 
-vector<Computers> DbManager::printComputersResults(string searchTerm)
+vector<Computers> DbManager::printComputersResults(string searchTerm, bool built, int type)
 {
     QSqlQuery query;
     QString qSearchTerm = QString::fromStdString(searchTerm);
+    QString qBuilt = QString::number(built);
 
-    query.exec("SELECT * FROM Computers WHERE name LIKE '%" + qSearchTerm + "%' "
-               "OR YearBuilt LIKE '%" + qSearchTerm + "%' "
-               "OR Type LIKE '%" + qSearchTerm + "%' "
-               "OR Built LIKE '%" + qSearchTerm + "%'");
+    if(type == 1)
+    {
+        query.exec("SELECT * FROM Computers WHERE Built LIKE '" + qBuilt + "'");
+    }
+    else if(type == 2)
+    {
+        query.exec("SELECT * FROM Computers WHERE name LIKE '%" + qSearchTerm + "%' "
+                   "OR YearBuilt LIKE '%" + qSearchTerm + "%' "
+                   "OR Type LIKE '%" + qSearchTerm + "%' ");
+    }
 
     return readComputers(query);
 }
