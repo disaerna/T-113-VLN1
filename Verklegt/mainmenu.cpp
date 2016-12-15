@@ -22,6 +22,7 @@ MainMenu::MainMenu(QWidget *parent) :
 
     displayScientists();
     displayComputers();
+    displayComputersRelations();
 }
 
 MainMenu::~MainMenu()
@@ -113,6 +114,24 @@ void MainMenu::displayComputers()
 
 }
 
+void MainMenu::displayScientistRelations()
+{
+   // vector<Computers>
+    // ui->ScientistTab->
+}
+
+void MainMenu::displayComputersRelations()
+{
+    for(int i=0; i<_domain.getComputers().size(); i++)
+    {
+        QString QCompName = QString::fromStdString(_domain.getComputers()[i].getCompName());
+        ui->RelationComputers->setItem(i, 0, new QTableWidgetItem(QCompName));
+
+    }
+
+
+}
+
 int MainMenu::IDScientistManagement(int x, int y)
 {
     if ( x == 1 )
@@ -199,7 +218,7 @@ void MainMenu::on_pushButton_EditComputer_clicked()
     int index = _row;
     int ID = IDComputerManagement(2, index);
     _editComputer.setPath(ID);
-    _editComputer.initializeFields();
+    //_editComputer.initializeFields();
 
     _editComputer.exec();
 
@@ -272,5 +291,7 @@ void MainMenu::on_pushButton_RemoveComputer_clicked()
 }
 
 
-
-
+void MainMenu::on_Mainmenu_tabs_tabBarClicked(int index)
+{
+    displayComputersRelations();
+}

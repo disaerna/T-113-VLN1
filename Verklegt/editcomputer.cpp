@@ -83,19 +83,19 @@ void editComputer::on_submitButton_clicked()
     string editType = "";
     if(ui->typeSelection->text("Analog"))
     {
-        editGender = "Analog";
+        editType = "Analog";
     }
     else if(ui->typeSelection->text("Electronic"))
     {
-        editGender = "Electronic";
+        editType = "Electronic";
     }
     else if(ui->typeSelection->text("Mechatronic"))
     {
-        editGender = "Mechatronic";
+        editType = "Mechatronic";
     }
     else if(ui->typeSelection->text("Micro"))
     {
-        editGender = "Micro";
+        editType = "Micro";
     }
 
 

@@ -54,10 +54,14 @@ private slots:
 
     void on_pushButton_EditComputer_clicked();
 
+    void on_Mainmenu_tabs_tabBarClicked(int index);
+
 private:
 
     void displayScientists();
     void displayComputers();
+    void displayScientistRelations();
+    void displayComputersRelations();
     std::vector<int> ScientistIDs;
     std::vector<int> ComputerIDs;
     std::vector<Persons> ScientistsDisplay;
