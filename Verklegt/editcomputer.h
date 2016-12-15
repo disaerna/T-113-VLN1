@@ -28,6 +28,7 @@ private:
     Ui::editComputer *ui;
     Domain _domain;
     int _index;
+    //test
 };
 
 #endif // EDITCOMPUTER_H
