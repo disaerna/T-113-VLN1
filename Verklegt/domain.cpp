@@ -104,12 +104,12 @@ vector<Computers> Domain::getComputersSearch(string searchTerm)
 
     if(searchTerm == "true"|| searchTerm == "True" || searchTerm == "TRUE")
     {
-        trueOrFalse = 1;
+        trueOrFalse = 1; // true
         type = 1;
     }
     else if(searchTerm == "false" || searchTerm == "False" || searchTerm == "FALSE")
     {
-        trueOrFalse = 0;
+        trueOrFalse = 0; // false
         type = 1;
     }
     else
