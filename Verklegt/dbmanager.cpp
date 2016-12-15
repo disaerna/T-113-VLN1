@@ -369,13 +369,15 @@ bool DbManager::updateScientist(int ID, string name, string gender, string yob, 
     }
 }
 
-bool DbManager::updateComputer(int ID, string updateChoice, string newRecord)
+bool DbManager::updateComputer(int ID,string name, string yearbuilt, string type, bool built)
 {
     QSqlQuery query(db);
-    QString qUpdateChoice = QString::fromStdString(updateChoice);
-    QString qNewRecord = QString::fromStdString(newRecord);
+    QString qName = QString::fromStdString(name);
+    QString qYearBuilt = QString::fromStdString(yearbuilt);
+    QString qType = QString::fromStdString(type);
+   //QString qBuilt = QString::fromStdString(yod);
 
-    query.prepare("UPDATE Computers SET " + qUpdateChoice + " = '" + qNewRecord + "' WHERE id = :ID");
+    query.prepare("UPDATE Computers SET name = '" + qName + "', YearBuilt = '" + qYearBuilt + "', Type = '" + qType + "', Built = '" + built + "' WHERE id = :ID");
     query.bindValue(":ID", ID);
 
     if(query.exec())

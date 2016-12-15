@@ -428,7 +428,7 @@ bool Domain::validUpdateGender(string x)
     return false;
 }
 
-bool Domain::updateComputer(int ID, string updateChoice, string newRecord)
+bool Domain::updateComputer(int ID,string name, string yearbuilt, string type, bool built)
 {
     if(updateChoice == "Built")
     {
