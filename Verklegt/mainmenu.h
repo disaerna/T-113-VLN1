@@ -32,7 +32,7 @@ private slots:
 
 //    void on_ButtonComputers_clicked();
 
-    void on_Mainmenu_tabs_currentChanged(int index);
+    //void on_Mainmenu_tabs_currentChanged(int index);
     void on_Input_Search_Person_textChanged();
     void on_pushButton_AddPerson_clicked();
 
@@ -66,15 +66,11 @@ private:
     void displayScientists();
     void displayComputers();
     void displayScientistRelations();
-    void displayComputersRelations();
-    std::vector<int> ScientistIDs;
-    std::vector<int> ComputerIDs;
+    void displayComputersRelations();    
     std::vector<Persons> ScientistsDisplay;
     std::vector<Persons> ScientistsRelationDisplay;
     std::vector<Computers> ComputersDisplay;
     std::vector<Computers> ComputersRelationDisplay;
-    int IDComputerManagement(int x, int y);
-    int IDScientistManagement(int x, int y);
 
 
     Ui::MainMenu *ui;

@@ -59,12 +59,12 @@ void editPerson::initializeFields()
 
     if(getYOD == "-")
     {
-        ui->aliveButton->setChecked(true);
+        ui->deadButton->setChecked(true);
         ui->dodEdit->setText("-");
     }
     else if(getYOD != "-")
     {
-        ui->deadButton->setChecked(true);
+        ui->aliveButton->setChecked(true);
         ui->dodEdit->setText(qYOD);
     }
 }
@@ -91,7 +91,7 @@ void editPerson::on_submitButton_clicked()
     string editDOD = "";
     if(ui->aliveButton->isChecked())
     {
-        editDOD = ui->dodEdit->text().toStdString();
+        editDOD = ui->dodEdit->text().toStdString(); // Alive er þýðir að hann er deceased
     }
     else if(ui->deadButton->isChecked())
     {

@@ -37,7 +37,7 @@ void MainMenu::displayScientists()
     ScientistsDisplay = _domain.getPersonsSearch(PersonSearch);
 
     ui->table_Scientists->setSortingEnabled(false);
-    ui->table_Scientists->setSortingEnabled(true);
+
     ui->table_Scientists->clearContents();
     ui->table_Scientists->setRowCount(ScientistsDisplay.size());
     ui->table_Scientists->horizontalHeader()->setVisible(true);
@@ -54,13 +54,18 @@ void MainMenu::displayScientists()
         QString ScientistYoB = QString::fromStdString(person_.getYearOfBirth());
         QString ScientistYoD = QString::fromStdString(person_.getYearOfDeath());
         int ScientistID = person_.getID();
-        IDScientistManagement(1, ScientistID);
+        QString ScId = QString::number(ScientistID);
+       // IDScientistManagement(1, ScientistID);
 
         ui->table_Scientists->setItem(i, 0, new QTableWidgetItem(ScientistName));
         ui->table_Scientists->setItem(i, 1, new QTableWidgetItem(ScientistGender));
         ui->table_Scientists->setItem(i, 2, new QTableWidgetItem(ScientistYoB));
         ui->table_Scientists->setItem(i, 3, new QTableWidgetItem(ScientistYoD));
+        ui->table_Scientists->setItem(i, 4,new QTableWidgetItem(ScId));
+       // qDebug() << ScId;
+        ui->table_Scientists->hideColumn(4);
     }
+    ui->table_Scientists->setSortingEnabled(true);
 }
 
 void MainMenu::displayComputers()
@@ -74,7 +79,7 @@ void MainMenu::displayComputers()
     ComputersDisplay = _domain.getComputersSearch(ComputerSearch);
 
     ui->table_Computers->setSortingEnabled(false);
-    ui->table_Computers->setSortingEnabled(true);
+
     ui->table_Computers->clearContents();
     ui->table_Computers->setRowCount(ComputersDisplay.size());
     ui->table_Computers->horizontalHeader()->setVisible(true);
@@ -91,8 +96,6 @@ void MainMenu::displayComputers()
         QString ComputerType = QString::fromStdString(computer_.getCompType());
         bool ComputerBuiltTF = computer_.getCompBuilt();
         int ComputerID = computer_.getCompID();
-        IDComputerManagement(1, ComputerID);
-
 
         if ( ComputerBuiltTF )
         {
@@ -106,7 +109,10 @@ void MainMenu::displayComputers()
         ui->table_Computers->setItem(i, 1, new QTableWidgetItem(ComputerYear));
         ui->table_Computers->setItem(i, 2, new QTableWidgetItem(ComputerType));
         ui->table_Computers->setItem(i, 3, new QTableWidgetItem(ComputerBuilt));
+        ui->table_Computers->setItem(i, 4,new QTableWidgetItem(QString::number(ComputerID)));
+        ui->table_Computers->hideColumn(4);
     }
+    ui->table_Computers->setSortingEnabled(true);
 }
 
 void MainMenu::displayScientistRelations()
@@ -117,7 +123,7 @@ void MainMenu::displayScientistRelations()
 
 
     ui->RelationScientists->setSortingEnabled(false);
-    ui->RelationScientists->setSortingEnabled(true);
+
     ui->RelationScientists->clearContents();
     ui->RelationScientists->setRowCount(ScientistsRelationDisplay.size());
     ui->RelationScientists->horizontalHeader()->setVisible(true);
@@ -133,6 +139,7 @@ void MainMenu::displayScientistRelations()
 
         ui->RelationScientists->setItem(i, 0, new QTableWidgetItem(ScientistName));
     }
+    ui->RelationScientists->setSortingEnabled(true);
 
 }
 void MainMenu::displayComputersRelations()
@@ -144,7 +151,7 @@ void MainMenu::displayComputersRelations()
     ComputersRelationDisplay = _domain.getComputersSearch(ComputerSearch);
 
     ui->RelationComputers->setSortingEnabled(false);
-    ui->RelationComputers->setSortingEnabled(true);
+
     ui->RelationComputers->clearContents();
     ui->RelationComputers->setRowCount(ComputersRelationDisplay.size());
     ui->RelationComputers->horizontalHeader()->setVisible(true);
@@ -159,45 +166,12 @@ void MainMenu::displayComputersRelations()
         QString ComputerName = QString::fromStdString(computer_.getCompName());
 
         ui->RelationComputers->setItem(i, 0, new QTableWidgetItem(ComputerName));
+        ui->RelationComputers->setItem(i, 1, new QTableWidgetItem(computer_.getCompID()));
+        ui->RelationComputers->hideColumn(1);
     }
+    ui->RelationComputers->setSortingEnabled(true);
 }
 
-
-int MainMenu::IDScientistManagement(int x, int y)
-{
-    if ( x == 1 )
-    {
-        ScientistIDs.push_back(y);
-        return 0;
-    }
-    else if ( x == 2 )
-    {
-        return ScientistIDs[y];
-    }
-    return 0;
-}
-
-int MainMenu::IDComputerManagement(int x, int y)
-{
-    if ( x == 1 )
-    {
-        ComputerIDs.push_back(y);
-        return 0;
-    }
-    else if ( x == 2 )
-    {
-        return ComputerIDs[y];
-    }
-    return 0;
-}
-
-void MainMenu::on_Mainmenu_tabs_currentChanged(int index)
-{
-    if (index == 0)
-    {
-
-    }
-}
 
 void MainMenu::on_Input_Search_Person_textChanged()
 {
@@ -213,10 +187,6 @@ void MainMenu::on_pushButton_AddPerson_clicked()
 {
     addScientist _addScientist;
     int id = _addScientist.exec();
-    if(id != 0)
-    {
-        ScientistIDs.push_back(id);
-    }
 
     displayScientists();
 }
@@ -235,8 +205,8 @@ void MainMenu::on_pushButton_EditPerson_clicked()
     editPerson _editPerson;
 
     int index = _row;
-    int ID = IDScientistManagement(2, index);
-    _editPerson.setPath(ID);
+    QString scientistId = ui->table_Scientists->item(index,4)->text();
+    _editPerson.setPath(scientistId.toUInt());
     _editPerson.initializeFields();
 
     _editPerson.exec();
@@ -250,8 +220,8 @@ void MainMenu::on_pushButton_EditComputer_clicked()
     editComputer _editComputer;
 
     int index = _row;
-    int ID = IDComputerManagement(2, index);
-    _editComputer.setPath(ID);
+    QString computerId = ui->table_Computers->item(index,4)->text();
+    _editComputer.setPath(computerId.toUInt());
     _editComputer.initializeFields();
 
     _editComputer.exec();
@@ -267,7 +237,7 @@ int MainMenu::getRow()
 void MainMenu::on_pushButton_RemovePerson_clicked()
 {
     int row = _row;
-    int ID = IDScientistManagement(2, row);
+    int ID = ui->table_Scientists->item(row,4)->text().toUInt();
     Persons removePerson;
     removePerson = _domain.getSinglePerson(ID);
     string personName = removePerson.getName();
@@ -291,10 +261,6 @@ void MainMenu::on_pushButton_AddComputer_clicked()
     _addComputer.typeList();
 
     int id = _addComputer.exec();
-    if(id != 0)
-    {
-       ComputerIDs.push_back(id);
-    }
 
     displayComputers();
 }
@@ -309,7 +275,7 @@ void MainMenu::on_table_Computers_cellPressed(int row)
 void MainMenu::on_pushButton_RemoveComputer_clicked()
 {
     int row = _row;
-    int ID = IDComputerManagement(2, row);
+    int ID = ui->table_Computers->item(row,4)->text().toUInt();
     Computers RemoveComputer;
 
     RemoveComputer = _domain.getSingleComputer(ID);
