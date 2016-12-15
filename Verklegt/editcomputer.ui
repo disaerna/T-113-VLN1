@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="toolTipDuration">
+   <number>0</number>
+  </property>
   <widget class="QListView" name="successfulView">
    <property name="geometry">
     <rect>

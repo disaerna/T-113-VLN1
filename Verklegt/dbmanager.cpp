@@ -296,16 +296,19 @@ vector<Computers> DbManager::printAllComputers()
     return readComputers(query);
 }
 
-vector<Persons> DbManager::printPersonsResults(string searchTerm)
+vector<Persons> DbManager::printPersonsResults(string searchTerm, int gender)
 {
     QSqlQuery query;
     QString qSearchTerm = QString::fromStdString(searchTerm);
 
-    query.exec("SELECT * FROM Scientists WHERE name LIKE '%" + qSearchTerm + "%' "
-               "OR gender LIKE '%" + qSearchTerm + "%' "
-               "OR YearOfBirth LIKE '%" + qSearchTerm + "%' "
-               "OR YearOfDeath LIKE '%" + qSearchTerm + "%'");
-
+    qDebug() << gender << " GENDER" << endl;
+    if(gender == 1) {
+        query.exec("SELECT * FROM Scientists WHERE gender LIKE '" + qSearchTerm + "'");
+    }
+    else if(gender == 2)
+    {
+        query.exec("SELECT * FROM Scientists WHERE name LIKE '%" + qSearchTerm + "%'""OR gender LIKE '" + qSearchTerm + "'"" OR YearOfBirth LIKE '%" + qSearchTerm + "%'""OR YearOfDeath LIKE '%" + qSearchTerm + "%'");
+    }
     return readPersons(query);
 }
 
@@ -369,13 +372,15 @@ bool DbManager::updateScientist(int ID, string name, string gender, string yob, 
     }
 }
 
-bool DbManager::updateComputer(int ID, string updateChoice, string newRecord)
+bool DbManager::updateComputer(int ID,string name, string yearbuilt, string type, bool built)
 {
     QSqlQuery query(db);
-    QString qUpdateChoice = QString::fromStdString(updateChoice);
-    QString qNewRecord = QString::fromStdString(newRecord);
+    QString qName = QString::fromStdString(name);
+    QString qYearBuilt = QString::fromStdString(yearbuilt);
+    QString qType = QString::fromStdString(type);
+    QString qBuilt = QString::number(built);
 
-    query.prepare("UPDATE Computers SET " + qUpdateChoice + " = '" + qNewRecord + "' WHERE id = :ID");
+    query.prepare("UPDATE Computers SET name = '" + qName + "', YearBuilt = '" + qYearBuilt + "', Type = '" + qType + "', Built = '" + qBuilt + "' WHERE id = :ID");
     query.bindValue(":ID", ID);
 
     if(query.exec())

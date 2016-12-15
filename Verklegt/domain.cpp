@@ -84,7 +84,17 @@ vector<string> Domain::getComputersTypes()
 
 vector<Persons> Domain::getPersonsSearch(string searchTerm)
 {
-    return _DbManager.printPersonsResults(searchTerm);
+    int gender = 0;
+    if(searchTerm == "Male" || searchTerm == "male" || searchTerm == "Female" || searchTerm == "female")
+    {
+        gender = 1;
+    }
+    else
+    {
+        gender = 2;
+    }
+
+    return _DbManager.printPersonsResults(searchTerm, gender);
 }
 
 vector<Computers> Domain::getComputersSearch(string searchTerm)
@@ -428,20 +438,9 @@ bool Domain::validUpdateGender(string x)
     return false;
 }
 
-bool Domain::updateComputer(int ID, string updateChoice, string newRecord)
+bool Domain::updateComputer(int ID,string name, string yearbuilt, string type, bool built)
 {
-    if(updateChoice == "Built")
-    {
-        if(getSingleComputer(ID).getCompBuilt())
-        {
-            newRecord = "0";
-        }
-        if(!getSingleComputer(ID).getCompBuilt())
-        {
-            newRecord = "1";
-        }
-    }
-    return _DbManager.updateComputer(ID, updateChoice, newRecord);
+    return _DbManager.updateComputer(ID, name, yearbuilt, type, built);
 }
 
 bool Domain::validComputerUpdateChoice(string x)

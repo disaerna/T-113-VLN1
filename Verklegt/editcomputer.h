@@ -17,10 +17,10 @@ public:
     ~editComputer();
     void setPath(const int &index);
     int getPath();
-   // void initializeFields();
+   void initializeFields();
 
 private slots:
-    //void on_submitButton_clicked();
+    void on_submitButton_clicked();
     void on_cancelButton_clicked();
 
 
@@ -28,6 +28,7 @@ private:
     Ui::editComputer *ui;
     Domain _domain;
     int _index;
+    //test
 };
 
 #endif // EDITCOMPUTER_H

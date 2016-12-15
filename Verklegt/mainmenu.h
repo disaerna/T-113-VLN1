@@ -58,6 +58,10 @@ private slots:
 
     void on_RelationCompSearch_textChanged(const QString &arg1);
 
+    void on_RelationComputers_cellPressed(int row, int column);
+    
+    void on_RelationScientists_cellPressed(int row, int column);
+    
 private:
 
     void displayScientists();
@@ -77,8 +81,6 @@ private:
     Ui::MainMenu *ui;
 
     Domain _domain;
-
-
 
     int _row;
 };

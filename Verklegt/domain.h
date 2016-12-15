@@ -31,7 +31,7 @@ public:
     vector<Computers> sortComputers(int viewInput);
     vector<string> getComputersTypes();
     vector<Computers> getComputersSearch(string searchTerm);
-    bool updateComputer(int ID, string updateChoice, string newRecord);
+    bool updateComputer(int ID,string name, string yearbuilt, string type, bool built);
     string changeComputerUpdateChoice(string x);
 
     // Functions for persons class

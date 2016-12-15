@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="toolTipDuration">
+   <number>0</number>
+  </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
@@ -29,6 +32,9 @@
      <bold>true</bold>
     </font>
    </property>
+   <property name="toolTipDuration">
+    <number>0</number>
+   </property>
    <property name="text">
     <string>Add computer</string>
    </property>
@@ -41,6 +47,9 @@
      <width>47</width>
      <height>13</height>
     </rect>
+   </property>
+   <property name="toolTipDuration">
+    <number>0</number>
    </property>
    <property name="text">
     <string>Name:</string>
@@ -55,6 +64,9 @@
      <height>20</height>
     </rect>
    </property>
+   <property name="toolTipDuration">
+    <number>0</number>
+   </property>
   </widget>
   <widget class="QPushButton" name="submitButton">
    <property name="geometry">
@@ -64,6 +76,9 @@
      <width>111</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="toolTipDuration">
+    <number>0</number>
    </property>
    <property name="text">
     <string>Submit</string>
@@ -78,6 +93,9 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="toolTipDuration">
+    <number>0</number>
+   </property>
    <property name="text">
     <string>Cancel</string>
    </property>
@@ -90,6 +108,9 @@
      <width>111</width>
      <height>16</height>
     </rect>
+   </property>
+   <property name="toolTipDuration">
+    <number>0</number>
    </property>
    <property name="text">
     <string>Year when first built:</string>
@@ -104,6 +125,9 @@
      <height>20</height>
     </rect>
    </property>
+   <property name="toolTipDuration">
+    <number>0</number>
+   </property>
   </widget>
   <widget class="QLabel" name="typeText">
    <property name="geometry">
@@ -113,6 +137,9 @@
      <width>47</width>
      <height>13</height>
     </rect>
+   </property>
+   <property name="toolTipDuration">
+    <number>0</number>
    </property>
    <property name="text">
     <string>Type:</string>
@@ -127,6 +154,9 @@
      <height>22</height>
     </rect>
    </property>
+   <property name="toolTipDuration">
+    <number>0</number>
+   </property>
   </widget>
   <widget class="QLineEdit" name="newTypeInput">
    <property name="geometry">
@@ -137,6 +167,9 @@
      <height>20</height>
     </rect>
    </property>
+   <property name="toolTipDuration">
+    <number>0</number>
+   </property>
   </widget>
   <widget class="QLabel" name="addNewTypeText">
    <property name="geometry">
@@ -146,6 +179,9 @@
      <width>91</width>
      <height>16</height>
     </rect>
+   </property>
+   <property name="toolTipDuration">
+    <number>0</number>
    </property>
    <property name="text">
     <string>Add a new type: </string>
@@ -159,6 +195,9 @@
      <width>131</width>
      <height>21</height>
     </rect>
+   </property>
+   <property name="toolTipDuration">
+    <number>0</number>
    </property>
    <property name="text">
     <string>Was the build successful ?</string>
@@ -176,6 +215,9 @@
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
      <widget class="QRadioButton" name="yesButton">
+      <property name="toolTipDuration">
+       <number>0</number>
+      </property>
       <property name="text">
        <string>Yes</string>
       </property>
@@ -183,6 +225,9 @@
     </item>
     <item>
      <widget class="QRadioButton" name="noButton">
+      <property name="toolTipDuration">
+       <number>0</number>
+      </property>
       <property name="text">
        <string>No</string>
       </property>

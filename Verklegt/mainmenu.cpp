@@ -113,7 +113,6 @@ void MainMenu::displayScientistRelations()
 {
     string PersonSearch = "";
     PersonSearch = ui->RelationScienSearch->text().toStdString();
-
     ScientistsRelationDisplay = _domain.getPersonsSearch(PersonSearch);
 
 
@@ -250,7 +249,7 @@ void MainMenu::on_pushButton_EditComputer_clicked()
     int index = _row;
     int ID = IDComputerManagement(2, index);
     _editComputer.setPath(ID);
-    //_editComputer.initializeFields();
+    _editComputer.initializeFields();
 
     _editComputer.exec();
 
@@ -330,4 +329,14 @@ void MainMenu::on_RelationScienSearch_textChanged(const QString &arg1)
 void MainMenu::on_RelationCompSearch_textChanged(const QString &arg1)
 {
     displayComputersRelations();
+}
+
+void MainMenu::on_RelationComputers_cellPressed(int row, int column)
+{
+
+}
+
+void MainMenu::on_RelationScientists_cellPressed(int row, int column)
+{
+
 }
