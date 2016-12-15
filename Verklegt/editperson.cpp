@@ -7,13 +7,7 @@ editPerson::editPerson(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::editPerson)
 {
-
     ui->setupUi(this);
-
-
-
-
-
 }
 
 editPerson::~editPerson()

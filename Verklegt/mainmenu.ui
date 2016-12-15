@@ -35,6 +35,9 @@
       <property name="toolTip">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
+      <property name="toolTipDuration">
+       <number>0</number>
+      </property>
       <property name="currentIndex">
        <number>0</number>
       </property>
