@@ -296,16 +296,19 @@ vector<Computers> DbManager::printAllComputers()
     return readComputers(query);
 }
 
-vector<Persons> DbManager::printPersonsResults(string searchTerm)
+vector<Persons> DbManager::printPersonsResults(string searchTerm, int gender)
 {
     QSqlQuery query;
     QString qSearchTerm = QString::fromStdString(searchTerm);
 
-    query.exec("SELECT * FROM Scientists WHERE name LIKE '%" + qSearchTerm + "%' "
-               "OR gender LIKE '%" + qSearchTerm + "%' "
-               "OR YearOfBirth LIKE '%" + qSearchTerm + "%' "
-               "OR YearOfDeath LIKE '%" + qSearchTerm + "%'");
-
+    qDebug() << gender << " GENDER" << endl;
+    if(gender == 1) {
+        query.exec("SELECT * FROM Scientists WHERE gender LIKE '" + qSearchTerm + "'");
+    }
+    else if(gender == 2)
+    {
+        query.exec("SELECT * FROM Scientists WHERE name LIKE '%" + qSearchTerm + "%'""OR gender LIKE '" + qSearchTerm + "'"" OR YearOfBirth LIKE '%" + qSearchTerm + "%'""OR YearOfDeath LIKE '%" + qSearchTerm + "%'");
+    }
     return readPersons(query);
 }
 

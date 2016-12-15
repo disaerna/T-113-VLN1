@@ -48,19 +48,19 @@ void editComputer::initializeFields()
 
     if(getType == "Analog")
     {
-        ui->typeSelection->setView("Analog");
+       // ui->typeSelection->setView("Analog");
     }
     else if(getType == "Electronic")
     {
-        ui->typeSelection->setView("Electronic");
+       // ui->typeSelection->setView("Electronic");
     }
     else if(getType == "Mechatronic")
     {
-        ui->typeSelection->setView("Mechatronic");
+      //  ui->typeSelection->setView("Mechatronic");
     }
     else if(getType == "Micro")
     {
-        ui->typeSelection->setView("Micro");
+      //  ui->typeSelection->setView("Micro");
     }
 
 
@@ -83,7 +83,7 @@ void editComputer::on_submitButton_clicked()
     string editYearBuilt = ui->buildEdit->text().toStdString();
 
     string editType = "";
-    if(ui->typeSelection->currentIndex("Analog"))
+   /* if(ui->typeSelection->currentIndex("Analog"))
     {
         editType = "Analog";
     }
@@ -99,7 +99,7 @@ void editComputer::on_submitButton_clicked()
     {
         editType = "Micro";
     }
-
+*/
 
 
     bool editBuilt;

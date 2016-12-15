@@ -28,7 +28,7 @@ public:
     vector<Persons> sortScientistsByValue(string value, string order);
     bool removeScientist(int ID);
     vector<Persons> getSinglePerson(int ID);
-    vector<Persons> printPersonsResults(string searchTerm);
+    vector<Persons> printPersonsResults(string searchTerm, int gender);
     vector<int> getScientistToComputer(int ID);
 
 

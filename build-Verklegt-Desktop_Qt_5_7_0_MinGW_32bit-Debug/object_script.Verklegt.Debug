@@ -1,0 +1,17 @@
+INPUT(
+./debug\main.o
+./debug\persons.o
+./debug\domain.o
+./debug\computers.o
+./debug\dbmanager.o
+./debug\mainmenu.o
+./debug\addscientist.o
+./debug\editperson.o
+./debug\addcomputer.o
+./debug\editcomputer.o
+./debug\moc_mainmenu.o
+./debug\moc_addscientist.o
+./debug\moc_editperson.o
+./debug\moc_addcomputer.o
+./debug\moc_editcomputer.o
+);
