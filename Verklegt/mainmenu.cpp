@@ -18,7 +18,7 @@ MainMenu::MainMenu(QWidget *parent) :
     ui(new Ui::MainMenu)
 {
     ui->setupUi(this);
-    ui->statusbar->showMessage("Steelbeams can't melt jet fuel", 1000);
+
 
     displayScientists();
     displayComputers();
@@ -55,7 +55,7 @@ void MainMenu::displayScientists()
         QString ScientistYoB = QString::fromStdString(person_.getYearOfBirth());
         QString ScientistYoD = QString::fromStdString(person_.getYearOfDeath());
         int ScientistID = person_.getID();
-        IDmanagement(1, ScientistID);
+        IDScientistManagement(1, ScientistID);
 
         ui->table_Scientists->setItem(i, 0, new QTableWidgetItem(ScientistName));
         ui->table_Scientists->setItem(i, 1, new QTableWidgetItem(ScientistGender));
@@ -94,7 +94,7 @@ void MainMenu::displayComputers()
         QString ComputerType = QString::fromStdString(computer_.getCompType());
         bool ComputerBuiltTF = computer_.getCompBuilt();
         int ComputerID = computer_.getCompID();
-        IDmanagement(1, ComputerID);
+        IDComputerManagement(1, ComputerID);
 
 
         if ( ComputerBuiltTF )
