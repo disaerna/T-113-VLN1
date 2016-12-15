@@ -99,17 +99,17 @@ vector<Persons> Domain::getPersonsSearch(string searchTerm)
 
 vector<Computers> Domain::getComputersSearch(string searchTerm)
 {
-    bool built;
-    int type = 0;
+    bool trueOrFalse = 0;
+    int type = 2;
 
     if(searchTerm == "true"|| searchTerm == "True" || searchTerm == "TRUE")
     {
-        built = true;
+        trueOrFalse = 1;
         type = 1;
     }
     else if(searchTerm == "false" || searchTerm == "False" || searchTerm == "FALSE")
     {
-        built = false;
+        trueOrFalse = 0;
         type = 1;
     }
     else
@@ -117,7 +117,8 @@ vector<Computers> Domain::getComputersSearch(string searchTerm)
         type = 2;
     }
 
-    return _DbManager.printComputersResults(searchTerm, built, type);
+
+    return _DbManager.printComputersResults(searchTerm, trueOrFalse, type);
 }
 
 vector<Computers> Domain::getScientistToComputer(int ID)

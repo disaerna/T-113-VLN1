@@ -312,11 +312,11 @@ vector<Persons> DbManager::printPersonsResults(string searchTerm, int gender)
     return readPersons(query);
 }
 
-vector<Computers> DbManager::printComputersResults(string searchTerm, bool built, int type)
+vector<Computers> DbManager::printComputersResults(string searchTerm, bool trueOrFalse, int type)
 {
     QSqlQuery query;
     QString qSearchTerm = QString::fromStdString(searchTerm);
-    QString qBuilt = QString::number(built);
+    QString qBuilt = QString::number(trueOrFalse);
 
     if(type == 1)
     {
