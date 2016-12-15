@@ -54,7 +54,8 @@ void MainMenu::displayScientists()
         QString ScientistGender = QString::fromStdString(person_.getGender());
         QString ScientistYoB = QString::fromStdString(person_.getYearOfBirth());
         QString ScientistYoD = QString::fromStdString(person_.getYearOfDeath());
-
+        int ScientistID = person_.getID();
+        IDmanagement(1, ScientistID);
 
         ui->table_Scientists->setItem(i, 0, new QTableWidgetItem(ScientistName));
         ui->table_Scientists->setItem(i, 1, new QTableWidgetItem(ScientistGender));
@@ -92,6 +93,9 @@ void MainMenu::displayComputers()
         QString ComputerYear = QString::fromStdString(computer_.getCompYearBuild());
         QString ComputerType = QString::fromStdString(computer_.getCompType());
         bool ComputerBuiltTF = computer_.getCompBuilt();
+        int ComputerID = computer_.getCompID();
+        IDmanagement(1, ComputerID);
+
 
         if ( ComputerBuiltTF )
         {
@@ -108,27 +112,34 @@ void MainMenu::displayComputers()
     }
 
 }
-//void MainMenu::on_ButtonQuit_clicked()
-//{
-//    close();
-//    qApp->quit();
-//}
 
-//void MainMenu::on_ButtonScientists_clicked()
-//{
-//    personsMenu = new PersonsMenu(this);
-//    personsMenu->setModal(true);
-//    personsMenu->exec();
+int MainMenu::IDScientistManagement(int x, int y)
+{
+    if ( x == 1 )
+    {
+        ScientistIDs.push_back(y);
+        return 0;
+    }
+    else if ( x == 2 )
+    {
+        return ScientistIDs[y];
+    }
+    return 0;
+}
 
-//}
-
-//void MainMenu::on_ButtonComputers_clicked()
-//{
-//    computersMenu = new ComputersMenu(this);
-//    computersMenu->setModal(true);
-//    computersMenu->exec();
-//}
-
+int MainMenu::IDComputerManagement(int x, int y)
+{
+    if ( x == 1 )
+    {
+        ComputerIDs.push_back(y);
+        return 0;
+    }
+    else if ( x == 2 )
+    {
+        return ComputerIDs[y];
+    }
+    return 0;
+}
 
 void MainMenu::on_Mainmenu_tabs_currentChanged(int index)
 {
@@ -162,7 +173,7 @@ void MainMenu::on_table_Scientists_cellPressed(int row)
 {
     ui->pushButton_RemovePerson->setEnabled(true);
     ui->pushButton_EditPerson->setEnabled(true);
-    _row = row + 1;
+    _row = row;
 }
 
 void MainMenu::on_pushButton_EditPerson_clicked()
@@ -170,7 +181,8 @@ void MainMenu::on_pushButton_EditPerson_clicked()
     editPerson _editPerson;
 
     int index = _row;
-    _editPerson.setPath(index);
+    int ID = IDScientistManagement(2, index);
+    _editPerson.setPath(ID);
     _editPerson.initializeFields();
 
     _editPerson.exec();
@@ -185,7 +197,8 @@ void MainMenu::on_pushButton_EditComputer_clicked()
     editComputer _editComputer;
 
     int index = _row;
-    _editComputer.setPath(index);
+    int ID = IDComputerManagement(2, index);
+    _editComputer.setPath(ID);
     _editComputer.initializeFields();
 
     _editComputer.exec();
@@ -201,9 +214,9 @@ int MainMenu::getRow()
 void MainMenu::on_pushButton_RemovePerson_clicked()
 {
     int row = _row;
-
+    int ID = IDScientistManagement(2, row);
     Persons removePerson;
-    removePerson = _domain.getSinglePerson(row);
+    removePerson = _domain.getSinglePerson(ID);
     string personName = removePerson.getName();
     QString removedPerson = QString::fromStdString(personName);
 
@@ -214,7 +227,7 @@ void MainMenu::on_pushButton_RemovePerson_clicked()
         return;
     }
 
-    _domain.deletePersonFromFile(row);
+    _domain.deletePersonFromFile(ID);
 
     displayScientists();
 }
@@ -227,23 +240,22 @@ void MainMenu::on_pushButton_AddComputer_clicked()
     _addComputer.exec();
 
     displayComputers();
-
-
 }
 
 void MainMenu::on_table_Computers_cellPressed(int row)
 {
     ui->pushButton_RemoveComputer->setEnabled(true);
     ui->pushButton_EditComputer->setEnabled(true);
-    _row = row + 1;
+    _row = row;
 }
 
 void MainMenu::on_pushButton_RemoveComputer_clicked()
 {
     int row = _row;
-
+    int ID = IDComputerManagement(2, row);
     Computers RemoveComputer;
-    RemoveComputer = _domain.getSingleComputer(row);
+
+    RemoveComputer = _domain.getSingleComputer(ID);
     string ComputerName = RemoveComputer.getCompName();
     QString RemovedComputer = QString::fromStdString(ComputerName);
 
@@ -254,7 +266,7 @@ void MainMenu::on_pushButton_RemoveComputer_clicked()
         return;
     }
 
-    _domain.deleteComputerFromDatabase(row);
+    _domain.deleteComputerFromDatabase(ID);
 
     displayComputers();
 }

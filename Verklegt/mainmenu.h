@@ -58,9 +58,12 @@ private:
 
     void displayScientists();
     void displayComputers();
-
+    std::vector<int> ScientistIDs;
+    std::vector<int> ComputerIDs;
     std::vector<Persons> ScientistsDisplay;
     std::vector<Computers> ComputersDisplay;
+    int IDComputerManagement(int x, int y);
+    int IDScientistManagement(int x, int y);
 
 
     Ui::MainMenu *ui;
