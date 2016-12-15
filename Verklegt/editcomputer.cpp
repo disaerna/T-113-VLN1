@@ -44,25 +44,10 @@ void editComputer::initializeFields()
 
     ui->nameEdit->setText(qName);
     ui->buildEdit->setText(qYearBuilt);
-    //qDebug() << qName;
 
-    if(getType == "Analog")
-    {
-       // ui->typeSelection->setView("Analog");
-    }
-    else if(getType == "Electronic")
-    {
-       // ui->typeSelection->setView("Electronic");
-    }
-    else if(getType == "Mechatronic")
-    {
-      //  ui->typeSelection->setView("Mechatronic");
-    }
-    else if(getType == "Micro")
-    {
-      //  ui->typeSelection->setView("Micro");
-    }
-
+    QString textToFind = qType;
+    int typeIndex = ui->typeSelection->findText(qType);
+    ui->typeSelection->setCurrentIndex(typeIndex);
 
     if(getBuilt == true)
     {
@@ -82,34 +67,39 @@ void editComputer::on_submitButton_clicked()
 
     string editYearBuilt = ui->buildEdit->text().toStdString();
 
-    string editType = "";
-   /* if(ui->typeSelection->currentIndex("Analog"))
+    string editType;
+    QString qAnalog = "Analog";
+    QString qElectronic = "Electronic";
+    QString qMechatronic = "Mechatronic";
+    QString qMicro = "Micro";
+
+    if(ui->typeSelection->currentText() == qAnalog)
     {
         editType = "Analog";
     }
-    else if(ui->typeSelection->currentIndex("Electronic"))
+    else if(ui->typeSelection->currentText() == qElectronic)
     {
         editType = "Electronic";
     }
-    else if(ui->typeSelection->currentIndex("Mechatronic"))
+    else if(ui->typeSelection->currentText() == qMechatronic)
     {
         editType = "Mechatronic";
     }
-    else if(ui->typeSelection->currentIndex("Micro"))
+    else if(ui->typeSelection->currentText() == qMicro)
     {
         editType = "Micro";
     }
-*/
-
 
     bool editBuilt;
     if(ui->yesButton->isChecked())
     {
         editBuilt = true;
+        qDebug() << "TRUE";
     }
     else if(ui->noButton->isChecked())
     {
         editBuilt = false;
+        qDebug() << "FALSE";
     }
 
     QString qName = QString::fromStdString(editName);

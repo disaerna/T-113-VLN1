@@ -218,7 +218,7 @@ void MainMenu::on_pushButton_EditComputer_clicked()
     int index = _row;
     int ID = IDComputerManagement(2, index);
     _editComputer.setPath(ID);
-    //_editComputer.initializeFields();
+    _editComputer.initializeFields();
 
     _editComputer.exec();
 
