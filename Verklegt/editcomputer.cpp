@@ -29,41 +29,46 @@ void editComputer::initializeFields()
     int index = getPath();
     Computer = _domain.getSingleComputer(index);
     string getName = Computer.getCompName();
-    string getYearBuilt = person.getGender();
-    string getYOB = person.getYearOfBirth();
-    string getYOD = person.getYearOfDeath();
+    string getYearBuilt = Computer.getCompYearBuild();
+    string getType = Computer.getCompType();
+    bool getBuilt = Computer.getCompBuilt();
 
 
     QString qName = QString::fromStdString(getName);
-    QString qYOB = QString::fromStdString(getYOB);
-    QString qYOD = QString::fromStdString(getYOD);
-    qDebug() << qYOD;
+    QString qYearBuilt = QString::fromStdString(getYearBuilt);
+    QString qType = QString::fromStdString(getType);
+    //qDebug() << qYOD;
 
 
     ui->nameEdit->setText(qName);
+    ui->buildEdit->setText(qYearBuilt);
+    //qDebug() << qName;
 
-    qDebug() << qName;
-
-    if(getGender == "Male")
+    if(getType == "Analog")
     {
-        ui->maleButton->setChecked(true);
+        ui->typeSelection->setView("Analog");
     }
-    else if(getGender == "Female")
+    else if(getType == "Electronic")
     {
-        ui->femaleButton->setChecked(true);
+        ui->typeSelection->setView("Electronic");
+    }
+    else if(getType == "Mechatronic")
+    {
+        ui->typeSelection->setView("Mechatronic");
+    }
+    else if(getType == "Micro")
+    {
+        ui->typeSelection->setView("Micro");
     }
 
-    ui->dobEdit->setText(qYOB);
 
-    if(getYOD == "-")
+    if(getBuilt == true)
     {
-        ui->aliveButton->setChecked(true);
-        ui->dodEdit->setText("-");
+        ui->yesButton->setChecked(true);
     }
-    else if(getYOD != "-")
+    else if(getBuilt == false)
     {
-        ui->deadButton->setChecked(true);
-        ui->dodEdit->setText(qYOD);
+        ui->noButton->setChecked(true);
     }
 }
 
@@ -73,37 +78,47 @@ void editComputer::on_submitButton_clicked()
 
     string editName = ui->nameEdit->text().toStdString();
 
-    string editGender = "";
-    if(ui->maleButton->isChecked())
+    string editYearBuilt = ui->buildEdit->text().toStdString();
+
+    string editType = "";
+    if(ui->typeSelection->text("Analog"))
     {
-        editGender = "Male";
+        editGender = "Analog";
     }
-    else if(ui->femaleButton->isChecked())
+    else if(ui->typeSelection->text("Electronic"))
     {
-        editGender = "Female";
+        editGender = "Electronic";
+    }
+    else if(ui->typeSelection->text("Mechatronic"))
+    {
+        editGender = "Mechatronic";
+    }
+    else if(ui->typeSelection->text("Micro"))
+    {
+        editGender = "Micro";
     }
 
-    string editDOB = ui->dobEdit->text().toStdString();
 
-    string editDOD = "";
-    if(ui->aliveButton->isChecked())
+
+    bool editBuilt;
+    if(ui->yesButton->isChecked())
     {
-        editDOD = ui->dodEdit->text().toStdString();
+        editBuilt = true;
     }
-    else if(ui->deadButton->isChecked())
+    else if(ui->noButton->isChecked())
     {
-        editDOD = "-";
+        editBuilt = false;
     }
 
     QString qName = QString::fromStdString(editName);
     QString prompt = "Are you sure you want to edit " + qName + "?";
-    int askingUser = QMessageBox::question(this, "Edit person", prompt);
+    int askingUser = QMessageBox::question(this, "Edit computer", prompt);
     if (askingUser == QMessageBox::No)
     {
         this->done(0);
     }
 
-    _domain.updatePerson(index, editName, editGender, editDOB, editDOD);
+    _domain.updateComputer(index, editName, editYearBuilt, editType, editBuilt);
 
     this->done(0);
 }
