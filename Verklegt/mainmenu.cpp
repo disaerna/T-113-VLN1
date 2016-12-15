@@ -11,17 +11,15 @@
 
 using namespace std;
 
-
-
 MainMenu::MainMenu(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainMenu)
 {
     ui->setupUi(this);
 
-
     displayScientists();
     displayComputers();
+    displayScientistRelations();
     displayComputersRelations();
 }
 
@@ -37,7 +35,6 @@ void MainMenu::displayScientists()
 
     ScientistsDisplay = _domain.getPersonsSearch(PersonSearch);
 
-
     ui->table_Scientists->setSortingEnabled(false);
     ui->table_Scientists->setSortingEnabled(true);
     ui->table_Scientists->clearContents();
@@ -45,7 +42,7 @@ void MainMenu::displayScientists()
     ui->table_Scientists->horizontalHeader()->setVisible(true);
     ui->table_Scientists->verticalHeader()->setVisible(false);
 
-    qDebug() << ScientistsDisplay.size();
+    //qDebug() << ScientistsDisplay.size();
 
     for(size_t i = 0; i < ScientistsDisplay.size(); i++)
     {
@@ -63,7 +60,6 @@ void MainMenu::displayScientists()
         ui->table_Scientists->setItem(i, 2, new QTableWidgetItem(ScientistYoB));
         ui->table_Scientists->setItem(i, 3, new QTableWidgetItem(ScientistYoD));
     }
-
 }
 
 void MainMenu::displayComputers()
@@ -84,7 +80,7 @@ void MainMenu::displayComputers()
     ui->table_Computers->horizontalHeader()->setVisible(true);
     ui->table_Computers->verticalHeader()->setVisible(false);
 
-    qDebug() << ComputersDisplay.size();
+    //qDebug() << ComputersDisplay.size();
 
     for(size_t i = 0; i < ComputersDisplay.size(); i++)
     {
@@ -111,26 +107,62 @@ void MainMenu::displayComputers()
         ui->table_Computers->setItem(i, 2, new QTableWidgetItem(ComputerType));
         ui->table_Computers->setItem(i, 3, new QTableWidgetItem(ComputerBuilt));
     }
-
 }
 
 void MainMenu::displayScientistRelations()
 {
-   // vector<Computers>
-    // ui->ScientistTab->
-}
+    string PersonSearch = "";
+    PersonSearch = ui->RelationScienSearch->text().toStdString();
 
-void MainMenu::displayComputersRelations()
-{
-    for(int i=0; i<_domain.getComputers().size(); i++)
+    ScientistsRelationDisplay = _domain.getPersonsSearch(PersonSearch);
+
+
+    ui->RelationScientists->setSortingEnabled(false);
+    ui->RelationScientists->setSortingEnabled(true);
+    ui->RelationScientists->clearContents();
+    ui->RelationScientists->setRowCount(ScientistsRelationDisplay.size());
+    ui->RelationScientists->horizontalHeader()->setVisible(true);
+    ui->RelationScientists->verticalHeader()->setVisible(false);
+
+    qDebug() << ScientistsRelationDisplay.size();
+
+    for(size_t i = 0; i < ScientistsRelationDisplay.size(); i++)
     {
-        QString QCompName = QString::fromStdString(_domain.getComputers()[i].getCompName());
-        ui->RelationComputers->setItem(i, 0, new QTableWidgetItem(QCompName));
+        Persons person_ = ScientistsRelationDisplay.at(i);
 
+        QString ScientistName = QString::fromStdString(person_.getName());
+
+        ui->RelationScientists->setItem(i, 0, new QTableWidgetItem(ScientistName));
     }
 
-
 }
+void MainMenu::displayComputersRelations()
+{
+    string ComputerSearch = "";
+
+    ComputerSearch = ui->RelationCompSearch->text().toStdString();
+
+    ComputersRelationDisplay = _domain.getComputersSearch(ComputerSearch);
+
+    ui->RelationComputers->setSortingEnabled(false);
+    ui->RelationComputers->setSortingEnabled(true);
+    ui->RelationComputers->clearContents();
+    ui->RelationComputers->setRowCount(ComputersRelationDisplay.size());
+    ui->RelationComputers->horizontalHeader()->setVisible(true);
+    ui->RelationComputers->verticalHeader()->setVisible(false);
+
+    qDebug() << ComputersRelationDisplay.size();
+
+    for(size_t i = 0; i < ComputersRelationDisplay.size(); i++)
+    {
+        Computers computer_ = ComputersRelationDisplay.at(i);
+
+        QString ComputerName = QString::fromStdString(computer_.getCompName());
+
+        ui->RelationComputers->setItem(i, 0, new QTableWidgetItem(ComputerName));
+    }
+}
+
 
 int MainMenu::IDScientistManagement(int x, int y)
 {
@@ -290,8 +322,12 @@ void MainMenu::on_pushButton_RemoveComputer_clicked()
     displayComputers();
 }
 
+void MainMenu::on_RelationScienSearch_textChanged(const QString &arg1)
+{
+    displayScientistRelations();
+}
 
-void MainMenu::on_Mainmenu_tabs_tabBarClicked(int index)
+void MainMenu::on_RelationCompSearch_textChanged(const QString &arg1)
 {
     displayComputersRelations();
 }

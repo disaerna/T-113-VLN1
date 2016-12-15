@@ -23,7 +23,7 @@ int editComputer::getPath()
     return _index;
 }
 
-void editComputer::initializeFields()
+/*void editComputer::initializeFields()
 {
     Computers Computer;
     int index = getPath();
@@ -122,7 +122,7 @@ void editComputer::on_submitButton_clicked()
 
     this->done(0);
 }
-
+*/
 void editComputer::on_cancelButton_clicked()
 {
     this->done(0);

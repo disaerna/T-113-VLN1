@@ -54,7 +54,9 @@ private slots:
 
     void on_pushButton_EditComputer_clicked();
 
-    void on_Mainmenu_tabs_tabBarClicked(int index);
+    void on_RelationScienSearch_textChanged(const QString &arg1);
+
+    void on_RelationCompSearch_textChanged(const QString &arg1);
 
 private:
 
@@ -65,7 +67,9 @@ private:
     std::vector<int> ScientistIDs;
     std::vector<int> ComputerIDs;
     std::vector<Persons> ScientistsDisplay;
+    std::vector<Persons> ScientistsRelationDisplay;
     std::vector<Computers> ComputersDisplay;
+    std::vector<Computers> ComputersRelationDisplay;
     int IDComputerManagement(int x, int y);
     int IDScientistManagement(int x, int y);
 

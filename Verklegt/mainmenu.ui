@@ -366,9 +366,9 @@
           <property name="geometry">
            <rect>
             <x>15</x>
-            <y>51</y>
+            <y>71</y>
             <width>261</width>
-            <height>391</height>
+            <height>371</height>
            </rect>
           </property>
           <column>
@@ -409,7 +409,7 @@
           <property name="geometry">
            <rect>
             <x>20</x>
-            <y>20</y>
+            <y>40</y>
             <width>251</width>
             <height>21</height>
            </rect>
@@ -457,6 +457,19 @@
            <string>Remove selected relations</string>
           </property>
          </widget>
+         <widget class="QLineEdit" name="RelationScienSearch">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>10</y>
+            <width>521</width>
+            <height>22</height>
+           </rect>
+          </property>
+          <property name="placeholderText">
+           <string>Search</string>
+          </property>
+         </widget>
         </widget>
         <widget class="QWidget" name="ComputerTab">
          <attribute name="title">
@@ -466,7 +479,7 @@
           <property name="geometry">
            <rect>
             <x>20</x>
-            <y>20</y>
+            <y>40</y>
             <width>251</width>
             <height>21</height>
            </rect>
@@ -479,9 +492,9 @@
           <property name="geometry">
            <rect>
             <x>20</x>
-            <y>50</y>
+            <y>70</y>
             <width>261</width>
-            <height>391</height>
+            <height>371</height>
            </rect>
           </property>
           <column>
@@ -555,6 +568,19 @@
           </property>
           <property name="text">
            <string>Remove selected relations</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="RelationCompSearch">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>10</y>
+            <width>521</width>
+            <height>22</height>
+           </rect>
+          </property>
+          <property name="placeholderText">
+           <string>Search</string>
           </property>
          </widget>
         </widget>
