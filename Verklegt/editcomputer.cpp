@@ -81,19 +81,19 @@ void editComputer::on_submitButton_clicked()
     string editYearBuilt = ui->buildEdit->text().toStdString();
 
     string editType = "";
-    if(ui->typeSelection->text("Analog"))
+    if(ui->typeSelection->currentIndex("Analog"))
     {
         editType = "Analog";
     }
-    else if(ui->typeSelection->text("Electronic"))
+    else if(ui->typeSelection->currentIndex("Electronic"))
     {
         editType = "Electronic";
     }
-    else if(ui->typeSelection->text("Mechatronic"))
+    else if(ui->typeSelection->currentIndex("Mechatronic"))
     {
         editType = "Mechatronic";
     }
-    else if(ui->typeSelection->text("Micro"))
+    else if(ui->typeSelection->currentIndex("Micro"))
     {
         editType = "Micro";
     }
