@@ -26,6 +26,8 @@ private slots:
 
     void on_typeDropDown_currentIndexChanged(const QString &arg1);
 
+    void on_cancelButton_clicked();
+
 private:
 
     Ui::addComputer *ui;

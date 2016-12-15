@@ -110,3 +110,8 @@ void addComputer::on_typeDropDown_currentIndexChanged(const QString &arg1)
         ui->newTypeInput->setDisabled(1);
     }
 }
+
+void addComputer::on_cancelButton_clicked()
+{
+    this->done(0);
+}
