@@ -456,7 +456,9 @@ void MainMenu::on_pushButton_removeSciRelation_clicked()
 //Reomving computer relations
 void MainMenu::on_pushButton_removeCompRelation_clicked()
 {
-    QString Removal = "Are you sure?";
+    string RemovedComp = _domain.getSingleComputer(CompRelComp);
+    string RemovedPerson = _domain.getSinglePerson(CompRelSci);
+    QString removal = "About to remove\n" + RemovedPerson + " from" + RemovedComp + "/nAre you sure?";
     int ConfirmRemoval = QMessageBox::question(this,"Confirm" , Removal);
     if(ConfirmRemoval){
         _domain.removeRelation(CompRelSci,CompRelComp);
