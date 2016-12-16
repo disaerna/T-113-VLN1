@@ -171,7 +171,7 @@ bool Domain::validComputerNameCheck(string name)
 
 
 // Checks if input is M/m or F/f.
-bool Domain::validGenderCheck(string gender)
+/*bool Domain::validGenderCheck(string gender)
 {
     if(gender == "M" || gender == "m")
     {
@@ -184,7 +184,7 @@ bool Domain::validGenderCheck(string gender)
 
     return false;
 }
-
+*/
 // Sets M/m to Male and F/f to Female.
 string Domain::setGender(string gender)
 {
@@ -208,7 +208,7 @@ bool Domain::validYearCheck(string year)
 }
 
 // Chekcs input for is input a digit, is it Y or N.
-int Domain::yesOrNoCheck(string answer)
+/*int Domain::yesOrNoCheck(string answer)
 {
     for(unsigned int i=0; i<answer.length(); i++)
     {
@@ -226,8 +226,8 @@ int Domain::yesOrNoCheck(string answer)
     }
     return 2;
 }
-
-bool Domain::validID(int function, int inputID)
+*/
+/*bool Domain::validID(int function, int inputID)
 {
     string table;
     bool legalID = false;
@@ -258,6 +258,7 @@ bool Domain::validID(int function, int inputID)
     return legalID;
 
 }
+*/
 // Checks if input is digits, if 4 digits, if death year is lower than birth year and if current year is lower than death year.
 bool Domain::validDeathYearCheck(string birth, string death)
 {
@@ -273,7 +274,8 @@ bool Domain::updatePerson(int id, string name, string gender, string yob, string
     return _DbManager.updateScientist(id, name, gender, yob, yod);
 }
 
-void Domain::updateRelations(int oldScientist,int oldComputer,int newScientist,int newComputer){
+void Domain::updateRelations(int oldScientist,int oldComputer,int newScientist,int newComputer)
+{
     return _DbManager.updateRelations(oldScientist,oldComputer,newScientist,newComputer);
 }
 
@@ -282,7 +284,7 @@ void Domain::removeRelation(int sciId, int compId)
     return _DbManager.removeRelation(sciId,compId);
 }
 
-bool Domain::validPersonUpdateChoice(string x)
+/*bool Domain::validPersonUpdateChoice(string x)
 {
     if(x == "n" || x == "N" || x == "g" || x == "G" || x == "b" || x == "B" || x == "d" || x == "D")
     {
@@ -290,8 +292,8 @@ bool Domain::validPersonUpdateChoice(string x)
     }
     return false;
 }
-
-string Domain::changePersonUpdateChoice(string x)
+*/
+/*string Domain::changePersonUpdateChoice(string x)
 {
     string y = "";
     if(x == "n" || x == "N")
@@ -312,8 +314,8 @@ string Domain::changePersonUpdateChoice(string x)
     }
     return y;
 }
-
-bool Domain::validUpdateGender(string x)
+*/
+/*bool Domain::validUpdateGender(string x)
 {
     if(x == "Female" || x == "Male")
     {
@@ -321,13 +323,13 @@ bool Domain::validUpdateGender(string x)
     }
     return false;
 }
-
+*/
 bool Domain::updateComputer(int ID,string name, string yearbuilt, string type, bool built)
 {
     return _DbManager.updateComputer(ID, name, yearbuilt, type, built);
 }
 
-bool Domain::validComputerUpdateChoice(string x)
+/*bool Domain::validComputerUpdateChoice(string x)
 {
     if(x == "n" || x == "N" || x == "y" || x == "Y" || x == "t" || x == "T" || x == "b" || x == "B")
     {
@@ -335,8 +337,8 @@ bool Domain::validComputerUpdateChoice(string x)
     }
     return false;
 }
-
-string Domain::changeComputerUpdateChoice(string x)
+*/
+/*string Domain::changeComputerUpdateChoice(string x)
 {
     string y = "";
     if(x == "n" || x == "N")
@@ -357,7 +359,7 @@ string Domain::changeComputerUpdateChoice(string x)
     }
     return y;
 }
-
+*/
 bool Domain::emptyStringCheck(string x)
 {
     if(x != " ")
@@ -367,7 +369,7 @@ bool Domain::emptyStringCheck(string x)
     return false;
 }
 
-bool Domain::typeCheck(string x)
+/*bool Domain::typeCheck(string x)
 {
     if(x == "Micro" || x == "Mechatronic" || x == "Electronic" || x == "Analog")
     {
@@ -375,3 +377,4 @@ bool Domain::typeCheck(string x)
     }
     return false;
 }
+*/
