@@ -34,12 +34,14 @@ void addRelations::fillComboBoxes()
         QString Qcomp = QString::fromStdString(computers[i].getCompName());
         ui->comboBox_computer->addItem(Qcomp);
     }
+    /* // Not needed?
     QString findSciID = QString::fromStdString(_domain.getSinglePerson(_sci).getName());
     int sciIndex = ui->comboBox_scientist->findText(findSciID);
     ui->comboBox_scientist->setCurrentIndex(sciIndex);
     QString findCompID = QString::fromStdString(_domain.getSingleComputer(_comp).getCompName());
     int compIndex = ui->comboBox_computer->findText(findCompID);
     ui->comboBox_computer->setCurrentIndex(compIndex);
+    */
 }
 
 void addRelations::on_pushButton_submit_clicked()
