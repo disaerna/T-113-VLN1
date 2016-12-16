@@ -17,7 +17,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Add scientist</string>
   </property>
   <property name="toolTipDuration">
    <number>0</number>
@@ -83,7 +83,7 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="0">
+   <item row="0" column="0" alignment="Qt::AlignHCenter">
     <widget class="QLabel" name="label_6">
      <property name="font">
       <font>
@@ -96,7 +96,7 @@
       <number>0</number>
      </property>
      <property name="text">
-      <string>Add person</string>
+      <string>Add scientist</string>
      </property>
     </widget>
    </item>
@@ -229,7 +229,7 @@
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup"/>
   <buttongroup name="buttonGroup_2"/>
+  <buttongroup name="buttonGroup"/>
  </buttongroups>
 </ui>

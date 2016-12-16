@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Main menu</string>
   </property>
   <property name="toolTipDuration">
    <number>0</number>
