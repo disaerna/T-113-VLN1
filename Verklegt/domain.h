@@ -28,7 +28,6 @@ public:
     bool deleteComputerFromDatabase(int ID);
     int wasBuiltCheck (string answer);
     Computers getSingleComputer(int ID);
-    vector<Computers> sortComputers(int viewInput);
     vector<string> getComputersTypes();
     vector<Computers> getComputersSearch(string searchTerm);
     bool updateComputer(int ID,string name, string yearbuilt, string type, bool built);
@@ -38,7 +37,6 @@ public:
     int addPersons(Persons person);
     bool deletePersonFromFile(int ID);
     vector<Persons> getPersons();
-    vector<Persons> sortPersons(int viewInput);
     Persons getSinglePerson(int ID);
     vector<Persons> getPersonsSearch(string searchTerm);
     bool updatePerson(int id, string name, string gender, string yob, string yod);

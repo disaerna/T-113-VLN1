@@ -20,7 +20,6 @@ QSqlError DbManager::lastError()
 //Adds new Scientists to the database
 int DbManager::addPerson(Persons person)
 {
-    bool success = false;
     QSqlQuery query;
 
     query.prepare("INSERT INTO Scientists (name, gender, YearOfBirth, YearOfDeath) "
@@ -47,7 +46,6 @@ int DbManager::addPerson(Persons person)
 //Adds new Computer to the database
 int DbManager::addComputer(Computers computer)
 {
-    bool success = false;
     QSqlQuery query;
 
     query.prepare("INSERT INTO Computers (name, YearBuilt, Type, Built) "
@@ -330,30 +328,6 @@ vector<Computers> DbManager::printComputersResults(string searchTerm, bool trueO
                    "OR YearBuilt LIKE '%" + qSearchTerm + "%' "
                    "OR Type LIKE '%" + qSearchTerm + "%' ");
     }
-
-    return readComputers(query);
-}
-
-vector<Persons> DbManager::sortScientistsByValue(string value, string order)
-{
-    QSqlQuery query(db);
-
-    QString qValue = QString::fromStdString(value);
-    QString qOrder = QString::fromStdString(order);
-
-    query.exec("SELECT * FROM Scientists ORDER BY " + qValue + " " + qOrder);
-
-    return readPersons(query);
-}
-
-vector<Computers> DbManager::sortComputersByValue(string value, string order)
-{
-    QSqlQuery query(db);
-
-    QString qValue = QString::fromStdString(value);
-    QString qOrder = QString::fromStdString(order);
-
-    query.exec("SELECT * FROM Computers ORDER BY " + qValue + " " + qOrder);
 
     return readComputers(query);
 }
