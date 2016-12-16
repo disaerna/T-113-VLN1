@@ -6,7 +6,6 @@
 #include <QMessageBox>
 #include <QButtonGroup>
 #include <QFileDialog>
-#include <QDebug>
 
 
 addComputer::addComputer(QWidget *parent) :
@@ -95,7 +94,6 @@ void addComputer::typeList()
 {
     ui->typeDropDown->activateWindow();
     vector<string> types = _domain.getComputersTypes();
-    qDebug() << types.size();
     ui->typeDropDown->clear();
     for(unsigned int i=0; i<types.size(); i++)
     {

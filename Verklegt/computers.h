@@ -5,7 +5,8 @@
 
 using namespace std;
 
-class Computers {
+class Computers
+{
 
 public:
     Computers();

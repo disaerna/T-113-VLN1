@@ -12,7 +12,8 @@
 
 #include "ui_mainMenu.h"
 
-namespace Ui {
+namespace Ui
+{
 class MainMenu;
 }
 

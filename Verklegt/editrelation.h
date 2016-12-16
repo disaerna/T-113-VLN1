@@ -3,7 +3,8 @@
 #include "domain.h"
 #include <QDialog>
 
-namespace Ui {
+namespace Ui
+{
 class editRelation;
 }
 

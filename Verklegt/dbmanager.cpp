@@ -301,8 +301,8 @@ vector<Persons> DbManager::printPersonsResults(string searchTerm, int gender)
     QSqlQuery query;
     QString qSearchTerm = QString::fromStdString(searchTerm);
 
-    qDebug() << gender << " GENDER" << endl;
-    if(gender == 1) {
+    if(gender == 1)
+    {
         query.exec("SELECT * FROM Scientists WHERE gender LIKE '" + qSearchTerm + "'");
     }
     else if(gender == 2)
@@ -390,8 +390,6 @@ void DbManager::updateRelations(int oldScientist,int oldComputer,int newScientis
     query.bindValue(":OldComputerID",_oldComputer);
 
     query.exec();
-
-    qDebug() << db.lastError();
 }
 
 void DbManager::removeRelation(int sciId, int compId)

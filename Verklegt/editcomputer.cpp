@@ -40,7 +40,6 @@ void editComputer::initializeFields()
     QString qName = QString::fromStdString(getName);
     QString qYearBuilt = QString::fromStdString(getYearBuilt);
     QString qType = QString::fromStdString(getType);
-    //qDebug() << qYOD;
 
 
     ui->nameEdit->setText(qName);
@@ -113,12 +112,10 @@ void editComputer::on_submitButton_clicked()
     if(ui->yesButton->isChecked())
     {
         editBuilt = true;
-        qDebug() << "TRUE";
     }
     else if(ui->noButton->isChecked())
     {
         editBuilt = false;
-        qDebug() << "FALSE";
     }
     if( valid == true)
     {

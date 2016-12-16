@@ -8,7 +8,6 @@
 #include "addrelations.h"
 #include "iostream"
 #include <QDialog>
-#include <QDebug>
 #include <QMessageBox>
 
 using namespace std;
@@ -57,7 +56,6 @@ void MainMenu::displayScientists()
     ui->table_Scientists->horizontalHeader()->setSectionResizeMode(QHeaderView::Fixed);
 
 
-    //qDebug() << ScientistsDisplay.size();
 
     for(unsigned int i = 0; i < ScientistsDisplay.size(); i++)
     {
@@ -76,7 +74,6 @@ void MainMenu::displayScientists()
         ui->table_Scientists->setItem(i, 2, new QTableWidgetItem(ScientistYoB));
         ui->table_Scientists->setItem(i, 3, new QTableWidgetItem(ScientistYoD));
         ui->table_Scientists->setItem(i, 4,new QTableWidgetItem(ScId));
-       // qDebug() << ScId;
         ui->table_Scientists->hideColumn(4);
 
     }
@@ -103,8 +100,6 @@ void MainMenu::displayComputers()
     this->setFixedSize(637,680);
     ui->table_Computers->horizontalHeader()->setSectionResizeMode(QHeaderView::Fixed);
 
-
-    //qDebug() << ComputersDisplay.size();
 
     for(unsigned int i = 0; i < ComputersDisplay.size(); i++)
     {
@@ -181,8 +176,6 @@ void MainMenu::displayComputersRelations()
     ui->table_RelationComputers->setRowCount(ComputersRelationDisplay.size());
     ui->table_RelationComputers->horizontalHeader()->setVisible(true);
     ui->table_RelationComputers->verticalHeader()->setVisible(false);
-
-    qDebug() << ComputersRelationDisplay.size();
 
     for(unsigned int i = 0; i < ComputersRelationDisplay.size(); i++)
     {
@@ -356,7 +349,6 @@ void MainMenu::on_table_RelationScientists_cellPressed(int row)
 
     SciRelSci = ID;
 
-    qDebug() << "Sci " << QString::number(SciRelSci) << " og rel comp " << QString::number(SciRelComp);
     ui->pushButton_editSciRelation->setEnabled(false);
     ui->pushButton_removeSciRelation->setEnabled(false);
 }
@@ -367,10 +359,11 @@ void MainMenu::on_table_RelationsComputerScientists_cellPressed(int row)
     int ID = ui->table_RelationsComputerScientists->item(row,1)->text().toUInt();
     CompRelSci = ID;
 
-    if(CompRelComp != 0 && CompRelSci != 0){
+    if(CompRelComp != 0 && CompRelSci != 0)
+    {
         ui->pushButton_editCompRelation->setEnabled(true);
         ui->pushButton_removeCompRelation->setEnabled(true);
-   }
+    }
 }
 
 void MainMenu::on_Input_RelationsScientistComputers_cellPressed(int row)
@@ -379,7 +372,8 @@ void MainMenu::on_Input_RelationsScientistComputers_cellPressed(int row)
     int ID = ui->Input_RelationsScientistComputers->item(row,1)->text().toUInt();
     SciRelComp = ID;
 
-    if(SciRelSci != 0 && SciRelComp != 0){
+    if(SciRelSci != 0 && SciRelComp != 0)
+    {
         ui->pushButton_editSciRelation->setEnabled(true);
         ui->pushButton_removeSciRelation->setEnabled(true);
     }
@@ -449,7 +443,8 @@ void MainMenu::on_pushButton_removeSciRelation_clicked()
 {
     QString Removal = "Are you sure?";
     int ConfirmRemoval = QMessageBox::question(this,"Confirm" , Removal);
-    if(ConfirmRemoval){
+    if(ConfirmRemoval)
+    {
         _domain.removeRelation(SciRelSci,SciRelComp);
     }
 }
@@ -460,7 +455,8 @@ void MainMenu::on_pushButton_removeCompRelation_clicked()
     string RemovedPerson = _domain.getSinglePerson(CompRelSci);
     QString removal = "About to remove\n" + RemovedPerson + " from" + RemovedComp + "/nAre you sure?";
     int ConfirmRemoval = QMessageBox::question(this,"Confirm" , Removal);
-    if(ConfirmRemoval){
+    if(ConfirmRemoval)
+    {
         _domain.removeRelation(CompRelSci,CompRelComp);
     }
 }
