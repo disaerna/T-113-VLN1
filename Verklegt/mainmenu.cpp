@@ -453,7 +453,7 @@ void MainMenu::on_pushButton_removeCompRelation_clicked()
 {
     string RemovedComp = _domain.getSingleComputer(CompRelComp);
     string RemovedPerson = _domain.getSinglePerson(CompRelSci);
-    QString removal = "About to remove\n" + RemovedPerson + " from" + RemovedComp + "/nAre you sure?";
+    QString Removal = "About to remove\n" + RemovedPerson + " from" + RemovedComp + "/nAre you sure?";
     int ConfirmRemoval = QMessageBox::question(this,"Confirm" , Removal);
     if(ConfirmRemoval)
     {
