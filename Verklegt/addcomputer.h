@@ -7,7 +7,8 @@
 #include "domain.h"
 #include <QWidget>
 
-namespace Ui {
+namespace Ui
+{
 class addComputer;
 }
 

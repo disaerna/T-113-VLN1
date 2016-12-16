@@ -4,7 +4,8 @@
 #include <QDialog>
 #include <domain.h>
 
-namespace Ui {
+namespace Ui
+{
 class editPerson;
 }
 

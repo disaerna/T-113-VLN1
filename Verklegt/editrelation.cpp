@@ -51,9 +51,11 @@ void editRelation::on_pushButton_submit_clicked()
         vector<Persons> allScientists = _domain.getPersons();
         QString personText = ui->comboBox_scientist->itemText(currentSciIndex);
         int newSci = 0;
-        for(unsigned int i =0;i<allScientists.size();i++){
+        for(unsigned int i =0;i<allScientists.size();i++)
+        {
 
-           if(personText.toStdString() == allScientists[i].getName()){
+           if(personText.toStdString() == allScientists[i].getName())
+           {
                newSci = allScientists[i].getID();
            }
         }
@@ -62,14 +64,15 @@ void editRelation::on_pushButton_submit_clicked()
         vector<Computers> allComputers = _domain.getComputers();
         QString computersText = ui->comboBox_computer->itemText(currentCompIndex);
         int newComp = 0;
-        for(unsigned int i =0;i<allComputers.size();i++){
+        for(unsigned int i =0;i<allComputers.size();i++)
+        {
 
-           if(computersText.toStdString() == allComputers[i].getCompName()){
+           if(computersText.toStdString() == allComputers[i].getCompName())
+           {
                newComp = allComputers[i].getCompID();
            }
         }
 
-          qDebug() << QString::number(_sci) <<" "<<  QString::number(_comp) <<" "<< QString::number(newSci) <<" "<< QString::number(newComp);
         _domain.updateRelations(_sci,_comp,newSci,newComp);
 
         this->done(0);

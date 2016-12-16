@@ -38,11 +38,8 @@ void editPerson::initializeFields()
     QString qName = QString::fromStdString(getName);
     QString qYOB = QString::fromStdString(getYOB);
     QString qYOD = QString::fromStdString(getYOD);
-    qDebug() << qYOD;
 
     ui->nameEdit->setText(qName);
-
-    qDebug() << qName;
 
     if(getGender == "Male")
     {
