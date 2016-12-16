@@ -75,3 +75,8 @@ void addRelations::on_pushButton_submit_clicked()
         _domain.connectComputersAndScientists(newSci,newComp);
         this->done(0);
 }
+
+void addRelations::on_pushButton_cancel_clicked()
+{
+    this->done(0);
+}

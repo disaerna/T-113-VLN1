@@ -447,22 +447,35 @@ void MainMenu::on_pushButton_editSciRelation_clicked()
 //Removing scientist relations
 void MainMenu::on_pushButton_removeSciRelation_clicked()
 {
-    QString Removal = "Are you sure?";
-    int ConfirmRemoval = QMessageBox::question(this,"Confirm" , Removal);
-    if(ConfirmRemoval){
-        _domain.removeRelation(SciRelSci,SciRelComp);
+    string RemovedComp = _domain.getSingleComputer(SciRelComp).getCompName();
+    string RemovedPerson = _domain.getSinglePerson(SciRelSci).getName();
+    QString QremovedComp = QString::fromStdString(RemovedComp);
+    QString QremovedPerson = QString::fromStdString(RemovedPerson);
+    QString removal = "About to remove\n" + QremovedComp + " from " + QremovedPerson + "\nAre you sure?";
+
+    int ConfirmRemoval = QMessageBox::question(this,"Confirm" , removal);
+    if(ConfirmRemoval == QMessageBox::No)
+    {
+        return;
     }
+    _domain.removeRelation(SciRelSci,SciRelComp);
+
 }
 //Reomving computer relations
 void MainMenu::on_pushButton_removeCompRelation_clicked()
 {
-    string RemovedComp = _domain.getSingleComputer(CompRelComp);
-    string RemovedPerson = _domain.getSinglePerson(CompRelSci);
-    QString removal = "About to remove\n" + RemovedPerson + " from" + RemovedComp + "/nAre you sure?";
-    int ConfirmRemoval = QMessageBox::question(this,"Confirm" , Removal);
-    if(ConfirmRemoval){
-        _domain.removeRelation(CompRelSci,CompRelComp);
+    string RemovedComp = _domain.getSingleComputer(CompRelComp).getCompName();
+    string RemovedPerson = _domain.getSinglePerson(CompRelSci).getName();
+    QString QremovedComp = QString::fromStdString(RemovedComp);
+    QString QremovedPerson = QString::fromStdString(RemovedPerson);
+    QString removal = "About to remove\n" + QremovedPerson + " from " + QremovedComp + "\nAre you sure?";
+
+    int ConfirmRemoval = QMessageBox::question(this,"Confirm" , removal);
+    if(ConfirmRemoval == QMessageBox::No)
+    {
+        return;
     }
+     _domain.removeRelation(CompRelSci,CompRelComp);
 }
 
 void MainMenu::on_pushButton_addSciRelation_clicked()
@@ -498,5 +511,6 @@ void MainMenu::on_pushButton_editCompRelation_clicked()
     _editRelation.setIDs(CompRelSci, CompRelComp);
     _editRelation.fillComboBoxes();
     _editRelation.exec();
+
     displaySecondtable_RelationComputers(CompRelComp);
 }

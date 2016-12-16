@@ -63,7 +63,7 @@
        <number>0</number>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <property name="usesScrollButtons">
        <bool>true</bool>
@@ -185,12 +185,12 @@
           </column>
           <column>
            <property name="text">
-            <string>Year of Birth</string>
+            <string>Birth year</string>
            </property>
           </column>
           <column>
            <property name="text">
-            <string>Year of Death</string>
+            <string>Death year</string>
            </property>
           </column>
           <column>

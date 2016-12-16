@@ -12,6 +12,7 @@ class addRelations : public QDialog
     Q_OBJECT
 
 public:
+
     explicit addRelations(QWidget *parent = 0);
     ~addRelations();
     void fillComboBoxes();
@@ -21,6 +22,8 @@ public:
 private slots:
 
     void on_pushButton_submit_clicked();
+
+    void on_pushButton_cancel_clicked();
 
 private:
 

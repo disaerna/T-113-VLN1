@@ -6,6 +6,7 @@
 #include "persons.h"
 #include "domain.h"
 #include <QWidget>
+
 namespace Ui {
 class addComputer;
 }
