@@ -24,6 +24,7 @@ MainMenu::MainMenu(QWidget *parent) :
     displayComputersRelations();
 
     ui->Mainmenu_tabs->setTabEnabled(0, true);
+    ui->Mainmenu_tabs->setCurrentIndex(0);
     SciRelComp = 0;
     SciRelSci = 0;
     CompRelComp = 0;
@@ -49,6 +50,9 @@ void MainMenu::displayScientists()
     ui->table_Scientists->horizontalHeader()->setVisible(true);
     ui->table_Scientists->verticalHeader()->setVisible(false);
 
+    ui->table_Scientists->setColumnWidth(0,220);
+
+
     //qDebug() << ScientistsDisplay.size();
 
     for(size_t i = 0; i < ScientistsDisplay.size(); i++)
@@ -63,13 +67,14 @@ void MainMenu::displayScientists()
         QString ScId = QString::number(ScientistID);
        // IDScientistManagement(1, ScientistID);
 
-        ui->table_Scientists->setItem(i, 0, new QTableWidgetItem(ScientistName));
+        ui->table_Scientists->setItem(i, 0, new QTableWidgetItem (ScientistName));
         ui->table_Scientists->setItem(i, 1, new QTableWidgetItem(ScientistGender));
         ui->table_Scientists->setItem(i, 2, new QTableWidgetItem(ScientistYoB));
         ui->table_Scientists->setItem(i, 3, new QTableWidgetItem(ScientistYoD));
         ui->table_Scientists->setItem(i, 4,new QTableWidgetItem(ScId));
        // qDebug() << ScId;
         ui->table_Scientists->hideColumn(4);
+
     }
     ui->table_Scientists->setSortingEnabled(true);
 }
@@ -90,6 +95,7 @@ void MainMenu::displayComputers()
     ui->table_Computers->setRowCount(ComputersDisplay.size());
     ui->table_Computers->horizontalHeader()->setVisible(true);
     ui->table_Computers->verticalHeader()->setVisible(false);
+    ui->table_Computers->setColumnWidth(0,220);
 
     //qDebug() << ComputersDisplay.size();
 
@@ -117,6 +123,8 @@ void MainMenu::displayComputers()
         ui->table_Computers->setItem(i, 3, new QTableWidgetItem(ComputerBuilt));
         ui->table_Computers->setItem(i, 4,new QTableWidgetItem(QString::number(ComputerID)));
         ui->table_Computers->hideColumn(4);
+
+
     }
     ui->table_Computers->setSortingEnabled(true);
 }
