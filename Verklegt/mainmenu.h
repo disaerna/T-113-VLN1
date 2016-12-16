@@ -78,6 +78,8 @@ private slots:
 
     void on_pushButton_editCompRelation_clicked();
 
+    void on_Mainmenu_tabs_tabBarClicked(int index);
+
 private:
 
     void displayScientists();

@@ -504,3 +504,12 @@ void MainMenu::on_pushButton_editCompRelation_clicked()
 
     displaySecondtable_RelationComputers(CompRelComp);
 }
+
+void MainMenu::on_Mainmenu_tabs_tabBarClicked(int index)
+{
+    if(index == 2)
+    {
+        displayScientistRelations();
+        displayComputersRelations();
+    }
+}
