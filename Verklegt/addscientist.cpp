@@ -88,17 +88,16 @@ void addScientist::on_okButton_clicked()
     if(valid == true)
     {
         Persons person;
-    person.setPersons(1, addName, addGender, addDOB, addDOD);
-    int returnedId = _domain.addPersons(person);
+        person.setPersons(1, addName, addGender, addDOB, addDOD);
+        int returnedId = _domain.addPersons(person);
 
-    QString prompt = "Do you wish to add another person? ";
+        QString prompt = "Do you wish to add another person? ";
 
-    int askingUser = QMessageBox::question(this, "Add another person", prompt);
-    if (askingUser == QMessageBox::No)
-    {
-        this->done(returnedId);
-    }
-
+        int askingUser = QMessageBox::question(this, "Add another person", prompt);
+        if (askingUser == QMessageBox::No)
+        {
+            this->done(returnedId);
+        }
     }
 }
 
@@ -129,7 +128,6 @@ void addScientist::on_chooseImage_clicked()
     }
 }
 */
-
 
 void addScientist::on_deadButton_clicked()
 {
