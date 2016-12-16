@@ -53,6 +53,8 @@ void MainMenu::displayScientists()
     ui->table_Scientists->verticalHeader()->setVisible(false);
 
     ui->table_Scientists->setColumnWidth(0,220);
+    this->setFixedSize(500,500);
+    ui->table_Scientists->horizontalHeader()->setSectionResizeMode(QHeaderView::Fixed);
 
 
     //qDebug() << ScientistsDisplay.size();
@@ -98,6 +100,9 @@ void MainMenu::displayComputers()
     ui->table_Computers->horizontalHeader()->setVisible(true);
     ui->table_Computers->verticalHeader()->setVisible(false);
     ui->table_Computers->setColumnWidth(0,220);
+    this->setFixedSize(500,500);
+    ui->table_Computers->horizontalHeader()->setSectionResizeMode(QHeaderView::Fixed);
+
 
     //qDebug() << ComputersDisplay.size();
 
