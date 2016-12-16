@@ -128,7 +128,7 @@ void MainMenu::displayComputers()
     }
     ui->table_Computers->setSortingEnabled(true);
 }
-
+//Shows scientist relations with computers.
 void MainMenu::displayScientistRelations()
 {
     string PersonSearch = "";
@@ -159,6 +159,7 @@ void MainMenu::displayScientistRelations()
     ui->RelationScientists->setSortingEnabled(true);
 
 }
+//Shows computer relations with scientists.
 void MainMenu::displayComputersRelations()
 {
     string ComputerSearch = "";
@@ -189,17 +190,17 @@ void MainMenu::displayComputersRelations()
     ui->RelationComputers->setSortingEnabled(true);
 }
 
-
+//Displaying scientists for search
 void MainMenu::on_Input_Search_Person_textChanged()
 {
     displayScientists();
 }
-
+//Displaying computer for search
 void MainMenu::on_Input_Search_Computer_textChanged()
 {
     displayComputers();
 }
-
+//Adding a scientist
 void MainMenu::on_pushButton_AddPerson_clicked()
 {
     addScientist _addScientist;
@@ -209,14 +210,14 @@ void MainMenu::on_pushButton_AddPerson_clicked()
 }
 
 
-
+//User has to select a scientist to edit or remove
 void MainMenu::on_table_Scientists_cellPressed(int row)
 {
     ui->pushButton_RemovePerson->setEnabled(true);
     ui->pushButton_EditPerson->setEnabled(true);
     _row = row;
 }
-
+//Option to edit scientist.
 void MainMenu::on_pushButton_EditPerson_clicked()
 {
     editPerson _editPerson;
@@ -231,7 +232,7 @@ void MainMenu::on_pushButton_EditPerson_clicked()
     displayScientists();
 }
 
-
+//Option to edit computer.
 void MainMenu::on_pushButton_EditComputer_clicked()
 {
     editComputer _editComputer;
@@ -250,7 +251,7 @@ int MainMenu::getRow()
 {
     return _row;
 }
-
+//Option to remove scientist
 void MainMenu::on_pushButton_RemovePerson_clicked()
 {
     int row = _row;
@@ -272,7 +273,7 @@ void MainMenu::on_pushButton_RemovePerson_clicked()
 
     displayScientists();
 }
-
+//Option to add a computer
 void MainMenu::on_pushButton_AddComputer_clicked()
 {
     addComputer _addComputer;
@@ -282,7 +283,7 @@ void MainMenu::on_pushButton_AddComputer_clicked()
 
     displayComputers();
 }
-
+//User has to select a computer to edit or remove
 void MainMenu::on_table_Computers_cellPressed(int row)
 {
     ui->pushButton_RemoveComputer->setEnabled(true);
@@ -290,7 +291,7 @@ void MainMenu::on_table_Computers_cellPressed(int row)
     _row = row;
 
 }
-
+//Option to remove computer selected
 void MainMenu::on_pushButton_RemoveComputer_clicked()
 {
     int row = _row;
@@ -313,17 +314,17 @@ void MainMenu::on_pushButton_RemoveComputer_clicked()
 
     displayComputers();
 }
-
+//Displaying relations of selected scientist
 void MainMenu::on_RelationScienSearch_textChanged(const QString &arg1)
 {
     displayScientistRelations();
 }
-
+//Displaying relations of selected computer
 void MainMenu::on_RelationCompSearch_textChanged(const QString &arg1)
 {
     displayComputersRelations();
 }
-
+//Selcting a computer to display connection to.
 void MainMenu::on_RelationComputers_cellPressed(int row, int column)
 {
     _row = row;
@@ -425,7 +426,7 @@ void MainMenu::displaySecondRelationScientists(int id)
 
     ui->RelationsComputerScientists->setSortingEnabled(true);
 }
-
+//Editing scientist relations
 void MainMenu::on_pushButton_editSciRelation_clicked()
 {
     editRelation _editRelation;
@@ -435,7 +436,7 @@ void MainMenu::on_pushButton_editSciRelation_clicked()
     _editRelation.exec();
 
 }
-
+//Removing scientist relations
 void MainMenu::on_pushButton_removeSciRelation_clicked()
 {
     QString Removal = "Are you sure?";
@@ -444,7 +445,7 @@ void MainMenu::on_pushButton_removeSciRelation_clicked()
         _domain.removeRelation(SciRelSci,SciRelComp);
     }
 }
-
+//Reomving computer relations
 void MainMenu::on_pushButton_removeCompRelation_clicked()
 {
     QString Removal = "Are you sure?";

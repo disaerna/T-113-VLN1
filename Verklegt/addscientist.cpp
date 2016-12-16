@@ -16,7 +16,7 @@ addScientist::~addScientist()
 {
     delete ui;
 }
-
+//Adding a new scientist.
 void addScientist::on_okButton_clicked()
 {
     QMessageBox messageBox;
@@ -101,39 +101,17 @@ void addScientist::on_okButton_clicked()
     }
 }
 
-
+//If user wants to cancel adding a new scientist.
 void addScientist::on_cancelButton_clicked()
 {
     this->done(0);
 }
-
-/*
-void addScientist::on_chooseImage_clicked()
-{
-    QString filename = QFileDialog::getOpenFileName(this, tr("Choose"), "", tr("Images(*.png *.jpg *.bmp *.gif)"));
-
-    if(QString::compare(filename, QString()) != 0)
-    {
-        QImage image;
-        bool valid = image.load(filename);
-
-        if(valid)
-        {
-            ui->image->setPixmap(QPixmap::fromImage(image));
-        }
-        else
-        {
-            //error
-        }
-    }
-}
-*/
-
+//Radio button, if scientist is deceased.
 void addScientist::on_deadButton_clicked()
 {
     ui->yodInput->setDisabled(0);
 }
-
+//Radio Button, if scientist is alive.
 void addScientist::on_aliveButton_clicked()
 {
     ui->yodInput->setDisabled(1);

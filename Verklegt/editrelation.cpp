@@ -17,7 +17,7 @@ void editRelation::setIDs(int sci, int comp)
     _sci = sci;
     _comp = comp;
 }
-
+//Set information for user.
 void editRelation::fillComboBoxes()
 {
     vector<Persons> scientists = _domain.getPersons();
@@ -41,7 +41,7 @@ void editRelation::fillComboBoxes()
     int compIndex = ui->comboBox_computer->findText(findCompID);
     ui->comboBox_computer->setCurrentIndex(compIndex);
 }
-
+//Submiting users edited relation changes.
 void editRelation::on_pushButton_submit_clicked()
 {
         int currentSciIndex =  ui->comboBox_scientist->currentIndex();

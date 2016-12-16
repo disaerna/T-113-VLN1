@@ -25,8 +25,6 @@ private slots:
 
     void on_cancelButton_clicked();
 
-    //void on_chooseImage_clicked();
-
     void on_deadButton_clicked();
 
     void on_aliveButton_clicked();

@@ -14,17 +14,17 @@ editPerson::~editPerson()
 {
     delete ui;
 }
-
+//User input.
 void editPerson::setPath(const int &index)
 {
     _index = index;
 }
-
+//Getting the users input.
 int editPerson::getPath()
 {
     return _index;
 }
-
+//Showing the persons information to the user when editing.
 void editPerson::initializeFields()
 {
     Persons person;
@@ -67,7 +67,7 @@ void editPerson::initializeFields()
     }
 }
 
-
+//Submiting the users edited changes.
 void editPerson::on_submitButton_clicked()
 {
     int index = getPath();
@@ -89,7 +89,7 @@ void editPerson::on_submitButton_clicked()
     string editDOD = "";
     if(ui->aliveButton->isChecked())
     {
-        editDOD = ui->dodEdit->text().toStdString(); // Alive er þýðir að hann er deceased
+        editDOD = ui->dodEdit->text().toStdString(); // Alive means he is deceased
     }
     else if(ui->deadButton->isChecked())
     {
@@ -108,7 +108,7 @@ void editPerson::on_submitButton_clicked()
 
     this->done(0);
 }
-
+//Canceling users edited changes.
 void editPerson::on_cancelButton_clicked()
 {
     this->done(0);

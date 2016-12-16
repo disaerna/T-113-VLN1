@@ -20,7 +20,7 @@ addComputer::~addComputer()
 {
     delete ui;
 }
-
+//Function to confirm adding a computer.
 void addComputer::on_submitButton_clicked()
 {
     QMessageBox messageBox;
@@ -83,14 +83,14 @@ void addComputer::on_submitButton_clicked()
 
 
 }
-
+//Show options of computer types user can choose from.
 void addComputer::on_typeDropDown_activated()
 {
     ui->typeDropDown->activateWindow();
 
 
 }
-
+//Options of computer types user can choose from.
 void addComputer::typeList()
 {
     ui->typeDropDown->activateWindow();
@@ -117,7 +117,7 @@ void addComputer::on_typeDropDown_currentIndexChanged(const QString &arg1)
         ui->newTypeInput->setDisabled(1);
     }
 }
-
+//If user wants to cancel adding a computer.
 void addComputer::on_cancelButton_clicked()
 {
     this->done(0);
