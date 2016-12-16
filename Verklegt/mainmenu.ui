@@ -408,7 +408,7 @@
          <number>0</number>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="tab">
          <attribute name="title">
@@ -451,6 +451,9 @@
             <width>161</width>
             <height>151</height>
            </rect>
+          </property>
+          <property name="toolTipDuration">
+           <number>0</number>
           </property>
           <property name="text">
            <string/>
@@ -510,6 +513,9 @@
             <height>22</height>
            </rect>
           </property>
+          <property name="toolTipDuration">
+           <number>0</number>
+          </property>
           <property name="placeholderText">
            <string>Search</string>
           </property>
@@ -525,6 +531,9 @@
             <width>531</width>
             <height>28</height>
            </rect>
+          </property>
+          <property name="toolTipDuration">
+           <number>0</number>
           </property>
           <property name="text">
            <string>Add new relations</string>
@@ -542,6 +551,9 @@
             <height>28</height>
            </rect>
           </property>
+          <property name="toolTipDuration">
+           <number>0</number>
+          </property>
           <property name="text">
            <string>Edit selected relations</string>
           </property>
@@ -557,6 +569,9 @@
             <width>531</width>
             <height>28</height>
            </rect>
+          </property>
+          <property name="toolTipDuration">
+           <number>0</number>
           </property>
           <property name="text">
            <string>Remove selected relations</string>
@@ -621,6 +636,9 @@
             <height>151</height>
            </rect>
           </property>
+          <property name="toolTipDuration">
+           <number>0</number>
+          </property>
           <property name="text">
            <string/>
           </property>
@@ -672,6 +690,9 @@
             <height>28</height>
            </rect>
           </property>
+          <property name="toolTipDuration">
+           <number>0</number>
+          </property>
           <property name="text">
            <string>Add new relations</string>
           </property>
@@ -687,6 +708,9 @@
             <width>531</width>
             <height>28</height>
            </rect>
+          </property>
+          <property name="toolTipDuration">
+           <number>0</number>
           </property>
           <property name="text">
            <string>Edit selected relations</string>
@@ -716,6 +740,9 @@
             <width>521</width>
             <height>22</height>
            </rect>
+          </property>
+          <property name="toolTipDuration">
+           <number>0</number>
           </property>
           <property name="placeholderText">
            <string>Search</string>
