@@ -23,6 +23,7 @@ MainMenu::MainMenu(QWidget *parent) :
     displayComputers();
     displayScientistRelations();
     displayComputersRelations();
+    QWidget::setFixedSize(611,680);
 
     ui->Mainmenu_tabs->setTabEnabled(0, true);
     ui->Mainmenu_tabs->setCurrentIndex(0);
