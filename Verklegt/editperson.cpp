@@ -1,7 +1,5 @@
 #include "editperson.h"
 #include "ui_editperson.h"
-#include <iostream>
-#include <QMessageBox>
 
 editPerson::editPerson(QWidget *parent) :
     QDialog(parent),
@@ -14,16 +12,19 @@ editPerson::~editPerson()
 {
     delete ui;
 }
+
 //User input.
 void editPerson::setPath(const int &index)
 {
     _index = index;
 }
+
 //Getting the users input.
 int editPerson::getPath()
 {
     return _index;
 }
+
 //Showing the persons information to the user when editing.
 void editPerson::initializeFields()
 {
@@ -72,8 +73,8 @@ void editPerson::on_submitButton_clicked()
     bool valid = true;
     QMessageBox messageBox;
 
-
     string editName = ui->nameEdit->text().toStdString();
+
     if(ui->nameEdit->text().isEmpty() || _domain.validComputerNameCheck(editName))
     {
         messageBox.critical(0,"Error", "Name cannot be empty!");
@@ -88,6 +89,7 @@ void editPerson::on_submitButton_clicked()
     }
 
     string editGender = "";
+
     if(ui->maleButton->isChecked())
     {
         editGender = "Male";
@@ -98,6 +100,7 @@ void editPerson::on_submitButton_clicked()
     }
 
     string editDOB = ui->dobEdit->text().toStdString();
+
     if(_domain.validYearCheck(editDOB) )
     {
         messageBox.critical(0,"Error", "Year of birth must be valid and four integers!");
@@ -134,6 +137,7 @@ void editPerson::on_submitButton_clicked()
     {
         editDOD = "-";
     }
+
     if( valid == true)
     {
         QString qName = QString::fromStdString(editName);
@@ -149,10 +153,9 @@ void editPerson::on_submitButton_clicked()
 
             this->done(0);
         }
-
     }
-
 }
+
 //Canceling users edited changes.
 void editPerson::on_cancelButton_clicked()
 {
@@ -163,7 +166,6 @@ void editPerson::on_aliveButton_clicked()
 {
     ui->dodEdit->setEnabled(1);
 }
-
 
 void editPerson::on_deadButton_clicked()
 {

@@ -1,11 +1,15 @@
 #ifndef ADDCOMPUTER_H
 #define ADDCOMPUTER_H
-
-#include <QDialog>
-#include <string>
 #include "persons.h"
 #include "domain.h"
+#include "addscientist.h"
+#include "ui_addscientist.h"
+#include <QDialog>
 #include <QWidget>
+#include <QMessageBox>
+#include <QButtonGroup>
+#include <QFileDialog>
+#include <string>
 
 namespace Ui
 {

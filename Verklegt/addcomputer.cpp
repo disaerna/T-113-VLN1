@@ -1,12 +1,5 @@
 #include "addcomputer.h"
 #include "ui_addcomputer.h"
-#include "addscientist.h"
-#include "ui_addscientist.h"
-#include <iostream>
-#include <QMessageBox>
-#include <QButtonGroup>
-#include <QFileDialog>
-
 
 addComputer::addComputer(QWidget *parent) :
     QDialog(parent),
@@ -19,6 +12,7 @@ addComputer::~addComputer()
 {
     delete ui;
 }
+
 //Function to confirm adding a computer.
 void addComputer::on_submitButton_clicked()
 {
@@ -42,7 +36,7 @@ void addComputer::on_submitButton_clicked()
     }
     else if(_domain.validYearCheck(addDOB))
     {
-        messageBox.critical(0,"Error", "Year built must be four integers!");
+        messageBox.critical(0,"Error", "Year built must be valid and four integers!");
         messageBox.setFixedSize(500,200);
         valid = false;
     }
@@ -63,12 +57,18 @@ void addComputer::on_submitButton_clicked()
     {
         success = false;
     }
+    if(!ui->yesButton->isChecked() && !ui->noButton->isChecked())
+    {
+        messageBox.critical(0,"Error", "You must select either yes or no if built successful");
+        messageBox.setFixedSize(500,200);
+        valid = false;
+    }
 
     if(valid == true)
     {
         Computers computer;
         computer.setComputers(1, addName, addDOB, type, success);
-       int returnedId = _domain.addComputer(computer);
+        int returnedId = _domain.addComputer(computer);
 
         QString prompt = "Do you wish to add another Computer? ";
 
@@ -77,18 +77,15 @@ void addComputer::on_submitButton_clicked()
         {
             this->done(returnedId);
         }
-
     }
-
-
 }
+
 //Show options of computer types user can choose from.
 void addComputer::on_typeDropDown_activated()
 {
     ui->typeDropDown->activateWindow();
-
-
 }
+
 //Options of computer types user can choose from.
 void addComputer::typeList()
 {
@@ -115,6 +112,7 @@ void addComputer::on_typeDropDown_currentIndexChanged(const QString &arg1)
         ui->newTypeInput->setDisabled(1);
     }
 }
+
 //If user wants to cancel adding a computer.
 void addComputer::on_cancelButton_clicked()
 {

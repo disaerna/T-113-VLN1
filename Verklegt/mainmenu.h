@@ -1,16 +1,20 @@
 #ifndef MAINMENU_H
 #define MAINMENU_H
-
+#include "ui_mainMenu.h"
 #include "persons.h"
 #include "computers.h"
 #include "domain.h"
-
+#include "addscientist.h"
+#include "addcomputer.h"
+#include "editperson.h"
+#include "editcomputer.h"
+#include "editrelation.h"
+#include "addrelations.h"
 #include <QMainWindow>
 #include <QWidget>
 #include <QDialog>
 #include <vector>
-
-#include "ui_mainMenu.h"
+#include <QMessageBox>
 
 namespace Ui
 {

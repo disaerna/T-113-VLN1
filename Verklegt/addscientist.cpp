@@ -1,9 +1,5 @@
 #include "addscientist.h"
 #include "ui_addscientist.h"
-#include <iostream>
-#include <QMessageBox>
-#include <QButtonGroup>
-#include <QFileDialog>
 
 addScientist::addScientist(QWidget *parent) :
     QDialog(parent),
@@ -16,6 +12,7 @@ addScientist::~addScientist()
 {
     delete ui;
 }
+
 //Adding a new scientist.
 void addScientist::on_okButton_clicked()
 {
@@ -23,7 +20,7 @@ void addScientist::on_okButton_clicked()
     bool valid = true;
 
     string addName = ui->nameInput->text().toStdString();
-    if(ui->nameInput->text().isEmpty())
+    if(ui->nameInput->text().isEmpty() || _domain.validComputerNameCheck(addName))
     {
         messageBox.critical(0,"Error", "Name cannot be empty!");
         messageBox.setFixedSize(500,200);
@@ -35,6 +32,7 @@ void addScientist::on_okButton_clicked()
         messageBox.setFixedSize(500,200);
         valid = false;
     }
+
     string addGender = "";
 
     if(ui->maleButton->isChecked())
@@ -47,6 +45,7 @@ void addScientist::on_okButton_clicked()
     }
 
     string addDOB = ui->yobInput->text().toStdString();
+
     if(ui->yobInput->text().isEmpty())
     {
         messageBox.critical(0,"Error", "Birth year cannot be empty!");
@@ -55,13 +54,12 @@ void addScientist::on_okButton_clicked()
     }
     else if(_domain.validYearCheck(addDOB))
     {
-        messageBox.critical(0,"Error", "Birth year must be four integers!");
+        messageBox.critical(0,"Error", "Birth year must be valid and four integers!");
         messageBox.setFixedSize(500,200);
         valid = false;
     }
 
     string addDOD = "";
-
 
     if(ui->aliveButton->isChecked())
     {
@@ -81,10 +79,8 @@ void addScientist::on_okButton_clicked()
             messageBox.critical(0,"Error","Death year must be valid and four integers!");
             messageBox.setFixedSize(500,200);
             valid = false;
-
         }
     }
-
 
     if(valid == true)
     {
@@ -107,11 +103,13 @@ void addScientist::on_cancelButton_clicked()
 {
     this->done(0);
 }
+
 //Radio button, if scientist is deceased.
 void addScientist::on_deadButton_clicked()
 {
     ui->yodInput->setDisabled(0);
 }
+
 //Radio Button, if scientist is alive.
 void addScientist::on_aliveButton_clicked()
 {

@@ -1,12 +1,13 @@
 #ifndef ADDSCIENTIST_H
 #define ADDSCIENTIST_H
-
-#include <QDialog>
-#include <string>
 #include "persons.h"
 #include "domain.h"
+#include <string>
+#include <QDialog>
 #include <QWidget>
-
+#include <QMessageBox>
+#include <QButtonGroup>
+#include <QFileDialog>
 
 namespace Ui
 {

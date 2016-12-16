@@ -12,6 +12,7 @@ addRelations::~addRelations()
 {
     delete ui;
 }
+
 void addRelations::setIDs(int sci, int comp)
 {
     _sci = sci;
@@ -34,49 +35,51 @@ void addRelations::fillComboBoxes()
         QString Qcomp = QString::fromStdString(computers[i].getCompName());
         ui->comboBox_computer->addItem(Qcomp);
     }
-    /* // Not needed?
+
     QString findSciID = QString::fromStdString(_domain.getSinglePerson(_sci).getName());
     int sciIndex = ui->comboBox_scientist->findText(findSciID);
     ui->comboBox_scientist->setCurrentIndex(sciIndex);
+
     QString findCompID = QString::fromStdString(_domain.getSingleComputer(_comp).getCompName());
     int compIndex = ui->comboBox_computer->findText(findCompID);
     ui->comboBox_computer->setCurrentIndex(compIndex);
-    */
+
 }
 
 void addRelations::on_pushButton_submit_clicked()
 {
-        int currentSciIndex =  ui->comboBox_scientist->currentIndex();
-        int currentCompIndex = ui->comboBox_computer->currentIndex();
+    int currentSciIndex =  ui->comboBox_scientist->currentIndex();
+    int currentCompIndex = ui->comboBox_computer->currentIndex();
 
-        Persons Scientist;
-        vector<Persons> allScientists = _domain.getPersons();
-        QString personText = ui->comboBox_scientist->itemText(currentSciIndex);
-        int newSci = 0;
-        for(unsigned int i =0;i<allScientists.size();i++)
+    Persons Scientist;
+    vector<Persons> allScientists = _domain.getPersons();
+    QString personText = ui->comboBox_scientist->itemText(currentSciIndex);
+    int newSci = 0;
+
+    for(unsigned int i =0;i<allScientists.size();i++)
+    {
+        if(personText.toStdString() == allScientists[i].getName())
         {
-
-           if(personText.toStdString() == allScientists[i].getName())
-           {
-               newSci = allScientists[i].getID();
-           }
+            newSci = allScientists[i].getID();
         }
+    }
 
-        Computers comp;
-        vector<Computers> allComputers = _domain.getComputers();
-        QString computersText = ui->comboBox_computer->itemText(currentCompIndex);
-        int newComp = 0;
-        for(unsigned int i =0;i<allComputers.size();i++)
+    Computers comp;
+    vector<Computers> allComputers = _domain.getComputers();
+    QString computersText = ui->comboBox_computer->itemText(currentCompIndex);
+    int newComp = 0;
+
+    for(unsigned int i =0;i<allComputers.size();i++)
+    {
+        if(computersText.toStdString() == allComputers[i].getCompName())
         {
-
-           if(computersText.toStdString() == allComputers[i].getCompName())
-           {
-               newComp = allComputers[i].getCompID();
-           }
+            newComp = allComputers[i].getCompID();
         }
+    }
 
-        _domain.connectComputersAndScientists(newSci,newComp);
-        this->done(0);
+    _domain.connectComputersAndScientists(newSci,newComp);
+
+    this->done(0);
 }
 
 void addRelations::on_pushButton_cancel_clicked()

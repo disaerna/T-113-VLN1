@@ -26,10 +26,12 @@ string Persons::getYearOfDeath() const
 {
     return _death;
 }
+
 int Persons::getID() const
 {
     return _id;
 }
+
 void Persons::setPersons(int id, string name, string gender, string birth, string death)
 {
     _name = name;

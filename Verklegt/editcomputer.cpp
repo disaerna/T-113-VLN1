@@ -36,11 +36,9 @@ void editComputer::initializeFields()
     string getType = Computer.getCompType();
     bool getBuilt = Computer.getCompBuilt();
 
-
     QString qName = QString::fromStdString(getName);
     QString qYearBuilt = QString::fromStdString(getYearBuilt);
     QString qType = QString::fromStdString(getType);
-
 
     ui->nameEdit->setText(qName);
     ui->buildEdit->setText(qYearBuilt);
@@ -63,9 +61,10 @@ void editComputer::initializeFields()
 
 void editComputer::typeList()
 {
-    //ui->typeSelection->activateWindow();
+    ui->typeSelection->activateWindow();
     vector<string> types = _domain.getComputersTypes();
     ui->typeSelection->clear();
+
     for(unsigned int i=0; i<types.size(); i++)
     {
         QString Qtype = QString::fromStdString(types[i]);
@@ -82,6 +81,7 @@ void editComputer::on_submitButton_clicked()
     bool valid = true;
 
     string editName = ui->nameEdit->text().toStdString();
+
     if(ui->nameEdit->text().isEmpty() || _domain.validComputerNameCheck(editName))
     {
         messageBox.critical(0,"Error", "Name cannot be empty!");
@@ -90,6 +90,7 @@ void editComputer::on_submitButton_clicked()
     }
 
     string editYearBuilt = ui->buildEdit->text().toStdString();
+
     if(ui->buildEdit->text().isEmpty())
     {
         messageBox.critical(0,"Error", "Year built cannot be empty!");
@@ -102,13 +103,16 @@ void editComputer::on_submitButton_clicked()
         messageBox.setFixedSize(500,200);
         valid = false;
     }
+
     string editType = ui->typeSelection->currentText().toStdString();
+
     if(ui->typeSelection->currentText().toStdString() == "Other")
     {
         editType = ui->newTypeInput->text().toStdString();
     }
 
     bool editBuilt;
+
     if(ui->yesButton->isChecked())
     {
         editBuilt = true;
@@ -117,6 +121,7 @@ void editComputer::on_submitButton_clicked()
     {
         editBuilt = false;
     }
+
     if( valid == true)
     {
         QString qName = QString::fromStdString(editName);
@@ -132,7 +137,6 @@ void editComputer::on_submitButton_clicked()
             this->done(0);
         }
     }
-
 }
 
 void editComputer::on_cancelButton_clicked()
@@ -150,5 +154,4 @@ void editComputer::on_typeSelection_currentIndexChanged(const QString &arg1)
     {
         ui->newTypeInput->setDisabled(1);
     }
-
 }

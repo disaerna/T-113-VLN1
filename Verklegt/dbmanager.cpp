@@ -172,30 +172,6 @@ vector<int> DbManager::getScientistToComputer(int ID)
     }
     return computerId;
 }
-
-vector<int> DbManager::getIDs(string table)
-{
-    vector<int> IDs;
-
-    QSqlQuery query(db);
-
-    QString qTable = QString::fromStdString(table);
-
-    query.prepare("SELECT ID FROM " + qTable + "");
-
-    int i;
-
-    if(query.exec())
-    {
-        while(query.next())
-        {
-            i = query.value(0).toInt();
-            IDs.push_back(i);
-        }
-    }
-    return IDs;
-}
-
 vector<Persons> DbManager::readPersons(QSqlQuery query)
 {
     Persons _persons;
@@ -251,6 +227,7 @@ vector<Persons> DbManager::getSinglePerson(int ID)
 
     return person;
 }
+
 vector<Computers> DbManager::getSingleComputer(int ID)
 {
     QSqlQuery query(db);
@@ -325,8 +302,8 @@ vector<Computers> DbManager::printComputersResults(string searchTerm, bool trueO
     else if(type == 2)
     {
         query.exec("SELECT * FROM Computers WHERE name LIKE '%" + qSearchTerm + "%' "
-                   "OR YearBuilt LIKE '%" + qSearchTerm + "%' "
-                   "OR Type LIKE '%" + qSearchTerm + "%' ");
+                                                                                "OR YearBuilt LIKE '%" + qSearchTerm + "%' "
+                                                                                                                       "OR Type LIKE '%" + qSearchTerm + "%' ");
     }
 
     return readComputers(query);
@@ -339,8 +316,6 @@ bool DbManager::updateScientist(int ID, string name, string gender, string yob, 
     QString qGender = QString::fromStdString(gender);
     QString qYob = QString::fromStdString(yob);
     QString qYod = QString::fromStdString(yod);
-
-
 
     query.prepare("UPDATE Scientists SET name = '" + qName + "', gender = '" + qGender + "', YearOfBirth = '" + qYob + "', YearOfDeath = '" + qYod + "' WHERE id = :ID");
     query.bindValue(":ID", ID);
@@ -399,5 +374,4 @@ void DbManager::removeRelation(int sciId, int compId)
     query.bindValue(":SciID", sciId);
     query.bindValue(":CompID",compId);
     query.exec();
-
 }

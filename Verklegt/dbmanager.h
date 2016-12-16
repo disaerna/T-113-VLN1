@@ -16,7 +16,9 @@ using namespace std;
 
 class DbManager
 {
+
 public:
+
     DbManager();
     QSqlError lastError();
 
@@ -28,7 +30,7 @@ public:
     vector<Persons> getSinglePerson(int ID);
     vector<Persons> printPersonsResults(string searchTerm, int gender);
     vector<int> getScientistToComputer(int ID);
-
+    bool updateScientist(int ID, string name, string gender, string yob, string yod);
 
     //Computer Functions
     int addComputer(Computers computer);
@@ -40,21 +42,16 @@ public:
     vector<string> readComputersAndPersons(int input);
     vector<string> readComputersTypes();
     vector<int> getComputerToScientist(int ID);
+    bool updateComputer(int ID,string name, string yearbuilt, string type, bool built);
+
+    //Relation Functions
     void updateRelations(int oldScientist,int oldComputer,int newScientist,int newComputer);
     void removeRelation(int sciId, int compId);
-
     void connectComputersAndScientists(int scientistID, int computerID);
     bool removeConnections(string column, int removeID);
 
-
-    vector<int> getIDs(string table);
-
-    bool updateScientist(int ID, string name, string gender, string yob, string yod);
-    bool updateComputer(int ID,string name, string yearbuilt, string type, bool built);
-
-
-
 private:
+
     QSqlDatabase db;
     QSqlQuery query;
 

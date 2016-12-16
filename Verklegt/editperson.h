@@ -1,6 +1,6 @@
 #ifndef EDITPERSON_H
 #define EDITPERSON_H
-
+#include "QMessageBox"
 #include <QDialog>
 #include <domain.h>
 

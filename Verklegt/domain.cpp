@@ -1,18 +1,15 @@
 #include "domain.h"
 
-// Structs used for sorting
-
 using namespace std;
 
 Domain::Domain()
 {
+
 }
 
 int Domain::addPersons(Persons person)
-{
-
+{ 
     return _DbManager.addPerson(person);
-
 }
 int Domain::addComputer(Computers computer)
 {
@@ -23,7 +20,6 @@ void Domain::connectComputersAndScientists(int scientistID, int computerID)
 {
     return _DbManager.connectComputersAndScientists(scientistID, computerID);
 }
-
 
 // Gets all persons from file, deletes person that matches input from user then rewrites.
 bool Domain::deletePersonFromFile(int ID)
@@ -36,6 +32,7 @@ bool Domain::deleteComputerFromDatabase(int ID)
 {
     return _DbManager.removeComputer(ID);
 }
+
 bool Domain::deleteConnections(string column, int ID)
 {
     return _DbManager.removeConnections(column, ID);
@@ -79,6 +76,7 @@ vector<Computers> Domain::getComputers()
 {
     return _DbManager.printAllComputers();
 }
+
 vector<string> Domain::getComputersTypes()
 {
     return _DbManager.readComputersTypes();
@@ -118,7 +116,6 @@ vector<Computers> Domain::getComputersSearch(string searchTerm)
     {
         type = 2;
     }
-
 
     return _DbManager.printComputersResults(searchTerm, trueOrFalse, type);
 }
@@ -163,42 +160,10 @@ bool Domain::validNameCheck(string name)
     return (name.find_first_not_of("qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM -.") != std::string::npos);
 }
 
+// Checks if input is only space
 bool Domain::validComputerNameCheck(string name)
 {
     return (name.find_first_not_of(" ") == std::string::npos);
-}
-
-
-
-// Checks if input is M/m or F/f.
-/*bool Domain::validGenderCheck(string gender)
-{
-    if(gender == "M" || gender == "m")
-    {
-        return true;
-    }
-    if(gender == "F" || gender == "f")
-    {
-        return  true;
-    }
-
-    return false;
-}
-*/
-// Sets M/m to Male and F/f to Female.
-string Domain::setGender(string gender)
-{
-    string fixedGender = " ";
-
-    if(gender == "M" || gender == "m")
-    {
-        fixedGender = "Male  ";
-    }
-    if(gender == "F" || gender == "f")
-    {
-        fixedGender = "Female";
-    }
-    return fixedGender;
 }
 
 // Checks if input is all digits.
@@ -207,58 +172,6 @@ bool Domain::validYearCheck(string year)
     return (year.find_first_not_of("0123456789")!= std::string::npos || year.length() != 4) || year > currentYear();
 }
 
-// Chekcs input for is input a digit, is it Y or N.
-/*int Domain::yesOrNoCheck(string answer)
-{
-    for(unsigned int i=0; i<answer.length(); i++)
-    {
-        if(isdigit(answer[i]) == false)
-        {
-            if(answer == "Y" || answer == "y")
-            {
-                return 1;
-            }
-            if(answer == "N" || answer == "n")
-            {
-                return 0;
-            }
-        }
-    }
-    return 2;
-}
-*/
-/*bool Domain::validID(int function, int inputID)
-{
-    string table;
-    bool legalID = false;
-    if(function == 1)
-    {
-        table = "Scientists";
-    }
-    if(function == 2)
-    {
-        table = "Computers";
-    }
-
-    vector<int> IDs = _DbManager.getIDs(table);
-
-    if(!legalID)
-    {
-
-        for(unsigned int i=0; i<IDs.size(); i++)
-        {
-            if( IDs[i] == inputID)
-            {
-                legalID = true;
-            }
-
-        }
-    }
-
-    return legalID;
-
-}
-*/
 // Checks if input is digits, if 4 digits, if death year is lower than birth year and if current year is lower than death year.
 bool Domain::validDeathYearCheck(string birth, string death)
 {
@@ -284,97 +197,7 @@ void Domain::removeRelation(int sciId, int compId)
     return _DbManager.removeRelation(sciId,compId);
 }
 
-/*bool Domain::validPersonUpdateChoice(string x)
-{
-    if(x == "n" || x == "N" || x == "g" || x == "G" || x == "b" || x == "B" || x == "d" || x == "D")
-    {
-        return true;
-    }
-    return false;
-}
-*/
-/*string Domain::changePersonUpdateChoice(string x)
-{
-    string y = "";
-    if(x == "n" || x == "N")
-    {
-        y = "Name";
-    }
-    else if(x == "g" || x == "G")
-    {
-        y = "Gender";
-    }
-    else if(x == "b" || x == "B")
-    {
-        y = "YearOfBirth";
-    }
-    else if(x == "d" || x == "D")
-    {
-        y = "YearOfDeath";
-    }
-    return y;
-}
-*/
-/*bool Domain::validUpdateGender(string x)
-{
-    if(x == "Female" || x == "Male")
-    {
-        return true;
-    }
-    return false;
-}
-*/
 bool Domain::updateComputer(int ID,string name, string yearbuilt, string type, bool built)
 {
     return _DbManager.updateComputer(ID, name, yearbuilt, type, built);
 }
-
-/*bool Domain::validComputerUpdateChoice(string x)
-{
-    if(x == "n" || x == "N" || x == "y" || x == "Y" || x == "t" || x == "T" || x == "b" || x == "B")
-    {
-        return true;
-    }
-    return false;
-}
-*/
-/*string Domain::changeComputerUpdateChoice(string x)
-{
-    string y = "";
-    if(x == "n" || x == "N")
-    {
-        y = "Name";
-    }
-    else if(x == "y" || x == "Y")
-    {
-        y = "YearBuilt";
-    }
-    else if(x == "t" || x == "T")
-    {
-        y = "Type";
-    }
-    else if(x == "b" || x == "B")
-    {
-        y = "Built";
-    }
-    return y;
-}
-*/
-bool Domain::emptyStringCheck(string x)
-{
-    if(x != " ")
-    {
-        return true;
-    }
-    return false;
-}
-
-/*bool Domain::typeCheck(string x)
-{
-    if(x == "Micro" || x == "Mechatronic" || x == "Electronic" || x == "Analog")
-    {
-        return true;
-    }
-    return false;
-}
-*/
