@@ -2,7 +2,9 @@
 #define PERSONS_H
 
 #include <string>
+#include <iostream>
 #include <vector>
+#include <fstream>
 #include <iterator>
 
 using namespace std;
@@ -18,8 +20,7 @@ public:
     string getGender() const;
     string getYearOfBirth() const;
     string getYearOfDeath() const;
-    int getID() const;
-    void setPersons(int id, string name, string gender, string birth, string death);
+    void setPersons(string name, string gender, string birth, string death);
 
 private:
 
@@ -27,7 +28,7 @@ private:
     string _gender;
     string _birth; // year of birth
     string _death; // year of death
-    int _id;
+
 };
 
 #endif // PERSONS_H
