@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>272</width>
-    <height>451</height>
+    <width>360</width>
+    <height>468</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -22,8 +22,8 @@
   <property name="toolTipDuration">
    <number>0</number>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
-   <item alignment="Qt::AlignHCenter">
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
     <widget class="QLabel" name="label_6">
      <property name="font">
       <font>
@@ -40,7 +40,7 @@
      </property>
     </widget>
    </item>
-   <item>
+   <item row="1" column="0">
     <widget class="QLabel" name="nameText">
      <property name="toolTipDuration">
       <number>0</number>
@@ -50,14 +50,14 @@
      </property>
     </widget>
    </item>
-   <item>
+   <item row="2" column="0">
     <widget class="QLineEdit" name="nameInput">
      <property name="toolTipDuration">
       <number>0</number>
      </property>
     </widget>
    </item>
-   <item>
+   <item row="3" column="0">
     <widget class="QLabel" name="genderText">
      <property name="toolTipDuration">
       <number>0</number>
@@ -67,34 +67,43 @@
      </property>
     </widget>
    </item>
-   <item>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QRadioButton" name="maleButton">
-       <property name="toolTipDuration">
-        <number>0</number>
-       </property>
-       <property name="text">
-        <string>Male</string>
-       </property>
-       <property name="checked">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QRadioButton" name="femaleButton">
-       <property name="toolTipDuration">
-        <number>0</number>
-       </property>
-       <property name="text">
-        <string>Female</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+   <item row="4" column="0">
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string/>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QRadioButton" name="maleButton">
+          <property name="toolTipDuration">
+           <number>0</number>
+          </property>
+          <property name="text">
+           <string>Male</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="femaleButton">
+          <property name="toolTipDuration">
+           <number>0</number>
+          </property>
+          <property name="text">
+           <string>Female</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
    </item>
-   <item>
+   <item row="5" column="0">
     <widget class="QLabel" name="yobText">
      <property name="toolTipDuration">
       <number>0</number>
@@ -104,14 +113,14 @@
      </property>
     </widget>
    </item>
-   <item>
+   <item row="6" column="0">
     <widget class="QLineEdit" name="yobInput">
      <property name="toolTipDuration">
       <number>0</number>
      </property>
     </widget>
    </item>
-   <item>
+   <item row="7" column="0">
     <widget class="QLabel" name="yodText">
      <property name="toolTipDuration">
       <number>0</number>
@@ -121,37 +130,46 @@
      </property>
     </widget>
    </item>
-   <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <item>
-      <widget class="QRadioButton" name="deadButton">
-       <property name="toolTipDuration">
-        <number>0</number>
-       </property>
-       <property name="text">
-        <string>Yes</string>
-       </property>
-       <property name="checked">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QRadioButton" name="aliveButton">
-       <property name="toolTipDuration">
-        <number>0</number>
-       </property>
-       <property name="text">
-        <string>No</string>
-       </property>
-       <property name="checked">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-    </layout>
+   <item row="8" column="0">
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="title">
+      <string/>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QRadioButton" name="deadButton">
+          <property name="toolTipDuration">
+           <number>0</number>
+          </property>
+          <property name="text">
+           <string>Yes</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="aliveButton">
+          <property name="toolTipDuration">
+           <number>0</number>
+          </property>
+          <property name="text">
+           <string>No</string>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
    </item>
-   <item>
+   <item row="9" column="0">
     <widget class="QLabel" name="yodText_2">
      <property name="toolTipDuration">
       <number>0</number>
@@ -161,14 +179,14 @@
      </property>
     </widget>
    </item>
-   <item>
+   <item row="10" column="0">
     <widget class="QLineEdit" name="yodInput">
      <property name="toolTipDuration">
       <number>0</number>
      </property>
     </widget>
    </item>
-   <item>
+   <item row="11" column="0">
     <spacer name="horizontalSpacer">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -181,7 +199,7 @@
      </property>
     </spacer>
    </item>
-   <item>
+   <item row="12" column="0">
     <widget class="QPushButton" name="okButton">
      <property name="toolTipDuration">
       <number>0</number>
@@ -191,7 +209,7 @@
      </property>
     </widget>
    </item>
-   <item>
+   <item row="13" column="0">
     <widget class="QPushButton" name="cancelButton">
      <property name="toolTipDuration">
       <number>0</number>
@@ -205,11 +223,7 @@
  </widget>
  <tabstops>
   <tabstop>nameInput</tabstop>
-  <tabstop>maleButton</tabstop>
-  <tabstop>femaleButton</tabstop>
   <tabstop>yobInput</tabstop>
-  <tabstop>deadButton</tabstop>
-  <tabstop>aliveButton</tabstop>
   <tabstop>yodInput</tabstop>
   <tabstop>cancelButton</tabstop>
  </tabstops>
