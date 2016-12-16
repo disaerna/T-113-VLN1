@@ -25,7 +25,6 @@ public:
     int addPerson(Persons person);
     vector<Persons> printAllPersons();
     vector<Persons> readPersons(QSqlQuery query);
-    vector<Persons> sortScientistsByValue(string value, string order);
     bool removeScientist(int ID);
     vector<Persons> getSinglePerson(int ID);
     vector<Persons> printPersonsResults(string searchTerm, int gender);
@@ -36,7 +35,6 @@ public:
     int addComputer(Computers computer);
     vector<Computers> printAllComputers();
     vector<Computers> readComputers(QSqlQuery query);
-    vector<Computers> sortComputersByValue(string value, string order);
     bool removeComputer(int ID);
     vector<Computers> getSingleComputer(int ID);
     vector<Computers> printComputersResults(string searchTerm, bool trueOrFalse, int type);
