@@ -25,4 +25,8 @@ Sem auka virkni er einnig hægt að eyða út vísindamönnum, tölvum og tengin
 í síðustu viku fannst okkur skipulagið á hvernig við unnum verkefnið vanta og reyndum að bæta það í þessari viku. Það gekk ágætlega en vegna (aftur) tæknilegra erfiðleika neyddumst við til að skiptast á tölvum og vinna saman. Einnig unnu sumir í hópnum sem  "leitarvélar" og sendu á hina upplýsingarnar sem þau fundu til að geta leyst vandamál í kóðanum, vegna þessa voru sumir sem push-uðu lítið í GitHub.
 Það þarf að bæta við QT bin möppunni í PATH til að .exe skrá keyri. Lentum í vandræðum með að keyra skránna og þrátt fyrir að bæta möppunni við keyrir hún þegar henni hentar.
 
+Vika 3
+Verkefnið okkar á seinustu vikunni í þriggja vika áfanga okkar var að láta forritið yfir í Qt-Gui. Við máttum ráða útlitinu en fengum ákveðin skilyrði um hvað ætti að vera framkvæmalegt eins og geta skráð, breytt, birt lista af upplýsingum um þekkta tölvunarfræðinga og tölvur, geta gert tengingu milli þeirra og gera allt notendavænt. 
+Skipulagið var í þessari viku var mun betra, hver fékk sitt verkefni og vann í því heima. Okkur finnst best að hafa "leitarvélar" og error checkara sem gerir það að verkum að pushinn í Git-hub eru mjög ójöfn. Þessi aðferð er sú sem hentaði okkur best og tæknilegu erfiðleikana sem við lentum svo oft í með þetta verkefni. 
+
 Slóð á kóða: https://github.com/disaerna/T-113-VLN1/
