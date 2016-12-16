@@ -59,7 +59,7 @@ void MainMenu::displayScientists()
 
     //qDebug() << ScientistsDisplay.size();
 
-    for(size_t i = 0; i < ScientistsDisplay.size(); i++)
+    for(unsigned int i = 0; i < ScientistsDisplay.size(); i++)
     {
         Persons person_ = ScientistsDisplay.at(i);
 
@@ -106,7 +106,7 @@ void MainMenu::displayComputers()
 
     //qDebug() << ComputersDisplay.size();
 
-    for(size_t i = 0; i < ComputersDisplay.size(); i++)
+    for(unsigned int i = 0; i < ComputersDisplay.size(); i++)
     {
         Computers computer_ = ComputersDisplay.at(i);
 
@@ -150,7 +150,7 @@ void MainMenu::displayScientistRelations()
     ui->RelationScientists->horizontalHeader()->setVisible(true);
     ui->RelationScientists->verticalHeader()->setVisible(false);
 
-    for(size_t i = 0; i < ScientistsRelationDisplay.size(); i++)
+    for(unsigned int i = 0; i < ScientistsRelationDisplay.size(); i++)
     {
         Persons person_ = ScientistsRelationDisplay.at(i);
 
@@ -184,7 +184,7 @@ void MainMenu::displayComputersRelations()
 
     qDebug() << ComputersRelationDisplay.size();
 
-    for(size_t i = 0; i < ComputersRelationDisplay.size(); i++)
+    for(unsigned int i = 0; i < ComputersRelationDisplay.size(); i++)
     {
         Computers computer_ = ComputersRelationDisplay.at(i);
 
@@ -397,7 +397,7 @@ void MainMenu::displaySecondRelationComputers(int id)
     ui->RelationsScientistComputers->horizontalHeader()->setVisible(true);
     ui->RelationsScientistComputers->verticalHeader()->setVisible(false);
 
-    for(size_t i = 0; i < comps.size(); i++)
+    for(unsigned int i = 0; i < comps.size(); i++)
     {
         Computers computer_ = comps.at(i);
         QString ComputerName = QString::fromStdString(computer_.getCompName());
@@ -421,7 +421,7 @@ void MainMenu::displaySecondRelationScientists(int id)
     ui->RelationsComputerScientists->horizontalHeader()->setVisible(true);
     ui->RelationsComputerScientists->verticalHeader()->setVisible(false);
 
-    for(size_t i = 0; i < persons.size(); i++)
+    for(unsigned int i = 0; i < persons.size(); i++)
     {
         Persons person = persons.at(i);
         QString name = QString::fromStdString(person.getName());

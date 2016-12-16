@@ -77,7 +77,7 @@ void addScientist::on_okButton_clicked()
             valid = false;
         }
         else if (_domain.validDeathYearCheck((addDOB), (addDOD))) {
-            messageBox.critical(0,"Error","Death year must be four integers!");
+            messageBox.critical(0,"Error","Death year must be valid and four integers!");
             messageBox.setFixedSize(500,200);
             valid = false;
 

@@ -23,13 +23,13 @@ void editRelation::fillComboBoxes()
     vector<Persons> scientists = _domain.getPersons();
     vector<Computers> computers = _domain.getComputers();
 
-    for(size_t i=0; i<scientists.size(); i++)
+    for(unsigned int i=0; i<scientists.size(); i++)
     {
         QString Qsci = QString::fromStdString(scientists[i].getName());
         ui->comboBox_scientist->addItem(Qsci);
     }
 
-    for(size_t i=0; i<computers.size(); i++)
+    for(unsigned int i=0; i<computers.size(); i++)
     {
         QString Qcomp = QString::fromStdString(computers[i].getCompName());
         ui->comboBox_computer->addItem(Qcomp);
@@ -51,7 +51,7 @@ void editRelation::on_pushButton_submit_clicked()
         vector<Persons> allScientists = _domain.getPersons();
         QString personText = ui->comboBox_scientist->itemText(currentSciIndex);
         int newSci = 0;
-        for(size_t i =0;i<allScientists.size();i++){
+        for(unsigned int i =0;i<allScientists.size();i++){
 
            if(personText.toStdString() == allScientists[i].getName()){
                newSci = allScientists[i].getID();
@@ -62,7 +62,7 @@ void editRelation::on_pushButton_submit_clicked()
         vector<Computers> allComputers = _domain.getComputers();
         QString computersText = ui->comboBox_computer->itemText(currentCompIndex);
         int newComp = 0;
-        for(size_t i =0;i<allComputers.size();i++){
+        for(unsigned int i =0;i<allComputers.size();i++){
 
            if(computersText.toStdString() == allComputers[i].getCompName()){
                newComp = allComputers[i].getCompID();

@@ -77,9 +77,15 @@ void editPerson::on_submitButton_clicked()
 
 
     string editName = ui->nameEdit->text().toStdString();
-    if(ui->nameEdit->text().isEmpty() || _domain.validNameCheck(editName) || _domain.validComputerNameCheck(editName))
+    if(ui->nameEdit->text().isEmpty() || _domain.validComputerNameCheck(editName))
     {
         messageBox.critical(0,"Error", "Name cannot be empty!");
+        messageBox.setFixedSize(500,200);
+        valid = false;
+    }
+    else if (_domain.validNameCheck(editName))
+    {
+        messageBox.critical(0,"Error", "Name must be alphabetical characters!");
         messageBox.setFixedSize(500,200);
         valid = false;
     }

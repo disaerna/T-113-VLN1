@@ -127,7 +127,7 @@ vector<Computers> Domain::getScientistToComputer(int ID)
 {
     vector<int> computerIDs = _DbManager.getScientistToComputer(ID);
     vector<Computers> computer;
-    for(size_t i=0; i<computerIDs.size(); i++)
+    for(unsigned int i=0; i<computerIDs.size(); i++)
     {
         computer.push_back(_DbManager.getSingleComputer(computerIDs[i])[0]);
     }
@@ -139,7 +139,7 @@ vector<Persons> Domain::getComputerToScientist(int ID)
 {
     vector<int> scientistIDs = _DbManager.getComputerToScientist(ID);
     vector<Persons> person;
-    for(size_t i=0; i<scientistIDs.size(); i++)
+    for(unsigned int i=0; i<scientistIDs.size(); i++)
     {
         person.push_back(_DbManager.getSinglePerson(scientistIDs[i])[0]);
     }
@@ -210,7 +210,7 @@ bool Domain::validYearCheck(string year)
 // Chekcs input for is input a digit, is it Y or N.
 int Domain::yesOrNoCheck(string answer)
 {
-    for(size_t i=0; i<answer.length(); i++)
+    for(unsigned int i=0; i<answer.length(); i++)
     {
         if(isdigit(answer[i]) == false)
         {
@@ -245,7 +245,7 @@ bool Domain::validID(int function, int inputID)
     if(!legalID)
     {
 
-        for(size_t i=0; i<IDs.size(); i++)
+        for(unsigned int i=0; i<IDs.size(); i++)
         {
             if( IDs[i] == inputID)
             {
