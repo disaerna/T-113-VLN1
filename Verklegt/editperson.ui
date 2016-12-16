@@ -210,10 +210,14 @@
   </layout>
  </widget>
  <tabstops>
+  <tabstop>nameEdit</tabstop>
   <tabstop>maleButton</tabstop>
   <tabstop>femaleButton</tabstop>
+  <tabstop>dobEdit</tabstop>
   <tabstop>aliveButton</tabstop>
   <tabstop>deadButton</tabstop>
+  <tabstop>dodEdit</tabstop>
+  <tabstop>submitButton</tabstop>
   <tabstop>cancelButton</tabstop>
  </tabstops>
  <resources/>

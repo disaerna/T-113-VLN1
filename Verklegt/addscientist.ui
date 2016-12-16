@@ -217,8 +217,13 @@
  </widget>
  <tabstops>
   <tabstop>nameInput</tabstop>
+  <tabstop>maleButton</tabstop>
+  <tabstop>femaleButton</tabstop>
   <tabstop>yobInput</tabstop>
+  <tabstop>deadButton</tabstop>
+  <tabstop>aliveButton</tabstop>
   <tabstop>yodInput</tabstop>
+  <tabstop>okButton</tabstop>
   <tabstop>cancelButton</tabstop>
  </tabstops>
  <resources/>

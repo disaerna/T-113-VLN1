@@ -181,6 +181,13 @@
   </layout>
  </widget>
  <tabstops>
+  <tabstop>nameEdit</tabstop>
+  <tabstop>buildEdit</tabstop>
+  <tabstop>typeSelection</tabstop>
+  <tabstop>newTypeInput</tabstop>
+  <tabstop>yesButton</tabstop>
+  <tabstop>noButton</tabstop>
+  <tabstop>submitButton</tabstop>
   <tabstop>cancelButton</tabstop>
  </tabstops>
  <resources/>

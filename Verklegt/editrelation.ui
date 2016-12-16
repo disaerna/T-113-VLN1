@@ -77,6 +77,12 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>comboBox_scientist</tabstop>
+  <tabstop>comboBox_computer</tabstop>
+  <tabstop>pushButton_submit</tabstop>
+  <tabstop>pushButton_cancel</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

@@ -185,6 +185,7 @@
   <tabstop>yesButton</tabstop>
   <tabstop>noButton</tabstop>
   <tabstop>submitButton</tabstop>
+  <tabstop>cancelButton</tabstop>
  </tabstops>
  <resources/>
  <connections/>
