@@ -29,6 +29,18 @@
    <number>0</number>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="minimumSize">
+    <size>
+     <width>611</width>
+     <height>680</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>611</width>
+     <height>680</height>
+    </size>
+   </property>
    <layout class="QVBoxLayout" name="verticalLayout_3">
     <item>
      <widget class="QTabWidget" name="Mainmenu_tabs">
