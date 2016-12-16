@@ -139,7 +139,7 @@ void MainMenu::displayComputers()
 void MainMenu::displayScientistRelations()
 {
     string PersonSearch = "";
-    PersonSearch = ui->RelationScienSearch->text().toStdString();
+    PersonSearch = ui->Input_RelationScienSearch->text().toStdString();
     ScientistsRelationDisplay = _domain.getPersonsSearch(PersonSearch);
 
 
@@ -322,7 +322,7 @@ void MainMenu::on_pushButton_RemoveComputer_clicked()
     displayComputers();
 }
 //Displaying relations of selected scientist
-void MainMenu::on_RelationScienSearch_textChanged()
+void MainMenu::on_Input_RelationScienSearch_textChanged()
 {
     displayScientistRelations();
 }
