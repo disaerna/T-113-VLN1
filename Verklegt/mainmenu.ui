@@ -6,17 +6,11 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>611</width>
+    <width>615</width>
     <height>680</height>
    </rect>
   </property>
   <property name="minimumSize">
-   <size>
-    <width>611</width>
-    <height>680</height>
-   </size>
-  </property>
-  <property name="maximumSize">
    <size>
     <width>611</width>
     <height>680</height>
@@ -41,8 +35,8 @@
      <height>680</height>
     </size>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout_3">
-    <item>
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="0" column="0">
      <widget class="QTabWidget" name="Mainmenu_tabs">
       <property name="enabled">
        <bool>true</bool>
@@ -75,8 +69,8 @@
        <attribute name="title">
         <string>Scientists</string>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout">
-        <item>
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="0" column="0">
          <widget class="QLineEdit" name="Input_Search_Person">
           <property name="toolTipDuration">
            <number>0</number>
@@ -89,7 +83,7 @@
           </property>
          </widget>
         </item>
-        <item>
+        <item row="1" column="0">
          <spacer name="horizontalSpacer_2">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
@@ -102,7 +96,7 @@
           </property>
          </spacer>
         </item>
-        <item>
+        <item row="2" column="0">
          <widget class="QTableWidget" name="table_Scientists">
           <property name="minimumSize">
            <size>
@@ -200,7 +194,7 @@
           </column>
          </widget>
         </item>
-        <item>
+        <item row="3" column="0">
          <spacer name="horizontalSpacer">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
@@ -213,7 +207,7 @@
           </property>
          </spacer>
         </item>
-        <item>
+        <item row="4" column="0">
          <widget class="QPushButton" name="pushButton_AddPerson">
           <property name="toolTipDuration">
            <number>0</number>
@@ -223,20 +217,7 @@
           </property>
          </widget>
         </item>
-        <item>
-         <widget class="QPushButton" name="pushButton_EditPerson">
-          <property name="enabled">
-           <bool>false</bool>
-          </property>
-          <property name="toolTipDuration">
-           <number>0</number>
-          </property>
-          <property name="text">
-           <string>Edit selected scientist</string>
-          </property>
-         </widget>
-        </item>
-        <item>
+        <item row="6" column="0">
          <widget class="QPushButton" name="pushButton_RemovePerson">
           <property name="enabled">
            <bool>false</bool>
@@ -246,6 +227,19 @@
           </property>
           <property name="text">
            <string>Remove selected scientist</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="0">
+         <widget class="QPushButton" name="pushButton_EditPerson">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="toolTipDuration">
+           <number>0</number>
+          </property>
+          <property name="text">
+           <string>Edit selected scientist</string>
           </property>
          </widget>
         </item>
@@ -422,366 +416,362 @@
        <attribute name="title">
         <string>Relation</string>
        </attribute>
-       <widget class="QTabWidget" name="tabWidget">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>10</y>
-          <width>561</width>
-          <height>581</height>
-         </rect>
-        </property>
-        <property name="toolTipDuration">
-         <number>0</number>
-        </property>
-        <property name="currentIndex">
-         <number>0</number>
-        </property>
-        <widget class="QWidget" name="tab">
-         <attribute name="title">
-          <string>Scientist</string>
-         </attribute>
-         <widget class="QTableWidget" name="table_RelationScientists">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>70</y>
-            <width>251</width>
-            <height>371</height>
-           </rect>
-          </property>
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="0" column="0">
+         <widget class="QTabWidget" name="tabWidget">
           <property name="toolTipDuration">
            <number>0</number>
           </property>
-          <property name="editTriggers">
-           <set>QAbstractItemView::NoEditTriggers</set>
+          <property name="currentIndex">
+           <number>1</number>
           </property>
-          <property name="alternatingRowColors">
-           <bool>true</bool>
-          </property>
-          <property name="selectionMode">
-           <enum>QAbstractItemView::SingleSelection</enum>
-          </property>
-          <property name="selectionBehavior">
-           <enum>QAbstractItemView::SelectRows</enum>
-          </property>
-          <property name="showGrid">
-           <bool>false</bool>
-          </property>
-          <property name="sortingEnabled">
-           <bool>true</bool>
-          </property>
-          <attribute name="horizontalHeaderStretchLastSection">
-           <bool>true</bool>
-          </attribute>
-          <attribute name="verticalHeaderHighlightSections">
-           <bool>false</bool>
-          </attribute>
-          <column>
-           <property name="text">
+          <widget class="QWidget" name="tab">
+           <attribute name="title">
             <string>Scientist</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>id</string>
-           </property>
-          </column>
+           </attribute>
+           <widget class="QTableWidget" name="table_RelationScientists">
+            <property name="geometry">
+             <rect>
+              <x>20</x>
+              <y>70</y>
+              <width>251</width>
+              <height>371</height>
+             </rect>
+            </property>
+            <property name="toolTipDuration">
+             <number>0</number>
+            </property>
+            <property name="editTriggers">
+             <set>QAbstractItemView::NoEditTriggers</set>
+            </property>
+            <property name="alternatingRowColors">
+             <bool>true</bool>
+            </property>
+            <property name="selectionMode">
+             <enum>QAbstractItemView::SingleSelection</enum>
+            </property>
+            <property name="selectionBehavior">
+             <enum>QAbstractItemView::SelectRows</enum>
+            </property>
+            <property name="showGrid">
+             <bool>false</bool>
+            </property>
+            <property name="sortingEnabled">
+             <bool>true</bool>
+            </property>
+            <attribute name="horizontalHeaderStretchLastSection">
+             <bool>true</bool>
+            </attribute>
+            <attribute name="verticalHeaderHighlightSections">
+             <bool>false</bool>
+            </attribute>
+            <column>
+             <property name="text">
+              <string>Scientist</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>id</string>
+             </property>
+            </column>
+           </widget>
+           <widget class="QTableWidget" name="Input_RelationsScientistComputers">
+            <property name="geometry">
+             <rect>
+              <x>290</x>
+              <y>70</y>
+              <width>251</width>
+              <height>371</height>
+             </rect>
+            </property>
+            <property name="toolTipDuration">
+             <number>0</number>
+            </property>
+            <property name="editTriggers">
+             <set>QAbstractItemView::NoEditTriggers</set>
+            </property>
+            <attribute name="horizontalHeaderStretchLastSection">
+             <bool>true</bool>
+            </attribute>
+            <column>
+             <property name="text">
+              <string>Computer</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>id</string>
+             </property>
+            </column>
+           </widget>
+           <widget class="QLabel" name="RelationScientistText">
+            <property name="geometry">
+             <rect>
+              <x>20</x>
+              <y>40</y>
+              <width>251</width>
+              <height>21</height>
+             </rect>
+            </property>
+            <property name="toolTipDuration">
+             <number>0</number>
+            </property>
+            <property name="text">
+             <string>Please select a scientist to see relations</string>
+            </property>
+           </widget>
+           <widget class="QLineEdit" name="Input_RelationScienSearch">
+            <property name="geometry">
+             <rect>
+              <x>20</x>
+              <y>10</y>
+              <width>521</width>
+              <height>22</height>
+             </rect>
+            </property>
+            <property name="toolTipDuration">
+             <number>0</number>
+            </property>
+            <property name="placeholderText">
+             <string>Search for scientist</string>
+            </property>
+           </widget>
+           <widget class="QPushButton" name="pushButton_addSciRelation">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>460</y>
+              <width>531</width>
+              <height>28</height>
+             </rect>
+            </property>
+            <property name="toolTipDuration">
+             <number>0</number>
+            </property>
+            <property name="text">
+             <string>Add new relations</string>
+            </property>
+           </widget>
+           <widget class="QPushButton" name="pushButton_editSciRelation">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>490</y>
+              <width>531</width>
+              <height>28</height>
+             </rect>
+            </property>
+            <property name="toolTipDuration">
+             <number>0</number>
+            </property>
+            <property name="text">
+             <string>Edit selected relations</string>
+            </property>
+           </widget>
+           <widget class="QPushButton" name="pushButton_removeSciRelation">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>520</y>
+              <width>531</width>
+              <height>28</height>
+             </rect>
+            </property>
+            <property name="toolTipDuration">
+             <number>0</number>
+            </property>
+            <property name="text">
+             <string>Remove selected relations</string>
+            </property>
+           </widget>
+          </widget>
+          <widget class="QWidget" name="tab_2">
+           <attribute name="title">
+            <string>Computers</string>
+           </attribute>
+           <widget class="QLabel" name="RelationComputerText">
+            <property name="geometry">
+             <rect>
+              <x>20</x>
+              <y>40</y>
+              <width>251</width>
+              <height>21</height>
+             </rect>
+            </property>
+            <property name="toolTipDuration">
+             <number>0</number>
+            </property>
+            <property name="text">
+             <string>Please select a computer to see relations</string>
+            </property>
+           </widget>
+           <widget class="QTableWidget" name="table_RelationComputers">
+            <property name="geometry">
+             <rect>
+              <x>20</x>
+              <y>70</y>
+              <width>251</width>
+              <height>371</height>
+             </rect>
+            </property>
+            <property name="toolTipDuration">
+             <number>0</number>
+            </property>
+            <property name="editTriggers">
+             <set>QAbstractItemView::NoEditTriggers</set>
+            </property>
+            <attribute name="horizontalHeaderStretchLastSection">
+             <bool>true</bool>
+            </attribute>
+            <column>
+             <property name="text">
+              <string>Computer</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>id</string>
+             </property>
+            </column>
+           </widget>
+           <widget class="QLabel" name="image_Computer">
+            <property name="geometry">
+             <rect>
+              <x>360</x>
+              <y>70</y>
+              <width>161</width>
+              <height>151</height>
+             </rect>
+            </property>
+            <property name="toolTipDuration">
+             <number>0</number>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+           <widget class="QTableWidget" name="table_RelationsComputerScientists">
+            <property name="geometry">
+             <rect>
+              <x>290</x>
+              <y>70</y>
+              <width>251</width>
+              <height>371</height>
+             </rect>
+            </property>
+            <property name="toolTipDuration">
+             <number>0</number>
+            </property>
+            <property name="editTriggers">
+             <set>QAbstractItemView::NoEditTriggers</set>
+            </property>
+            <property name="dragDropOverwriteMode">
+             <bool>true</bool>
+            </property>
+            <property name="selectionBehavior">
+             <enum>QAbstractItemView::SelectRows</enum>
+            </property>
+            <attribute name="horizontalHeaderStretchLastSection">
+             <bool>true</bool>
+            </attribute>
+            <column>
+             <property name="text">
+              <string>Scientist</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>id</string>
+             </property>
+            </column>
+           </widget>
+           <widget class="QPushButton" name="pushButton_addCompRelation">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>460</y>
+              <width>531</width>
+              <height>28</height>
+             </rect>
+            </property>
+            <property name="toolTipDuration">
+             <number>0</number>
+            </property>
+            <property name="text">
+             <string>Add new relations</string>
+            </property>
+           </widget>
+           <widget class="QPushButton" name="pushButton_editCompRelation">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>490</y>
+              <width>531</width>
+              <height>28</height>
+             </rect>
+            </property>
+            <property name="toolTipDuration">
+             <number>0</number>
+            </property>
+            <property name="text">
+             <string>Edit selected relations</string>
+            </property>
+           </widget>
+           <widget class="QPushButton" name="pushButton_removeCompRelation">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>520</y>
+              <width>531</width>
+              <height>28</height>
+             </rect>
+            </property>
+            <property name="toolTipDuration">
+             <number>0</number>
+            </property>
+            <property name="text">
+             <string>Remove selected relations</string>
+            </property>
+           </widget>
+           <widget class="QLineEdit" name="Input_RelationCompSearch">
+            <property name="geometry">
+             <rect>
+              <x>20</x>
+              <y>10</y>
+              <width>521</width>
+              <height>22</height>
+             </rect>
+            </property>
+            <property name="toolTipDuration">
+             <number>0</number>
+            </property>
+            <property name="placeholderText">
+             <string>Search for computer</string>
+            </property>
+           </widget>
+          </widget>
          </widget>
-         <widget class="QTableWidget" name="Input_RelationsScientistComputers">
-          <property name="geometry">
-           <rect>
-            <x>290</x>
-            <y>70</y>
-            <width>251</width>
-            <height>371</height>
-           </rect>
-          </property>
-          <property name="toolTipDuration">
-           <number>0</number>
-          </property>
-          <property name="editTriggers">
-           <set>QAbstractItemView::NoEditTriggers</set>
-          </property>
-          <attribute name="horizontalHeaderStretchLastSection">
-           <bool>true</bool>
-          </attribute>
-          <column>
-           <property name="text">
-            <string>Computer</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>id</string>
-           </property>
-          </column>
-         </widget>
-         <widget class="QLabel" name="RelationScientistText">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>40</y>
-            <width>251</width>
-            <height>21</height>
-           </rect>
-          </property>
-          <property name="toolTipDuration">
-           <number>0</number>
-          </property>
-          <property name="text">
-           <string>Please select a scientist to see relations</string>
-          </property>
-         </widget>
-         <widget class="QLineEdit" name="Input_RelationScienSearch">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>10</y>
-            <width>521</width>
-            <height>22</height>
-           </rect>
-          </property>
-          <property name="toolTipDuration">
-           <number>0</number>
-          </property>
-          <property name="placeholderText">
-           <string>Search for scientist</string>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pushButton_addSciRelation">
-          <property name="enabled">
-           <bool>true</bool>
-          </property>
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>460</y>
-            <width>531</width>
-            <height>28</height>
-           </rect>
-          </property>
-          <property name="toolTipDuration">
-           <number>0</number>
-          </property>
-          <property name="text">
-           <string>Add new relations</string>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pushButton_editSciRelation">
-          <property name="enabled">
-           <bool>false</bool>
-          </property>
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>490</y>
-            <width>531</width>
-            <height>28</height>
-           </rect>
-          </property>
-          <property name="toolTipDuration">
-           <number>0</number>
-          </property>
-          <property name="text">
-           <string>Edit selected relations</string>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pushButton_removeSciRelation">
-          <property name="enabled">
-           <bool>false</bool>
-          </property>
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>520</y>
-            <width>531</width>
-            <height>28</height>
-           </rect>
-          </property>
-          <property name="toolTipDuration">
-           <number>0</number>
-          </property>
-          <property name="text">
-           <string>Remove selected relations</string>
-          </property>
-         </widget>
-        </widget>
-        <widget class="QWidget" name="tab_2">
-         <attribute name="title">
-          <string>Computers</string>
-         </attribute>
-         <widget class="QLabel" name="RelationComputerText">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>40</y>
-            <width>251</width>
-            <height>21</height>
-           </rect>
-          </property>
-          <property name="toolTipDuration">
-           <number>0</number>
-          </property>
-          <property name="text">
-           <string>Please select a computer to see relations</string>
-          </property>
-         </widget>
-         <widget class="QTableWidget" name="table_RelationComputers">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>70</y>
-            <width>251</width>
-            <height>371</height>
-           </rect>
-          </property>
-          <property name="toolTipDuration">
-           <number>0</number>
-          </property>
-          <property name="editTriggers">
-           <set>QAbstractItemView::NoEditTriggers</set>
-          </property>
-          <attribute name="horizontalHeaderStretchLastSection">
-           <bool>true</bool>
-          </attribute>
-          <column>
-           <property name="text">
-            <string>Computer</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>id</string>
-           </property>
-          </column>
-         </widget>
-         <widget class="QLabel" name="image_Computer">
-          <property name="geometry">
-           <rect>
-            <x>360</x>
-            <y>70</y>
-            <width>161</width>
-            <height>151</height>
-           </rect>
-          </property>
-          <property name="toolTipDuration">
-           <number>0</number>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-         <widget class="QTableWidget" name="table_RelationsComputerScientists">
-          <property name="geometry">
-           <rect>
-            <x>290</x>
-            <y>70</y>
-            <width>251</width>
-            <height>371</height>
-           </rect>
-          </property>
-          <property name="toolTipDuration">
-           <number>0</number>
-          </property>
-          <property name="editTriggers">
-           <set>QAbstractItemView::NoEditTriggers</set>
-          </property>
-          <property name="dragDropOverwriteMode">
-           <bool>true</bool>
-          </property>
-          <property name="selectionBehavior">
-           <enum>QAbstractItemView::SelectRows</enum>
-          </property>
-          <attribute name="horizontalHeaderStretchLastSection">
-           <bool>true</bool>
-          </attribute>
-          <column>
-           <property name="text">
-            <string>Scientist</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>id</string>
-           </property>
-          </column>
-         </widget>
-         <widget class="QPushButton" name="pushButton_addCompRelation">
-          <property name="enabled">
-           <bool>true</bool>
-          </property>
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>460</y>
-            <width>531</width>
-            <height>28</height>
-           </rect>
-          </property>
-          <property name="toolTipDuration">
-           <number>0</number>
-          </property>
-          <property name="text">
-           <string>Add new relations</string>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pushButton_editCompRelation">
-          <property name="enabled">
-           <bool>false</bool>
-          </property>
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>490</y>
-            <width>531</width>
-            <height>28</height>
-           </rect>
-          </property>
-          <property name="toolTipDuration">
-           <number>0</number>
-          </property>
-          <property name="text">
-           <string>Edit selected relations</string>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="pushButton_removeCompRelation">
-          <property name="enabled">
-           <bool>false</bool>
-          </property>
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>520</y>
-            <width>531</width>
-            <height>28</height>
-           </rect>
-          </property>
-          <property name="toolTipDuration">
-           <number>0</number>
-          </property>
-          <property name="text">
-           <string>Remove selected relations</string>
-          </property>
-         </widget>
-         <widget class="QLineEdit" name="Input_RelationCompSearch">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>10</y>
-            <width>521</width>
-            <height>22</height>
-           </rect>
-          </property>
-          <property name="toolTipDuration">
-           <number>0</number>
-          </property>
-          <property name="placeholderText">
-           <string>Search for computer</string>
-          </property>
-         </widget>
-        </widget>
-       </widget>
+        </item>
+       </layout>
       </widget>
      </widget>
     </item>
@@ -790,9 +780,7 @@
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <tabstops>
-  <tabstop>Mainmenu_tabs</tabstop>
   <tabstop>Input_Search_Person</tabstop>
-  <tabstop>table_Scientists</tabstop>
   <tabstop>pushButton_AddPerson</tabstop>
   <tabstop>pushButton_EditPerson</tabstop>
   <tabstop>pushButton_RemovePerson</tabstop>
