@@ -18,10 +18,11 @@ MainMenu::MainMenu(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    displayScientists();
     displayComputers();
     displayScientistRelations();
     displayComputersRelations();
-    displayScientists();
+
     ui->Mainmenu_tabs->setTabEnabled(0, true);
     SciRelComp = 0;
     SciRelSci = 0;
