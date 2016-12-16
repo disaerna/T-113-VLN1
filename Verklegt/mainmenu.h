@@ -53,16 +53,16 @@ private slots:
 
     void on_pushButton_EditComputer_clicked();
 
-    void on_RelationScienSearch_textChanged(const QString &arg1);
+    void on_RelationScienSearch_textChanged();
 
-    void on_RelationCompSearch_textChanged(const QString &arg1);
+    void on_RelationCompSearch_textChanged();
 
-    void on_RelationComputers_cellPressed(int row, int column);
+    void on_RelationComputers_cellPressed(int row);
     
-    void on_RelationScientists_cellPressed(int row, int column);                  
-    void on_RelationsComputerScientists_cellPressed(int row, int column);
+    void on_RelationScientists_cellPressed(int row);
+    void on_RelationsComputerScientists_cellPressed(int row);
 
-    void on_RelationsScientistComputers_cellPressed(int row, int column);
+    void on_RelationsScientistComputers_cellPressed(int row);
 
     void on_pushButton_editSciRelation_clicked();
 

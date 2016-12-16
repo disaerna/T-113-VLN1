@@ -205,7 +205,7 @@ void MainMenu::on_Input_Search_Computer_textChanged()
 void MainMenu::on_pushButton_AddPerson_clicked()
 {
     addScientist _addScientist;
-    int id = _addScientist.exec();
+    _addScientist.exec();
 
     displayScientists();
 }
@@ -280,7 +280,7 @@ void MainMenu::on_pushButton_AddComputer_clicked()
     addComputer _addComputer;
     _addComputer.typeList();
 
-    int id = _addComputer.exec();
+    _addComputer.exec();
 
     displayComputers();
 }
@@ -316,17 +316,17 @@ void MainMenu::on_pushButton_RemoveComputer_clicked()
     displayComputers();
 }
 //Displaying relations of selected scientist
-void MainMenu::on_RelationScienSearch_textChanged(const QString &arg1)
+void MainMenu::on_RelationScienSearch_textChanged()
 {
     displayScientistRelations();
 }
 //Displaying relations of selected computer
-void MainMenu::on_RelationCompSearch_textChanged(const QString &arg1)
+void MainMenu::on_RelationCompSearch_textChanged()
 {
     displayComputersRelations();
 }
 //Selcting a computer to display connection to.
-void MainMenu::on_RelationComputers_cellPressed(int row, int column)
+void MainMenu::on_RelationComputers_cellPressed(int row)
 {
     _row = row;
     int ID = ui->RelationComputers->item(row,1)->text().toUInt();
@@ -341,7 +341,7 @@ void MainMenu::on_RelationComputers_cellPressed(int row, int column)
     ui->pushButton_removeCompRelation->setEnabled(false);
 }
 
-void MainMenu::on_RelationScientists_cellPressed(int row, int column)
+void MainMenu::on_RelationScientists_cellPressed(int row)
 {    
     _row = row;
     int ID = ui->RelationScientists->item(row,1)->text().toUInt();
@@ -355,7 +355,7 @@ void MainMenu::on_RelationScientists_cellPressed(int row, int column)
     ui->pushButton_removeSciRelation->setEnabled(false);
 }
 
-void MainMenu::on_RelationsComputerScientists_cellPressed(int row, int column)
+void MainMenu::on_RelationsComputerScientists_cellPressed(int row)
 {
     _row = row;
     int ID = ui->RelationsComputerScientists->item(row,1)->text().toUInt();
@@ -367,7 +367,7 @@ void MainMenu::on_RelationsComputerScientists_cellPressed(int row, int column)
    }
 }
 
-void MainMenu::on_RelationsScientistComputers_cellPressed(int row, int column)
+void MainMenu::on_RelationsScientistComputers_cellPressed(int row)
 {
     _row = row;
     int ID = ui->RelationsScientistComputers->item(row,1)->text().toUInt();
