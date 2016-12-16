@@ -45,7 +45,7 @@
        <number>0</number>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>2</number>
       </property>
       <property name="usesScrollButtons">
        <bool>true</bool>
@@ -417,7 +417,7 @@
          <number>0</number>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="tab">
          <attribute name="title">
@@ -531,7 +531,7 @@
          </widget>
          <widget class="QPushButton" name="pushButton_addSciRelation">
           <property name="enabled">
-           <bool>false</bool>
+           <bool>true</bool>
           </property>
           <property name="geometry">
            <rect>
@@ -689,7 +689,7 @@
          </widget>
          <widget class="QPushButton" name="pushButton_addCompRelation">
           <property name="enabled">
-           <bool>false</bool>
+           <bool>true</bool>
           </property>
           <property name="geometry">
            <rect>

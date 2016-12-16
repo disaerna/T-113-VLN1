@@ -70,6 +70,10 @@ private slots:
 
     void on_pushButton_removeCompRelation_clicked();
 
+    void on_pushButton_addSciRelation_clicked();
+
+    void on_pushButton_addCompRelation_clicked();
+
 private:
 
     void displayScientists();

@@ -5,6 +5,7 @@
 #include "editperson.h"
 #include "editcomputer.h"
 #include "editrelation.h"
+#include "addrelations.h"
 #include "iostream"
 #include <QDialog>
 #include <QDebug>
