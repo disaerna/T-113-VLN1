@@ -4,6 +4,7 @@
 #include "addcomputer.h"
 #include "editperson.h"
 #include "editcomputer.h"
+#include "editrelation.h"
 #include "iostream"
 #include <QDialog>
 #include <QDebug>
@@ -22,6 +23,10 @@ MainMenu::MainMenu(QWidget *parent) :
     displayComputersRelations();
     displayScientists();
     ui->Mainmenu_tabs->setTabEnabled(0, true);
+    SciRelComp = 0;
+    SciRelSci = 0;
+    CompRelComp = 0;
+    CompRelSci = 0;
 }
 
 MainMenu::~MainMenu()
@@ -129,16 +134,19 @@ void MainMenu::displayScientistRelations()
     ui->RelationScientists->horizontalHeader()->setVisible(true);
     ui->RelationScientists->verticalHeader()->setVisible(false);
 
-    qDebug() << ScientistsRelationDisplay.size();
-
     for(size_t i = 0; i < ScientistsRelationDisplay.size(); i++)
     {
         Persons person_ = ScientistsRelationDisplay.at(i);
 
-        QString ScientistName = QString::fromStdString(person_.getName());
+        QString ScientistName = QString::fromStdString(person_.getName());        
 
         ui->RelationScientists->setItem(i, 0, new QTableWidgetItem(ScientistName));
-    }
+        ui->RelationScientists->setItem(i, 1, new QTableWidgetItem(QString::number(person_.getID())));
+
+
+        ui->RelationScientists->hideColumn(1);
+    }    
+
     ui->RelationScientists->setSortingEnabled(true);
 
 }
@@ -166,7 +174,7 @@ void MainMenu::displayComputersRelations()
         QString ComputerName = QString::fromStdString(computer_.getCompName());
 
         ui->RelationComputers->setItem(i, 0, new QTableWidgetItem(ComputerName));
-        ui->RelationComputers->setItem(i, 1, new QTableWidgetItem(computer_.getCompID()));
+        ui->RelationComputers->setItem(i, 1, new QTableWidgetItem(QString::number(computer_.getCompID())));
         ui->RelationComputers->hideColumn(1);
     }
     ui->RelationComputers->setSortingEnabled(true);
@@ -251,6 +259,7 @@ void MainMenu::on_pushButton_RemovePerson_clicked()
     }
 
     _domain.deletePersonFromFile(ID);
+    _domain.deleteConnections("ScientistID", ID);
 
     displayScientists();
 }
@@ -270,6 +279,7 @@ void MainMenu::on_table_Computers_cellPressed(int row)
     ui->pushButton_RemoveComputer->setEnabled(true);
     ui->pushButton_EditComputer->setEnabled(true);
     _row = row;
+
 }
 
 void MainMenu::on_pushButton_RemoveComputer_clicked()
@@ -290,6 +300,7 @@ void MainMenu::on_pushButton_RemoveComputer_clicked()
     }
 
     _domain.deleteComputerFromDatabase(ID);
+    _domain.deleteConnections("ComputerID", ID);
 
     displayComputers();
 }
@@ -306,14 +317,130 @@ void MainMenu::on_RelationCompSearch_textChanged(const QString &arg1)
 
 void MainMenu::on_RelationComputers_cellPressed(int row, int column)
 {
-    ui->pushButton_editCompRelation->setEnabled(true);
-    ui->pushButton_removeCompRelation->setEnabled(true);
     _row = row;
+    int ID = ui->RelationComputers->item(row,1)->text().toUInt();
+
+    vector<Persons> persons = _domain.getComputerToScientist(ID);
+    displaySecondRelationScientists(ID);
+
+
+    CompRelComp = ID;
+
+    ui->pushButton_editCompRelation->setEnabled(false);
+    ui->pushButton_removeCompRelation->setEnabled(false);
 }
 
 void MainMenu::on_RelationScientists_cellPressed(int row, int column)
-{
-    ui->pushButton_editSciRelation->setEnabled(true);
-    ui->pushButton_removeSciRelation->setEnabled(true);
+{    
     _row = row;
+    int ID = ui->RelationScientists->item(row,1)->text().toUInt();
+
+    displaySecondRelationComputers(ID);
+
+    SciRelSci = ID;
+
+    qDebug() << "Sci " << QString::number(SciRelSci) << " og rel comp " << QString::number(SciRelComp);
+    ui->pushButton_editSciRelation->setEnabled(false);
+    ui->pushButton_removeSciRelation->setEnabled(false);
+}
+
+void MainMenu::on_RelationsComputerScientists_cellPressed(int row, int column)
+{
+    _row = row;
+    int ID = ui->RelationsComputerScientists->item(row,1)->text().toUInt();
+    CompRelSci = ID;
+
+    if(CompRelComp != 0 && CompRelSci != 0){
+        ui->pushButton_editCompRelation->setEnabled(true);
+        ui->pushButton_removeCompRelation->setEnabled(true);
+   }
+}
+
+void MainMenu::on_RelationsScientistComputers_cellPressed(int row, int column)
+{
+    _row = row;
+    int ID = ui->RelationsScientistComputers->item(row,1)->text().toUInt();
+    SciRelComp = ID;
+
+    if(SciRelSci != 0 && SciRelComp != 0){
+        ui->pushButton_editSciRelation->setEnabled(true);
+        ui->pushButton_removeSciRelation->setEnabled(true);
+    }
+}
+
+
+void MainMenu::displaySecondRelationComputers(int id)
+{
+
+    vector<Computers> comps = _domain.getScientistToComputer(id);
+
+    ui->RelationsScientistComputers->setSortingEnabled(false);
+    ui->RelationsScientistComputers->clearContents();
+    ui->RelationsScientistComputers->setRowCount(comps.size());
+    ui->RelationsScientistComputers->horizontalHeader()->setVisible(true);
+    ui->RelationsScientistComputers->verticalHeader()->setVisible(false);
+
+    for(size_t i = 0; i < comps.size(); i++)
+    {
+        Computers computer_ = comps.at(i);
+        QString ComputerName = QString::fromStdString(computer_.getCompName());
+
+        ui->RelationsScientistComputers->setItem(i, 0, new QTableWidgetItem(ComputerName));
+        ui->RelationsScientistComputers->setItem(i, 1, new QTableWidgetItem(QString::number(computer_.getCompID())));
+        ui->RelationsScientistComputers->hideColumn(1);
+    }
+
+    ui->RelationsScientistComputers->setSortingEnabled(true);
+}
+
+void MainMenu::displaySecondRelationScientists(int id)
+{
+
+    vector<Persons> persons = _domain.getComputerToScientist(id);
+
+    ui->RelationsComputerScientists->setSortingEnabled(false);
+    ui->RelationsComputerScientists->clearContents();
+    ui->RelationsComputerScientists->setRowCount(persons.size());
+    ui->RelationsComputerScientists->horizontalHeader()->setVisible(true);
+    ui->RelationsComputerScientists->verticalHeader()->setVisible(false);
+
+    for(size_t i = 0; i < persons.size(); i++)
+    {
+        Persons person = persons.at(i);
+        QString name = QString::fromStdString(person.getName());
+
+        ui->RelationsComputerScientists->setItem(i, 0, new QTableWidgetItem(name));
+        ui->RelationsComputerScientists->setItem(i, 1, new QTableWidgetItem(QString::number(person.getID())));
+        ui->RelationsComputerScientists->hideColumn(1);
+    }
+
+    ui->RelationsComputerScientists->setSortingEnabled(true);
+}
+
+void MainMenu::on_pushButton_editSciRelation_clicked()
+{
+    editRelation _editRelation;
+
+    _editRelation.setIDs(SciRelSci, SciRelComp);
+    _editRelation.fillComboBoxes();
+    _editRelation.exec();
+
+}
+
+void MainMenu::on_pushButton_removeSciRelation_clicked()
+{
+    QString Removal = "Are you sure?";
+    int ConfirmRemoval = QMessageBox::question(this,"Confirm" , Removal);
+    if(ConfirmRemoval){
+        _domain.removeRelation(SciRelSci,SciRelComp);
+    }
+}
+
+void MainMenu::on_pushButton_removeCompRelation_clicked()
+{
+    QString Removal = "Are you sure?";
+    int ConfirmRemoval = QMessageBox::question(this,"Confirm" , Removal);
+    if(ConfirmRemoval){
+        _domain.removeRelation(CompRelSci,CompRelComp);
+    }
 }

@@ -35,12 +35,10 @@ void editPerson::initializeFields()
     string getYOB = person.getYearOfBirth();
     string getYOD = person.getYearOfDeath();
 
-
     QString qName = QString::fromStdString(getName);
     QString qYOB = QString::fromStdString(getYOB);
     QString qYOD = QString::fromStdString(getYOD);
     qDebug() << qYOD;
-
 
     ui->nameEdit->setText(qName);
 

@@ -59,18 +59,34 @@ private slots:
 
     void on_RelationComputers_cellPressed(int row, int column);
     
-    void on_RelationScientists_cellPressed(int row, int column);
-    
+    void on_RelationScientists_cellPressed(int row, int column);                  
+    void on_RelationsComputerScientists_cellPressed(int row, int column);
+
+    void on_RelationsScientistComputers_cellPressed(int row, int column);
+
+    void on_pushButton_editSciRelation_clicked();
+
+    void on_pushButton_removeSciRelation_clicked();
+
+    void on_pushButton_removeCompRelation_clicked();
+
 private:
 
     void displayScientists();
     void displayComputers();
     void displayScientistRelations();
     void displayComputersRelations();    
+    void displaySecondRelationComputers(int id);
+    void displaySecondRelationScientists(int id);
     std::vector<Persons> ScientistsDisplay;
     std::vector<Persons> ScientistsRelationDisplay;
     std::vector<Computers> ComputersDisplay;
     std::vector<Computers> ComputersRelationDisplay;
+    int SciRelSci;
+    int SciRelComp;
+
+    int CompRelSci;
+    int CompRelComp;
 
 
     Ui::MainMenu *ui;

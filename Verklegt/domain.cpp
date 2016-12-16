@@ -419,6 +419,15 @@ bool Domain::updatePerson(int id, string name, string gender, string yob, string
     return _DbManager.updateScientist(id, name, gender, yob, yod);
 }
 
+void Domain::updateRelations(int oldScientist,int oldComputer,int newScientist,int newComputer){
+    return _DbManager.updateRelations(oldScientist,oldComputer,newScientist,newComputer);
+}
+
+void Domain::removeRelation(int sciId, int compId)
+{
+    return _DbManager.removeRelation(sciId,compId);
+}
+
 bool Domain::validPersonUpdateChoice(string x)
 {
     if(x == "n" || x == "N" || x == "g" || x == "G" || x == "b" || x == "B" || x == "d" || x == "D")

@@ -63,7 +63,7 @@ void editComputer::initializeFields()
 
 void editComputer::typeList()
 {
-    ui->typeSelection->activateWindow();
+    //ui->typeSelection->activateWindow();
     vector<string> types = _domain.getComputersTypes();
     ui->typeSelection->clear();
     for(unsigned int i=0; i<types.size(); i++)

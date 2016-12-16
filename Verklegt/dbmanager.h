@@ -43,6 +43,8 @@ public:
     vector<string> readComputersAndPersons(int input);
     vector<string> readComputersTypes();
     vector<int> getComputerToScientist(int ID);
+    void updateRelations(int oldScientist,int oldComputer,int newScientist,int newComputer);
+    void removeRelation(int sciId, int compId);
 
     void connectComputersAndScientists(int scientistID, int computerID);
     bool removeConnections(string column, int removeID);

@@ -45,7 +45,7 @@
        <number>0</number>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <property name="usesScrollButtons">
        <bool>true</bool>
@@ -408,7 +408,7 @@
          <number>0</number>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="tab">
          <attribute name="title">
@@ -432,6 +432,11 @@
           <column>
            <property name="text">
             <string>Scientist</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>id</string>
            </property>
           </column>
          </widget>
@@ -466,6 +471,11 @@
           <column>
            <property name="text">
             <string>Computer</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>id</string>
            </property>
           </column>
          </widget>
@@ -587,6 +597,11 @@
             <string>Computer</string>
            </property>
           </column>
+          <column>
+           <property name="text">
+            <string>id</string>
+           </property>
+          </column>
          </widget>
          <widget class="QLabel" name="imageComputer">
           <property name="geometry">
@@ -619,6 +634,11 @@
           <column>
            <property name="text">
             <string>Scientist</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>id</string>
            </property>
           </column>
          </widget>

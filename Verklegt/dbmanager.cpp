@@ -401,3 +401,31 @@ bool DbManager::updateComputer(int ID,string name, string yearbuilt, string type
         return false;
     }
 }
+
+void DbManager::updateRelations(int oldScientist,int oldComputer,int newScientist,int newComputer)
+{
+
+    QSqlQuery query(db);
+    QString _oldScientist = QString::number(oldScientist);
+    QString _oldComputer = QString::number(oldComputer);
+    QString _newScientist = QString::number(newScientist);
+    QString _newComputer = QString::number(newComputer);
+
+    query.prepare("UPDATE ScientistsAndComputers SET ScientistId = '"+ _newScientist + "',ComputerID = '"+ _newComputer + "' WHERE ScientistID = :OldScientistID and ComputerID = :OldComputerID");
+    query.bindValue(":OldScientistID",_oldScientist);
+    query.bindValue(":OldComputerID",_oldComputer);
+
+    query.exec();
+
+    qDebug() << db.lastError();
+}
+
+void DbManager::removeRelation(int sciId, int compId)
+{
+    QSqlQuery query(db);
+    query.prepare("DELETE FROM ScientistsAndComputers WHERE ScientistID = :SciID and ComputerID = :CompID");
+    query.bindValue(":SciID", sciId);
+    query.bindValue(":CompID",compId);
+    query.exec();
+
+}
