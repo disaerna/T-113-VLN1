@@ -454,3 +454,29 @@ void MainMenu::on_pushButton_removeCompRelation_clicked()
         _domain.removeRelation(CompRelSci,CompRelComp);
     }
 }
+
+void MainMenu::on_pushButton_addSciRelation_clicked()
+{
+    addRelations _addRelations;
+
+    _addRelations.setIDs(SciRelSci, SciRelComp);
+    _addRelations.fillComboBoxes();
+    _addRelations.exec();
+
+    displayComputersRelations();
+    displayScientistRelations();
+}
+
+
+
+void MainMenu::on_pushButton_addCompRelation_clicked()
+{
+    addRelations _addRelations;
+
+    _addRelations.setIDs(CompRelSci,CompRelComp);
+    _addRelations.fillComboBoxes();
+    _addRelations.exec();
+
+    displayScientistRelations();
+    displayComputersRelations();
+}
