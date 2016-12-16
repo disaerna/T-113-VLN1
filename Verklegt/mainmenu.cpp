@@ -143,12 +143,12 @@ void MainMenu::displayScientistRelations()
     ScientistsRelationDisplay = _domain.getPersonsSearch(PersonSearch);
 
 
-    ui->RelationScientists->setSortingEnabled(false);
+    ui->table_RelationScientists->setSortingEnabled(false);
 
-    ui->RelationScientists->clearContents();
-    ui->RelationScientists->setRowCount(ScientistsRelationDisplay.size());
-    ui->RelationScientists->horizontalHeader()->setVisible(true);
-    ui->RelationScientists->verticalHeader()->setVisible(false);
+    ui->table_RelationScientists->clearContents();
+    ui->table_RelationScientists->setRowCount(ScientistsRelationDisplay.size());
+    ui->table_RelationScientists->horizontalHeader()->setVisible(true);
+    ui->table_RelationScientists->verticalHeader()->setVisible(false);
 
     for(unsigned int i = 0; i < ScientistsRelationDisplay.size(); i++)
     {
@@ -156,14 +156,14 @@ void MainMenu::displayScientistRelations()
 
         QString ScientistName = QString::fromStdString(person_.getName());        
 
-        ui->RelationScientists->setItem(i, 0, new QTableWidgetItem(ScientistName));
-        ui->RelationScientists->setItem(i, 1, new QTableWidgetItem(QString::number(person_.getID())));
+        ui->table_RelationScientists->setItem(i, 0, new QTableWidgetItem(ScientistName));
+        ui->table_RelationScientists->setItem(i, 1, new QTableWidgetItem(QString::number(person_.getID())));
 
 
-        ui->RelationScientists->hideColumn(1);
+        ui->table_RelationScientists->hideColumn(1);
     }    
 
-    ui->RelationScientists->setSortingEnabled(true);
+    ui->table_RelationScientists->setSortingEnabled(true);
 
 }
 //Shows computer relations with scientists.
@@ -171,16 +171,16 @@ void MainMenu::displayComputersRelations()
 {
     string ComputerSearch = "";
 
-    ComputerSearch = ui->RelationCompSearch->text().toStdString();
+    ComputerSearch = ui->Input_RelationCompSearch->text().toStdString();
 
     ComputersRelationDisplay = _domain.getComputersSearch(ComputerSearch);
 
-    ui->RelationComputers->setSortingEnabled(false);
+    ui->table_RelationComputers->setSortingEnabled(false);
 
-    ui->RelationComputers->clearContents();
-    ui->RelationComputers->setRowCount(ComputersRelationDisplay.size());
-    ui->RelationComputers->horizontalHeader()->setVisible(true);
-    ui->RelationComputers->verticalHeader()->setVisible(false);
+    ui->table_RelationComputers->clearContents();
+    ui->table_RelationComputers->setRowCount(ComputersRelationDisplay.size());
+    ui->table_RelationComputers->horizontalHeader()->setVisible(true);
+    ui->table_RelationComputers->verticalHeader()->setVisible(false);
 
     qDebug() << ComputersRelationDisplay.size();
 
@@ -190,11 +190,11 @@ void MainMenu::displayComputersRelations()
 
         QString ComputerName = QString::fromStdString(computer_.getCompName());
 
-        ui->RelationComputers->setItem(i, 0, new QTableWidgetItem(ComputerName));
-        ui->RelationComputers->setItem(i, 1, new QTableWidgetItem(QString::number(computer_.getCompID())));
-        ui->RelationComputers->hideColumn(1);
+        ui->table_RelationComputers->setItem(i, 0, new QTableWidgetItem(ComputerName));
+        ui->table_RelationComputers->setItem(i, 1, new QTableWidgetItem(QString::number(computer_.getCompID())));
+        ui->table_RelationComputers->hideColumn(1);
     }
-    ui->RelationComputers->setSortingEnabled(true);
+    ui->table_RelationComputers->setSortingEnabled(true);
 }
 
 //Displaying scientists for search
@@ -327,18 +327,18 @@ void MainMenu::on_Input_RelationScienSearch_textChanged()
     displayScientistRelations();
 }
 //Displaying relations of selected computer
-void MainMenu::on_RelationCompSearch_textChanged()
+void MainMenu::on_Input_RelationCompSearch_textChanged()
 {
     displayComputersRelations();
 }
 //Selcting a computer to display connection to.
-void MainMenu::on_RelationComputers_cellPressed(int row)
+void MainMenu::on_table_RelationComputers_cellPressed(int row)
 {
     _row = row;
-    int ID = ui->RelationComputers->item(row,1)->text().toUInt();
+    int ID = ui->table_RelationComputers->item(row,1)->text().toUInt();
 
     vector<Persons> persons = _domain.getComputerToScientist(ID);
-    displaySecondRelationScientists(ID);
+    displaySecondtable_RelationScientists(ID);
 
 
     CompRelComp = ID;
@@ -347,12 +347,12 @@ void MainMenu::on_RelationComputers_cellPressed(int row)
     ui->pushButton_removeCompRelation->setEnabled(false);
 }
 
-void MainMenu::on_RelationScientists_cellPressed(int row)
+void MainMenu::on_table_RelationScientists_cellPressed(int row)
 {    
     _row = row;
-    int ID = ui->RelationScientists->item(row,1)->text().toUInt();
+    int ID = ui->table_RelationScientists->item(row,1)->text().toUInt();
 
-    displaySecondRelationComputers(ID);
+    displaySecondtable_RelationComputers(ID);
 
     SciRelSci = ID;
 
@@ -361,10 +361,10 @@ void MainMenu::on_RelationScientists_cellPressed(int row)
     ui->pushButton_removeSciRelation->setEnabled(false);
 }
 
-void MainMenu::on_RelationsComputerScientists_cellPressed(int row)
+void MainMenu::on_table_RelationsComputerScientists_cellPressed(int row)
 {
     _row = row;
-    int ID = ui->RelationsComputerScientists->item(row,1)->text().toUInt();
+    int ID = ui->table_RelationsComputerScientists->item(row,1)->text().toUInt();
     CompRelSci = ID;
 
     if(CompRelComp != 0 && CompRelSci != 0){
@@ -373,10 +373,10 @@ void MainMenu::on_RelationsComputerScientists_cellPressed(int row)
    }
 }
 
-void MainMenu::on_RelationsScientistComputers_cellPressed(int row)
+void MainMenu::on_Input_RelationsScientistComputers_cellPressed(int row)
 {
     _row = row;
-    int ID = ui->RelationsScientistComputers->item(row,1)->text().toUInt();
+    int ID = ui->Input_RelationsScientistComputers->item(row,1)->text().toUInt();
     SciRelComp = ID;
 
     if(SciRelSci != 0 && SciRelComp != 0){
@@ -386,52 +386,52 @@ void MainMenu::on_RelationsScientistComputers_cellPressed(int row)
 }
 
 
-void MainMenu::displaySecondRelationComputers(int id)
+void MainMenu::displaySecondtable_RelationComputers(int id)
 {
 
     vector<Computers> comps = _domain.getScientistToComputer(id);
 
-    ui->RelationsScientistComputers->setSortingEnabled(false);
-    ui->RelationsScientistComputers->clearContents();
-    ui->RelationsScientistComputers->setRowCount(comps.size());
-    ui->RelationsScientistComputers->horizontalHeader()->setVisible(true);
-    ui->RelationsScientistComputers->verticalHeader()->setVisible(false);
+    ui->Input_RelationsScientistComputers->setSortingEnabled(false);
+    ui->Input_RelationsScientistComputers->clearContents();
+    ui->Input_RelationsScientistComputers->setRowCount(comps.size());
+    ui->Input_RelationsScientistComputers->horizontalHeader()->setVisible(true);
+    ui->Input_RelationsScientistComputers->verticalHeader()->setVisible(false);
 
     for(unsigned int i = 0; i < comps.size(); i++)
     {
         Computers computer_ = comps.at(i);
         QString ComputerName = QString::fromStdString(computer_.getCompName());
 
-        ui->RelationsScientistComputers->setItem(i, 0, new QTableWidgetItem(ComputerName));
-        ui->RelationsScientistComputers->setItem(i, 1, new QTableWidgetItem(QString::number(computer_.getCompID())));
-        ui->RelationsScientistComputers->hideColumn(1);
+        ui->Input_RelationsScientistComputers->setItem(i, 0, new QTableWidgetItem(ComputerName));
+        ui->Input_RelationsScientistComputers->setItem(i, 1, new QTableWidgetItem(QString::number(computer_.getCompID())));
+        ui->Input_RelationsScientistComputers->hideColumn(1);
     }
 
-    ui->RelationsScientistComputers->setSortingEnabled(true);
+    ui->Input_RelationsScientistComputers->setSortingEnabled(true);
 }
 
-void MainMenu::displaySecondRelationScientists(int id)
+void MainMenu::displaySecondtable_RelationScientists(int id)
 {
 
     vector<Persons> persons = _domain.getComputerToScientist(id);
 
-    ui->RelationsComputerScientists->setSortingEnabled(false);
-    ui->RelationsComputerScientists->clearContents();
-    ui->RelationsComputerScientists->setRowCount(persons.size());
-    ui->RelationsComputerScientists->horizontalHeader()->setVisible(true);
-    ui->RelationsComputerScientists->verticalHeader()->setVisible(false);
+    ui->table_RelationsComputerScientists->setSortingEnabled(false);
+    ui->table_RelationsComputerScientists->clearContents();
+    ui->table_RelationsComputerScientists->setRowCount(persons.size());
+    ui->table_RelationsComputerScientists->horizontalHeader()->setVisible(true);
+    ui->table_RelationsComputerScientists->verticalHeader()->setVisible(false);
 
     for(unsigned int i = 0; i < persons.size(); i++)
     {
         Persons person = persons.at(i);
         QString name = QString::fromStdString(person.getName());
 
-        ui->RelationsComputerScientists->setItem(i, 0, new QTableWidgetItem(name));
-        ui->RelationsComputerScientists->setItem(i, 1, new QTableWidgetItem(QString::number(person.getID())));
-        ui->RelationsComputerScientists->hideColumn(1);
+        ui->table_RelationsComputerScientists->setItem(i, 0, new QTableWidgetItem(name));
+        ui->table_RelationsComputerScientists->setItem(i, 1, new QTableWidgetItem(QString::number(person.getID())));
+        ui->table_RelationsComputerScientists->hideColumn(1);
     }
 
-    ui->RelationsComputerScientists->setSortingEnabled(true);
+    ui->table_RelationsComputerScientists->setSortingEnabled(true);
 }
 //Editing scientist relations
 void MainMenu::on_pushButton_editSciRelation_clicked()
@@ -441,7 +441,7 @@ void MainMenu::on_pushButton_editSciRelation_clicked()
     _editRelation.setIDs(SciRelSci, SciRelComp);
     _editRelation.fillComboBoxes();
     _editRelation.exec();
-    displaySecondRelationScientists(SciRelComp);
+    displaySecondtable_RelationScientists(SciRelComp);
 
 }
 //Removing scientist relations
@@ -496,5 +496,5 @@ void MainMenu::on_pushButton_editCompRelation_clicked()
     _editRelation.setIDs(CompRelSci, CompRelComp);
     _editRelation.fillComboBoxes();
     _editRelation.exec();
-    displaySecondRelationComputers(CompRelComp);
+    displaySecondtable_RelationComputers(CompRelComp);
 }

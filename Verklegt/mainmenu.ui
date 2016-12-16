@@ -441,7 +441,7 @@
          <attribute name="title">
           <string>Scientist</string>
          </attribute>
-         <widget class="QTableWidget" name="RelationScientists">
+         <widget class="QTableWidget" name="table_RelationScientists">
           <property name="geometry">
            <rect>
             <x>20</x>
@@ -470,7 +470,7 @@
            </property>
           </column>
          </widget>
-         <widget class="QLabel" name="imageScientist">
+         <widget class="QLabel" name="image_Scientist">
           <property name="geometry">
            <rect>
             <x>310</x>
@@ -486,7 +486,7 @@
            <string/>
           </property>
          </widget>
-         <widget class="QTableWidget" name="RelationsScientistComputers">
+         <widget class="QTableWidget" name="Input_RelationsScientistComputers">
           <property name="geometry">
            <rect>
             <x>300</x>
@@ -625,7 +625,7 @@
            <string>Please select a computer to see relations</string>
           </property>
          </widget>
-         <widget class="QTableWidget" name="RelationComputers">
+         <widget class="QTableWidget" name="table_RelationComputers">
           <property name="geometry">
            <rect>
             <x>20</x>
@@ -654,7 +654,7 @@
            </property>
           </column>
          </widget>
-         <widget class="QLabel" name="imageComputer">
+         <widget class="QLabel" name="image_Computer">
           <property name="geometry">
            <rect>
             <x>360</x>
@@ -670,7 +670,7 @@
            <string/>
           </property>
          </widget>
-         <widget class="QTableWidget" name="RelationsComputerScientists">
+         <widget class="QTableWidget" name="table_RelationsComputerScientists">
           <property name="geometry">
            <rect>
             <x>300</x>
@@ -762,7 +762,7 @@
            <string>Remove selected relations</string>
           </property>
          </widget>
-         <widget class="QLineEdit" name="RelationCompSearch">
+         <widget class="QLineEdit" name="Input_RelationCompSearch">
           <property name="geometry">
            <rect>
             <x>20</x>
@@ -801,17 +801,17 @@
   <tabstop>pushButton_RemoveComputer</tabstop>
   <tabstop>tabWidget</tabstop>
   <tabstop>Input_RelationScienSearch</tabstop>
-  <tabstop>RelationScientists</tabstop>
-  <tabstop>RelationsScientistComputers</tabstop>
+  <tabstop>table_RelationScientists</tabstop>
+  <tabstop>Input_RelationsScientistComputers</tabstop>
   <tabstop>pushButton_addSciRelation</tabstop>
   <tabstop>pushButton_editSciRelation</tabstop>
   <tabstop>pushButton_removeSciRelation</tabstop>
-  <tabstop>RelationComputers</tabstop>
-  <tabstop>RelationsComputerScientists</tabstop>
+  <tabstop>table_RelationComputers</tabstop>
+  <tabstop>table_RelationsComputerScientists</tabstop>
   <tabstop>pushButton_addCompRelation</tabstop>
   <tabstop>pushButton_editCompRelation</tabstop>
   <tabstop>pushButton_removeCompRelation</tabstop>
-  <tabstop>RelationCompSearch</tabstop>
+  <tabstop>Input_RelationCompSearch</tabstop>
  </tabstops>
  <resources/>
  <connections/>

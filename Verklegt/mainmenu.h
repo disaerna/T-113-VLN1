@@ -24,8 +24,8 @@ public:
     explicit MainMenu(QWidget *parent = 0);
     ~MainMenu();
 
-    void displaySecondRelationComputers(int id);
-    void displaySecondRelationScientists(int id);
+    void displaySecondtable_RelationComputers(int id);
+    void displaySecondtable_RelationScientists(int id);
 
 private slots:
 
@@ -52,14 +52,14 @@ private slots:
 
     void on_Input_RelationScienSearch_textChanged();
 
-    void on_RelationCompSearch_textChanged();
+    void on_Input_RelationCompSearch_textChanged();
 
-    void on_RelationComputers_cellPressed(int row);
+    void on_table_RelationComputers_cellPressed(int row);
     
-    void on_RelationScientists_cellPressed(int row);
-    void on_RelationsComputerScientists_cellPressed(int row);
+    void on_table_RelationScientists_cellPressed(int row);
+    void on_table_RelationsComputerScientists_cellPressed(int row);
 
-    void on_RelationsScientistComputers_cellPressed(int row);
+    void on_Input_RelationsScientistComputers_cellPressed(int row);
 
     void on_pushButton_editSciRelation_clicked();
 
