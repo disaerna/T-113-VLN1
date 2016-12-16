@@ -50,7 +50,7 @@ private slots:
 
     void on_pushButton_EditComputer_clicked();
 
-    void on_RelationScienSearch_textChanged();
+    void on_Input_RelationScienSearch_textChanged();
 
     void on_RelationCompSearch_textChanged();
 

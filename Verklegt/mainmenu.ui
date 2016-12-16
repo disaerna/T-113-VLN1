@@ -531,7 +531,7 @@
            <string>Please select a scientist to see relations</string>
           </property>
          </widget>
-         <widget class="QLineEdit" name="RelationScienSearch">
+         <widget class="QLineEdit" name="Input_RelationScienSearch">
           <property name="geometry">
            <rect>
             <x>20</x>
@@ -800,7 +800,7 @@
   <tabstop>pushButton_EditComputer</tabstop>
   <tabstop>pushButton_RemoveComputer</tabstop>
   <tabstop>tabWidget</tabstop>
-  <tabstop>RelationScienSearch</tabstop>
+  <tabstop>Input_RelationScienSearch</tabstop>
   <tabstop>RelationScientists</tabstop>
   <tabstop>RelationsScientistComputers</tabstop>
   <tabstop>pushButton_addSciRelation</tabstop>
