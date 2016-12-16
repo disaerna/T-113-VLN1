@@ -435,7 +435,7 @@
          <number>0</number>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="tab">
          <attribute name="title">
@@ -544,7 +544,7 @@
            <number>0</number>
           </property>
           <property name="placeholderText">
-           <string>Search</string>
+           <string>Search for scientist</string>
           </property>
          </widget>
          <widget class="QPushButton" name="pushButton_addSciRelation">
@@ -775,7 +775,7 @@
            <number>0</number>
           </property>
           <property name="placeholderText">
-           <string>Search</string>
+           <string>Search for computer</string>
           </property>
          </widget>
         </widget>

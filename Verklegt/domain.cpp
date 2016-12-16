@@ -314,6 +314,11 @@ bool Domain::validNameCheck(string name)
     return (name.find_first_not_of("qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM -.") != std::string::npos);
 }
 
+bool Domain::validComputerNameCheck(string name)
+{
+    return (name.find_first_not_of(" ") == std::string::npos);
+}
+
 
 
 // Checks if input is M/m or F/f.

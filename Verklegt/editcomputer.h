@@ -31,6 +31,7 @@ private:
     Ui::editComputer *ui;
     Domain _domain;
     int _index;
+
     //test
 };
 

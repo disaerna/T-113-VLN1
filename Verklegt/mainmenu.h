@@ -24,16 +24,13 @@ public:
     explicit MainMenu(QWidget *parent = 0);
     ~MainMenu();
 
+    void displaySecondRelationComputers(int id);
+    void displaySecondRelationScientists(int id);
+
 private slots:
 
-//    void on_ButtonQuit_clicked();
-
-//    void on_ButtonScientists_clicked();
-
-//    void on_ButtonComputers_clicked();
-
-    //void on_Mainmenu_tabs_currentChanged(int index);
     void on_Input_Search_Person_textChanged();
+
     void on_pushButton_AddPerson_clicked();
 
     void on_table_Scientists_cellPressed(int row);
@@ -74,14 +71,15 @@ private slots:
 
     void on_pushButton_addCompRelation_clicked();
 
+    void on_pushButton_editCompRelation_clicked();
+
 private:
 
     void displayScientists();
     void displayComputers();
     void displayScientistRelations();
     void displayComputersRelations();    
-    void displaySecondRelationComputers(int id);
-    void displaySecondRelationScientists(int id);
+
     std::vector<Persons> ScientistsDisplay;
     std::vector<Persons> ScientistsRelationDisplay;
     std::vector<Computers> ComputersDisplay;

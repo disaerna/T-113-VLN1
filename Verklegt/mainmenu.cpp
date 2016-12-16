@@ -23,7 +23,7 @@ MainMenu::MainMenu(QWidget *parent) :
     displayComputers();
     displayScientistRelations();
     displayComputersRelations();
-    QWidget::setFixedSize(611,680);
+    //QWidget::setFixedSize(660,680);
 
     ui->Mainmenu_tabs->setTabEnabled(0, true);
     ui->Mainmenu_tabs->setCurrentIndex(0);
@@ -436,6 +436,7 @@ void MainMenu::on_pushButton_editSciRelation_clicked()
     _editRelation.setIDs(SciRelSci, SciRelComp);
     _editRelation.fillComboBoxes();
     _editRelation.exec();
+    displaySecondRelationScientists(SciRelComp);
 
 }
 //Removing scientist relations
@@ -481,4 +482,14 @@ void MainMenu::on_pushButton_addCompRelation_clicked()
 
     displayScientistRelations();
     displayComputersRelations();
+}
+
+void MainMenu::on_pushButton_editCompRelation_clicked()
+{
+    editRelation _editRelation;
+
+    _editRelation.setIDs(CompRelSci, CompRelComp);
+    _editRelation.fillComboBoxes();
+    _editRelation.exec();
+    displaySecondRelationComputers(CompRelComp);
 }

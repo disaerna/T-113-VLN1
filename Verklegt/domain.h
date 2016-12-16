@@ -57,6 +57,7 @@ public:
 
     // Functions for error checking input
     bool validNameCheck(string name);
+    bool validComputerNameCheck(string name);
     bool validGenderCheck(string gender);
     bool validYearCheck(string year);
     int yesOrNoCheck(string answer); // Three option for this function. Checks if input is digit, yes or no

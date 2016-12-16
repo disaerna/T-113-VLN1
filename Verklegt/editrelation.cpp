@@ -71,5 +71,12 @@ void editRelation::on_pushButton_submit_clicked()
 
           qDebug() << QString::number(_sci) <<" "<<  QString::number(_comp) <<" "<< QString::number(newSci) <<" "<< QString::number(newComp);
         _domain.updateRelations(_sci,_comp,newSci,newComp);
+
         this->done(0);
+
+}
+
+void editRelation::on_pushButton_cancel_clicked()
+{
+    this->done(0);
 }

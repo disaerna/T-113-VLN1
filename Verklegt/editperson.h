@@ -24,6 +24,10 @@ private slots:
     void on_submitButton_clicked();
     void on_cancelButton_clicked();
 
+    void on_aliveButton_clicked();
+
+    void on_deadButton_clicked();
+
 private:
     Ui::editPerson *ui;
     Domain _domain;
